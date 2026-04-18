@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Trader Munaaf • Elite Alerts</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg-black: #05070a;
+    --card-bg: #0d1117;
+    --neon-cyan: #00f2ff;
+    --electric-gold: #f59e0b;
+    --text-white: #ffffff;
+    --text-dim: #94a3b8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  body {
+    background-color: var(--bg-black);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--text-white);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* Mashallah Design Accents */
+  .glow-bg {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at 50% -20%, rgba(0, 242, 255, 0.15), transparent 80%);
+    z-index: -1;
+  }
+
+  .container {
+    max-width: 500px; /* Optimized for Mobile Ad traffic */
+    margin: 0 auto;
+    padding: 20px 15px 80px;
+  }
+
+  /* Profile Card */
+  .profile-header {
+    background: var(--card-bg);
+    border-radius: 35px;
+    padding: 40px 20px 30px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .profile-header::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 4px;
+    background: linear-gradient(90deg, var(--neon-cyan), var(--electric-gold));
+  }
+
+  .dp-container {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 20px;
+    position: relative;
+  }
+
+  .dp-container img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--neon-cyan);
+    box-shadow: 0 0 25px rgba(0, 242, 255, 0.3);
+  }
+
+  .verified-badge {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: #1d9bf0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--card-bg);
+  }
+
+  .name {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 5px;
+    letter-spacing: -0.5px;
+  }
+
+  .sub-name {
+    color: var(--neon-cyan);
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    display: block;
+  }
+
+  /* Stats Grid */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+
+  .stat-item {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 15px 5px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .stat-item b {
+    display: block;
+    font-size: 18px;
+    color: var(--electric-gold);
+  }
+
+  .stat-item span {
+    font-size: 10px;
+    color: var(--text-dim);
+    font-weight: 600;
+  }
+
+  /* --- THE KILLER KILLER BUTTON --- */
+  .btn-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 75px;
+    border-radius: 22px;
+    text-decoration: none;
+    overflow: hidden;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 30px rgba(0, 242, 255, 0.2);
+  }
+
+  .btn-wrapper:active { transform: scale(0.96); }
+
+  .btn-gradient-bg {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        from 0deg,
+        var(--neon-cyan),
+        #0066ff,
+        var(--neon-cyan)
+    );
+    animation: rotateBtn 3s linear infinite;
+  }
+
+  @keyframes rotateBtn {
+    to { transform: rotate(360deg); }
+  }
+
+  .btn-inner {
+    position: absolute;
+    inset: 3px;
+    background: #000;
+    border-radius: 19px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .btn-text {
+    font-weight: 800;
+    font-size: 19px;
+    color: white;
+    letter-spacing: 0.5px;
+  }
+
+  .btn-inner svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--neon-cyan);
+    filter: drop-shadow(0 0 8px var(--neon-cyan));
+  }
+
+  /* Content Section */
+  .info-box {
+    margin-top: 30px;
+    padding: 25px;
+    background: var(--card-bg);
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .info-box h3 {
+    font-size: 18px;
+    color: var(--electric-gold);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .list-item {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 15px;
+    font-size: 15px;
+    color: var(--text-dim);
+  }
+
+  .list-item i { color: var(--neon-cyan); font-style: normal; font-weight: 900; }
+
+  /* Advertiser Branding - Trust Factor */
+  .advertiser-footer {
+    margin-top: 40px;
+    text-align: center;
+    padding: 20px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+  }
+
+  .advertiser-footer p {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-bottom: 5px;
+  }
+
+  .advertiser-footer a {
+    color: var(--electric-gold);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+  }
+
+  /* Status Bar */
+  .status-tag {
+    background: #064e3b;
+    color: #10b981;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 800;
+    margin-top: 15px;
+    display: inline-block;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="glow-bg"></div>
+
+<div class="container">
+  
+  <div class="profile-header">
+    <div class="dp-container">
+      <img src="https://lh3.googleusercontent.com/pw/AP1GczNo_Wp0l8Z-F2K1K_XF5N8K8S8k-S7n5G5T5P5V5C5E5R5Y5T5U5I5O5P5A5S5D5F5G5H5J5K5L5Z5X5C5V5B5N5M=s900-c-k-c0x00ffffff-no-rj" 
+           onerror="this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6A7GfR0fF7M-l6S_3QfI0_rVzC1Jy1Z77F5vzxuoHNYM-GAYA&s'"
+           alt="Trader Munaaf">
+      <div class="verified-badge">
+        <svg style="width:16px; fill:white;" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+      </div>
+    </div>
+
+    <h1 class="name">Trader Munaaf</h1>
+    <span class="sub-name">The Trading Algorithm</span>
+
+    <div class="stats-grid">
+      <div class="stat-item"><b>148K+</b><span>Students</span></div>
+      <div class="stat-item"><b>92%</b><span>Accuracy</span></div>
+      <div class="stat-item"><b>FREE</b><span>Life Access</span></div>
+    </div>
+
+    <a href="https://t.me/+_44uMlUXE4g1NmQ1" class="btn-wrapper" target="_blank">
+      <div class="btn-gradient-bg"></div>
+      <div class="btn-inner">
+        <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.896-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        <span class="btn-text">JOIN PREMIUM CHANNEL</span>
+      </div>
+    </a>
+
+    <div class="status-tag">ACTIVE NOW • 4268 OTHERS JOINED TODAY</div>
+  </div>
+
+  <div class="info-box">
+    <h3><svg style="width:20px; fill:var(--electric-gold);" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg> Why join Munaaf?</h3>
+    <div class="list-item"><i>✓</i> High Accuracy Intraday Options Calls</div>
+    <div class="list-item"><i>✓</i> Proper Stop-Loss & Target Management</div>
+    <div class="list-item"><i>✓</i> Live Market News & Operator Psychology</div>
+    <div class="list-item"><i>✓</i> Zero Fees - Pure Educational Guidance</div>
+  </div>
+
+  <footer class="advertiser-footer">
+    <p>Strategically Managed By</p>
+    <a href="https://t.me/growshal" target="_blank">@GROWSHAL MEDIA AGENCY</a>
+  </footer>
+
+</div>
+
+</body>
+</html>
