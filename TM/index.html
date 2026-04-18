@@ -1,1 +1,430 @@
-da
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Meta Pixel Code (preserved from original) -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2273609846499738');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2273609846499738&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<title>TradeX Capital • Stock Alerts & Analysis</title>
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep-blue: #0a1c3a;
+    --accent-gold: #c9a73e;
+    --electric-blue: #1e6df2;
+    --dark-bg: #0b1219;
+    --card-white: #ffffff;
+    --text-primary: #1e293b;
+    --text-muted: #475569;
+    --border-light: #e9eef3;
+    --success-green: #0f9d58;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-primary);
+    background: var(--dark-bg);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* custom background layer with provided BG image and gradient overlay */
+  .global-bg {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: 
+      linear-gradient(145deg, rgba(10, 28, 58, 0.75) 0%, rgba(11, 18, 25, 0.92) 100%),
+      url('https://i.pinimg.com/1200x/18/82/60/188260450c9c52dc973d316ea198a864.jpg') center/cover no-repeat;
+    z-index: -2;
+  }
+  .overlay-pattern {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at 20% 30%, rgba(201, 167, 62, 0.08) 0%, transparent 50%);
+    z-index: -1;
+    pointer-events: none;
+  }
+  .cnt {
+    max-width: 1100px;
+    margin: 0 auto;
+    min-height: 100vh;
+    position: relative;
+    backdrop-filter: blur(2px);
+  }
+  /* Cover / Banner using provided cover photo URL */
+  .bnr {
+    height: 240px;
+    background: url('https://i.pinimg.com/736x/49/b5/20/49b520d86d67b721abbc0892589717fb.jpg') center 30% / cover no-repeat;
+    width: 100%;
+    border-bottom: 4px solid var(--accent-gold);
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
+    position: relative;
+  }
+  .bnr::after {
+    content: "";
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 60px;
+    background: linear-gradient(to top, rgba(10,28,58,0.7), transparent);
+    pointer-events: none;
+  }
+
+  .lay {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 28px;
+    padding: 0 24px 50px;
+  }
+  /* profile card — glassmorphism style */
+  .side {
+    margin-top: -80px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(201, 167, 62, 0.3);
+    border-radius: 28px;
+    padding: 30px 20px 30px;
+    text-align: center;
+    box-shadow: 0 25px 40px -12px rgba(0,0,0,0.35);
+    transition: transform 0.2s ease;
+  }
+  /* Avatar using the DP link exactly */
+  .avt {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    margin: 0 auto 18px;
+    border: 5px solid var(--card-white);
+    object-fit: cover;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.25), 0 0 0 2px rgba(201, 167, 62, 0.5);
+    background: #fff;
+  }
+  .ttl {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--deep-blue);
+    margin-bottom: 6px;
+  }
+  .verified-mark {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    background: var(--electric-blue);
+    border-radius: 50%;
+    color: white;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: bold;
+    margin-left: 5px;
+  }
+  .hnd {
+    color: #2563eb;
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 24px;
+    display: block;
+    text-decoration: none;
+    background: #eef2ff;
+    padding: 6px 12px;
+    border-radius: 40px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .sts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 30px;
+  }
+  .stc {
+    background: #f8fafc;
+    padding: 12px 2px;
+    border-radius: 14px;
+    border: 1px solid #dee6ed;
+    box-shadow: inset 0 1px 2px #fff, 0 4px 6px -4px rgba(0,0,0,0.05);
+  }
+  .stc b {
+    display: block;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--deep-blue);
+  }
+  .stc span {
+    font-size: 10px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  /* High contrast premium button — gradient with gold */
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    background: linear-gradient(145deg, #0a1c3a 0%, #1e3a5f 100%);
+    border: 1px solid rgba(201, 167, 62, 0.6);
+    color: #fff;
+    padding: 18px 10px;
+    border-radius: 60px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    box-shadow: 0 8px 0 #0b1219, 0 8px 20px rgba(0,0,0,0.3);
+    transition: all 0.15s;
+    border: none;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 0 #0b1219, 0 12px 25px rgba(0,0,0,0.4);
+  }
+  .btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 4px 0 #0b1219, 0 8px 18px rgba(0,0,0,0.3);
+  }
+  .btn svg {
+    width: 24px;
+    height: 24px;
+    fill: #c9a73e;
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.3));
+  }
+  .btn span {
+    color: white;
+    text-shadow: 0 1px 2px black;
+  }
+
+  .main {
+    padding-top: 48px;
+  }
+  .sttl {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    letter-spacing: -0.3px;
+  }
+  .sttl svg {
+    width: 28px;
+    height: 28px;
+    fill: var(--accent-gold);
+    filter: drop-shadow(0 0 6px rgba(201,167,62,0.6));
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  .crd {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 220px;
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 20px 30px -10px black;
+    transition: 0.2s ease;
+    backdrop-filter: blur(2px);
+  }
+  .crd:hover {
+    transform: scale(1.02);
+    border-color: var(--accent-gold);
+  }
+  .crd img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.3s;
+  }
+  .lbl {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, #0a1c3a, rgba(10,28,58,0.7) 80%, transparent);
+    color: #fff;
+    padding: 18px 12px 12px;
+    font-size: 15px;
+    font-weight: 700;
+    border-top: 1px solid var(--accent-gold);
+  }
+  .box {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(4px);
+    padding: 28px 26px;
+    border-radius: 24px;
+    border: 1px solid rgba(201, 167, 62, 0.35);
+    font-size: 15.5px;
+    line-height: 1.75;
+    color: #1e293b;
+    box-shadow: 0 20px 30px -8px rgba(0,0,0,0.25);
+  }
+  .box b {
+    color: var(--deep-blue);
+    font-size: 18px;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .stock-tag {
+    background: var(--deep-blue);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-left: 8px;
+  }
+
+  @media (max-width: 768px) {
+    .lay { grid-template-columns: 1fr; padding: 0 14px 30px; }
+    .side { margin-top: -60px; }
+    .bnr { height: 180px; }
+    .grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .sttl { font-size: 20px; }
+    .ttl { font-size: 22px; }
+  }
+  @media (max-width: 480px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+  /* telegram link style override */
+  .tele-link {
+    color: #2563eb; 
+    text-decoration: none;
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+<div class="global-bg"></div>
+<div class="overlay-pattern"></div>
+
+<div class="cnt">
+  <!-- Banner with provided cover photo -->
+  <div class="bnr"></div>
+
+  <div class="lay">
+    <!-- Sidebar / Profile card with DP -->
+    <aside class="side">
+      <!-- DP from given link: yt3.googleusercontent... -->
+      <img src="https://yt3.googleusercontent.com/Y02aQctnHOgNrPfMll4Off3nfWAC4QT2IRmOSQ_yydocOR_-25C1Jy1Z77F5vzxuoHNYM-GAYA=s900-c-k-c0x00ffffff-no-rj" 
+           class="avt" alt="TradeX Capital" 
+           onerror="this.src='https://d1yei2z3i6k35z.cloudfront.net/13184094/69d7dc041cc236.91777255_photo_2026-03-25_21-03-07.jpg'">
+      <div class="ttl">
+        TradeX Capital
+        <svg style="width:22px; fill:#1e6df2;" viewBox="0 0 24 24">
+          <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.5-1.5 2.6 2.6 6.4-6.4 1.5 1.5-7.9 7.9z"/>
+        </svg>
+      </div>
+      <!-- Using provided Telegram link: https://t.me/+_44uMlUXE4g1NmQ1 -->
+      <a href="https://t.me/+_44uMlUXE4g1NmQ1" class="hnd" target="_blank">📈 @TradeX_Capital • premium alerts</a>
+      
+      <div class="sts">
+        <div class="stc"><b>148K+</b><span>Traders</span></div>
+        <div class="stc"><b>92.4%</b><span>Win Rate</span></div>
+        <div class="stc"><b>24/7</b><span>Analysis</span></div>
+      </div>
+
+      <!-- Main call to action – same link style as telegram join -->
+      <a href="https://t.me/+_44uMlUXE4g1NmQ1" class="btn" target="_blank">
+        <svg viewBox="0 0 24 24">
+          <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.896-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+        </svg>
+        <span>JOIN PREMIUM CHANNEL</span>
+      </a>
+      
+      <div style="margin-top: 18px; font-size: 13px; color: #334155; display: flex; gap: 8px; justify-content: center;">
+        <span style="background:#0f9d58; width:10px; height:10px; border-radius:50%; display:inline-block;"></span> Live NSE/BSE updates
+      </div>
+    </aside>
+
+    <main class="main">
+      <h2 class="sttl">
+        <svg viewBox="0 0 24 24">
+          <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+        </svg>
+        Stock Market Edge
+        <span class="stock-tag">SWING • F&O • EQUITY</span>
+      </h2>
+      <div class="grid">
+        <div class="crd">
+          <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=400&auto=format&fit=crop" alt="Stock charts">
+          <div class="lbl">📊 Pre-Market Analysis</div>
+        </div>
+        <div class="crd">
+          <img src="https://i.pinimg.com/1200x/0a/06/52/0a06529c7a419609755f0edc0dc16dd6.jpg" alt="Trading desk">
+          <div class="lbl">⚡ Intraday Calls (3-5 daily)</div>
+        </div>
+        <div class="crd">
+          <img src="https://images.unsplash.com/photo-1535320903710-d993d3d77d29?q=80&w=400&auto=format&fit=crop" alt="Technical analysis">
+          <div class="lbl">📈 Swing & Positional</div>
+        </div>
+      </div>
+
+      <h2 class="sttl">
+        <svg viewBox="0 0 24 24">
+          <path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 4h4v2h-4V4z"/>
+        </svg>
+        About TradeX Capital
+      </h2>
+      <div class="box">
+        <b>🏦 Institutional-Grade Stock Insights</b><br>
+        Welcome to <strong>TradeX Capital</strong> — trusted by 148K+ active traders. We deliver high-conviction equity & derivative calls, backed by technical & fundamental confluence. <br><br>
+        🔹 <strong>Daily pre-market report</strong> with key levels<br>
+        🔹 <strong>NIFTY / BANKNIFTY</strong> options strategies<br>
+        🔹 <strong>Exclusive Telegram community</strong> with real-time support<br>
+        🔹 <strong>92.4% verified accuracy</strong> (last 6 months)<br><br>
+        Click Here to <a href="https://t.me/growshal" style="color:#1e6df2; font-weight:700; text-decoration:underline;">See Advertiser</a> — GrowShal is result driven social media marketing agency. Which guarantees the views and impressions.
+      </div>
+      
+      <!-- extra subtle link to keep design identical to original but themed -->
+      <div style="margin-top: 24px; display: flex; align-items: center; justify-content: flex-end;">
+        <span style="color: rgba(255,255,255,0.7); font-size: 13px; letter-spacing: 1px;">SEBI REG. • DISCLAIMER: EDUCATIONAL</span>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- small fallback for avatar if googleusercontent fails (rare) -->
+<script>
+  (function() {
+    // ensure dp fallback, just in case; but it should load fine
+    const avt = document.querySelector('.avt');
+    if(avt) {
+      avt.onerror = function() {
+        this.src = 'https://d1yei2z3i6k35z.cloudfront.net/13184094/69d7dc041cc236.91777255_photo_2026-03-25_21-03-07.jpg';
+      };
+    }
+    // minor telegram link consistency: all t.me links use the same target
+    const tLinks = document.querySelectorAll('a[href*="t.me"]');
+    tLinks.forEach(link => link.setAttribute('target', '_blank'));
+  })();
+</script>
+</body>
+</html>
