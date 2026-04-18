@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2273609846499738');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2273609846499738&ev=PageView&noscript=1"
+/></noscript>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<title>Trader Munaaf • Stock Alerts & Analysis</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --deep-blue: #0a1c3a;
+    --accent-gold: #c9a73e;
+    --electric-blue: #1e6df2;
+    --dark-bg: #0b1219;
+    --text-primary: #1e293b;
+    --text-muted: #475569;
+    --success-green: #0f9d58;
+  }
+  
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text-primary);
+    background: var(--dark-bg);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* GPU-accelerated background */
+  .global-bg {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: 
+      linear-gradient(145deg, rgba(10, 28, 58, 0.85) 0%, rgba(11, 18, 25, 0.95) 100%),
+      url('https://i.pinimg.com/1200x/18/82/60/188260450c9c52dc973d316ea198a864.jpg') center/cover no-repeat;
+    z-index: -2;
+  }
+
+  .cnt {
+    max-width: 900px; /* narrowed slightly for better full-width reading experience */
+    margin: 0 auto;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  .bnr {
+    height: 240px;
+    background: url('https://i.pinimg.com/736x/49/b5/20/49b520d86d67b721abbc0892589717fb.jpg') center 30% / cover no-repeat;
+    width: 100%;
+    border-bottom: 4px solid var(--accent-gold);
+  }
+
+  /* Changed to 1 column for full-width layout */
+  .lay {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 0 24px 50px;
+  }
+
+  .side {
+    margin-top: -80px;
+    background: rgba(255, 255, 255, 0.98); 
+    border: 1px solid rgba(201, 167, 62, 0.3);
+    border-radius: 28px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  }
+
+  .avt {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 auto 18px;
+    border: 5px solid #fff;
+    object-fit: cover;
+    background: #fff;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15), 0 0 0 3px rgba(201, 167, 62, 0.5);
+  }
+
+  .ttl {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--deep-blue);
+    margin-bottom: 6px;
+  }
+
+  .hnd {
+    color: #2563eb;
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 30px;
+    display: inline-block;
+    text-decoration: none;
+    background: #eef2ff;
+    padding: 8px 20px;
+    border-radius: 40px;
+  }
+
+  .sts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 35px;
+  }
+
+  .stc {
+    background: #f8fafc;
+    padding: 16px 4px;
+    border-radius: 16px;
+    border: 1px solid #dee6ed;
+  }
+
+  .stc b {
+    display: block;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--deep-blue);
+  }
+
+  .stc span {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  /* --- ANIMATED BUTTON CSS ADAPTED TO THEME --- */
+  .btn-wrapper {
+    --rad: 60px;
+    --color-wrapper-border: rgba(201, 167, 62, 0.4);
+    --color-btn-bg: #0a1c3a;
+    --color-btn-text: transparent; 
+    --color-btn-text-shadow: transparent;
+    --color-btn-inset-shadow: rgba(0, 0, 0, 0.5);
+    --color-layer-a: #c9a73e; /* Gold */
+    --color-layer-b: #1e3a5f; /* Blue */
+    --color-overlay-text: #ffffff;
+    --color-overlay-glow: rgba(201, 167, 62, 0.4);
+    --color-overlay-shadow: rgba(0, 0, 0, 0.3);
+    --color-overlay-highlight: rgba(255, 255, 255, 0.15);
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: clip;
+    overflow-clip-margin: 4px;
+
+    border: 2px solid var(--color-wrapper-border);
+    border-radius: var(--rad);
+
+    width: 100%; /* FULL WIDTH */
+    height: 64px;
+    text-decoration: none;
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+
+    filter: saturate(1.1) brightness(1.2);
+  }
+
+  .gradient-btn {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: var(--rad);
+    background-color: var(--color-btn-bg);
+    background-size: 200% 200%;
+    box-shadow: inset 0 0 10px 9px var(--color-btn-inset-shadow);
+    mix-blend-mode: color-dodge;
+  }
+
+  .gradient-btn::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    left: 0; top: 0; width: 100%; height: 100%;
+    border-radius: var(--rad);
+    background-size: 200% 200%;
+    mix-blend-mode: difference;
+    z-index: 1;
+  }
+
+  .gradient-layer {
+    position: absolute;
+    pointer-events: none;
+    left: -160px;
+    width: 500%;
+    aspect-ratio: 1;
+    background: radial-gradient(
+      ellipse at 65% 180%,
+      var(--color-layer-a),
+      var(--color-layer-b),
+      var(--color-layer-a),
+      var(--color-layer-b),
+      var(--color-layer-a),
+      var(--color-layer-b),
+      var(--color-layer-a),
+      var(--color-layer-b),
+      var(--color-layer-a),
+      var(--color-layer-b),
+      var(--color-layer-a)
+    );
+    mix-blend-mode: difference;
+    animation: rotate 8s linear infinite;
+  }
+
+  .gradient-layer:last-child {
+    mix-blend-mode: color-dodge;
+  }
+
+  @keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .text-overlay {
+    position: absolute;
+    pointer-events: none;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--rad);
+    
+    letter-spacing: 0.10rem;
+    color: var(--color-overlay-text);
+    text-shadow: 0 0 4px var(--color-overlay-glow);
+    box-shadow:
+      inset 0 -4px 4px 0 var(--color-overlay-shadow),
+      inset 0 4px 4px 0 var(--color-overlay-highlight);
+
+    mix-blend-mode: normal; /* Normal to ensure text is perfectly readable */
+    transition: transform 0.3s ease;
+  }
+
+  .text-overlay svg {
+    width: 22px; height: 22px; fill: #fff;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+  }
+
+  .btn-wrapper:hover .text-overlay {
+    transform: scale(1.05);
+  }
+
+  .btn-wrapper:active .text-overlay {
+    transform: scale(0.95);
+  }
+
+  .light {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    border-radius: 50px;
+    width: 80%;
+    height: 1.9rem;
+    aspect-ratio: 1;
+    background-color: #fff4;
+    filter: blur(8px);
+    animation: pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+  }
+
+  /* --- END BUTTON CSS --- */
+
+  .live-status {
+    margin-top: 22px; font-size: 14px; color: #334155; 
+    display: flex; gap: 8px; justify-content: center; align-items: center; font-weight: 600;
+  }
+  
+  .live-dot {
+    background: var(--success-green); width: 10px; height: 10px; border-radius: 50%;
+    box-shadow: 0 0 0 2px rgba(15,157,88,0.2);
+  }
+
+  .main { padding-top: 10px; }
+
+  .sttl {
+    font-size: 24px; font-weight: 800; margin-bottom: 24px;
+    display: flex; align-items: center; gap: 12px; color: #fff;
+  }
+
+  .sttl svg { width: 28px; height: 28px; fill: var(--accent-gold); }
+
+  .stock-tag {
+    background: rgba(10, 28, 58, 0.8); color: white; padding: 6px 14px; border: 1px solid rgba(201,167,62,0.3);
+    border-radius: 30px; font-size: 12px; font-weight: 600; margin-left: auto;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .crd {
+    position: relative; border-radius: 20px; overflow: hidden; height: 240px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: #0a131e;
+    transition: transform 0.2s ease;
+  }
+
+  .crd:hover { transform: translateY(-4px); }
+
+  .crd img {
+    width: 100%; height: 100%; object-fit: cover; opacity: 0.85;
+  }
+
+  .lbl {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(10,28,58,0.95), transparent);
+    color: #fff; padding: 30px 16px 16px; font-size: 16px; font-weight: 700;
+  }
+
+  .box {
+    background: #111a26;
+    padding: 34px 30px; border-radius: 24px;
+    border: 1px solid rgba(201, 167, 62, 0.3);
+    font-size: 16px; line-height: 1.8; color: #e2e8f0;
+  }
+
+  .box b { color: #fff; font-size: 20px; display: block; margin-bottom: 12px; }
+  .box strong { color: #fff; }
+  .box a { color: var(--accent-gold); font-weight: 700; }
+
+  @media (max-width: 768px) {
+    .lay { padding: 0 16px 30px; }
+    .side { margin-top: -60px; padding: 30px 20px; }
+    .bnr { height: 180px; }
+    .grid { grid-template-columns: 1fr; gap: 16px; }
+    .stock-tag { margin-left: 0; margin-top: 4px; }
+    .sttl { flex-wrap: wrap; }
+    .sts { gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="global-bg"></div>
+
+<div class="cnt">
+  <div class="bnr"></div>
+
+  <div class="lay">
+    <aside class="side">
+      <img src="https://yt3.googleusercontent.com/Y02aQctnHOgNrPfMll4Off3nfWAC4QT2IRmOSQ_yydocOR_-25C1Jy1Z77F5vzxuoHNYM-GAYA=s900-c-k-c0x00ffffff-no-rj" 
+           class="avt" alt="Trader Munaaf" 
+           onerror="this.src='https://d1yei2z3i6k35z.cloudfront.net/13184094/69d7dc041cc236.91777255_photo_2026-03-25_21-03-07.jpg'" loading="eager">
+      
+      <div class="ttl">
+        Trader Munaaf
+        <svg style="width:26px; fill:#1e6df2;" viewBox="0 0 24 24">
+          <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.5-1.5 2.6 2.6 6.4-6.4 1.5 1.5-7.9 7.9z"/>
+        </svg>
+      </div>
+      
+      <a href="https://t.me/+_44uMlUXE4g1NmQ1" class="hnd" target="_blank">Free Forever • premium alerts</a>
+      
+      <div class="sts">
+        <div class="stc"><b>148K+</b><span>Traders</span></div>
+        <div class="stc"><b>92.4%</b><span>Win Rate</span></div>
+        <div class="stc"><b>24/7</b><span>Analysis</span></div>
+      </div>
+
+      <a href="https://t.me/+_44uMlUXE4g1NmQ1" target="_blank" class="btn-wrapper">
+        <div class="light"></div>
+        <div class="gradient-layer" style="animation-delay: 0s; animation-duration: 25s;"></div>
+        <div class="gradient-layer" style="animation-delay: 0.15s; animation-duration: 15.9s;"></div>
+        <div class="gradient-layer" style="animation-delay: 0.53s; animation-duration: 26.4s;"></div>
+        <div class="gradient-layer" style="animation-delay: 0.45s; animation-duration: 17.8s;"></div>
+        <div class="gradient-layer" style="animation-delay: 1.6s; animation-duration: 19.2s;"></div>
+        <div class="gradient-layer" style="animation-delay: 1.6s; animation-duration: 29.2s;"></div>
+        <div class="gradient-layer" style="animation-delay: 1.6s; animation-duration: 20.2s;"></div>
+        
+        <div class="gradient-btn"></div>
+        <div class="text-overlay">
+          <svg viewBox="0 0 24 24">
+            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.896-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+          </svg>
+          JOIN PREMIUM CHANNEL
+        </div>
+      </a>
+      
+      <div class="live-status">
+        <span class="live-dot"></span> Live NSE/BSE updates
+      </div>
+    </aside>
+
+    <main class="main">
+      <h2 class="sttl">
+        <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+        Stock Market Edge
+        <span class="stock-tag">SWING • F&O • EQUITY</span>
+      </h2>
+      
+      <div class="grid">
+        <div class="crd">
+          <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=400&auto=format&fit=crop" alt="Stock charts" loading="lazy">
+          <div class="lbl">📊 Pre-Market Analysis</div>
+        </div>
+        <div class="crd">
+          <img src="https://i.pinimg.com/1200x/0a/06/52/0a06529c7a419609755f0edc0dc16dd6.jpg" alt="Trading desk" loading="lazy">
+          <div class="lbl">⚡ Intraday Calls</div>
+        </div>
+        <div class="crd">
+          <img src="https://images.unsplash.com/photo-1535320903710-d993d3d77d29?q=80&w=400&auto=format&fit=crop" alt="Technical analysis" loading="lazy">
+          <div class="lbl">📈 Swing & Positional</div>
+        </div>
+      </div>
+
+      <h2 class="sttl">
+        <svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 4h4v2h-4V4z"/></svg>
+        About Trader Munaaf
+      </h2>
+      
+      <div class="box">
+        <b>🏦 Institutional-Grade Stock Insights</b>
+        Welcome to <strong>Trader Munaaf</strong> — trusted by 148K+ active traders. We deliver high-conviction equity & derivative calls, backed by technical & fundamental confluence. <br><br>
+        🔹 <strong>Daily pre-market report</strong> with key levels<br>
+        🔹 <strong>NIFTY / BANKNIFTY</strong> options strategies<br>
+        🔹 <strong>Exclusive Telegram community</strong> with real-time support<br>
+        🔹 <strong>92.4% verified accuracy</strong> (last 6 months)<br><br>
+        Click Here to <a href="https://t.me/growshal" target="_blank">See Advertiser</a> — GrowShal is result driven social media marketing agency.
+      </div>
+      
+      <div style="margin-top: 24px; text-align: right;">
+        <span style="color: rgba(255,255,255,0.5); font-size: 13px; letter-spacing: 1px;">SEBI REG. • DISCLAIMER: EDUCATIONAL</span>
+      </div>
+    </main>
+  </div>
+</div>
+
+</body>
+</html>
