@@ -11,7 +11,7 @@
     <style>
         :root {
             --accent: #7000ff;
-            --glass: rgba(255, 255, 255, 0.7);
+            --glass: rgba(255, 255, 255, 0.85);
             --border: rgba(0, 0, 0, 0.08);
             --text: #1a1a1e;
         }
@@ -38,63 +38,76 @@
             to { transform: translate(5%, 5%) rotate(5deg); }
         }
 
-        /* Top Nav - High Gloss */
+        /* Top Nav Refined */
         .top-nav {
             position: fixed; top: 0; width: 100%; height: 65px; z-index: 1000;
-            background: rgba(255, 255, 255, 0.8);
+            background: var(--glass);
             backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
-            display: flex; align-items: center; padding: 0 20px;
+            display: flex; align-items: center; justify-content: space-between; padding: 0 15px;
+            max-width: 480px; left: 50%; transform: translateX(-50%);
         }
-        .nav-brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: -0.5px; font-size: 1.1rem; }
-        .nav-logo { height: 30px; }
+        .nav-brand { display: flex; align-items: center; gap: 8px; font-weight: 700; letter-spacing: -0.5px; font-size: 1rem; }
+        .nav-logo { height: 28px; }
+
+        /* Nav DM Button - Fade Zoom Anim */
+        .nav-dm-btn {
+            background: #000; color: #fff; text-decoration: none; padding: 8px 16px; 
+            border-radius: 12px; font-size: 0.8rem; font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .nav-dm-btn:active { transform: scale(0.9) opacity(0.8); }
 
         .app-container { max-width: 480px; margin: 0 auto; padding: 100px 20px 120px; }
 
-        /* Laser Border Card Style */
+        /* Main Card - Laser Border */
         .card-frame {
-            position: relative; border-radius: 30px; padding: 2px;
-            background: linear-gradient(135deg, #00d2ff, #9d50bb);
-            margin-bottom: 30px; overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            position: relative; border-radius: 30px; padding: 1.5px;
+            background: linear-gradient(135deg, #00d2ff, #9d50bb, #00d2ff);
+            background-size: 200% 200%;
+            animation: border-flow 4s linear infinite;
+            margin-bottom: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.05);
         }
-        .card-inner {
-            background: white; border-radius: 28px; padding: 25px;
-            display: flex; flex-direction: column; gap: 15px;
-        }
+        @keyframes border-flow { 0% {background-position: 0% 50%} 50% {background-position: 100% 50%} 100% {background-position: 0% 50%} }
+        
+        .card-inner { background: white; border-radius: 28px; padding: 25px; display: flex; flex-direction: column; gap: 15px; }
 
-        /* Metrics Grid */
         .metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 10px 0; }
         .metric-box { border-left: 2px solid #00e5ff; padding-left: 12px; }
         .metric-label { font-size: 0.65rem; text-transform: uppercase; color: #888; letter-spacing: 1px; }
         .metric-value { font-size: 1.2rem; font-weight: 600; }
 
-        /* Image Grids */
-        .section-title { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 15px; font-weight: 800; }
-        .grid-16-9 { display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px; }
-        .img-box { 
-            width: 100%; border-radius: 20px; overflow: hidden; 
-            border: 1px solid var(--border); aspect-ratio: 16/9; background: #eee;
+        /* Fade-Zoom Animation for all Major Buttons */
+        .btn-animate {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            will-change: transform, opacity;
         }
-        .img-box img { width: 100%; height: 100%; object-fit: cover; }
-        
-        .grid-9-16 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .img-box-v { aspect-ratio: 9/16; border-radius: 15px; overflow: hidden; border: 1px solid var(--border); background: #eee; }
-        .img-box-v img { width: 100%; height: 100%; object-fit: cover; }
+        .btn-animate:hover { transform: scale(1.02); }
+        .btn-animate:active { transform: scale(0.95); opacity: 0.9; }
 
         /* Killer Telegram Button */
         .tg-link {
             text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px;
             background: #000; color: #fff; padding: 18px; border-radius: 18px;
             font-weight: 600; letter-spacing: 1px; font-size: 0.9rem;
-            transition: 0.3s; position: relative; overflow: hidden;
+            position: relative; overflow: hidden;
         }
         .tg-link::after {
             content: ""; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transform: skewX(-25deg); transition: 0.5s;
+            transform: skewX(-25deg); animation: shine 3s infinite;
         }
-        .tg-link:hover::after { left: 150%; }
+        @keyframes shine { 0% { left: -100%; } 100% { left: 200%; } }
+
+        /* Image Grids */
+        .section-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 15px; font-weight: 800; text-align: center; }
+        .grid-16-9 { display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px; }
+        .img-box { width: 100%; border-radius: 20px; overflow: hidden; border: 1px solid var(--border); aspect-ratio: 16/9; }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .grid-9-16 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .img-box-v { aspect-ratio: 9/16; border-radius: 15px; overflow: hidden; border: 1px solid var(--border); }
+        .img-box-v img { width: 100%; height: 100%; object-fit: cover; }
 
         /* Floating Bottom Bar */
         .floating-cta-wrapper {
@@ -104,20 +117,17 @@
         }
         .floating-cta-wrapper.active { transform: translateX(-50%) translateY(0); }
 
-        /* Continue Application Button Style */
-        .continue-application {
-            --background: #000;
-            width: 100%; border: none; outline: none; cursor: pointer;
-            position: relative; border-radius: 20px; font-size: 15px; font-weight: 600;
-            padding: 20px 20px 20px 70px; color: #fff; background: var(--background);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        .pay-btn {
+            display: flex; align-items: center; padding: 18px 20px; border-radius: 22px;
+            background: #000; color: #fff; text-decoration: none; font-weight: 700;
+            font-size: 1rem; box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+            border: 1px solid rgba(255,255,255,0.1);
         }
-        .continue-application div {
-            top: 0; left: 0; bottom: 0; width: 60px; position: absolute;
-            background: #222; border-radius: 20px 0 0 20px; display: flex; align-items: center; justify-content: center;
+        .pay-icon-box {
+            width: 45px; height: 45px; background: #222; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center; margin-right: 15px;
         }
 
-        /* LinkedIn & Socials */
         .socials { display: flex; justify-content: center; gap: 25px; margin-top: 40px; }
         .socials a { color: #888; font-size: 1.4rem; transition: 0.3s; }
         .socials a:hover { color: var(--accent); }
@@ -133,6 +143,7 @@
             <img src="https://growshal.com/wp-content/uploads/2023/12/cropped-admin-ajax2.png" class="nav-logo" alt="Logo">
             <span>GROWSHAL</span>
         </div>
+        <a href="/dm" class="nav-dm-btn btn-animate">DM Now</a>
     </nav>
 
     <div class="app-container">
@@ -153,20 +164,20 @@
                     </div>
                 </div>
 
-                <a href="#" class="tg-link">
+                <a href="/tg" class="tg-link btn-animate">
                     <i class="fab fa-telegram-plane"></i> JOIN THE INNER CIRCLE
                 </a>
             </div>
         </div>
 
-        <h3 class="section-title">Visual Assets</h3>
+        <h3 class="section-title">Latest Results</h3>
         <div class="grid-16-9">
             <div class="img-box"><img src="/16_9/1.png" alt="1"></div>
             <div class="img-box"><img src="/16_9/2.png" alt="2"></div>
             <div class="img-box"><img src="/16_9/3.png" alt="3"></div>
         </div>
 
-        <h3 class="section-title">Campaigns</h3>
+        <h3 class="section-title">Case Studies</h3>
         <div class="grid-9-16">
             <div class="img-box-v"><img src="/9_16/1.jpg" alt="1"></div>
             <div class="img-box-v"><img src="/9_16/2.jpg" alt="2"></div>
@@ -182,32 +193,29 @@
     </div>
 
     <div class="floating-cta-wrapper" id="scrollCta">
-        <button class="continue-application">
-            <div>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-                </svg>
+        <a href="/ap" class="pay-btn btn-animate">
+            <div class="pay-icon-box">
+                <i class="fas fa-bolt" style="color: #ffde00;"></i>
             </div>
             Active Your Luxury Plan
-        </button>
+        </a>
     </div>
 
     <script>
         let isScrolling;
         const scrollCta = document.getElementById('scrollCta');
 
-        window.addEventListener('scroll', function (event) {
-            // 1. Scroll hone par bar dikhao
+        window.addEventListener('scroll', function () {
+            // Show bar on scroll
             scrollCta.classList.add('active');
 
-            // 2. Clear any existing timeout
+            // Reset timeout
             window.clearTimeout(isScrolling);
 
-            // 3. 4 seconds tak agar scroll nahi hua to hide kardo
+            // Hide after 4 seconds of inactivity
             isScrolling = setTimeout(function() {
                 scrollCta.classList.remove('active');
             }, 4000);
-
         }, false);
     </script>
 
