@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Opening Telegram | GrowShal</title>
+    <title>GrowShal | Secure Redirect</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -22,7 +22,6 @@
             overflow: hidden;
         }
 
-        /* Animated Luxury Background */
         .bg-glow {
             position: fixed;
             width: 150vw;
@@ -50,24 +49,21 @@
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        /* The Animated Logo Circle */
+        /* Loader Section */
         .loader-wrapper {
             position: relative;
-            width: 100px;
-            height: 100px;
+            width: 100px; height: 100px;
             margin: 0 auto 30px;
         }
 
         .loader-circle {
-            position: absolute;
-            inset: 0;
+            position: absolute; inset: 0;
             border: 2px solid rgba(255, 255, 255, 0.05);
             border-radius: 50%;
         }
 
         .loader-active {
-            position: absolute;
-            inset: -2px;
+            position: absolute; inset: -2px;
             border: 2px solid transparent;
             border-top-color: #7000ff;
             border-right-color: #00e5ff;
@@ -75,52 +71,36 @@
             animation: rotate 1.5s linear infinite;
         }
 
-        @keyframes rotate {
-            100% { transform: rotate(360deg); }
-        }
+        @keyframes rotate { 100% { transform: rotate(360deg); } }
 
         .tg-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
+            position: absolute; top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 40px;
-            color: #fff;
+            font-size: 40px; color: #fff;
             filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.5));
+            transition: 0.5s;
         }
 
-        /* Text Styles */
-        h1 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-            background: linear-gradient(to right, #fff, #888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* UI Text */
+        #main-title {
+            font-size: 1.2rem; font-weight: 600; letter-spacing: 1px;
+            margin-bottom: 10px; transition: 0.5s;
         }
 
-        p {
-            font-size: 0.85rem;
-            color: #666;
-            font-weight: 300;
-        }
+        #sub-text { font-size: 0.85rem; color: #666; font-weight: 300; transition: 0.5s; }
 
         /* Progress Bar */
         .progress-container {
-            width: 180px;
-            height: 3px;
+            width: 180px; height: 3px;
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            margin: 25px auto;
+            border-radius: 10px; margin: 25px auto;
             overflow: hidden;
         }
 
         .progress-bar {
-            width: 0%;
-            height: 100%;
+            width: 0%; height: 100%;
             background: linear-gradient(90deg, #7000ff, #00e5ff);
-            animation: loadProgress 3s linear forwards;
+            animation: loadProgress 5s linear forwards;
         }
 
         @keyframes loadProgress {
@@ -129,17 +109,38 @@
         }
 
         .status-badge {
-            display: inline-block;
-            padding: 6px 14px;
+            display: inline-block; padding: 6px 14px;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 100px;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #00e5ff;
-            margin-top: 10px;
+            border-radius: 100px; font-size: 11px;
+            text-transform: uppercase; letter-spacing: 2px;
+            color: #00e5ff; margin-top: 10px; transition: 0.4s;
         }
+
+        /* Retry Button - Hidden by default */
+        .retry-btn {
+            display: none;
+            margin-top: 25px;
+            padding: 15px 30px;
+            background: #fff;
+            color: #000;
+            text-decoration: none;
+            border-radius: 15px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            animation: fadeInUp 0.5s forwards;
+            box-shadow: 0 10px 20px rgba(255,255,255,0.1);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Error State Colors */
+        .error-state { color: #ff3366 !important; }
+        .error-bar { background: #ff3366 !important; }
+
     </style>
 </head>
 <body>
@@ -149,40 +150,64 @@
     <div class="container">
         <div class="loader-wrapper">
             <div class="loader-circle"></div>
-            <div class="loader-active"></div>
-            <i class="fab fa-telegram-plane tg-icon"></i>
+            <div id="loader-ring" class="loader-active"></div>
+            <i id="center-icon" class="fab fa-telegram-plane tg-icon"></i>
         </div>
 
-        <h1>CONNECTING</h1>
-        <p>Syncing with GrowShal HQ...</p>
+        <h1 id="main-title">CONNECTING</h1>
+        <p id="sub-text">Syncing with GrowShal HQ...</p>
 
         <div class="progress-container">
-            <div class="progress-bar"></div>
+            <div id="p-bar" class="progress-bar"></div>
         </div>
 
         <div class="status-badge" id="status">Encrypting...</div>
+
+        <a href="https://t.me/growshal" class="retry-btn" id="retry">
+            RETRY TO CONNECT
+        </a>
     </div>
 
     <script>
-        // Luxury Redirect Logic
         document.addEventListener("DOMContentLoaded", function() {
-            const statusText = document.getElementById('status');
-            const telegramURL = "https://t.me/growshal";
+            const mainTitle = document.getElementById('main-title');
+            const subText = document.getElementById('sub-text');
+            const statusBadge = document.getElementById('status');
+            const progressBar = document.getElementById('p-bar');
+            const loaderRing = document.getElementById('loader-ring');
+            const centerIcon = document.getElementById('center-icon');
+            const retryBtn = document.getElementById('retry');
+            
+            const telegramAppURL = "tg://resolve?domain=growshal";
+            const telegramWebURL = "https://t.me/growshal";
 
-            // Status Text Swapping for Realism
-            setTimeout(() => { statusText.innerText = "Verified"; statusText.style.color = "#fff"; }, 1000);
-            setTimeout(() => { statusText.innerText = "Launching App"; statusText.style.color = "#7000ff"; }, 2000);
+            // Sequence Timeline
+            setTimeout(() => { statusBadge.innerText = "Verified"; statusBadge.style.color = "#fff"; }, 1200);
+            setTimeout(() => { statusBadge.innerText = "Launching App"; statusBadge.style.color = "#00e5ff"; }, 2500);
 
-            // Triggering the Redirect
+            // 1. Initial Attempt to open App
             setTimeout(() => {
-                // Method 1: App Protocol Trigger (Deep Linking)
-                window.location.href = "tg://resolve?domain=growshal";
+                window.location.href = telegramAppURL;
+            }, 2000);
+
+            // 2. Logic for Failure (If after 5s still on page)
+            setTimeout(() => {
+                // Change UI to Error State
+                mainTitle.innerText = "FAILED TO OPEN";
+                mainTitle.classList.add('error-state');
                 
-                // Method 2: Fallback to Browser if App doesn't open
-                setTimeout(() => {
-                    window.location.href = telegramURL;
-                }, 500);
-            }, 3000);
+                subText.innerText = "Telegram app not detected on via growshal.";
+                statusBadge.innerText = "Click Below to Retry";
+                statusBadge.style.borderColor = "#ff3366";
+                
+                progressBar.classList.add('error-bar');
+                loaderRing.style.borderTopColor = "#ff3366";
+                centerIcon.style.color = "#ff3366";
+                centerIcon.classList.replace('fa-telegram-plane', 'fa-exclamation-triangle');
+                
+                // Show Retry Button
+                retryBtn.style.display = "inline-block";
+            }, 5500);
         });
     </script>
 </body>
