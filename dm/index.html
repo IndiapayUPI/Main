@@ -164,7 +164,7 @@
         <div class="status-badge" id="status">Encrypting...</div>
 
         <a href="https://t.me/growshal" class="retry-btn" id="retry">
-            RETRY TO CONNECT
+            Plz Click ( CONTINUE ) 
         </a>
     </div>
 
@@ -179,7 +179,7 @@
             const retryBtn = document.getElementById('retry');
             
             const telegramAppURL = "tg://resolve?domain=growshal";
-            const telegramWebURL = "https://t.me/growshal";
+            const telegramWebURL = "tg://resolve?domain=growshal";
 
             // Sequence Timeline
             setTimeout(() => { statusBadge.innerText = "Verified"; statusBadge.style.color = "#fff"; }, 1200);
@@ -196,8 +196,8 @@
                 mainTitle.innerText = "FAILED TO OPEN";
                 mainTitle.classList.add('error-state');
                 
-                subText.innerText = "Telegram app not detected on via growshal.";
-                statusBadge.innerText = "Click Below to Retry";
+                subText.innerText = "Telegram app not detected via growshal.";
+                statusBadge.innerText = "plz Don't Click [ Go Back ] ";
                 statusBadge.style.borderColor = "#ff3366";
                 
                 progressBar.classList.add('error-bar');
