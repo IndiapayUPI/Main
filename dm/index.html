@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Opening Telegram | GrowShal</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #050505;
+            color: #ffffff;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Animated Luxury Background */
+        .bg-glow {
+            position: fixed;
+            width: 150vw;
+            height: 150vh;
+            background: radial-gradient(circle at center, #7000ff15 0%, transparent 50%);
+            animation: pulse-bg 4s ease-in-out infinite alternate;
+            z-index: -1;
+        }
+
+        @keyframes pulse-bg {
+            from { transform: scale(1); opacity: 0.5; }
+            to { transform: scale(1.2); opacity: 1; }
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            animation: fadeInZoom 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes fadeInZoom {
+            from { opacity: 0; transform: scale(0.9) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* The Animated Logo Circle */
+        .loader-wrapper {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 30px;
+        }
+
+        .loader-circle {
+            position: absolute;
+            inset: 0;
+            border: 2px solid rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .loader-active {
+            position: absolute;
+            inset: -2px;
+            border: 2px solid transparent;
+            border-top-color: #7000ff;
+            border-right-color: #00e5ff;
+            border-radius: 50%;
+            animation: rotate 1.5s linear infinite;
+        }
+
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        .tg-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+            color: #fff;
+            filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.5));
+        }
+
+        /* Text Styles */
+        h1 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            font-size: 0.85rem;
+            color: #666;
+            font-weight: 300;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            width: 180px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            margin: 25px auto;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #7000ff, #00e5ff);
+            animation: loadProgress 3s linear forwards;
+        }
+
+        @keyframes loadProgress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 100px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #00e5ff;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+
+    <div class="container">
+        <div class="loader-wrapper">
+            <div class="loader-circle"></div>
+            <div class="loader-active"></div>
+            <i class="fab fa-telegram-plane tg-icon"></i>
+        </div>
+
+        <h1>CONNECTING</h1>
+        <p>Syncing with GrowShal HQ...</p>
+
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+
+        <div class="status-badge" id="status">Encrypting...</div>
+    </div>
+
+    <script>
+        // Luxury Redirect Logic
+        document.addEventListener("DOMContentLoaded", function() {
+            const statusText = document.getElementById('status');
+            const telegramURL = "https://t.me/growshal";
+
+            // Status Text Swapping for Realism
+            setTimeout(() => { statusText.innerText = "Verified"; statusText.style.color = "#fff"; }, 1000);
+            setTimeout(() => { statusText.innerText = "Launching App"; statusText.style.color = "#7000ff"; }, 2000);
+
+            // Triggering the Redirect
+            setTimeout(() => {
+                // Method 1: App Protocol Trigger (Deep Linking)
+                window.location.href = "tg://resolve?domain=growshal";
+                
+                // Method 2: Fallback to Browser if App doesn't open
+                setTimeout(() => {
+                    window.location.href = telegramURL;
+                }, 500);
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
