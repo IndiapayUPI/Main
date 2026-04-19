@@ -221,3 +221,22 @@
 
 </body>
 </html>
+<div id="insta-quick" style="position:fixed; top:20px; left:20px; z-index:9999; display:none;">
+    <a href="instagram://user?username=growshal">
+        <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/instagram-follow.png" 
+             style="width:110px; height:auto; image-rendering:-webkit-optimize-contrast; image-rendering:crisp-edges;" 
+             alt="Follow">
+    </a>
+</div>
+
+<script>
+    // Direct logic: No animation, pure speed.
+    setTimeout(() => {
+        const el = document.getElementById('insta-quick');
+        el.style.display = 'block'; // 6s par show
+        
+        setTimeout(() => {
+            el.remove(); // 12s par delete
+        }, 6000); // 6s show hone ke baad (6+6=12)
+    }, 6000);
+</script>
