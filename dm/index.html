@@ -164,7 +164,7 @@
         <div class="status-badge" id="status">Encrypting...</div>
 
         <a href="tg://resolve?domain=growshal" class="retry-btn" id="retry">
-            Plz Click ( CONTINUE ) 
+            Open Telegram ( CONTINUE ) 
         </a>
     </div>
 
@@ -193,10 +193,10 @@
             // 2. Logic for Failure (If after 5s still on page)
             setTimeout(() => {
                 // Change UI to Error State
-                mainTitle.innerText = "FAILED TO OPEN";
+                mainTitle.innerText = "ERROR";
                 mainTitle.classList.add('error-state');
                 
-                subText.innerText = "Telegram app not detected via growshal.";
+                subText.innerText = "Choose Your app & chat with growshal.";
                 statusBadge.innerText = "plz Don't Click [ Go Back ] ";
                 statusBadge.style.borderColor = "#ff3366";
                 
