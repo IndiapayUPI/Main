@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idrak-e-Haqeeqat | The Awakening</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #c5a059;
+            --deep-gold: #8e6d2d;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.92);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            background-image: url('https://i.pinimg.com/1200x/ab/b4/64/abb4641f43b177b58e0188d0845f4e1e.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Inter', sans-serif;
+            color: #1a1a1a;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Top Navigation */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            text-align: center;
+            border-bottom: 1px solid var(--gold);
+        }
+
+        .top-nav a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        /* Main Content Container */
+        .wrapper {
+            width: 100%;
+            max-width: 600px;
+            margin: 100px auto 50px;
+            padding: 0 15px;
+        }
+
+        .card {
+            background: var(--glass);
+            border-radius: 2px; /* Sharp, elegant look */
+            padding: 40px 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            border-top: 5px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative Borders */
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 10px; left: 10px; right: 10px; bottom: 10px;
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            pointer-events: none;
+        }
+
+        /* Typography */
+        .bismillah {
+            font-family: 'Noto Nastaliq Urdu', serif;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        .oath-box {
+            background: #000;
+            color: var(--gold);
+            padding: 25px;
+            text-align: center;
+            font-style: italic;
+            border: 1px solid var(--gold);
+            margin-bottom: 30px;
+        }
+
+        .oath-title {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--deep-gold);
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 1.05rem;
+            color: #333;
+        }
+
+        .highlight {
+            color: var(--deep-gold);
+            font-weight: 700;
+        }
+
+        /* Evidence Section */
+        .evidence-grid {
+            margin-top: 30px;
+        }
+
+        .evidence-item {
+            border-left: 3px solid var(--gold);
+            padding-left: 20px;
+            margin-bottom: 25px;
+        }
+
+        .evidence-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #000;
+            margin-bottom: 5px;
+        }
+
+        /* Call to Action */
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 20px;
+            background: #000;
+            color: var(--gold);
+            text-align: center;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 2px;
+            border: 1px solid var(--gold);
+            transition: 0.4s;
+            text-transform: uppercase;
+        }
+
+        .btn:hover {
+            background: var(--gold);
+            color: #000;
+        }
+
+        footer {
+            text-align: center;
+            color: #fff;
+            font-size: 0.8rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card { animation: fadeIn 1s ease-out; }
+
+        @media (max-width: 480px) {
+            .card { padding: 30px 20px; }
+            h2 { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <a href="#">Idrak-e-Haqeeqat | Tehqeeq-e-Kainat</a>
+    </nav>
+
+    <div class="wrapper">
+        
+        <div class="card">
+            <div class="bismillah">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+            <div class="oath-box">
+                <span class="oath-title">Ahd-e-Wafa (Vada)</span>
+                "Main Allah Rabbul Alamin ko haazir-naazir maankar apne dil se ye vada karta hoon, ki main is tehqeeq ko ta'assub (prejudice) se upar uthkar poora padhunga. Kyun ki Ilm kisi ki jagir nahi, ye Allah ki den hai."
+            </div>
+            
+            <h2>Kya Tum Gaur Nahi Karte?</h2>
+            <p>
+                Ae 'Aql' rakhne wale insan! Quran-e-Kareem mein Allah ne 700 se zyada martaba <span class="highlight">'Tafakkur'</span> (Reflection) karne ka hukm diya hai. Humne hamesha suna ki Ilm hasil karo chahe tumhe Cheen (China) jana pade. Lekin kya humne kabhi us purane aur azim Hindustani Ilm ko dekhne ki koshish ki jisne duniya ko zero diya?
+            </p>
+            <p>
+                Ajab baat ye hai ki aaj ki <span class="highlight">Modern Science (2023)</span> wahi baaten dohra rahi hai jo sadiyon pehle vedon aur puranon mein darj thin. Kya ye sirf ek ittefaq hai? Ya us Ek Khuda ne har daur mein insaan tak apna noor pahunchaya hai?
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>Dahshat-zada Kar Dene Wale Haqa'iq</h2>
+            
+            <div class="evidence-grid">
+                <div class="evidence-item">
+                    <div class="evidence-title">84 Lakh Yoniyan vs 8.7 Million Species</div>
+                    <p style="font-size: 0.95rem;">
+                        Science ne saal 2023 mein prove kiya ki zameen par taqreeban 87 lakh qism ke jandaar hain. Hairat ki baat ye hai ki hazaron saal pehle Bharat ke puranon mein saaf taur par <span class="highlight">'84 Lakh Yoniyon'</span> ka zikr hai. Bina kisi digital microscope ke ye itni sateek ginti (accuracy) kaise mumkin hui?
+                    </p>
+                </div>
+
+                <div class="evidence-item">
+                    <div class="evidence-title">Kainat ki Umar (Age of Universe)</div>
+                    <p style="font-size: 0.95rem;">
+                        Astrophysicists kehte hain ki Suraj taqreeban 4.567 billion saal purana hai. Ancient Indian texts mein ye ginti 4.563 billion batai gayi hai. Sirf 0.11% ka farq! Ye ilm insani dimaag se nahi, balki kisi <span class="highlight">Samavi Taqat</span> (Divine Power) se hi aa sakta hai.
+                    </p>
+                </div>
+
+                <div class="evidence-item">
+                    <div class="evidence-title">Sanskrit: AI ki Zaban</div>
+                    <p style="font-size: 0.95rem;">
+                        NASA ke mufakkirin ka kehna hai ki Artificial Intelligence aur Super-computers ke liye <span class="highlight">Sanskrit</span> sabse behtarin zaban hai kyunki isme koi 'ambiguity' (shak) nahi hoti. Jo zaban hazaron saal pehle itni perfect thi, wo sirf ek dharam ki nahi balki poori insaniyat ki 'Technical Legacy' hai.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Ekam Sat - Khuda Ek Hai</h2>
+            <p>
+                Bahut se log samajhte hain ki wahan bahut se khuda hain. Magar ye unka kam-ilm hai. Sanskrit ka azim qaul hai: <br>
+                <span class="highlight">"Ekam Brahma, Dvitiya Naste"</span> (Khuda ek hi hai, uske jaisa doosra koi nahi).
+            </p>
+            <p>
+                Jis tarah Allah ke 99 naam uski alag-alag sifaat (attributes) ko batate hain, waise hi Sanatan mein alag-alag roop us ek hi <span class="highlight">Noor-e-Azam</span> ki shaktiyon ko darshate hain. 'Brahma' paida karne wala, 'Vishnu' palne wala, aur 'Shiva' fana karne wala—ye ek hi qudrat ke teen chehre hain.
+            </p>
+            
+            <div class="oath-box" style="background: rgba(197, 160, 89, 0.1); color: #000; border-style: dashed;">
+                "Aham Brahmasmi" ka haqiqi matlab wahi hai jo Sufiyon ne kaha—'Anal-Haq'. Jab insaan apne andar ke noor ko pehchan leta hai, toh wo us khaliq se jud jata hai.
+            </div>
+
+            <p>
+                Sanatan koi mazhab nahi, balki <span class="highlight">'Zindagi Guzarne ka Fan'</span> (Science of Life) hai. Isme har rasm ke peeche science hai—chahe wo Yoga ho, dhyan ho ya khane-peene ke usool.
+            </p>
+
+            <a href="https://t.me/growshal" class="btn">Mazeed Ilm Ke Liye Rabta Karein</a>
+        </div>
+
+        <footer>
+            Haqiqat wahi hai jo badalti nahi. Tehqeeq aapka haq hai.
+        </footer>
+    </div>
+
+</body>
+</html>
