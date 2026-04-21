@@ -20,7 +20,6 @@
             overflow: hidden;
         }
 
-        /* Initial state hidden to prevent flicker */
         #return-ui { display: none; text-align: center; padding: 20px; animation: fadeIn 0.8s ease; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -44,7 +43,6 @@
 
         .re-enter-btn:active { transform: scale(0.92); }
 
-        /* Luxury Gradient Background */
         .gradient-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: radial-gradient(circle at top right, #1a1a1a, #000);
@@ -63,7 +61,7 @@
         <h1>Welcome Back</h1>
         <p>Seems like you're already a member of Growshal</p>
         
-        <a href="tg://resolve?domain=+BH2kxF53R0I1YzJl" class="re-enter-btn">
+        <a href="https://t.me/+BH2kxF53R0I1YzJl" class="re-enter-btn">
             RE-ENTER CHANNEL <i class="fas fa-arrow-right"></i>
         </a>
     </div>
@@ -71,28 +69,17 @@
     <script>
         (function() {
             const storageKey = "gs_inner_circle_member";
-            const tgAppUrl = "https://t.me/+BH2kxF53R0I1YzJl";
-            const tgWebUrl = "https://t.me/+BH2kxF53R0I1YzJl";
+            // FIX: Standard HTTPS link works better for both app and web redirect
+            const tgLink = "https://t.me/+BH2kxF53R0I1YzJl";
 
-            // Check if user has visited before
             const hasVisited = localStorage.getItem(storageKey);
 
             if (!hasVisited) {
-                // --- 1st TIME USER LOGIC ---
-                // Set the flag immediately
+                // First Time User
                 localStorage.setItem(storageKey, "true");
-                
-                // Redirect immediately (no UI shown)
-                window.location.href = tgAppUrl;
-
-                // Fallback for browser
-                setTimeout(() => {
-                    window.location.href = tgWebUrl;
-                }, 500);
-
+                window.location.replace(tgLink); // replace use karne se "back" button issue nahi karta
             } else {
-                // --- 2nd TIME USER LOGIC ---
-                // Show the Return UI
+                // Returning User
                 document.getElementById('return-ui').style.display = 'block';
             }
         })();
