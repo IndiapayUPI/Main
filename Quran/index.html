@@ -278,3 +278,342 @@
 
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idrak-e-Haqeeqat | The Final Awakening</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #c5a059;
+            --deep-gold: #8e6d2d;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.95);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: #f4f4f4;
+            background-image: url('https://i.pinimg.com/1200x/ab/b4/64/abb4641f43b177b58e0188d0845f4e1e.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Inter', sans-serif;
+            color: #1a1a1a;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        .top-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            text-align: center;
+            border-bottom: 1px solid var(--gold);
+        }
+        .top-nav a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+        .wrapper {
+            width: 100%;
+            max-width: 650px;
+            margin: 100px auto 50px;
+            padding: 0 15px;
+        }
+        .card {
+            background: var(--glass);
+            border-radius: 4px;
+            padding: 45px 35px;
+            margin-bottom: 35px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            border-top: 5px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: ""; position: absolute;
+            top: 10px; left: 10px; right: 10px; bottom: 10px;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            pointer-events: none;
+        }
+        .bismillah {
+            font-family: 'Noto Nastaliq Urdu', serif;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 25px;
+            color: #000;
+            line-height: 1.5;
+        }
+        .oath-box {
+            background: #000;
+            color: var(--gold);
+            padding: 25px;
+            text-align: center;
+            font-style: italic;
+            border: 1px solid var(--gold);
+            margin-bottom: 35px;
+            font-size: 1.05rem;
+        }
+        .oath-title {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #fff;
+        }
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--deep-gold);
+            margin-bottom: 25px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 12px;
+        }
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 1.05rem;
+            color: #222;
+        }
+        .highlight {
+            color: var(--deep-gold);
+            font-weight: 700;
+            background: rgba(197, 160, 89, 0.1);
+            padding: 0 4px;
+        }
+        .evidence-grid { margin-top: 35px; }
+        .evidence-item {
+            border-left: 4px solid var(--gold);
+            padding-left: 20px;
+            margin-bottom: 30px;
+            background: rgba(255,255,255,0.5);
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-right: 15px;
+        }
+        .evidence-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #000;
+            margin-bottom: 8px;
+            font-family: 'Playfair Display', serif;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 22px;
+            background: #000;
+            color: var(--gold);
+            text-align: center;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 2px;
+            border: 1px solid var(--gold);
+            transition: 0.4s;
+            text-transform: uppercase;
+            margin-top: 20px;
+            font-size: 1.1rem;
+        }
+        .btn:hover { background: var(--gold); color: #000; }
+        footer {
+            text-align: center;
+            color: #fff;
+            font-size: 0.9rem;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 3px #000;
+            letter-spacing: 1px;
+        }
+        .card { animation: fadeIn 1s ease-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 480px) {
+            .card { padding: 35px 20px; }
+            h2 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <a href="#">Idrak-e-Haqeeqat | Tehqeeq-e-Kainat</a>
+    </nav>
+
+    <div class="wrapper">
+        
+        <div class="card">
+            <div class="bismillah">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+            <div class="oath-box">
+                <span class="oath-title">Halaf-e-Zamir (The Oath)</span>
+                "Main Allah ko haazir-naazir maankar waada karta hoon, ki main agle 2 minute apni 'Aql' ka istemal karunga, na ki us 'Blind Faith' ka jo mujhe bachpan se pilaya gaya hai. Sachai kadwi ho sakti hai, magar wahi najaat (freedom) degi."
+            </div>
+            
+            <h2>"Kya Tum Gaur Nahi Karte?"</h2>
+            <p>
+                Ae Momino! Quran ne 700 se zyada baar <b>'Tafakkur' (Deep Thinking)</b> ka hukm diya. Lekin kya aaj ka musalman waqayi soch raha hai? Ya hum sirf un lakeron ke fakeer hain jo siyasat-dano ne khinchi hain? 
+            </p>
+            <p>
+                Duniya mein 200 crore musalman hain, lekin <b>Modern Science</b> mein hamara contribution zero kyun hai? Kyun hamara Imaan itna kamzor hai ki hum Science se darte hain? Sach toh ye hai ki jo aaj NASA aur CERN dhund rahe hain, wo azim Hindustani Rishiyon ne sadiyon pehle <b>Sanatan</b> ke naam se darj kar diya tha.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>Digital Accuracy: Ittefaq Ya Ilahi Ilm?</h2>
+            
+            <div class="evidence-grid">
+                
+                <div class="evidence-item">
+                    <div class="evidence-title">🧬 84 Lakh Yoniyan (The 8.7M Mystery)</div>
+                    <p style="font-size: 0.98rem;">
+                        Science ne 2011-2023 ke beech prove kiya ki Earth par <b>8.7 Million</b> species hain. Sanatan ne hazaron saal pehle bina kisi microscope ke <span class="highlight">84 Lakh (8.4 Million)</span> yoniyan batayi thin. Sirf 3% ka farq—Ye calculation kisi insani dimaag ki nahi ho sakti!
+                    </p>
+                </div>
+
+                <div class="evidence-item">
+                    <div class="evidence-title">🌌 Cosmic Time (Suraj ki Umar)</div>
+                    <p style="font-size: 0.98rem;">
+                        NASA kehti hai Suraj 4.567 Billion saal purana hai. Puranas ke hisab se ye 4.563 Billion hai. Itni sateek (precise) ginti! Jab poori duniya andhere mein thi, tab Bharat ke paas <b>Space Science</b> ka pura data tha.
+                    </p>
+                </div>
+
+                <div class="evidence-item">
+                    <div class="evidence-title">⚛️ CERN: Shiva's Dance</div>
+                    <p style="font-size: 0.98rem;">
+                        Duniya ki sabse badi science lab 'CERN' ke bahar <b>Nataraja (Shiva)</b> ki murti hai. Kyun? Kyunki scientists ne mana hai ki sub-atomic particles ka dance bilkul Shiva ke Tandav jaisa hai—Creation aur Destruction ka ek hi loop.
+                    </p>
+                </div>
+
+                <div class="evidence-item">
+                    <div class="evidence-title">🤖 AI & Sanskrit</div>
+                    <p style="font-size: 0.98rem;">
+                        English aur Arabic 'Ambiguous' (shak waali) languages hain, lekin NASA kehta hai ki <b>Sanskrit</b> coding aur AI ke liye duniya ki sabse logical language hai. Future ka dharam Science hoga, aur Science ki bhasha Sanskrit.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Ekam Sat - Khuda Ka Asal Roop</h2>
+            <p>
+                Humein bataya gaya ki wahan 33 crore khuda hain. Ye jahalat hai! Sanskrit ka saaf qaul hai: <br>
+                <span class="highlight">"Ekam Brahma, Dvitiya Naste"</span> (Allah ek hi hai, uske jaisa doosra koi nahi).
+            </p>
+            <p>
+                Jaise Allah ke <b>99 naam</b> uski sifaat (attributes) hain, waise hi Brahma (Creator), Vishnu (Preserver), aur Shiva (Destroyer) us ek hi Noor-e-Azam ki <b>Energies</b> hain. Pani ek hai—chahe use 'Water' kaho, 'Ab' kaho ya 'Jal'.
+            </p>
+
+            <div class="oath-box" style="background: rgba(197, 160, 89, 0.1); color: #000; border-style: dashed;">
+                <b>"Aham Brahmasmi"</b> ka matlab wahi hai jo Sufiyon ne kaha—'Anal-Haq'. Jab tu apne andar ke noor ko pehchan lega, toh tujhe kisi aisi kitab ki zaroorat nahi padegi jo science ko jhutlati ho.
+            </div>
+
+            <p style="font-weight: 700; text-align: center; color: #b00;">
+                Sanatan koi mazhab nahi, ye "Science of Life" hai. Peepal ki pooja oxygen ke liye hai, Ganga-jal antivirus hai, aur Yoga dimaag ki shakti hai. Har rasm ke peeche ek logic hai, andha-yaqeen nahi.
+            </p>
+
+            <a href="https://t.me/growshal" class="btn">Haqeeqat Janne Ke Liye Click Karein</a>
+        </div>
+        
+        <footer>
+            "Dharam badalna maqsad nahi, Sach ko pehchanna maqsad hai." <br> Tehqeeq aapka haq hai.
+        </footer>
+    </div>
+
+</body>
+</html>
+
+<div id="delayedBtnContainer" class="floating-btn-wrap">
+    <a href="/Quran/6" class="floating-btn">
+        <span class="btn-sub-text">Haqeeqat ka doosra rukh</span>
+        <span class="btn-main-text">See Different Version</span>
+    </a>
+</div>
+
+<style>
+    /* Button initially hidden */
+    .floating-btn-wrap {
+        position: fixed;
+        bottom: -100px; /* Screen ke neeche chhupa hua */
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 9999;
+        transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        width: 90%;
+        max-width: 400px;
+        opacity: 0;
+    }
+
+    /* Jab button show hoga tab ye class add hogi */
+    .floating-btn-wrap.show {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    .floating-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: #000;
+        color: #d4af37; /* Gold color */
+        text-decoration: none;
+        padding: 15px 25px;
+        border: 2px solid #d4af37;
+        border-radius: 5px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 15px rgba(212, 175, 55, 0.3);
+        text-align: center;
+        transition: 0.3s ease;
+    }
+
+    .floating-btn:hover {
+        background: #d4af37;
+        color: #000;
+        box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+    }
+
+    .btn-sub-text {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 4px;
+        opacity: 0.8;
+    }
+
+    .btn-main-text {
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    /* Subtle animation for the button */
+    @keyframes pulse-gold {
+        0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+        70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+    }
+
+    .floating-btn-wrap.show .floating-btn {
+        animation: pulse-gold 2s infinite;
+    }
+</style>
+
+<script>
+    // 2.5 minutes (150 seconds) ka timer set kiya hai
+    // Isko test karne ke liye aap 150000 ki jagah 5000 (5 sec) karke check kar sakte hain
+    setTimeout(function() {
+        document.getElementById('delayedBtnContainer').classList.add('show');
+    }, 150000); // 150,000 milliseconds = 2.5 minutes
+</script>
