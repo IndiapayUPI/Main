@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haqeeqat-e-Kainat: Ilm aur Science</title>
+    <link href="https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&family=Inter:wght@300;500;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #d4af37;
+            --light-gold: #f9e29d;
+            --dark: #0a0a0a;
+            --dark-green: #062a1a; /* Islamic feel background */
+            --glass: rgba(255, 255, 255, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+        body {
+            background: var(--dark-green);
+            background-image: radial-gradient(circle at 50% 50%, #0a3d28 0%, #000 100%);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Subtle Pattern Overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+            opacity: 0.15;
+            z-index: -1;
+        }
+
+        /* Top Bar */
+        .top-nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 15px;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gold);
+            z-index: 1000;
+            text-align: center;
+        }
+
+        .top-nav a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 800;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 120px 20px 60px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .bismillah-title {
+            font-family: 'Philosopher', serif;
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+        }
+
+        .hero-section h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            background: linear-gradient(to right, #fff, var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* The Promissory Text Box */
+        .promise-block {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(0,0,0,0.6));
+            border: 2px solid var(--gold);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+            position: relative;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            cursor: pointer;
+        }
+
+        .promise-block::before {
+            content: "Vada";
+            position: absolute;
+            top: -15px; left: 25px;
+            background: var(--gold);
+            color: #000;
+            padding: 3px 15px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            border-radius: 6px;
+            text-transform: uppercase;
+        }
+
+        /* Ilm Grid */
+        .ilm-grid {
+            display: grid;
+            gap: 25px;
+            padding: 20px;
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .ilm-card {
+            background: var(--glass);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            padding: 30px;
+            border-radius: 25px;
+            transition: all 0.5s ease;
+            backdrop-filter: blur(8px);
+        }
+
+        .ilm-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .card-icon-main {
+            font-size: 2.2rem;
+            color: var(--light-gold);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .ilm-card h3 {
+            color: var(--gold);
+            margin-bottom: 12px;
+            font-size: 1.4rem;
+        }
+
+        .ilm-card p {
+            font-size: 0.95rem;
+            color: #ddd;
+            text-align: justify;
+        }
+
+        /* Haqeeqat Comparison Section */
+        .comparison-view {
+            background: #fff;
+            color: #000;
+            padding: 70px 20px;
+            margin-top: 60px;
+            width: 100%;
+        }
+
+        .comparison-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .comparison-view h2 {
+            text-align: center;
+            font-weight: 800;
+            font-size: 1.6rem;
+            margin-bottom: 50px;
+            color: #000;
+        }
+
+        .comparison-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .left-val { font-weight: 700; width: 42%; text-align: right;}
+        .vs-label { color: var(--gold); font-weight: 900; font-size: 1.2rem; margin: 0 10px;}
+        .right-val { font-weight: 700; width: 42%; text-align: left;}
+
+        /* Telegram CTA */
+        .telegram-cta {
+            display: block;
+            width: 90%;
+            max-width: 380px;
+            margin: 60px auto;
+            background: var(--gold);
+            color: #000;
+            text-align: center;
+            padding: 22px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.2rem;
+            box-shadow: 0 12px 25px rgba(212, 175, 55, 0.4);
+            transition: 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .telegram-cta:hover {
+            transform: scale(1.05);
+            background: #fff;
+            box-shadow: 0 15px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Mobile Adjustments */
+        @media (min-width: 768px) {
+            .ilm-grid { grid-template-columns: 1fr 1fr; }
+            .hero-section h1 { font-size: 3.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <a href="#">The Ultimate Logic • GROWSHAL</a>
+    </nav>
+
+    <section class="hero-section">
+        <div class="bismillah-title">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+        <h1>Kya Tum 'Aql' Walon Mein Se Nahi?</h1>
+        
+        <div class="promise-block" id="readPromise">
+            <p style="font-size: 1.15rem; font-style: italic; color: #fff;">
+                "Main us Rab ko gawah maan kar vada karta hoon, jo dilon ka haal jaanta hai, ki main is pure paigam ko 'Tafakkur' (soch-vichar) ke saath mukammal padhunga. Ye agle 2 minute meri zindagi ka sabse bada Ilm ban sakte hain."
+            </p>
+        </div>
+        
+        <p style="color: #ccc; margin-top: 20px;">(Upar ke box par click karke vada karein aur aage badhein)</p>
+    </section>
+
+    <div class="ilm-grid">
+        <div class="ilm-card">
+            <span class="card-icon-main">🔬</span>
+            <h3>8.4 Million Life Forms</h3>
+            <p>Modern Biology ne haal hi mein estimate kiya hai ki dharti par approx 8.7 million species hain. Sochiye, jab koi microscope nahi tha, tab hazaron saal pehle Hindu Shastron ne <b>'84 Lakh Yoniyan'</b> (species types) ka zikr kiya tha. Ye 99% accuracy kaise mumkin thi? Kya ye us Malik ki di hui 'Wahi' (knowledge) nahi thi?</p>
+        </div>
+
+        <div class="ilm-card">
+            <span class="card-icon-main">🌌</span>
+            <h3>Cosmic Timeline</h3>
+            <p>Astrophysicists kehti hain Sun ki age 4.56 Billion years hai. Shastron mein 'Brahma ka Din' (ek cosmic cycle) ka duration 4.32 billion years bataya gaya hai. Sirf 0.1% ka farq! Ye calculations humare rishiyon tak kaise pahunche jab poori duniya 'jahalat' ke andhere mein thi?</p>
+        </div>
+
+        <div class="ilm-card">
+            <span class="card-icon-main">🔊</span>
+            <h3>Cosmic Vibration: Kun Faya Kun</h3>
+            <p>NASA ki research confirm karti hai ki humara Sun aur puri Earth ek natural frequency par vibrat kar rahe hain. Hindu parampara mein 'Om' ki frequency 136.1 Hz hai, jo bilkul Earth ke rotation se match karti hai. Ye wahi 'Noor' aur 'Awaaz' hai jo poori kainat ko bandhe hue hai.</p>
+        </div>
+
+        <div class="ilm-card">
+            <span class="card-icon-main">📜</span>
+            <h3>NASA: Sanskrit is Perfect</h3>
+            <p>NASA ke researcher Rick Briggs ne bataya ki Sanskrit computer programming ke liye sabse zyada scientific aur non-ambiguous language hai. Iska structure itna perfect hai ki future ki AI (Artificial Intelligence) isi par base hogi. Ye bhasha insanon ke bas ki baat nahi.</p>
+        </div>
+    </div>
+
+    <section class="comparison-view">
+        <div class="comparison-inner">
+            <h2>Haqeeqat-e-Kainat: Aql Walon Ke Liye</h2>
+            
+            <div class="comparison-row">
+                <div class="left-val">Creation Process</div>
+                <div class="vs-label">vs</div>
+                <div class="right-val">Big Bang Theory</div>
+            </div>
+
+            <div class="comparison-row">
+                <div class="left-val">99 Names of Allah</div>
+                <div class="vs-label">vs</div>
+                <div class="right-val">Anant Avatars (Many Forms)</div>
+            </div>
+
+            <div class="comparison-row">
+                <div class="left-val">Life is an Illusion</div>
+                <div class="vs-label">vs</div>
+                <div class="right-val">Maya / Quantum Space</div>
+            </div>
+
+            <div class="comparison-row">
+                <div class="left-val">Life After Death</div>
+                <div class="vs-label">vs</div>
+                <div class="right-val">Conservation of Energy</div>
+            </div>
+        </div>
+
+        <p style="text-align: center; margin-top: 50px; font-weight: 600; color: #333; font-style: italic;">
+            "Jo log sacchai ki talash mein 'Haq' ki raah par hain, unke liye har zarre mein nishaniyan hain."
+        </p>
+    </section>
+
+    <a href="https://t.me/growshal" class="telegram-cta">Mere Sawalon Ka Jawab Dein</a>
+
+    <footer style="text-align: center; padding: 40px; color: #555; font-size: 0.8rem; background: #000;">
+        © 2026 Reality of Kainat • Research-Based Deep Learning Portal
+    </footer>
+
+    <script>
+        document.getElementById('readPromise').addEventListener('click', function() {
+            this.style.background = 'linear-gradient(135deg, rgba(30, 255, 0, 0.2), rgba(0,0,0,0.8))';
+            this.style.borderColor = '#1eff00';
+            this.querySelector('p').innerHTML = '"Main apna vada nibhaunga. Mera dil sacchai dekhne ke liye taiyar hai."';
+        });
+    </script>
+</body>
+</html>
