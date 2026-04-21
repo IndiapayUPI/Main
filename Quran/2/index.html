@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haqeeqat-e-Kainat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS JO AAPNE DIYA USSE BHI SMOOTH */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #000;
+            background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20220428/pngtree-european-style-golden-pattern-background-light-gold-texture-image_1074461.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: "Inter", sans-serif;
+            overflow-x: hidden;
+            perspective: 2000px;
+            padding-top: 80px;
+            padding-bottom: 50px;
+        }
+
+        /* TOP BAR */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 60px;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .top-nav a {
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* CARD STYLING */
+        .card-container {
+            width: 90%;
+            max-width: 400px;
+            margin-bottom: 30px;
+        }
+
+        .card-frame {
+            position: relative;
+            width: 100%;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transform-style: preserve-3d;
+        }
+
+        .card-frame:hover {
+            transform: scale(1.02) rotateX(2deg);
+        }
+
+        .laser-border {
+            position: absolute;
+            inset: -2px;
+            border-radius: 25px;
+            z-index: 1;
+            overflow: hidden;
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .laser-border::before {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: conic-gradient(transparent 70%, #ffd700, #b8860b, transparent 90%);
+            animation: rotate-border 4s linear infinite;
+        }
+
+        .card-body {
+            position: relative;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.82);
+            border-radius: 23px;
+            padding: 35px 25px;
+            z-index: 2;
+            backdrop-filter: blur(40px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .sweep {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transform: skewX(-25deg);
+            transition: 0.8s;
+            pointer-events: none;
+        }
+
+        .card-frame:hover .sweep {
+            left: 150%;
+        }
+
+        /* TEXT STYLING */
+        .bismillah {
+            font-size: 1.6rem;
+            text-align: center;
+            color: #222;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .vada-box {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            padding: 15px;
+            border-left: 4px solid #b8860b;
+            margin-bottom: 20px;
+            font-style: italic;
+            font-size: 0.9rem;
+            color: #444;
+        }
+
+        .main-title {
+            font-size: 1.3rem;
+            color: #000;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .para {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #333;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .proof-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .proof-title {
+            font-weight: 700;
+            color: #b8860b;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+
+        .action-btn {
+            width: 100%;
+            background: #000;
+            color: #ffd700;
+            padding: 18px;
+            border-radius: 15px;
+            border: none;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.4s;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .action-btn:hover {
+            background: #222;
+            letter-spacing: 4px;
+        }
+
+        @keyframes rotate-border {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* MOBILE OPTIMIZATION */
+        @media (max-width: 480px) {
+            .card-body { padding: 25px 20px; }
+            .bismillah { font-size: 1.3rem; }
+            .main-title { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <a href="https://t.me/growshal" target="_blank">
+            <span>Publisher</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18.188-4.57 4.195-5.28 4.84-.21.19-.42.34-.63.34-.21 0-.39-.13-.57-.31-.18-.18-1.57-1.44-1.57-1.44s-.32-.26-.14-.58c.18-.32.61-.17.61-.17s1.21.99 1.48 1.21c.07-.07 3.39-3.08 3.65-3.32.32-.29.61-.13.61-.13s.19.06-.06.33z"/></svg>
+            <span>Growshal</span>
+        </a>
+    </nav>
+
+    <div class="card-container">
+        <div class="card-frame">
+            <div class="laser-border"></div>
+            <div class="card-body">
+                <div class="sweep"></div>
+                <div class="bismillah">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+                <h2 class="main-title">Aql Walon Ke Liye Nishaniyan</h2>
+                
+                <div class="vada-box">
+                    "Main Allah ko haazir-naazir maankar aapse waada karta hoon, ki ye agle 2 minute aapki zindagi ke sabse bada 'Ilm' (Knowledge) banne wale hain. Agar aapne sach ko pehchan liya, toh aapka imaan aur mazboot ho jayega."
+                </div>
+
+                <p class="para">
+                    Ae bande! Allah ne tujhe 'Aql' di hai taaki tu is kainat ke chhupay hue sach ko samajh sake. Quran mein baar-baar kaha gaya hai—"Kya tum gaur nahi karte?" 
+                </p>
+                <p class="para">
+                    Aaj ki modern science wahi pahunch rahi hai jo hamare buzurgon ne hazaron saal pehle likh diya tha. Ye koi dharam badalne ki baat nahi, ye us 'Sacchai' ko dekhne ki baat hai jo Allah ne har zarre mein chhupa rakhi hai.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container">
+        <div class="card-frame">
+            <div class="laser-border"></div>
+            <div class="card-body">
+                <div class="sweep"></div>
+                <h2 class="main-title">Scientific Digital Proofs</h2>
+                
+                <div class="proof-item">
+                    <div class="proof-title">🧬 8.7 Million Species</div>
+                    <p class="para" style="font-size: 0.85rem;">Modern Science (2023) kehti hai duniya mein 87 Lakh species hain. Sanatan ne sadiyon pehle "84 Lakh Yoniyan" batayi thi. Sirf 3% ka farq—bina kisi microscope ke ye calculation kaise mumkin tha?</p>
+                </div>
+
+                <div class="proof-item">
+                    <div class="proof-title">🌍 Suraj aur Zameen</div>
+                    <p class="para" style="font-size: 0.85rem;">NASA kehti hai Suraj ki umar 4.567 Billion years hai. Puranas mein ye calculation 4.563 Billion batayi gayi hai. Digital accuracy dekhiye!</p>
+                </div>
+
+                <div class="proof-item">
+                    <div class="proof-title">🤖 AI aur Sanskrit</div>
+                    <p class="para" style="font-size: 0.85rem;">NASA ki research ke hisaab se Sanskrit sabse 'Logical' language hai. Future ki Artificial General Intelligence (AGI) ke liye isse behtar koi coding language nahi.</p>
+                </div>
+
+                <div class="proof-item">
+                    <div class="proof-title">🕉️ Cosmic Vibration</div>
+                    <p class="para" style="font-size: 0.85rem;">'Om' ki frequency 136.1 Hz hai, jo bilkul wahi hai jo dharti (Earth) ki apni resonance frequency hai. Ye poori kainat ek hi dhun par vibrate kar rahi hai.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container">
+        <div class="card-frame">
+            <div class="laser-border"></div>
+            <div class="card-body">
+                <div class="sweep"></div>
+                <h2 class="main-title">The Ultimate Reality</h2>
+                <p class="para">
+                    Dost, pani ek hai lekin koi use 'Water' kehta hai toh koi 'Ab'. Sach ek hi hai, bas raste alag hain. 'Aham Brahmasmi' ka matlab wahi hai jo 'Noor-e-Ilahi' ka—ki hum sab us ek hi malik ki energy ka hissa hain.
+                </p>
+                <p class="para" style="font-weight: 700; text-align: center; color: #b8860b;">
+                    "Sacchai ki koi sarhad nahi hoti."
+                </p>
+                
+                <a href="https://t.me/growshal" class="action-btn">Chat on Telegram</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
