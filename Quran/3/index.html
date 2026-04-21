@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andhere Se Noor Ki Aur - The Reality</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #111;
+            background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20220428/pngtree-european-style-golden-pattern-background-light-gold-texture-image_1074461.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: "Inter", sans-serif;
+            color: #1a1a1e;
+            padding: 80px 20px 40px 20px; /* Padding for top bar */
+            perspective: 2000px;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            z-index: 1000;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .top-bar a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-shadow: 0px 2px 4px rgba(0,0,0,0.8);
+            transition: all 0.3s ease;
+        }
+
+        .top-bar a:hover {
+            color: #ffd700;
+        }
+
+        .top-bar svg {
+            width: 20px;
+            height: 20px;
+            fill: #ffd700;
+        }
+
+        /* Container for Cards */
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            width: 100%;
+            max-width: 500px; /* Mobile optimized width */
+        }
+
+        /* Card Frame */
+        .card-frame {
+            position: relative;
+            width: 100%;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transform-style: preserve-3d;
+        }
+
+        .card-frame:hover {
+            transform: translateY(-5px) scale(1.01);
+        }
+
+        /* Golden Laser Border */
+        .laser-border {
+            position: absolute;
+            inset: -2px;
+            border-radius: 24px;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .laser-border::before {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: conic-gradient(
+                transparent 70%,
+                #ffd700,
+                #ff8c00,
+                transparent 90%
+            );
+            animation: rotate-border 4s linear infinite;
+        }
+
+        .laser-border::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: inherit;
+            filter: blur(10px);
+            opacity: 0.4;
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        /* Glassmorphism Card Body */
+        .card-body {
+            position: relative;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 22px;
+            padding: 30px 25px;
+            z-index: 2;
+            overflow: hidden;
+            border: 1px solid rgba(255, 215, 0, 0.5);
+            backdrop-filter: blur(20px) saturate(150%);
+            -webkit-backdrop-filter: blur(20px) saturate(150%);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Sweep Effect on Hover */
+        .sweep {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 215, 0, 0.4),
+                transparent
+            );
+            transform: skewX(-25deg);
+            transition: 0.8s;
+            pointer-events: none;
+        }
+
+        .card-frame:hover .sweep {
+            left: 200%;
+        }
+
+        /* Typography */
+        .system-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #b8860b;
+            margin-bottom: 12px;
+            display: block;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        h2.main-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .arabic-text {
+            font-size: 1.4rem;
+            text-align: center;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .content-text {
+            font-size: 0.95rem;
+            color: #222;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .highlight-box {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid #d4af37;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        ul li::before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 0.8rem;
+        }
+
+        /* Buttons */
+        .btn-container {
+            margin-top: 25px;
+        }
+
+        .action-btn {
+            width: 100%;
+            background: linear-gradient(45deg, #111, #333);
+            border: 1px solid #d4af37;
+            color: #ffd700;
+            padding: 16px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+        .action-btn:hover {
+            letter-spacing: 4px;
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3);
+            background: linear-gradient(45deg, #000, #222);
+        }
+
+        /* Divider */
+        hr.golden-line {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #d4af37, transparent);
+            margin: 25px 0;
+        }
+
+        /* Keyframes */
+        @keyframes rotate-border {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.6; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <a href="https://t.me/growshal" target="_blank">
+            Publisher 
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.888-.666 3.463-1.509 5.773-2.506 6.931-2.99 3.313-1.385 4.001-1.624 4.453-1.631z"/>
+            </svg>
+            Growshal
+        </a>
+    </div>
+
+    <div class="card-container">
+
+        <div class="card-frame">
+            <div class="laser-border"></div>
+            <div class="card-body">
+                <div class="sweep"></div>
+                <span class="system-tag">The Reality of Sanatan</span>
+                <div class="arabic-text">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+                
+                <p class="content-text">
+                    "Ae bande! Allah ne tujhe 'Aql' (Logic) di hai taaki tu is kainat (universe) ke chhupay hue sach ko samajh sake. Kya tune kabhi socha hai ki jis Rab ke 99 naam hain, usne khud ko har daur mein alag tarah se kyun zahir kiya?"
+                </p>
+                <p class="content-text">
+                    Jaise pani (H2O) kabhi barf hota hai, kabhi bhaap aur kabhi dariya, lekin asal mein wo pani hi rehta hai... bilkul waise hi <b>'Ekam Sat Vipra Bahudha Vadanti'</b>—Sach ek hi hai, bas samajhne walon ne use alag-alag naam diye hain. Hinduism koi 'Mazhab' nahi, balki is kainat ki sabse purani aur gehri 'Science' hai.
+                </p>
+                
+                <hr class="golden-line">
+                <h2 class="main-title">Scientific Proofs</h2>
+                
+                <ul>
+                    <li><b>🧬 84 Lakh Yoniyan:</b> Modern Science (2023) estimates 8.7 Million species. Hinduism said 8.4 Million (84 Lakh) hazaron saal pehle. Exact biology calculation without microscopes.</li>
+                    <li><b>🌍 Astronomy:</b> Copernicus se pehle Rig Veda (10.22.14) ne round earth aur planetary motion explain kiya. Puranas estimated Sun's age 4.563 Billion years; NASA estimates 4.567 Billion!</li>
+                    <li><b>🤖 Sanskrit & AGI:</b> NASA research calls Sanskrit the 'Most Scientific Language' due to its perfect structure, making it ideal for future AI and logic coding.</li>
+                    <li><b>🌀 Quantum Physics:</b> Solid matter is 99.9% empty space. Hinduism calls this 'Maya' (Illusion).</li>
+                    <li><b>🕉️ The Divine Frequency:</b> 'Om' frequency is 136.1 Hz, aligning perfectly with Earth's resonance frequency.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p class="content-text" style="margin-bottom:0;"><b>Aham Brahmasmi</b> — Tum sirf ek insaan nahi ho, tum us 'Noor' (Divine Consciousness) ka hissa ho jo poore Universe mein hai.</p>
+                </div>
+
+                <div class="system-tag" style="margin-top: 20px;">JAI SHREE KRISHNA</div>
+            </div>
+        </div>
+
+        <div class="card-frame">
+            <div class="laser-border"></div>
+            <div class="card-body">
+                <div class="sweep"></div>
+                <span class="system-tag">Ek Talash</span>
+                <h2 class="main-title">Andhere Se Noor Ki Aur... 🕯️</h2>
+                
+                <p class="content-text">
+                    Allah ne tujhe 'Aql' di hai, aur aql ka kaam hai—Sawal karna. Aaj se hazaron saal pehle, jab na koi microscope tha, na koi computer... tab kuch log aise the jinhone aankhen band karke us 'Sacchai' ko dekh liya tha jise aaj modern science 'Discovery' keh rahi hai.
+                </p>
+
+                <hr class="golden-line">
+                
+                <ul>
+                    <li><b>Space (Jo humne pehle dekha):</b> 1 Brahma Din = 8.64 Billion years. Modern science estimates Earth's age near 4.5 Billion years. Hum us dhyan-based calculation ke kitne kareeb hain!</li>
+                    <li><b>Scientific Tradition (Rituals nahi, Science hai):</b><br>
+                        - Peepal puja (24 hr Oxygen).<br>
+                        - Ganga Jal (Bacteriophages killing viruses).<br>
+                        - Namaste (Acupressure & zero germ transfer).
+                    </li>
+                    <li><b>Ek Hi Noor, Alag Naam:</b> Brahma (Creator), Vishnu (Preserver), aur Shiva (Destroyer)—Ye teen alag khuda nahi, ye 'Energy' ke teen roop hain: Creation, Sustenance, and Transformation.</li>
+                </ul>
+
+                <div class="btn-container">
+                    <a href="https://t.me/growshal" class="action-btn" target="_blank">Mere Sawalon Ka Jawab Dein</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-frame" style="margin-bottom: 40px;">
+            <div class="laser-border"></div>
+            <div class="card-body">
+                <div class="sweep"></div>
+                <span class="system-tag">Ek Poshida Haqeeqat ⚖️</span>
+                <h2 class="main-title">Mallik-i-Yaum-id-Din</h2>
+                <div class="arabic-text" style="font-size: 1.1rem;">مَـٰلِكِ يَوْمِ ٱلدِّينِ</div>
+                
+                <p class="content-text">
+                    Ae momin! Har namaz mein tu ye alfaaz dohrata hai... Duniya ka 'Day of Judgment' toh baad mein aayega, lekin is kainat ka 'Calculation' hazaron saal pehle likha ja chuka hai. 
+                </p>
+                <p class="content-text">
+                    <b>The Cosmic Dance (CERN):</b> Duniya ki sabse badi Science Lab 'CERN' (Switzerland) ke bahar 'Nataraja' (Shiva) ki murti kyun hai? Kyunki scientists ne mana hai ki atom ke andar jo particles ka dance hai, wahi 'Creation aur Destruction' ka cycle hai.
+                </p>
+
+                <div class="highlight-box">
+                    <p class="content-text" style="margin-bottom:0;">
+                        Dharam badalna maqsad nahi hai... 'Sacchai' ko pehchanna maqsad hai. <b>'Ekam Sat'</b> — Sach ek hi hai. Pani ek hai, lekin koi use 'Water' kehta hai, koi 'Ab', aur koi 'Jal'.
+                    </p>
+                </div>
+
+                <div class="system-tag" style="margin-top: 20px; font-size: 1rem;">JAI SHREE KRISHNA 🔱</div>
+
+                <div class="btn-container">
+                    <a href="https://t.me/growshal" class="action-btn" target="_blank">Connect on Telegram</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
