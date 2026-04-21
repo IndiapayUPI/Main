@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haqiqat-e-Illahi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* SUPER SMOOTH MAKKHAN CSS */
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        body {
+            background: #000 url('https://png.pngtree.com/thumb_back/fw800/background/20220428/pngtree-european-style-golden-pattern-background-light-gold-texture-image_1074461.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            font-family: "Inter", sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 80px 15px 40px;
+            color: #1a1a1e;
+            overflow-x: hidden;
+        }
+
+        /* TOP BAR */
+        .top-nav {
+            position: fixed;
+            top: 0; width: 100%; height: 60px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            z-index: 1000;
+            display: flex; justify-content: center; align-items: center;
+        }
+        .top-nav a {
+            color: #ffd700; text-decoration: none; font-weight: 700;
+            letter-spacing: 2px; font-size: 0.8rem; text-transform: uppercase;
+        }
+
+        /* FLOATING CARDS */
+        .card-container { width: 100%; max-width: 450px; margin-bottom: 40px; }
+        .card-frame {
+            position: relative; width: 100%;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transform-style: preserve-3d;
+        }
+        .card-frame:hover { transform: translateY(-10px) rotateX(2deg); }
+
+        .laser-border {
+            position: absolute; inset: -1px; border-radius: 25px;
+            z-index: 1; overflow: hidden;
+            background: rgba(212, 175, 55, 0.2);
+        }
+        .laser-border::before {
+            content: ""; position: absolute; width: 200%; height: 200%;
+            top: -50%; left: -50%;
+            background: conic-gradient(transparent 70%, #ffd700, transparent 90%);
+            animation: rotate-border 3s linear infinite;
+        }
+
+        .card-body {
+            position: relative; width: 100%;
+            background: rgba(255, 255, 255, 0.88);
+            border-radius: 24px; padding: 30px 20px;
+            z-index: 2; backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.3);
+        }
+
+        /* TYPOGRAPHY */
+        .bismillah { font-size: 1.8rem; text-align: center; margin-bottom: 10px; font-weight: 800; color: #000; }
+        .sub-hook { text-align: center; color: #b8860b; font-weight: 700; font-size: 0.9rem; margin-bottom: 25px; letter-spacing: 1px; }
+        
+        .promise-box {
+            background: #111; color: #ffd700; padding: 20px;
+            border-radius: 15px; margin-bottom: 25px;
+            border: 1px solid #d4af37; font-style: italic; line-height: 1.6;
+        }
+
+        .para { font-size: 1rem; line-height: 1.8; color: #222; margin-bottom: 15px; text-align: justify; }
+        .bold-gold { color: #8a6d1a; font-weight: 700; }
+
+        .logic-grid { margin-top: 25px; }
+        .logic-card {
+            background: rgba(212, 175, 55, 0.08); border-left: 4px solid #d4af37;
+            padding: 15px; margin-bottom: 15px; border-radius: 0 12px 12px 0;
+        }
+        .logic-title { font-weight: 800; color: #000; margin-bottom: 5px; display: flex; align-items: center; gap: 10px; }
+        
+        .btn-action {
+            display: block; width: 100%; background: #000; color: #ffd700;
+            padding: 20px; border-radius: 15px; text-align: center;
+            text-decoration: none; font-weight: 800; letter-spacing: 2px;
+            margin-top: 30px; transition: 0.3s; border: 1px solid #ffd700;
+        }
+        .btn-action:hover { background: #ffd700; color: #000; }
+
+        @keyframes rotate-border { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <a href="https://t.me/growshal" target="_blank">PUBLISHER { GROWSHAL }</a>
+    </nav>
+
+    <div class="card-container">
+        <div class="card-frame">
+            <div class="laser-border"></div>
+            <div class="card-body">
+                <div class="bismillah">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+                <div class="sub-hook">"KYA TUM GAUR NAHI KARTE?"</div>
+
+                <p class="para">
+                    Ae Imaan walon! Allah ne Quran mein baar-baar kaha hai ki usne insaan ko <span class="bold-gold">'Aql'</span> di hai. Lekin kya aaj ka musalman waqayi aql istemal kar raha hai? Ya sirf purani baton ko aankhen band karke maan raha hai?
+                </p>
+
+                <div class="promise-box">
+                    "Main Allah ko haazir-naazir maankar aapse waada karta hoon, ki ye agle 2 minute aapki zindagi ke sabse bada 'Ilm' (Knowledge) banne wale hain. Agar aapne sach ko pehchan liya, toh aapka imaan aur mazboot ho jayega."
+                </div>
+
+                <p class="para">
+                    Duniya mein 200 crore musalman hain, lekin kya kabhi socha ki <span class="bold-gold">4 shadi aur 30+ bacchon</span> ka logic kya hai? Kya ye sirf population badhane ki siyasat hai? Modern science kehti hai ki resources khatam ho rahe hain, lekin humein 'Zada bachche' paida karne ko kaha gaya. Kyun? Taaki logic dab jaye aur sirf sankhya (numbers) bolen.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container">
+        <div class="card-frame">
+            <div class="laser-border"></div>
+            <div class="card-body">
+                <h2 style="text-align:center; margin-bottom:20px;">Illogical vs Science</h2>
+                
+                <div class="logic-grid">
+                    <div class="logic-card">
+                        <div class="logic-title">🌑 Chaand ka Sach</div>
+                        <p class="para" style="font-size:0.9rem;">Deen kehta hai ki Chaand ke do tukde hue (Shaq-ul-Qamar), lekin NASA aur modern physics kehti hai ye impossible hai. Wahin Sanatan kehta hai <b>'Om'</b> ki frequency 136.1Hz hai, jo Earth ki resonance se match karti hai. Kaunsa logic zinda hai?</p>
+                    </div>
+
+                    <div class="logic-card">
+                        <div class="logic-title">🧬 8.7 Million Species</div>
+                        <p class="para" style="font-size:0.9rem;">Science ne 2023 mein prove kiya ki 87 Lakh species hain. Hinduism ne hazaron saal pehle <b>'84 Lakh Yoniyan'</b> batayi thin. Itni digital accuracy bina microscope ke kaise?</p>
+                    </div>
+
+                    <div class="logic-card">
+                        <div class="logic-title">🤖 AGI & Sanskrit</div>
+                        <p class="para" style="font-size:0.9rem;">English ambiguous hai, lekin NASA kehta hai <b>Sanskrit</b> coding ke liye perfect hai. Future ki Artificial Intelligence (AGI) Sanatan ki bhasha par chalegi, kisi aur par nahi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container">
+        <div class="card-frame">
+            <div class="laser-border"></div>
+            <div class="card-body">
+                <h2 style="text-align:center; margin-bottom:20px;">EKAM SAT (GOD IS ONE)</h2>
+                <p class="para">
+                    Bhai, Hinduism mein God 33 crore nahi hain. Wo sab 'Avatars' hain. Sanskrit mein saaf likha hai: <br>
+                    <span class="bold-gold">"Ekam Brahma, Dvitiya Naste"</span> (Allah ek hai, uske jaisa doosra koi nahi).
+                </p>
+
+                <div class="logic-card" style="background: #fff; border: 1px solid #ddd;">
+                    <p class="para" style="font-size:0.9rem;">
+                        Jaise <span class="bold-gold">H2O</span> Paani bhi hai, Barf bhi aur Bhaap bhi... waise hi Ek khuda ke 3 roop hain: <br>
+                        1. <b>Brahma:</b> Creator Energy <br>
+                        2. <b>Vishnu:</b> Preserver Energy <br>
+                        3. <b>Shiva:</b> Destroyer Energy <br>
+                        Ye teenon ek hi 'Noor' ke hisse hain.
+                    </p>
+                </div>
+
+                <p class="para">
+                    Sanatan koi mazhab nahi, ye <b>'Science of Life'</b> hai. Peepal ki pooja isliye kyunki wo 24hr Oxygen deta hai. Tulsi isliye kyunki wo antibiotic hai. Har baat ke peeche logic hai, sirf andha-yaqeen nahi.
+                </p>
+
+                <div class="promise-box" style="background:rgba(212, 175, 55, 0.2); color:#000;">
+                    "Aham Brahmasmi" — Main hi wo Noor hoon. Jab tu khud ko pehchan lega, toh tujhe kisi aisi kitab ki zaroorat nahi padegi jo science ko jhutlati ho.
+                </div>
+
+                <a href="https://t.me/growshal" class="btn-action">MERE SAWALON KA JAWAB DEIN</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
