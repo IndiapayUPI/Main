@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehqeeq-e-Kainat | The Ultimate Truth</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #b8924a;
+            --deep-gold: #8a6d35;
+            --white: #ffffff;
+            --soft-white: #fcfcfc;
+            --text-dark: #1a1a1a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #f0f0f0 url('https://i.pinimg.com/1200x/ab/b4/64/abb4641f43b177b58e0188d0845f4e1e.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* Content Overlay for Readability */
+        .page-overlay {
+            background: rgba(255, 255, 255, 0.85); /* Glass effect on the background */
+            min-height: 100vh;
+            padding-bottom: 50px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Style */
+        .main-header {
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+
+        .bismillah {
+            font-family: 'Noto Nastaliq Urdu', serif;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #000;
+        }
+
+        /* The Promise / Ahd-e-Ilm */
+        .ahd-box {
+            background: #fff;
+            border: 1px solid var(--gold);
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .ahd-box::before {
+            content: "VADA / OATH";
+            position: absolute;
+            top: -12px; left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: #fff;
+            padding: 2px 20px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .ahd-text {
+            font-style: italic;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: #444;
+        }
+
+        /* Typography */
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--deep-gold);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--gold);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .section-card {
+            background: #fff;
+            padding: 40px;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--gold);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+
+        .highlight-bold {
+            color: var(--deep-gold);
+            font-weight: 700;
+        }
+
+        /* Comparison Table */
+        .fact-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.95rem;
+        }
+
+        .fact-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .fact-table .label {
+            font-weight: 700;
+            color: #555;
+            width: 40%;
+        }
+
+        /* CTA */
+        .cta-button {
+            display: block;
+            background: #000;
+            color: var(--gold);
+            text-align: center;
+            padding: 22px;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-top: 40px;
+            border: 1px solid var(--gold);
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .cta-button:hover {
+            background: var(--gold);
+            color: #fff;
+        }
+
+        .no-conversion-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #777;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        @media (max-width: 600px) {
+            .section-card { padding: 25px; }
+            h2 { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page-overlay">
+    <div class="container">
+        
+        <header class="main-header">
+            <div class="bismillah">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+            <p style="text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; color: var(--deep-gold);">Sacchai Ki Talash | Kitab-e-Zindagi</p>
+        </header>
+
+        <div class="ahd-box">
+            <p class="ahd-text">
+                "Main us Malik-e-Haqeeqi ko shahid (witness) maankar iqrar karta hoon ki main ta'assub aur firqa-baazi ki deewaron ko gira kar, is pure mazmoon ko 'Aql-e-Saleem' ke saath padhunga. Kyun ki 'Hikmat' (Wisdom) momin ki gumshuda miras hai, wo jahan se mile use hasil karna chahiye."
+            </p>
+        </div>
+
+        <div class="section-card">
+            <h2>Ilm-e-Ilahi aur Science</h2>
+            <p>
+                Duniya mein har cheez us Ek Khaliq ki nishani hai. Quran-e-Pak mein bar-bar irshad hua—<span class="highlight-bold">"Afala Tatafakkurun"</span> (Kya tum gaur nahi karte?). Aaj ki jadid (modern) science unhi raazon ko khol rahi hai jo sadiyon pehle azim Bharat ki sarzameen par 'Veda' aur 'Puran' ki surat mein nazil hue. 
+            </p>
+            <p style="margin-top: 15px;">
+                Ye koi mazhabi tabdili nahi, balki us purane <span class="highlight-bold">'Ilm-e-Ladunni'</span> (Divine Knowledge) ki taraf wapsi hai jo insaniyat ki mushtarka (common) wirasat hai.
+            </p>
+        </div>
+
+        <div class="section-card">
+            <h2>Muzahira-e-Qudrat (Scientific Evidences)</h2>
+            
+            <table class="fact-table">
+                <tr>
+                    <td class="label">Makhlooqat ki Ginti (Species)</td>
+                    <td>Science kehti hai 8.7 Million. Sanatan Puranon mein <b>'84 Lakh'</b> ka zikr sadiyon pehle se hai.</td>
+                </tr>
+                <tr>
+                    <td class="label">Kainati Waqt (Cosmic Time)</td>
+                    <td>NASA ke mutabiq Suraj ki umar 4.5bn saal hai. Brahm-Vigyan mein ye ginti <b>4.32bn</b> hai. Hairat-angez sateekta (accuracy)!</td>
+                </tr>
+                <tr>
+                    <td class="label">Zaban ka Mojza (Sanskrit)</td>
+                    <td>NASA ke scientist Rick Briggs ke mutabiq <b>Sanskrit</b> duniya ki wahid 'Logical' zaban hai jo AI ke liye sabse behtar hai.</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section-card">
+            <h2>Wahdat-ul-Wajood: Ek Hi Noor</h2>
+            <p>
+                Aksar log 'Bhagwan' aur 'Allah' ke naam par bat jate hain. Magar <span class="highlight-bold">Upanishad</span> kehte hain: "Ekam Sat Vipra Bahudha Vadanti"—Haqiqat ek hi hai, aqalmand log use alag-alag naamon se pukarte hain.
+            </p>
+            <p style="margin-top: 15px;">
+                Jis tarah 'Aab', 'Pani' aur 'Water' kehne se cheez nahi badalti, usi tarah us <span class="highlight-bold">Noor-e-Azam</span> ki sifaat (qualities) ko alag roop mein dekhna shirk nahi, balki uski azmat ko pehchanna hai. Aham Brahmasmi ka matlab wahi 'Anal-Haq' hai jo Sufiya-e-Ikram ne bayan kiya.
+            </p>
+        </div>
+
+        <div class="section-card" style="border-left: 5px solid #000; background: var(--soft-white);">
+            <p style="text-align: center; font-weight: 700; font-style: italic;">
+                "Dharam parivartan se bada hai 'Dil ka Parivartan'. Jab Ilm (Knowledge) aata hai, toh jahalat aur nafrat khud-ba-khud mit jati hai."
+            </p>
+        </div>
+
+        <a href="https://t.me/growshal" class="cta-button">Ba-Zauq Guftagu Ke Liye Judye</a>
+        
+        <p class="no-conversion-note">
+            Note: Ye platform sirf tehqeeq (research) aur Ilmi dosti ke liye hai. Hum kisi bhi dharam-parivartan ke sakht khilaf hain. Humara maqsad sirf insaniyat ko 'Haq' se jodhna hai.
+        </p>
+
+    </div>
+</div>
+
+</body>
+</html>
