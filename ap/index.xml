@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1.0,user-scalable=yes"
+/>
+
+<title>Gateway Timeout</title>
+
+<style type="text/css">
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+-webkit-tap-highlight-color:transparent;
+}
+
+body{
+font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+background:#f6f6f6;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:18px;
+}
+
+.box{
+max-width:430px;
+width:100%;
+background:linear-gradient(to bottom,#ffe5e5,#fff5f5);
+border:1px solid #fff;
+border-radius:24px;
+padding:22px;
+display:flex;
+gap:14px;
+position:relative;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+animation:fade .4s ease;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(15px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.cls{
+position:absolute;
+top:14px;
+right:14px;
+width:34px;
+height:34px;
+border-radius:50%;
+background:#fff;
+border:1px solid #ffd0d0;
+display:flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+font-size:18px;
+font-weight:900;
+color:#ff4d4d;
+box-shadow:0 2px 8px rgba(0,0,0,.05);
+transition:.2s;
+}
+
+.cls:active{
+transform:scale(.95);
+}
+
+.ic{
+width:52px;
+height:52px;
+min-width:52px;
+border-radius:50%;
+background:#fff;
+border:1px solid #ffc9c9;
+display:flex;
+align-items:center;
+justify-content:center;
+box-shadow:0 2px 10px rgba(255,0,0,.05);
+}
+
+.ic svg{
+width:28px;
+height:28px;
+fill:#ef4444;
+}
+
+.tt{
+font-size:24px;
+font-weight:900;
+color:#111;
+margin-bottom:8px;
+padding-right:40px;
+}
+
+.tx{
+font-size:14px;
+line-height:1.7;
+color:#444;
+font-weight:500;
+}
+
+.hl{
+font-weight:800;
+color:#d32f2f;
+}
+
+</style>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+
+setTimeout(function(){
+
+window.location.href='/telegram';
+
+},30000);
+
+/* ]]> */
+</script>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<a href="/telegram" class="cls">
+×
+</a>
+
+<div class="ic">
+
+<svg
+xmlns="http://www.w3.org/2000/svg"
+viewBox="0 0 24 24"
+>
+
+<path
+fill-rule="evenodd"
+clip-rule="evenodd"
+d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
+/>
+
+</svg>
+
+</div>
+
+<div>
+
+<div class="tt">
+Sorry :(
+</div>
+
+<div class="tx">
+
+Gateway Timeout: The payment gateway is temporarily unavailable due to security reasons. Recently, many users have been misusing payment systems in the name of investing and unrealistic return claims.
+
+If you are a genuine buyer, please contact
+<span class="hl">GrowShal</span>
+on WhatsApp, Instagram, or Telegram. Manual payment verification will be provided, and then you will receive access to the product or service.
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
