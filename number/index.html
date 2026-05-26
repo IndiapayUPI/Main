@@ -1,1 +1,389 @@
-nuss
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlobalConnect | Premium Business eSIM & International Numbers</title>
+    <!-- Google Fonts for modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #25D366; /* WhatsApp Green */
+            --primary-hover: #128C7E;
+            --dark: #0F172A;
+            --light: #F8FAFC;
+            --slate: #475569;
+            --border: #E2E8F0;
+            --card-bg: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header / Navbar */
+        header {
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--slate);
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 50px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: var(--slate);
+        }
+
+        /* Pricing Table Section */
+        .pricing-section {
+            background-color: var(--card-bg);
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 18px 24px;
+        }
+
+        th {
+            background-color: #F8FAFC;
+            color: var(--slate);
+            font-weight: 600;
+            border-bottom: 2px solid var(--border);
+        }
+
+        td {
+            border-bottom: 1px solid var(--border);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .price-tag {
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .flag {
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            text-align: center;
+            background: #0F172A;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            color: #94A3B8;
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+        }
+
+        .whatsapp-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+            padding: 24px;
+            border-radius: 12px;
+            display: inline-block;
+            margin-top: 30px;
+            text-align: left;
+            max-width: 450px;
+            width: 100%;
+        }
+
+        .whatsapp-box span {
+            display: block;
+            color: #94A3B8;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        .whatsapp-box code {
+            font-family: monospace;
+            color: var(--primary);
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        footer {
+            background: #090D16;
+            color: #64748B;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* Responsive UI */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .hero p { font-size: 16px; }
+            .section-title { font-size: 26px; }
+            .cta-section h2 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">🌐 Global<span>Connect</span></div>
+            <a href="https://wa.me/447735303154?text=I%20need%20an%20international%20number" class="btn" style="padding: 10px 20px; font-size: 14px;">Order Now</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Get Premium International <br>Business Numbers & eSIMs</h1>
+            <p>Expand your business instantly across the US, UK, Canada, and England without borders or expensive hardware. Activated easily via WhatsApp.</p>
+            <a href="https://wa.me/447735303154?text=I%20need%20an%20international%20number" class="btn">
+                <!-- WhatsApp Icon SVG -->
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.454 5.709 1.455h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="white"/>
+                </svg>
+                Message us: "I need an international number"
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Designed for Growing Businesses</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <h3>eSIM Technology</h3>
+                    <p>No waiting for plastic SIM cards. Instantly scan your QR code and activate on your current phone.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💼</div>
+                    <h3>Business Ready</h3>
+                    <p>Perfect for client calls, safe verification, and setting up dedicated global WhatsApp accounts.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🌐</div>
+                    <h3>Global Reach</h3>
+                    <p>Establish instant presence in the United States, United Kingdom, Canada, and major European regions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="container">
+            <h2 class="section-title">Available Locations & Pricing</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Country</th>
+                            <th>Supported Type</th>
+                            <th>Starting Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="flag">🇺🇸</span> United States (US)</td>
+                            <td>eSIM / Virtual Number</td>
+                            <td class="price-tag">₹7,000 onwards</td>
+                        </tr>
+                        <tr>
+                            <td><span class="flag">🇬🇧</span> United Kingdom (UK)</td>
+                            <td>eSIM / Virtual Number</td>
+                            <td class="price-tag">₹7,000 onwards</td>
+                        </tr>
+                        <tr>
+                            <td><span class="flag">🇨🇦</span> Canada</td>
+                            <td>eSIM / Virtual Number</td>
+                            <td class="price-tag">₹7,000 onwards</td>
+                        </tr>
+                        <tr>
+                            <td><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> England / EU</td>
+                            <td>eSIM / Virtual Number</td>
+                            <td class="price-tag">₹7,000 onwards</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to secure your business number?</h2>
+            <p>Skip the complex registration forms. Get connected immediately through a short chat with our delivery team.</p>
+            
+            <a href="https://wa.me/447735303154?text=I%20need%20an%20international%20number" class="btn">
+                Get Started on WhatsApp
+            </a>
+
+            <br>
+            <div class="whatsapp-box">
+                <span>Or message manually:</span>
+                <code>+44 7735 303154</code>
+                <span style="margin-top: 10px; font-style: italic;">Text phrase: "I need an international number"</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 GlobalConnect Communications. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
