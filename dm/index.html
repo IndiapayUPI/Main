@@ -19,7 +19,7 @@ src="https://www.facebook.com/tr?id=1983424883047406&ev=PageView&noscript=1"
 <?php include 'header.php'; ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>GrowShal | Secure Redirect</title>
+    <title>GrowShal | Redirect</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -94,68 +94,38 @@ src="https://www.facebook.com/tr?id=1983424883047406&ev=PageView&noscript=1"
             transform: translate(-50%, -50%);
             font-size: 40px; color: #fff;
             filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.5));
-            transition: 0.5s;
         }
 
         /* UI Text */
         #main-title {
-            font-size: 1.2rem; font-weight: 600; letter-spacing: 1px;
-            margin-bottom: 10px; transition: 0.5s;
+            font-size: 1.4rem; font-weight: 600; letter-spacing: 1px;
+            margin-bottom: 10px;
         }
 
-        #sub-text { font-size: 0.85rem; color: #666; font-weight: 300; transition: 0.5s; }
+        #sub-text { font-size: 0.9rem; color: #aaa; font-weight: 300; margin-bottom: 25px; }
 
-        /* Progress Bar */
-        .progress-container {
-            width: 180px; height: 3px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px; margin: 25px auto;
-            overflow: hidden;
-        }
-
-        .progress-bar {
-            width: 0%; height: 100%;
-            background: linear-gradient(90deg, #7000ff, #00e5ff);
-            animation: loadProgress 5s linear forwards;
-        }
-
-        @keyframes loadProgress {
-            0% { width: 0%; }
-            100% { width: 100%; }
-        }
-
-        .status-badge {
-            display: inline-block; padding: 6px 14px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 100px; font-size: 11px;
-            text-transform: uppercase; letter-spacing: 2px;
-            color: #00e5ff; margin-top: 10px; transition: 0.4s;
-        }
-
-        /* Retry Button - Hidden by default */
-        .retry-btn {
-            display: none;
-            margin-top: 25px;
-            padding: 15px 30px;
-            background: #fff;
-            color: #000;
+        /* Action Button */
+        .action-btn {
+            display: inline-block;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #7000ff, #00e5ff);
+            color: #fff;
             text-decoration: none;
-            border-radius: 15px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            animation: fadeInUp 0.5s forwards;
-            box-shadow: 0 10px 20px rgba(255,255,255,0.1);
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            box-shadow: 0 10px 25px rgba(112, 0, 255, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(0, 229, 255, 0.4);
         }
 
-        /* Error State Colors */
-        .error-state { color: #ff3366 !important; }
-        .error-bar { background: #ff3366 !important; }
+        .action-btn:active {
+            transform: translateY(0);
+        }
 
     </style>
 </head>
@@ -166,65 +136,17 @@ src="https://www.facebook.com/tr?id=1983424883047406&ev=PageView&noscript=1"
     <div class="container">
         <div class="loader-wrapper">
             <div class="loader-circle"></div>
-            <div id="loader-ring" class="loader-active"></div>
-            <i id="center-icon" class="fab fa-telegram-plane tg-icon"></i>
+            <div class="loader-active"></div>
+            <i class="fab fa-telegram-plane tg-icon"></i>
         </div>
 
-        <h1 id="main-title">CONNECTING</h1>
-        <p id="sub-text">Syncing with GrowShal HQ...</p>
+        <h1 id="main-title">GrowShal HQ</h1>
+        <p id="sub-text">Ready to launch your Meta ads strategy.</p>
 
-        <div class="progress-container">
-            <div id="p-bar" class="progress-bar"></div>
-        </div>
-
-        <div class="status-badge" id="status">Encrypting...</div>
-
-        <a href="tg://resolve?domain=growshal&text=Hi%21%20I%20want%20to%20run%20Meta%20ads%20for%20my%20business%20and%20am%20interested%20in%20your%20services.%20Let%27s%20connect%21" class="retry-btn" id="retry">
-            Open Telegram ( CONTINUE ) 
+        <a href="tg://resolve?domain=growshal&text=Hi%21%20I%20want%20to%20run%20Meta%20ads%20for%20my%20business%20and%20am%20interested%20in%20your%20services.%20Let%27s%20connect%21" class="action-btn">
+            Continue to Chat <i class="fas fa-arrow-right" style="margin-left: 8px;"></i>
         </a>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const mainTitle = document.getElementById('main-title');
-            const subText = document.getElementById('sub-text');
-            const statusBadge = document.getElementById('status');
-            const progressBar = document.getElementById('p-bar');
-            const loaderRing = document.getElementById('loader-ring');
-            const centerIcon = document.getElementById('center-icon');
-            const retryBtn = document.getElementById('retry');
-            
-            // Using standard HTTPS link for the auto-redirect because browsers block automated custom URI protocols (tg://)
-            const telegramAppURL = "https://t.me/growshal?text=Hi%21%20I%20want%20to%20run%20Meta%20ads%20for%20my%20business%20and%20am%20interested%20in%20your%20services.%20Let%27s%20connect%21";
-
-            // Sequence Timeline
-            setTimeout(() => { statusBadge.innerText = "Verified"; statusBadge.style.color = "#fff"; }, 1200);
-            setTimeout(() => { statusBadge.innerText = "Launching App"; statusBadge.style.color = "#00e5ff"; }, 2500);
-
-            // 1. Initial Attempt to open App
-            setTimeout(() => {
-                window.location.href = telegramAppURL;
-            }, 2000);
-
-            // 2. Logic for Failure (If after 5s still on page)
-            setTimeout(() => {
-                // Change UI to Error State
-                mainTitle.innerText = "ERROR";
-                mainTitle.classList.add('error-state');
-                
-                subText.innerText = "Choose Your app & chat with growshal.";
-                statusBadge.innerText = "plz Don't Click [ Go Back ] ";
-                statusBadge.style.borderColor = "#ff3366";
-                
-                progressBar.classList.add('error-bar');
-                loaderRing.style.borderTopColor = "#ff3366";
-                centerIcon.style.color = "#ff3366";
-                centerIcon.classList.replace('fa-telegram-plane', 'fa-exclamation-triangle');
-                
-                // Show Retry Button
-                retryBtn.style.display = "inline-block";
-            }, 5500);
-        });
-    </script>
 </body>
 </html>
