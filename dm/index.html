@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta Pixel Code -->
-<script>
+    <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -17,8 +16,7 @@ fbq('track', 'PageView');
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1983424883047406&ev=PageView&noscript=1"
 /></noscript>
-<!-- End Meta Pixel Code -->
-    <?php include 'header.php'; ?>
+<?php include 'header.php'; ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>GrowShal | Secure Redirect</title>
@@ -181,7 +179,7 @@ src="https://www.facebook.com/tr?id=1983424883047406&ev=PageView&noscript=1"
 
         <div class="status-badge" id="status">Encrypting...</div>
 
-        <a href="tg://resolve?domain=growshal" class="retry-btn" id="retry">
+        <a href="tg://resolve?domain=growshal&text=Hi%21%20I%20want%20to%20run%20Meta%20ads%20for%20my%20business%20and%20am%20interested%20in%20your%20services.%20Let%27s%20connect%21" class="retry-btn" id="retry">
             Open Telegram ( CONTINUE ) 
         </a>
     </div>
@@ -196,8 +194,8 @@ src="https://www.facebook.com/tr?id=1983424883047406&ev=PageView&noscript=1"
             const centerIcon = document.getElementById('center-icon');
             const retryBtn = document.getElementById('retry');
             
-            const telegramAppURL = "tg://resolve?domain=growshal";
-            const telegramWebURL = "tg://resolve?domain=growshal";
+            // Using standard HTTPS link for the auto-redirect because browsers block automated custom URI protocols (tg://)
+            const telegramAppURL = "https://t.me/growshal?text=Hi%21%20I%20want%20to%20run%20Meta%20ads%20for%20my%20business%20and%20am%20interested%20in%20your%20services.%20Let%27s%20connect%21";
 
             // Sequence Timeline
             setTimeout(() => { statusBadge.innerText = "Verified"; statusBadge.style.color = "#fff"; }, 1200);
