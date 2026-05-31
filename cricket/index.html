@@ -235,3 +235,76 @@
     </script>
 </body>
 </html>
+<div id="growshal-branding" class="growshal-badge" style="display: none;">
+    <a href="https://growshal.com" target="_blank" class="growshal-link">
+        <img src="https://growshal.com/wp-content/uploads/2023/12/cropped-admin-ajax2.png" alt="G" class="growshal-logo">
+        <div class="growshal-text">
+            <span class="growshal-title">Growshal</span>
+            <span class="growshal-sub">Managed by Growshal</span>
+        </div>
+    </a>
+</div>
+
+<style>
+/* Styling for the floating badge */
+.growshal-badge {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999999; /* सबसे ऊपर दिखने के लिए */
+    background-color: #ffffff;
+    padding: 8px 15px;
+    border-radius: 50px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.growshal-badge:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.growshal-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 10px;
+}
+
+.growshal-logo {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.growshal-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.growshal-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1a202c;
+}
+
+.growshal-sub {
+    font-size: 10px;
+    color: #718096;
+    font-weight: 500;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Check if the current URL contains a '?' (Query Parameter)
+    if (window.location.href.indexOf('?') !== -1) {
+        // If '?' is found, make the branding visible
+        document.getElementById('growshal-branding').style.display = 'block';
+    }
+});
+</script>
