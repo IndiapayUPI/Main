@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GrowShal | Professional Campaign Engine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root{--accent:#7000ff;--glass:rgba(255,255,255,0.85);--border:rgba(0,0,0,0.08);--text:#1a1a1e}*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{font-family:'Inter',sans-serif;background-color:#f4f6f8;color:var(--text);overflow-x:hidden;line-height:1.6}.nebula-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;background:radial-gradient(circle at 10% 20%,rgba(0,229,255,0.06) 0%,transparent 50%),radial-gradient(circle at 90% 80%,rgba(112,0,255,0.06) 0%,transparent 50%)}.top-nav{position:fixed;top:0;left:0;width:100%;height:70px;z-index:1000;background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:between;padding:0 40px}@media(max-width:768px){.top-nav{padding:0 20px}}.nav-container{width:100%;max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:between}.nav-brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-0.5px;font-size:1.1rem}.nav-logo{height:32px}.nav-menu-btn{background:#000;color:#fff;text-decoration:none;padding:10px 20px;border-radius:12px;font-size:0.85rem;font-weight:600;transition:all 0.4s cubic-bezier(0.165,0.84,0.44,1)}.nav-menu-btn:active{transform:scale(0.95);opacity:0.8}.app-wrapper{max-width:1240px;margin:0 auto;padding:120px 20px 80px;display:grid;grid-template-columns:1.2fr 0.8fr;gap:40px;align-items:start}@media(max-width:992px){.app-wrapper{grid-template-columns:1fr;padding-top:100px;gap:30px}}.card-frame{position:relative;border-radius:30px;padding:1.5px;background:linear-gradient(135deg,#00d2ff,#9d50bb,#00d2ff);background-size:200% 200%;animation:border-flow 4s linear infinite;box-shadow:0 30px 60px rgba(0,0,0,0.04)}@keyframes border-flow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}.card-inner{background:white;border-radius:28px;padding:35px;display:flex;flex-direction:column;gap:22px}@media(max-width:768px){.card-inner{padding:25px}}.saas-sidebar{background:rgba(255,255,255,0.6);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:28px;padding:30px;display:flex;flex-direction:column;gap:20px;position:sticky;top:110px}@media(max-width:992px){.saas-sidebar{position:static}}.form-group{display:flex;flex-direction:column;gap:8px}.form-group label{font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;color:#555;font-weight:700}.form-group input{padding:14px 16px;border:1px solid var(--border);border-radius:14px;font-size:0.95rem;outline:none;background:#fafafa;transition:all 0.3s ease}.form-group input:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 4px rgba(112,0,255,0.08)}.dp-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:5px}@media(max-width:480px){.dp-grid{grid-template-columns:repeat(3,1fr)}}.dp-option{position:relative;aspect-ratio:1;border-radius:12px;overflow:hidden;border:2px solid transparent;cursor:pointer;transition:all 0.25s ease}.dp-option img{width:100%;height:100%;object-fit:cover}.dp-option:hover{transform:scale(1.05)}.dp-option.selected{border-color:var(--accent);box-shadow:0 0 12px rgba(112,0,255,0.25)}.dp-option.selected::after{content:"\f058";font-family:"Font Awesome 5 Free";font-weight:900;position:absolute;top:4px;right:4px;color:var(--accent);background:white;border-radius:50%;font-size:0.9rem;line-height:1}.btn-animate{transition:all 0.4s cubic-bezier(0.165,0.84,0.44,1);will-change:transform,opacity}.btn-animate:hover{transform:translateY(-2px)}.btn-animate:active{transform:scale(0.97);opacity:0.9}.gen-btn{border:none;outline:none;display:flex;align-items:center;justify-content:center;gap:10px;background:#000;color:#fff;padding:16px;border-radius:16px;font-weight:600;letter-spacing:0.5px;font-size:0.95rem;cursor:pointer;width:100%;box-shadow:0 10px 20px rgba(0,0,0,0.05)}.result-section{margin-top:5px;display:none;background:#fdfdfd;border:1px dashed var(--accent);border-radius:20px;padding:20px;animation:fadeIn 0.5s ease forwards}@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}.result-title{font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;color:#666;margin-bottom:10px;font-weight:700}.result-link-box{font-size:0.9rem;word-break:break-all;color:var(--accent);font-weight:600;background:#f8f5ff;padding:14px;border-radius:12px;border:1px solid rgba(112,0,255,0.1);margin-bottom:15px}.action-group{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:420px){.action-group{grid-template-columns:1fr}}.copy-btn{border:none;background:var(--accent);color:white;padding:12px;border-radius:14px;font-size:0.9rem;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}.visit-btn{text-decoration:none;background:#000;color:white;padding:12px;border-radius:14px;font-size:0.9rem;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px}.feature-badge{align-self:start;background:rgba(112,0,255,0.06);color:var(--accent);font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;padding:6px 12px;border-radius:30px;margin-bottom:-5px}.sidebar-header{font-size:1.1rem;font-weight:600;color:var(--text);margin-bottom:5px}.sidebar-text{font-size:0.85rem;color:#666;margin-bottom:15px}.stat-row{display:flex;justify-content:between;padding:10px 0;border-bottom:1px solid var(--border)}.stat-label{font-size:0.8rem;color:#555}.stat-value{font-size:0.8rem;font-weight:600;color:#000}.floating-help-btn{position:fixed;bottom:30px;right:30px;width:50px;height:50px;background:#000;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 15px 30px rgba(0,0,0,0.12);z-index:2000;font-size:1.2rem;border:1px solid rgba(255,255,255,0.1)}@media(max-width:768px){.floating-help-btn{bottom:20px;right:20px;width:45px;height:45px}}
+    </style>
+</head>
+<body>
+
+    <div class="nebula-bg"></div>
+
+    <!-- Main Navigation Bar -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="https://growshal.com/wp-content/uploads/2023/12/cropped-admin-ajax2.png" class="nav-logo" alt="GrowShal Logo">
+                <span>GROWSHAL</span>
+            </div>
+            <a href="/menu" class="nav-menu-btn btn-animate"><i class="fas fa-bars"></i> /menu</a>
+        </div>
+    </nav>
+
+    <!-- App SaaS Grid Wrapper -->
+    <div class="app-wrapper">
+        
+        <!-- Left Side: Interactive Builder Form -->
+        <div class="card-frame">
+            <div class="card-inner">
+                <div class="feature-badge">Advanced Routing Architecture</div>
+                <h1 style="font-size: 2.2rem; font-weight: 300; letter-spacing: -0.5px;">Instantly Build <b>Landing Pages</b></h1>
+                
+                <div class="form-group">
+                    <label>Telegram Channel Link / Username</label>
+                    <input type="text" id="tgInput" placeholder="e.g., https://t.me/growshal ya sirf username" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Target Channel Name</label>
+                    <input type="text" id="channelNameInput" placeholder="e.g., GrowShal Premium Signals" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Meta Pixel ID (Optional - Khali chhodne par 000 load hoga)</label>
+                    <input type="text" id="pixelIdInput" placeholder="e.g., 27998404266419444">
+                </div>
+
+                <div class="form-group">
+                    <label>Choose Avatar Representation</label>
+                    <div class="dp-grid" id="dpGrid"></div>
+                </div>
+
+                <button id="generateBtn" class="gen-btn btn-animate">
+                    <i class="fas fa-bolt"></i> COMPILE SECURE HASH LINK
+                </button>
+
+                <!-- Dynamic Output Container Unlocked on Run -->
+                <div class="result-section" id="resultSection">
+                    <div class="result-title">Engine Real-time Routing Address:</div>
+                    <div class="result-link-box" id="generatedUrl"></div>
+                    
+                    <div class="action-group">
+                        <button id="copyBtn" class="copy-btn btn-animate">
+                            <i class="far fa-copy"></i> Copy Address
+                        </button>
+                        <a id="visitBtn" href="#" target="_blank" class="visit-btn btn-animate">
+                            Visit Site <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side: Clean Enterprise SaaS Information Panel -->
+        <div class="saas-sidebar">
+            <div>
+                <h2 class="sidebar-header">GrowShal Core Node</h2>
+                <p class="sidebar-text">Aapke campaign data ko safe custom zero-backend routing infrastructure engine me process kiya jata hai.</p>
+            </div>
+            
+            <div>
+                <div class="stat-row">
+                    <span class="stat-label">Server State</span>
+                    <span class="stat-value" style="color: #00c853;"><i class="fas fa-circle" style="font-size:0.6rem;"></i> Serverless Active</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Routing Framework</span>
+                    <span class="stat-value">Client Hash Object (v4)</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">SSL Layer</span>
+                    <span class="stat-value">End-To-End Encrypted</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Floating Assistance Control -->
+    <a href="https://t.me/growshal?text=i%20need%20help%20to%20creating%20landing%20page" class="floating-help-btn btn-animate" target="_blank" title="Need Help?">
+        <i class="fas fa-question"></i>
+    </a>
+
+    <script>
+        const DP_IMAGES = [
+            "https://sportsdp.com/blog/wp-content/uploads/2025/09/cricket-dp-1.jpg",
+            "https://img.magnific.com/premium-photo/cricket-ball-bat_1037680-44301.jpg",
+            "https://avatars.githubusercontent.com/u/25204160?v=4",
+            "https://inod.site/buy_nod32/wp-content/uploads/2024/12/telgrampng.parspng.com-12-300x300-1.png",
+            "https://cdn.dribbble.com/userupload/31247542/file/original-6bffca75489b498ac197da299a340baa.gif",
+            "https://media.tenor.com/qBmfmGXOIcsAAAAj/utya-utya-duck.gif",
+            "https://cdn-icons-gif.flaticon.com/11919/11919493.gif",
+            "https://static.vecteezy.com/system/resources/previews/031/557/862/non_2x/hide-icon-vector.jpg",
+            "https://media.tenor.com/rihVeMBZWjcAAAAM/utya-utya-duck.gif"
+        ];
+
+        let selectedDpCode = 1;
+
+        // Populate Matrix Selection System
+        const dpGrid = document.getElementById('dpGrid');
+        DP_IMAGES.forEach((url, index) => {
+            const code = index + 1;
+            const item = document.createElement('div');
+            item.className = `dp-option ${code === 1 ? 'selected' : ''}`;
+            item.dataset.code = code;
+            item.innerHTML = `<img src="${url}" alt="DP Pack ${code}">`;
+            
+            item.addEventListener('click', () => {
+                document.querySelectorAll('.dp-option').forEach(el => el.classList.remove('selected'));
+                item.classList.add('selected');
+                selectedDpCode = code;
+            });
+            dpGrid.appendChild(item);
+        });
+
+        function cleanTelegramUsername(input) {
+            let val = input.trim();
+            if (val.includes('t.me/') || val.includes('telegram.me/')) {
+                val = val.split('/').filter(p => p).pop();
+            }
+            return val.replace('@', '');
+        }
+
+        // Generator Execution
+        document.getElementById('generateBtn').addEventListener('click', () => {
+            const tgInput = document.getElementById('tgInput').value;
+            const channelName = document.getElementById('channelNameInput').value.trim();
+            let pixelId = document.getElementById('pixelIdInput').value.trim();
+
+            if (!tgInput || !channelName) {
+                alert('Bhai, Telegram details aur Channel Name daalna zaroori hai!');
+                return;
+            }
+
+            // Fallback rule if pixel is not provided
+            if (!pixelId) {
+                pixelId = "000";
+            }
+
+            const username = cleanTelegramUsername(tgInput);
+            const encodedName = encodeURIComponent(channelName);
+
+            // Output path matching landing page structure
+            const baseUrl = window.location.origin + '/cricket';
+            const finalLink = `${baseUrl}#${username}#${encodedName}#${selectedDpCode}#${pixelId}`;
+
+            // Deploy Result Components
+            const resultSection = document.getElementById('resultSection');
+            const generatedUrl = document.getElementById('generatedUrl');
+            const visitBtn = document.getElementById('visitBtn');
+
+            generatedUrl.textContent = finalLink;
+            visitBtn.href = finalLink; // Injected into target redirect button
+            
+            resultSection.style.display = 'block';
+            resultSection.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Safe Clipboard System
+        document.getElementById('copyBtn').addEventListener('click', () => {
+            const linkText = document.getElementById('generatedUrl').textContent;
+            navigator.clipboard.writeText(linkText).then(() => {
+                const copyBtn = document.getElementById('copyBtn');
+                copyBtn.innerHTML = `<i class="fas fa-check"></i> Link Copied!`;
+                copyBtn.style.background = '#00c853';
+                
+                setTimeout(() => {
+                    copyBtn.innerHTML = `<i class="far fa-copy"></i> Copy Address`;
+                    copyBtn.style.background = 'var(--accent)';
+                }, 2000);
+            }).catch(() => {
+                alert('Manual copy karein, system permission alert.');
+            });
+        });
+    </script>
+</body>
+</html>
