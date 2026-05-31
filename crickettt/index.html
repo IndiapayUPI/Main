@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Cricket Predictions</title>
+  <style>*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,sans-serif}body{background:#000 url("https://tse1.mm.bing.net/th/id/OIP.PLFzw-dYkWRk4MvF_2qq7wHaNK?cb=ucfimg2&ucfimg=1&w=1080&h=1920&rs=1&pid=ImgDetMain&o=7&rm=3") center/cover fixed;color:#fff;min-height:100vh}.container{max-width:480px;margin:auto;padding:20px 15px 110px;display:flex;flex-direction:column;gap:16px}.profile{text-align:center}.profile img{width:110px;height:110px;border-radius:50%;border:2px solid #fff;box-shadow:0 8px 25px #000}.profile h1{font-size:1.6rem;margin-top:10px}.profile p{opacity:.9}.stats{display:flex;background:rgba(0,0,0,.45);border-radius:14px;padding:14px}.stats div{text-align:center;flex:1}.stats span:first-child{font-size:1.6rem;font-weight:800;color:#ff4081}.stats span:last-child{font-size:.85rem;opacity:.85}.card{background:rgba(0,0,0,.55);border-radius:16px;padding:18px;text-align:center;backdrop-filter:blur(10px)}.card h2{font-size:1.25rem;margin-bottom:10px;color:#e1bee7}.info{font-size:.9rem;opacity:.85;line-height:1.5}ul{list-style:none;text-align:left}li{padding:6px 0 6px 24px;position:relative;font-size:.95rem}li:before{content:"✓";color:#4caf50;position:absolute;left:0}.btn{display:block;margin:14px auto 0;padding:14px;border-radius:30px;text-align:center;color:#fff;font-weight:700;text-decoration:none;background:linear-gradient(90deg,#ff4081,#e040fb,#2196f3,#ff4081);background-size:300%;animation:rgb 6s linear infinite;box-shadow:0 8px 20px #000}@keyframes rgb{0%{background-position:0%}100%{background-position:300%}}.bottom{position:fixed;bottom:0;left:0;width:100%;padding:14px;background:rgba(0,0,0,.9);border-radius:22px 22px 0 0;backdrop-filter:blur(14px)}@media(min-width:768px){.bottom{display:none}}</style>
+</head>
+<body>
+<div class="container">
+  <div class="profile">
+    <img id="profilePic" src="https://d1yei2z3i684094/694ac5aac417e_1a8b9d37-f8ec-47ba-9aaa-ac8bdd6834bc.jpeg" alt="Profile">
+    <h1 id="channelNameDisplay">Cricket Predictions</h1>
+    <p>Expert Cricket Match Predictions</p>
+  </div>
+  <div class="stats">
+    <div><span>180K+</span><span>Members</span></div>
+    <div><span>92%</span><span>Accuracy</span></div>
+    <div><span>Daily</span><span>Updates</span></div>
+  </div>
+  <div class="card">
+    <h2>Cricket Match Predictions</h2>
+    <p class="info">Expert analysis with proven accuracy</p>
+    <a id="joinButtonTop" class="btn" href="https://t.me/quicklygrow">🎀 Join Telegram 🎀</a>
+  </div>
+  <div class="card">
+    <h2>What You’ll Get</h2>
+    <ul>
+      <li>Accurate Match Predictions</li>
+      <li>Live Match Analysis</li>
+      <li>Expert Tips</li>
+      <li>Premium Picks FREE</li>
+      <li>Daily Updates</li>
+    </ul>
+  </div>
+  <div class="card">
+    <p class="info">Trusted by thousands with consistent winning insights. 100% FREE on Telegram.</p>
+  </div>
+</div>
+<div class="bottom">
+  <a id="joinButtonBottom" class="btn" href="https://t.me/quicklygrow">🎀 JOIN CHANNEL FREE</a>
+</div>
+
+<script>
+(function() {
+  // DP images array (index 1 to 9)
+  const DP_IMAGES = [
+    null, // placeholder for index 0 (unused)
+    "https://sportsdp.com/blog/wp-content/uploads/2025/09/cricket-dp-1.jpg",
+    "https://img.magnific.com/premium-photo/cricket-ball-bat_1037680-44301.jpg",
+    "https://avatars.githubusercontent.com/u/25204160?v=4",
+    "https://inod.site/buy_nod32/wp-content/uploads/2024/12/telgrampng.parspng.com-12-300x300-1.png",
+    "https://cdn.dribbble.com/userupload/31247542/file/original-6bffca75489b498ac197da299a340baa.gif",
+    "https://media.tenor.com/qBmfmGXOIcsAAAAj/utya-utya-duck.gif",
+    "https://cdn-icons-gif.flaticon.com/11919/11919493.gif",
+    "https://static.vecteezy.com/system/resources/previews/031/557/862/non_2x/hide-icon-vector.jpg",
+    "https://media.tenor.com/rihVeMBZWjcAAAAM/utya-utya-duck.gif"
+  ];
+
+  // Get the full hash string (e.g., "#quicklygrow#RASHMIKA%20Cricket#3#25726482050281407")
+  const rawHash = window.location.hash;
+
+  // Function to redirect
+  function redirect(path) {
+    window.location.href = path;
+  }
+
+  // If no hash or empty hash (just "#"), redirect to create page
+  if (!rawHash || rawHash === "#" || rawHash.length <= 1) {
+    redirect("/create-cricket");
+    return;
+  }
+
+  // Remove the leading "#" and split by "#"
+  const hashContent = rawHash.substring(1);
+  const parts = hashContent.split('#');
+
+  // We need exactly 4 parts: telegram-username, channel-name, dp-code, pixel-id
+  if (parts.length !== 4 || parts.some(part => part === undefined || part.trim() === '')) {
+    redirect("/error");
+    return;
+  }
+
+  // Extract and clean each part
+  let telegramUsername = parts[0].trim();
+  let channelNameEncoded = parts[1].trim();
+  let dpCodeStr = parts[2].trim();
+  let pixelId = parts[3].trim();
+
+  // Process Telegram username: if it's a full URL, extract the last segment
+  if (telegramUsername.includes('/')) {
+    // Remove trailing slash if present
+    const cleanUrl = telegramUsername.replace(/\/$/, '');
+    const segments = cleanUrl.split('/');
+    telegramUsername = segments[segments.length - 1];
+  }
+  // Remove possible "@" from username
+  telegramUsername = telegramUsername.replace('@', '');
+
+  // Decode channel name (supports %20 and other URL encoded characters)
+  let channelName = '';
+  try {
+    channelName = decodeURIComponent(channelNameEncoded);
+  } catch (e) {
+    // Fallback if decoding fails
+    channelName = channelNameEncoded;
+  }
+
+  // DP Code: must be a digit between 1 and 9
+  const dpCode = parseInt(dpCodeStr, 10);
+  if (isNaN(dpCode) || dpCode < 1 || dpCode > 9) {
+    redirect("/error");
+    return;
+  }
+
+  // Pixel ID validation: simple check for numeric string (allow any length)
+  if (!/^\d+$/.test(pixelId)) {
+    redirect("/error");
+    return;
+  }
+
+  // --- All validations passed, proceed with dynamic injection ---
+
+  // 1. Update Profile Image
+  const profileImg = document.getElementById('profilePic');
+  if (profileImg) {
+    profileImg.src = DP_IMAGES[dpCode];
+  }
+
+  // 2. Update Channel Name
+  const channelNameDisplay = document.getElementById('channelNameDisplay');
+  if (channelNameDisplay) {
+    channelNameDisplay.textContent = channelName;
+  }
+
+  // 3. Update all Telegram links
+  const telegramUrl = `https://t.me/${telegramUsername}`;
+  const joinButtonTop = document.getElementById('joinButtonTop');
+  const joinButtonBottom = document.getElementById('joinButtonBottom');
+  if (joinButtonTop) joinButtonTop.href = telegramUrl;
+  if (joinButtonBottom) joinButtonBottom.href = telegramUrl;
+
+  // Also update any other anchor that might contain the hardcoded link (safety)
+  document.querySelectorAll('a[href*="t.me"]').forEach(link => {
+    if (link.href.includes('quicklygrow') || link.href.includes('t.me')) {
+      link.href = telegramUrl;
+    }
+  });
+
+  // 4. Dynamically inject Facebook Pixel with the provided pixel ID
+  // Remove any existing pixel script to avoid duplicates? We'll just initialize fresh.
+  // The original base code had a hardcoded pixel init. We override by creating a new script.
+  function injectFacebookPixel(pixelId) {
+    // Create the main pixel script
+    const pixelScript = document.createElement('script');
+    pixelScript.innerHTML = `
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '${pixelId}');
+      fbq('track', 'PageView');
+    `;
+    // Remove any previously injected pixel scripts to avoid conflicts
+    const oldPixelScripts = document.querySelectorAll('script[data-pixel-injected]');
+    oldPixelScripts.forEach(s => s.remove());
+    pixelScript.setAttribute('data-pixel-injected', 'true');
+    document.head.appendChild(pixelScript);
+
+    // Also inject the noscript fallback
+    const noscript = document.createElement('noscript');
+    noscript.innerHTML = `<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1"/>`;
+    // Remove old noscript pixel fallbacks
+    const oldNoscripts = document.querySelectorAll('noscript[data-pixel-noscript]');
+    oldNoscripts.forEach(n => n.remove());
+    noscript.setAttribute('data-pixel-noscript', 'true');
+    document.head.appendChild(noscript);
+  }
+
+  // Remove the hardcoded pixel from the original HTML (it's still in source but we override by injecting new)
+  // To be safe, we can try to remove the original script if it has a known pattern, but injecting new one
+  // and removing old fbq instance ensures clean state.
+  if (window.fbq) {
+    // Reset fbq to avoid conflicts if it was already initialized with old ID
+    delete window.fbq;
+  }
+  injectFacebookPixel(pixelId);
+
+  // Optional: update document title if needed
+  document.title = channelName + " - Cricket Predictions";
+
+})();
+</script>
+</body>
+</html>
+
+<div id="growshal-branding" class="growshal-badge" style="display: none;">
+    <a href="/growshal" target="_blank" class="growshal-link">
+        <img src="https://growshal.com/wp-content/uploads/2023/12/cropped-admin-ajax2.png" alt="G" class="growshal-logo">
+        <div class="growshal-text">
+            <span class="growshal-title">Growshal</span>
+            <span class="growshal-sub">Managed by Growshal</span>
+        </div>
+    </a>
+</div>
+
+<style>
+/* Styling for the floating badge */
+.growshal-badge {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999999; /* सबसे ऊपर दिखने के लिए */
+    background-color: #ffffff;
+    padding: 8px 15px;
+    border-radius: 50px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.growshal-badge:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.growshal-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 10px;
+}
+
+.growshal-logo {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.growshal-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.growshal-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1a202c;
+}
+
+.growshal-sub {
+    font-size: 10px;
+    color: #718096;
+    font-weight: 500;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Check if the current URL contains a '?' (Query Parameter)
+    if (window.location.href.indexOf('?') !== -1) {
+        // If '?' is found, make the branding visible
+        document.getElementById('growshal-branding').style.display = 'block';
+    }
+});
+</script>
