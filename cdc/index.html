@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GrowShal | Campaign Template Architecture</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root{--accent:#7000ff;--glass:rgba(255,255,255,0.85);--border:rgba(0,0,0,0.08);--text:#1a1a1e}*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{font-family:'Inter',sans-serif;background-color:#f4f6f8;color:var(--text);overflow-x:hidden;line-height:1.6}.nebula-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;background:radial-gradient(circle at 10% 20%,rgba(0,229,255,0.05) 0%,transparent 50%),radial-gradient(circle at 90% 80%,rgba(112,0,255,0.05) 0%,transparent 50%)}.top-nav{position:fixed;top:0;left:0;width:100%;height:70px;z-index:1000;background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 40px}@media(max-width:768px){.top-nav{padding:0 20px}}.nav-container{width:100%;max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}.nav-brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-0.5px;font-size:1.1rem}.nav-logo{height:32px}.nav-pro-btn{background:linear-gradient(135deg,#7000ff,#00d2ff);color:#fff;text-decoration:none;padding:10px 22px;border-radius:12px;font-size:0.85rem;font-weight:600;box-shadow:0 8px 20px rgba(112,0,255,0.15);transition:all 0.4s ease}.nav-pro-btn:hover{transform:translateY(-1px);box-shadow:0 12px 24px rgba(112,0,255,0.25)}.dashboard-container{max-width:1400px;margin:0 auto;padding:120px 40px 80px}@media(max-width:768px){.dashboard-container{padding:100px 20px 60px}}.header-block{margin-bottom:40px;text-align:left}.feature-badge{display:inline-block;background:rgba(112,0,255,0.06);color:var(--accent);font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;padding:6px 12px;border-radius:30px;margin-bottom:10px}.grid-templates{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:30px;margin-top:20px}@media(max-width:480px){.grid-templates{grid-template-columns:1fr;gap:20px}}.browser-mock{background:#fff;border:1px solid var(--border);border-radius:24px;overflow:hidden;box-shadow:0 15px 35px rgba(0,0,0,0.03);display:flex;flex-direction:column;position:relative;transition:all 0.4s cubic-bezier(0.165,0.84,0.44,1)}.browser-mock:hover{transform:translateY(-5px);box-shadow:0 25px 50px rgba(0,0,0,0.08)}.browser-bar{background:#f1f3f5;padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border)}.circle-group{display:flex;gap:5px}.circle-btn{width:8px;height:8px;border-radius:50%;background:#ccc}.circle-btn.r{background:#ff5f56}.circle-btn.y{background:#ffbd2e}.circle-btn.g{background:#27c93f}.browser-url{background:#fff;font-size:0.65rem;color:#666;padding:4px 10px;border-radius:6px;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:monospace;border:1px solid rgba(0,0,0,0.03)}.preview-viewport{aspect-ratio:9/16;width:100%;background:#0a0a16;position:relative;overflow:hidden}.preview-viewport iframe{width:100%;height:100%;border:none;pointer-events:none}.hover-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);backdrop-filter:blur(4px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:15px;opacity:0;transition:all 0.35s ease;z-index:10}.browser-mock:hover .hover-overlay{opacity:1}.select-btn{text-decoration:none;background:#fff;color:#000;padding:12px 24px;border-radius:14px;font-size:0.85rem;font-weight:700;box-shadow:0 10px 25px rgba(0,0,0,0.1);transition:all 0.3s ease;border:1px solid transparent}.select-btn:hover{background:#000;color:#fff;transform:scale(1.05)}.template-meta{padding:15px 20px;background:#fff;display:flex;justify-content:between;align-items:center;border-top:1px solid var(--border)}.template-title{font-size:0.85rem;font-weight:600;color:var(--text)}.template-route{font-size:0.75rem;color:#888;font-family:monospace}
+    </style>
+</head>
+<body>
+
+    <div class="nebula-bg"></div>
+
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="https://growshal.com/wp-content/uploads/2023/12/cropped-admin-ajax2.png" class="nav-logo" alt="GrowShal Logo">
+                <span>GROWSHAL</span>
+            </div>
+            <a href="/pricing" class="nav-pro-btn"><i class="fas fa-crown"></i> Pro Plan</a>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        
+        <div class="header-block">
+            <div class="feature-badge">Layout Configuration Core</div>
+            <h1 style="font-size: 2.2rem; font-weight: 300; letter-spacing: -0.5px;">Cricket Trading <b>Landing Pages</b></h1>
+            <p style="font-size: 0.95rem; color: #666; margin-top: 5px;">Apne conversion scaling ke liye premium high-speed performance design choose karein.</p>
+        </div>
+
+        <div class="grid-templates" id="templatesGrid"></div>
+
+    </div>
+
+    <script>
+        // Central Framework Matrix Routing Data mapping system
+        const TEMPLATE_CONFIGS = [
+            { id: 1, displayPath: "/cricket", editPath: "/c" },
+            { id: 2, displayPath: "/crickett", editPath: "/cc" },
+            { id: 3, displayPath: "/crickettt", editPath: "/ccc" },
+            { id: 4, displayPath: "/cricketttt", editPath: "/cccc" },
+            { id: 5, displayPath: "/crickettttt", editPath: "/ccccc" },
+            { id: 6, displayPath: "/cricketttttt", editPath: "/cccccc" },
+            { id: 7, displayPath: "/crickettttttt", editPath: "/ccccccc" },
+            { id: 8, displayPath: "/cricketttttttt", editPath: "/cccccccc" },
+            { id: 9, displayPath: "/crickettttttttt", editPath: "/ccccccccc" }
+        ];
+
+        const gridContainer = document.getElementById('templatesGrid');
+        const hostOrigin = window.location.origin;
+
+        // Loop to safely inject all 9 mockup nodes
+        TEMPLATE_CONFIGS.forEach(config => {
+            // Generate standard clean dynamic preview address matching your specification
+            const demoPreviewUrl = `${hostOrigin}${config.displayPath}#yourchannellink#channel%20name%20here#5#000`;
+
+            const card = document.createElement('div');
+            card.className = 'browser-mock';
+            card.innerHTML = `
+                <div class="browser-bar">
+                    <div class="circle-group">
+                        <div class="circle-btn r"></div>
+                        <div class="circle-btn y"></div>
+                        <div class="circle-btn g"></div>
+                    </div>
+                    <div class="browser-url" title="${demoPreviewUrl}">${demoPreviewUrl}</div>
+                </div>
+
+                <div class="preview-viewport">
+                    <iframe src="${demoPreviewUrl}" loading="lazy"></iframe>
+                    
+                    <div class="hover-overlay">
+                        <a href="${hostOrigin}${config.editPath}" class="select-btn">
+                            <i class="fas fa-mouse-pointer"></i> Select Design
+                        </a>
+                    </div>
+                </div>
+
+                <div class="template-meta">
+                    <div class="template-title">Template v${config.id} Core</div>
+                    <div class="template-route">${config.editPath}</div>
+                </div>
+            `;
+            gridContainer.appendChild(card);
+        });
+    </script>
+</body>
+</html>
