@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>✨ Premium Channel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:Poppins,sans-serif;color:#fff;display:flex;justify-content:center;align-items:center;min-height:100vh;background:url('https://files.123freevectors.com/wp-content/original/145991-cool-pink-lights-background.jpg') no-repeat center/cover}body::before{content:"";position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:-1}.wrap{max-width:420px;width:100%;padding:20px}.card{background:rgba(255,255,255,0.2);backdrop-filter:blur(12px);border-radius:22px;padding:20px;margin-bottom:15px;text-align:center;border:1px solid rgba(255,255,255,0.3);box-shadow:0 10px 40px rgba(0,0,0,0.5)}.dp{width:110px;height:110px;margin:0 auto 12px;border-radius:50%;overflow:hidden;border:3px solid #ff9eb5;box-shadow:0 0 25px rgba(255,105,135,0.6)}.dp img{width:100%;height:100%;object-fit:cover}.name{font-family:'Playfair Display',serif;font-size:28px;font-weight:600;background:linear-gradient(90deg,#fff,#ffd1dc,#ff8fab);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:1px}.sub{font-size:13px;margin-top:6px;color:#ffe4ec}.hook{font-size:20px;font-weight:600;margin-bottom:10px;color:#fff}.desc{font-size:14px;line-height:1.6;color:#ffe4ec}.stats{display:flex;gap:10px;margin:15px 0}.stat{flex:1;background:rgba(0,0,0,0.3);padding:10px;border-radius:12px;font-size:12px}.stat b{display:block;color:#ffb3c6;font-size:18px}.btn{display:block;margin:18px auto 0;padding:14px;border-radius:40px;background:linear-gradient(135deg,#ff4d6d,#ff8fab);color:#fff;font-weight:600;text-decoration:none;text-align:center;transition:.2s;box-shadow:0 6px 20px rgba(255,77,109,0.5)}.btn:active{transform:scale(.95)}.bottom{position:fixed;bottom:0;left:0;width:100%;padding:12px;background:rgba(0,0,0,0.7);backdrop-filter:blur(10px)}.footer-btn{display:block;margin:auto;max-width:420px;padding:14px;border-radius:40px;background:linear-gradient(135deg,#ff4d6d,#ff758f);color:#fff;font-weight:600;text-decoration:none;text-align:center}.timer{font-size:12px;margin-top:10px;color:#ffd6e0}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="dp">
+        <img id="profileDp" src="https://d1yei2z3i6k35z.cloudfront.net/13184094/69ceeff1d6e694.11926680_download3.jfif" alt="Profile DP">
+      </div>
+      <div class="name" id="channelName">✨ Premium Channel</div>
+      <div class="sub">♥️ India's Most Loved Predictions</div>
+    </div>
+    <div class="card">
+      <div class="hook">♥️ Daily Winning Predictions</div>
+      <div class="desc">
+        Match • Toss • Session tips 💎 <br>
+        Trusted by thousands of users ♥️ <br>
+        Simple & safe predictions everyday
+      </div>
+      <div class="stats">
+        <div class="stat"><b>94%</b>Accuracy</div>
+        <div class="stat"><b>22K+</b>Users</div>
+        <div class="stat"><b>Daily</b>Tips</div>
+      </div>
+      <a id="mainJoinBtn" href="https://t.me/quicklygrow" class="btn">♥️ JOIN TELEGRAM NOW</a>
+      <div class="timer" id="timer">⏳ Redirecting in 6s</div>
+    </div>
+  </div>
+  <div class="bottom">
+    <a id="footerJoinBtn" href="https://t.me/quicklygrow" class="footer-btn">💌 JOIN FREE CHANNEL</a>
+  </div>
+
+  <script>
+    (function() {
+      // --- DP IMAGES ARRAY (Index 1 to 9) ---
+      const DP_IMAGES = [
+        "",
+        "https://sportsdp.com/blog/wp-content/uploads/2025/09/cricket-dp-1.jpg",
+        "https://img.magnific.com/premium-photo/cricket-ball-bat_1037680-44301.jpg",
+        "https://avatars.githubusercontent.com/u/25204160?v=4",
+        "https://inod.site/buy_nod32/wp-content/uploads/2024/12/telgrampng.parspng.com-12-300x300-1.png",
+        "https://cdn.dribbble.com/userupload/31247542/file/original-6bffca75489b498ac197da299a340baa.gif",
+        "https://media.tenor.com/qBmfmGXOIcsAAAAj/utya-utya-duck.gif",
+        "https://cdn-icons-gif.flaticon.com/11919/11919493.gif",
+        "https://static.vecteezy.com/system/resources/previews/031/557/862/non_2x/hide-icon-vector.jpg",
+        "https://media.tenor.com/rihVeMBZWjcAAAAM/utya-utya-duck.gif"
+      ];
+
+      // --- ROUTING LOGIC ---
+      function getHashParts() {
+        const hash = window.location.hash;
+        if (!hash || hash === "#" || hash.length <= 1) {
+          return [];
+        }
+        return hash.substring(1).split('#');
+      }
+
+      function redirectTo(path) {
+        window.location.href = window.location.origin + path;
+      }
+
+      function isValidParts(parts) {
+        if (parts.length !== 4) return false;
+        for (let i = 0; i < parts.length; i++) {
+          if (!parts[i] || parts[i].trim() === '') return false;
+        }
+        const dpCode = parts[2].trim();
+        if (!/^[1-9]$/.test(dpCode)) return false;
+        if (parts[3].trim() === '') return false;
+        return true;
+      }
+
+      function extractUsername(telegramInput) {
+        if (!telegramInput) return '';
+        let cleaned = telegramInput.trim().replace(/\/$/, '');
+        if (cleaned.includes('t.me/')) {
+          const parts = cleaned.split('t.me/');
+          if (parts.length > 1) {
+            return parts[parts.length - 1].split('/')[0].split('?')[0];
+          }
+        }
+        return cleaned;
+      }
+
+      function applyDynamicData(parts) {
+        const rawTelegram = parts[0].trim();
+        const username = extractUsername(rawTelegram);
+        
+        const channelNameRaw = parts[1].trim();
+        let channelName;
+        try {
+          channelName = decodeURIComponent(channelNameRaw);
+        } catch (e) {
+          channelName = channelNameRaw;
+        }
+        
+        const dpCode = parseInt(parts[2].trim(), 10);
+        const dpImageUrl = DP_IMAGES[dpCode];
+        
+        const pixelId = parts[3].trim();
+
+        const profileImg = document.getElementById('profileDp');
+        if (profileImg && dpImageUrl) {
+          profileImg.src = dpImageUrl;
+        }
+        
+        const nameElement = document.getElementById('channelName');
+        if (nameElement) {
+          nameElement.textContent = channelName || '✨ Premium Channel';
+        }
+        
+        const telegramBaseUrl = `https://t.me/${username}`;
+        const mainBtn = document.getElementById('mainJoinBtn');
+        if (mainBtn) {
+          mainBtn.href = telegramBaseUrl;
+        }
+        const footerBtn = document.getElementById('footerJoinBtn');
+        if (footerBtn) {
+          footerBtn.href = telegramBaseUrl;
+        }
+        
+        window.dynamicTelegramUrl = telegramBaseUrl;
+        
+        injectFacebookPixel(pixelId);
+        
+        document.title = channelName ? `${channelName}™` : 'Shanaya Malik™';
+      }
+
+      function injectFacebookPixel(pixelId) {
+        if (window.fbq) {
+          window.fbq = undefined;
+        }
+        
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        
+        fbq('init', pixelId);
+        fbq('track', 'PageView');
+        
+        let noscript = document.querySelector('noscript');
+        if (!noscript) {
+          noscript = document.createElement('noscript');
+          document.head.appendChild(noscript);
+        }
+        const img = document.createElement('img');
+        img.height = 1;
+        img.width = 1;
+        img.style.display = 'none';
+        img.src = `https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1`;
+        noscript.innerHTML = '';
+        noscript.appendChild(img);
+      }
+
+      function init() {
+        const parts = getHashParts();
+        
+        if (parts.length === 0) {
+          redirectTo('/create-cricket');
+          return;
+        }
+        
+        if (!isValidParts(parts)) {
+          redirectTo('/error');
+          return;
+        }
+        
+        applyDynamicData(parts);
+        startTimer();
+      }
+
+      function startTimer() {
+        let t = 6;
+        const el = document.getElementById("timer");
+        if (!el) return;
+        
+        const targetUrl = window.dynamicTelegramUrl || 'https://t.me/quicklygrow';
+        
+        const x = setInterval(() => {
+          t--;
+          if (el) el.innerText = "⏳ Redirecting in " + t + "s";
+          if (t <= 0) {
+            clearInterval(x);
+            window.location.href = targetUrl;
+          }
+        }, 1000);
+      }
+
+      if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        setTimeout(init, 10);
+      } else {
+        document.addEventListener('DOMContentLoaded', init);
+      }
+    })();
+  </script>
+</body>
+</html>
