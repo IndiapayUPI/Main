@@ -135,7 +135,7 @@
         // 3. Viewer page ka URL banana (assuming admin.html aur viewer.html same folder mein hain)
         // Yeh current path lega aur 'admin.html' ko hata kar 'viewer.html' laga dega
         let currentPath = window.location.href;
-        let baseUrl = currentPath.substring(0, currentPath.lastIndexOf('/')) + '/viewer.html';
+        let baseUrl = currentPath.substring(0, currentPath.lastIndexOf('/')) + '/GST';
         
         // 4. Final Link create karna
         const finalLink = `${baseUrl}?data=${encodedData}`;
