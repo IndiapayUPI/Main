@@ -132,10 +132,9 @@
         // 2. Base64 Encode karna (btoa)
         const encodedData = btoa(rawData);
 
-        // 3. Viewer page ka URL banana (assuming admin.html aur viewer.html same folder mein hain)
-        // Yeh current path lega aur 'admin.html' ko hata kar 'viewer.html' laga dega
+        // 3. Viewer page ka URL banana
         let currentPath = window.location.href;
-        let baseUrl = currentPath.substring(0, currentPath.lastIndexOf('') + ('/GST') ;
+        let baseUrl = currentPath.substring(0, currentPath.lastIndexOf('/') + 1) + 'viewer.html';
         
         // 4. Final Link create karna
         const finalLink = `${baseUrl}?data=${encodedData}`;
