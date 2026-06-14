@@ -132,12 +132,11 @@
         // 2. Base64 Encode karna (btoa)
         const encodedData = btoa(rawData);
 
-        // 3. Viewer page ka URL banana
-        let currentPath = window.location.href;
-        let baseUrl = currentPath.substring(0, currentPath.lastIndexOf('/') + 1) + 'viewer.html';
+        // 3. Site URL (Origin) extract karna (e.g., http://localhost:5500 or https://mysite.com)
+        let siteUrl = window.location.origin;
         
-        // 4. Final Link create karna
-        const finalLink = `${baseUrl}?data=${encodedData}`;
+        // 4. Final Link create karna matching your exact route format
+        const finalLink = `${siteUrl}/GST?data=${encodedData}`;
 
         // UI par update karna
         document.getElementById('generatedLinkText').innerHTML = `<a href="${finalLink}" target="_blank" id="finalUrl">${finalLink}</a>`;
