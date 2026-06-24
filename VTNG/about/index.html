@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>About & Compliance Disclaimer</title>
+    <!-- Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* RESET & BASE STYLES */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Montserrat', sans-serif; 
+            -webkit-tap-highlight-color: transparent;
+        }
+        body { 
+            background: #FDFEF7; 
+            display: flex; 
+            justify-content: center; 
+            min-height: 100vh; 
+            color: #111111;
+        }
+        
+        /* 9:16 COMPATIBLE CONTAINER */
+        .container { 
+            width: 100%; 
+            max-width: 450px; 
+            background: #FDFEF7;
+            min-height: 100vh;
+            display: flex; 
+            flex-direction: column; 
+            position: relative;
+            box-shadow: 0 0 35px rgba(0,0,0,0.06);
+            padding: 20px;
+        }
+
+        /* BACK BUTTON HEADER AREA */
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .back-btn {
+            background: #111111;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #FDFEF7;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* COMPLIANCE INFORMATION INFO CARDS */
+        .section-title {
+            font-size: 21px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+        .info-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.01);
+        }
+        .info-card p {
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: #334155;
+            margin-bottom: 14px;
+        }
+        .info-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* TELEGRAM AGENCY LINKS */
+        .tg-link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            padding: 14px 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #111111;
+            font-weight: 600;
+            font-size: 13px;
+            margin-top: 10px;
+            transition: all 0.2s;
+        }
+        .tg-link-btn:hover {
+            border-color: #229ED9;
+            background: #f0f9ff;
+        }
+        .tg-username {
+            color: #229ED9;
+            font-weight: 700;
+        }
+        .privacy-pill {
+            background: #f1f5f9;
+            color: #64748b;
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+            border: 1px dashed #cbd5e1;
+        }
+
+        /* RED CRITICAL RISK WARNING CARD */
+        .disclaimer-card {
+            background: #fff5f5;
+            border: 2px dashed #ff4d4d;
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: auto; 
+        }
+        .disclaimer-title {
+            color: #d93838;
+            font-size: 15px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .disclaimer-text {
+            color: #551a1a;
+            font-size: 12.5px;
+            line-height: 1.6;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        /* STRICT REPORT BUTTON */
+        .report-btn {
+            background: #ff4d4d;
+            color: #ffffff;
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            border: none;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 14px rgba(255, 77, 77, 0.25);
+        }
+        .report-btn:hover {
+            background: #e03b3b;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <!-- HEADER / STRICT PATH EXTRACTION BACK LOGIC -->
+    <header class="header">
+        <button class="back-btn" onclick="goBack()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Back
+        </button>
+    </header>
+
+    <!-- CONTENT MANAGEMENT INSIGHTS -->
+    <h2 class="section-title">Transparency Registry</h2>
+    
+    <div class="info-card">
+        <p>This digital promotional landing framework was conceptualized, designed, and hosted by <strong>Growshal Marketing Agency</strong>.</p>
+        
+        <p>The operational administration and technical publishing contract for this framework was requested by:</p>
+        
+        <!-- Agency Access Telegram Link -->
+        <a href="https://t.me/growshal" target="_blank" class="tg-link-btn">
+            <span>Marketing Agency</span>
+            <span class="tg-username">@growshal</span>
+        </a>
+
+        <!-- Encrypted Client Information Reference -->
+        <div class="tg-link-btn" style="cursor: default;">
+            <span>Requested Client</span>
+            <span class="privacy-pill">Hide by Growshal [Privacy Reason]</span>
+        </div>
+    </div>
+
+    <!-- RISK DISCLOSURE SHEET (Meta Compliant Safety) -->
+    <div class="disclaimer-card">
+        <div class="disclaimer-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            Strict Risk Disclaimer
+        </div>
+        <p class="disclaimer-text">
+            Don't blindly trust. Apni poorn responsibility par hi capital allocation, education features ya koi bhi financial parameters spend karein. Agar is channel par kisi bhi tarah ka fraud, scam ya individual capital distortion hota hai, toh <strong>growshal</strong> iska kisi bhi roop me responsible nahi hoga. Yeh ek paid commercial setup hai. Any financial market investments are heavily subject to high market uncertainties.
+        </p>
+        
+        <!-- TELEGRAM PRE-FILLED AUTOMATIC COMPLAINT REGISTRY -->
+        <a id="reportSystemBtn" href="#" target="_blank" class="report-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+            File Page Grievance Report
+        </a>
+    </div>
+
+</div>
+
+<script>
+    // 1. STRICT REMOVE PATH BACK SYSTEM LOGIC
+    function goBack() {
+        let currentUrl = window.location.href;
+        // Strictly matches and strips out trailing about structures completely
+        let primaryUrl = currentUrl.replace(/(\/about|\/about\.html|about)\/?$/, '');
+        window.location.href = primaryUrl === "" ? "/" : primaryUrl;
+    }
+
+    // 2. CONTEXT AWARE COMPLAINT GENERATOR
+    window.onload = function() {
+        let currentUrl = window.location.href;
+        let originalLandingUrl = currentUrl.replace(/(\/about|\/about\.html|about)\/?$/, '');
+        
+        // Structured Prefilled parameters for agency routing
+        let textBody = `Hello Growshal Compliance Unit,\n\nI wish to file a standard operational report against the verified learning interface hosted by your cluster.\n\n[System Reference Logs]\n• Tracked URL Node: ${originalLandingUrl}\n• Context Status: Public Audit Request\n• Nature of Concern: (Please write details here...)`;
+        
+        let safeTextPayload = encodeURIComponent(textBody);
+        document.getElementById('reportSystemBtn').href = `https://t.me/growshal?text=${safeTextPayload}`;
+    }
+</script>
+
+</body>
+</html>
