@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uniquezone</title>
+    <title>Uniquezone Secure Shell</title>
     <!-- Tailwind CSS v4 -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
@@ -13,7 +13,7 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background-color: #050508;
+            background-color: #040406;
             font-family: sans-serif;
         }
 
@@ -36,20 +36,20 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: radial-gradient(circle at center, #0c0d14 0%, #040406 100%);
+            background: radial-gradient(circle at center, #0a0b10 0%, #020204 100%);
             z-index: 9999;
             transition: all 0.5s cubic-bezier(0.76, 0, 0.24, 1);
         }
 
         .ui-loader {
-            width: 380px;
+            width: 410px; /* थोड़ा चौड़ा किया ताकि सारा मैट्रिक्स डेटा फिट आ सके */
             border-radius: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            background: rgba(10, 11, 18, 0.6);
-            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8), 0 0 40px rgba(110, 231, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(8, 9, 15, 0.75);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9), 0 0 40px rgba(110, 231, 255, 0.02);
             overflow: hidden;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             position: relative;
             font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
         }
@@ -60,7 +60,7 @@
             gap: 10px;
             padding: 14px 16px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0));
         }
         .term-bar .dot {
             width: 11px;
@@ -76,27 +76,30 @@
 
         .term-title {
             margin-left: auto;
-            font: 700 11px/1 ui-sans-serif, system-ui;
-            color: rgba(110, 231, 255, 0.8);
-            letter-spacing: 1px;
+            font: 700 10px/1 ui-sans-serif, system-ui;
+            color: #6ee7ff;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
         }
 
         .term-body {
             padding: 18px 18px 20px;
             color: rgba(255, 255, 255, 0.85);
-            font-size: 12px;
+            font-size: 11.5px;
             line-height: 1.6;
         }
 
         .line {
             margin: 6px 0;
-            display: none; /* JS इसे लाइन-बाय-लाइन ट्रिगर करेगा */
+            display: none;
             align-items: center;
+            justify-content: space-between; /* डेटा को लेफ्ट-राइट अलाइन करने के लिए */
         }
         .line.visible { display: flex; }
         .line b { color: #6ee7ff; }
         .muted { color: rgba(255, 255, 255, 0.45); }
+        .neon-amber { color: #fbbf24; }
+        .neon-purple { color: #c084fc; }
 
         .tag {
             display: inline-flex;
@@ -109,16 +112,17 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
             background: rgba(255, 255, 255, 0.02);
             font-weight: 800;
-            font-size: 10px;
+            font-size: 9px;
         }
         .tag.ok { color: #51ffb8; border-color: rgba(81, 255, 184, 0.2); }
         .tag.run { color: #b08cff; border-color: rgba(176, 140, 255, 0.2); }
+        .tag.warn { color: #f59e0b; border-color: rgba(245, 158, 11, 0.2); }
 
         .cursor {
             display: inline-block;
-            width: 8px;
-            height: 13px;
-            margin-left: 6px;
+            width: 7px;
+            height: 12px;
+            margin-left: 4px;
             background: #b08cff;
             box-shadow: 0 0 10px #b08cff;
             animation: blink 0.8s steps(2, end) infinite;
@@ -130,23 +134,23 @@
             border-radius: 999px;
             position: relative;
             overflow: hidden;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             display: none;
         }
         .progress.visible { display: block; }
 
         .fill {
             position: absolute;
-            inset: 0 100% 0 0; /* JS से इसकी विड्थ कंट्रोल होगी */
+            inset: 0 100% 0 0;
             background: linear-gradient(90deg, #6ee7ff, #b08cff);
-            transition: right 0.1s ease-out; /* रियल स्मूथ इंक्रीमेंट */
+            transition: right 0.15s ease-out;
         }
         
         .glint {
             position: absolute;
             inset: -30% -40%;
-            background: linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.2) 25%, transparent 45%);
+            background: linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.15) 25%, transparent 45%);
             animation: glintMove 1.5s linear infinite;
             mix-blend-mode: screen;
         }
@@ -165,16 +169,25 @@
         <div class="ui-loader" id="hacker-terminal" role="status" aria-label="Loading">
             <div class="term-bar">
                 <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                <div class="term-title">SECURE_CONNECT.SH</div>
+                <div class="term-title">ONION_ROUTER_V4.SH</div>
             </div>
 
             <div class="term-body">
-                <div class="line" id="line1"><b>$</b> uniquezone --connect</div>
-                <div class="line muted" id="line2">› initializing handshake [<span id="ms-timer">0ms</span>]...</div>
-                <div class="line" id="line3"><span class="tag ok">OK</span> tunnel secured via async_proxy</div>
+                <div class="line" id="line1">
+                    <span><b>$</b> tor --bridge uniquezone.io</span>
+                    <span class="muted">[INIT]</span>
+                </div>
+                <div class="line muted" id="line2">
+                    <span>› pinging nearest relays...</span>
+                    <span class="neon-amber" id="real-ping">checking ping...</span>
+                </div>
+                <div class="line" id="line3">
+                    <span><span class="tag ok">OK</span> tunneling to dark web layer</span>
+                    <span class="neon-purple">node_active</span>
+                </div>
                 <div class="line" id="line4">
-                    <span class="tag run">FETCH</span> pulling secure_dom (<span id="byte-counter">0kb</span>)
-                    <span class="cursor" id="term-cursor" aria-hidden="true"></span>
+                    <span><span class="tag run">PROXY</span> syncing deep_dom (<span id="byte-counter">0kb</span>)</span>
+                    <span><span id="speed-indicator">0.0 Mbps</span><span class="cursor" id="term-cursor" aria-hidden="true"></span></span>
                 </div>
 
                 <div class="progress" id="term-progress">
@@ -185,11 +198,15 @@
         </div>
     </div>
 
-    <!-- Fullscreen Site Iframe -->
+    <!-- 
+      Instagram In-App Browser Strict Mode Frame:
+      हमने 'allow-top-navigation' को जानबूझकर हटा दिया है। इससे कोई भी इंटरनल या एक्सटर्नल रीडायरेक्ट 
+      पैरेंट विंडो (Main Page) को हैक या चेंज नहीं कर पाएगा, सब कुछ इसी iframe के पिंजरे में खुलेगा।
+    -->
     <iframe 
         id="site-frame" 
-        src="https://google.com" 
-        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals"
+        src="https://learn.uniquezone.io" 
+        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals allow-downloads"
         allow="geolocation; microphone; camera; midi; encrypted-media; gyroscope; accelerometer; clipboard-write">
     </iframe>
 
@@ -207,87 +224,88 @@
             const fill = document.getElementById('progress-fill');
             const cursor = document.getElementById('term-cursor');
             
-            const msTimer = document.getElementById('ms-timer');
+            const realPingText = document.getElementById('real-ping');
             const byteCounter = document.getElementById('byte-counter');
+            const speedIndicator = document.getElementById('speed-indicator');
 
             let currentProgress = 0;
             let iframeLoaded = false;
-            let targetBytes = Math.floor(Math.random() * (1400 - 900 + 1)) + 900; // हर बार अलग बाइट साइज (900kb - 1400kb)
+            let totalBytes = Math.floor(Math.random() * (1600 - 950 + 1)) + 950; 
 
-            // 1. लाइव टाइमर एनीमेशन (असली जैसा दिखाने के लिए रैंडम स्पीड)
-            let start = performance.now();
-            let timerInterval = setInterval(() => {
-                let diff = Math.floor(performance.now() - start);
-                msTimer.textContent = diff + 'ms';
-            }, 40);
-
-            // 2. सीक्वेंशियल शेल बूट
-            setTimeout(() => l1.classList.add('visible'), 200);
-            setTimeout(() => l2.classList.add('visible'), 600);
+            // --- 1. असली इंटरनेट स्पीड और लेटेंसी (MS) डिटेक्शन ---
+            let pingStart = performance.now();
             
-            setTimeout(() => {
-                clearInterval(timerInterval); // टाइमर लॉक करें
-                l3.classList.add('visible');
-            }, 1300);
+            // हम एक हल्की सी इमेज या फाइल रिक्वेस्ट भेजकर असली पिंग टाइम (ms) कैलकुलेट करते हैं
+            fetch('https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=10', { mode: 'no-cors', cache: 'no-store' })
+            .then(() => {
+                let pingDuration = Math.round(performance.now() - pingStart);
+                realPingText.textContent = pingDuration + 'ms (Tor Active)';
+                
+                // असली पिंग के आधार पर दिखावटी नेटवर्क स्पीड सेट करना
+                let mbps = (1000 / pingDuration * 5).toFixed(1);
+                speedIndicator.textContent = mbps + ' Mbps';
+            })
+            .catch(() => {
+                // ऑफलाइन या ब्लॉक होने की स्थिति में रैंडम सेफ फॉलबैक (ताकि एरर न दिखे)
+                realPingText.textContent = Math.floor(Math.random() * (95 - 45 + 1) + 45) + 'ms (Tor Active)';
+                speedIndicator.textContent = (Math.random() * (45 - 12) + 12).toFixed(1) + ' Mbps';
+            });
+
+            // --- 2. सीक्वेंशियल डार्क वेब बूट सीक्वेंस ---
+            setTimeout(() => l1.classList.add('visible'), 250);
+            setTimeout(() => l2.classList.add('visible'), 650);
+            setTimeout(() => l3.classList.add('visible'), 1450);
 
             setTimeout(() => {
                 l4.classList.add('visible');
                 progress.classList.add('visible');
-                startRealLoading();
-            }, 1800);
+                startDynamicLoading();
+            }, 1950);
 
-            // 3. असली नेटवर्क डिपेंडेंट प्रोग्रेस लॉजिक
-            function startRealLoading() {
-                // डिवाइस की परफॉरमेंस चेक करना (Slower CPU = Slower base speed)
-                let hardwareAnticipation = navigator.hardwareConcurrency ? Math.min(navigator.hardwareConcurrency, 8) : 4;
+            // --- 3. रियल-टाइम लोड मॉनिटरिंग सिस्टम ---
+            function startDynamicLoading() {
+                let cpuCores = navigator.hardwareConcurrency ? Math.min(navigator.hardwareConcurrency, 8) : 4;
                 
                 let progressInterval = setInterval(() => {
                     if (!iframeLoaded) {
-                        // जब तक iframe लोड नहीं होता, तब तक धीरे-धीरे प्रोग्रेस बढ़ाएं (Fake strictly dependent growth)
-                        // 85% पर जाकर यह तब तक होल्ड करेगा जब तक असली नेटवर्क सिग्नल नहीं मिलता
-                        if (currentProgress < 85) {
-                            currentProgress += Math.random() * (hardwareAnticipation / 2);
-                            if (currentProgress > 85) currentProgress = 85;
+                        // जब तक बैकएंड पर डोमेन पूरी तरह से कनेक्ट और लोड नहीं हो जाता, 88% पर रोकें
+                        if (currentProgress < 88) {
+                            currentProgress += Math.random() * (cpuCores / 2.2);
+                            if (currentProgress > 88) currentProgress = 88;
                         }
                     } else {
-                        // जैसे ही iframe लोड सिग्नल्स आएं, तेजी से 100% कर दें
-                        currentProgress += Math.random() * 15 + 5;
+                        // जैसे ही असली लोड फिनिश सिग्नल मिले, बार को तुरंत 100% पर पुश करें
+                        currentProgress += Math.random() * 18 + 7;
                         if (currentProgress >= 100) {
                             currentProgress = 100;
                             clearInterval(progressInterval);
-                            endLoadingSequence();
+                            finishHackerSequence();
                         }
                     }
 
-                    // प्रोग्रेस बार अपडेट करना (CSS right property का उपयोग)
                     fill.style.right = (100 - currentProgress) + '%';
-                    
-                    // बाइट काउंटर को रियल-टाइम बढ़ाना
-                    let currentBytes = Math.floor((currentProgress / 100) * targetBytes);
-                    byteCounter.textContent = currentBytes + 'kb';
-
-                }, 80 + (Math.random() * 50)); // रैंडम रिफ्रेश रेट ताकि प्रोग्रेस झटका न लगे
+                    byteCounter.textContent = Math.floor((currentProgress / 100) * totalBytes) + 'kb';
+                }, 90);
             }
 
-            // 4. IFRAME का असली लोड लिसनर
+            // --- 4. IFRAME का असली लोड लिसनर ---
             iframe.addEventListener('load', function() {
                 iframeLoaded = true;
             });
 
-            // बैकअप सेफ्टी: अगर किसी कारणवश इंटरनेट बहुत ही घटिया हो या लोड इवेंट ब्लॉक हो, तो 8 सेकंड में खुद रिलीज हो जाए
+            // सेफ्टी ओवरराइड: अगर यूजर का नेट बहुत स्लो हो, तो 8.5 सेकंड में फोर्स-ओपन करें
             setTimeout(() => {
                 iframeLoaded = true;
-            }, 8000);
+            }, 8500);
 
-            // 5. क्लोजिंग एंड एग्जिट
-            function endLoadingSequence() {
+            // --- 5. क्लोजिंग एनीमेशन ---
+            function finishHackerSequence() {
                 setTimeout(() => {
                     terminal.classList.add('done');
-                    if(cursor) cursor.remove();
+                    if (cursor) cursor.remove();
                     
-                    // आउट्रो ट्रांजिशन
                     loaderContainer.style.opacity = '0';
-                    loaderContainer.style.transform = 'scale(0.97)';
+                    loaderContainer.style.transform = 'scale(0.96) translateY(-10px)';
                     
                     iframe.style.opacity = '1';
                     iframe.style.transform = 'scale(1)';
@@ -295,8 +313,15 @@
                     setTimeout(() => {
                         loaderContainer.remove();
                     }, 500);
-                }, 400);
+                }, 500);
             }
+
+            // --- 6. इंस्टाग्राम-स्टाइल एंकर प्रोटेक्शन (Strict Navigation Fix) ---
+            // अगर आईफ्रेम के अंदर की कोई स्क्रिप्ट या पॉपअप पैरेंट विंडो को बदलने की कोशिश करेगी, तो यह उसे प्रिवेंट करेगा
+            window.onbeforeunload = function() {
+                // यह पैरेंट टैब को अचानक से क्लोज या रीडायरेक्ट होने से प्रोटेक्ट करता है
+                return "Navigation is locked inside the secure container.";
+            };
         });
     </script>
 </body>
