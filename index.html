@@ -4,45 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uniquezone</title>
-    <!-- Tailwind CSS included for structural elements, custom CSS handles the lux aesthetic -->
+    <!-- Tailwind CSS v4 -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
-        /* 
-         --- LUXURY THEME ---
-        */
-        :root {
-            --bg-deep-charcoal: #0a0a0c;
-            --gold-accent: #f59e0b;
-            --gold-subtle: rgba(245, 158, 11, 0.6);
-            --luxury-text: #eaeaea;
-            --subtle-text: rgba(234, 234, 234, 0.7);
-            --transition-ease: cubic-bezier(0.65, 0, 0.35, 1); /* Custom smooth ease */
-        }
-
         body, html {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background-color: var(--bg-deep-charcoal);
-            font-family: 'Georgia', serif; /* Use a sophisticated font */
-            -webkit-font-smoothing: antialiased;
+            background-color: #050508;
+            font-family: sans-serif;
         }
 
-        /* Fullscreen Site Iframe with app-like behavior */
         iframe {
             width: 100%;
             height: 100%;
             border: none;
             opacity: 0;
-            transform: scale(1.03); /* Start slightly larger for entry */
-            transition: opacity 1s var(--transition-ease), transform 1.2s var(--transition-ease);
+            transform: scale(1.01);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
-        /* 
-         --- LOADER CONTAINER (SPLASH) ---
-        */
         #loader-container {
             position: fixed;
             top: 0;
@@ -53,172 +36,156 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            /* Luxurious dark gradient with texture */
-            background: 
-                radial-gradient(circle at 50% 50%, rgba(30, 30, 35, 0.4) 0%, rgba(10, 10, 12, 1) 100%),
-                url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43 0c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 37c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57 13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM58 82c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM43 9c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0 31c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zM78 15c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zm10 24c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zm0 51c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zM53 77c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zM24 62c4.97 0 9-4.03 9-9s-4.03-9-9-9-9 4.03-9 9 4.03 9 9 9zm18-4c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z" fill="%23f59e0b" fill-opacity="0.03" fill-rule="evenodd"/%3E%3C/svg%3E');
+            background: radial-gradient(circle at center, #0c0d14 0%, #040406 100%);
             z-index: 9999;
-            transition: opacity 0.8s var(--transition-ease), transform 0.8s var(--transition-ease), background-color 0.8s var(--transition-ease);
+            transition: all 0.5s cubic-bezier(0.76, 0, 0.24, 1);
         }
 
-        /* 
-         --- LOGO ANIMATION (BRUSHED GOLD) ---
-        */
-        .brand-logo-wrapper {
+        .ui-loader {
+            width: 380px;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(10, 11, 18, 0.6);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8), 0 0 40px rgba(110, 231, 255, 0.02);
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             position: relative;
-            margin-bottom: 3.5rem;
-            perspective: 1000px; /* Enable 3D perspective */
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
         }
 
-        .brand-logo {
-            width: 140px;
-            height: auto;
-            opacity: 0;
-            transform: scale(0.9) rotateY(15deg);
-            filter: grayscale(1) brightness(0.9); /* Initially muted */
-            animation: 
-                logoReveal 1.2s forwards var(--transition-ease),
-                logoFloat 5s infinite ease-in-out 1.2s;
+        .term-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
         }
-
-        /* Entrance animation for the logo */
-        @keyframes logoReveal {
-            to {
-                opacity: 1;
-                transform: scale(1) rotateY(0deg);
-                filter: grayscale(0) brightness(1) drop-shadow(0 0 15px var(--gold-subtle));
-            }
+        .term-bar .dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s;
         }
+        .ui-loader.done .term-bar .dot:nth-child(1) { background: #ff5f56; }
+        .ui-loader.done .term-bar .dot:nth-child(2) { background: #ffbd2e; }
+        .ui-loader.done .term-bar .dot:nth-child(3) { background: #27c93f; }
 
-        /* Subtle, slow floating 'suspended in space' motion */
-        @keyframes logoFloat {
-            0%, 100% { transform: translateY(0px) rotateY(0deg); }
-            50% { transform: translateY(-8px) rotateY(3deg); }
-        }
-
-        /* 
-         --- COMPLEX ORBIT LOADING SPINNER ---
-        */
-        .luxury-spinner {
-            position: relative;
-            width: 70px;
-            height: 70px;
-            margin: 0 auto;
-        }
-
-        .luxury-spinner::before,
-        .luxury-spinner::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 3px solid transparent;
-            border-top-color: var(--gold-accent);
-            animation: spinOrbit 1.5s linear infinite;
-        }
-
-        .luxury-spinner::after {
-            border-top-color: transparent;
-            border-bottom-color: var(--gold-accent);
-            animation-duration: 2.5s;
-            animation-delay: 0.2s;
-        }
-
-        /* The central dot */
-        .luxury-spinner-core {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 12px;
-            height: 12px;
-            background-color: var(--gold-accent);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 15px var(--gold-accent);
-            animation: pulseCore 2s ease-in-out infinite;
-        }
-
-        /* Complex orbital rotation */
-        @keyframes spinOrbit {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Pulsing core */
-        @keyframes pulseCore {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.9; }
-            50% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
-        }
-
-        /* 
-         --- PREMIUM TYPOGRAPHY ---
-        */
-        .lux-text-wrapper {
-            margin-top: 1.5rem;
-            text-align: center;
-        }
-
-        .lux-heading {
-            color: var(--luxury-text);
-            font-weight: 300; /* Light weight for sophistication */
-            font-size: 1.25rem; /* text-lg */
-            letter-spacing: 0.15em; /* Spacing for a premium feel */
+        .term-title {
+            margin-left: auto;
+            font: 700 11px/1 ui-sans-serif, system-ui;
+            color: rgba(110, 231, 255, 0.8);
+            letter-spacing: 1px;
             text-transform: uppercase;
-            opacity: 0;
-            transform: translateY(10px);
-            animation: textReveal 1s forwards ease-out 1.5s;
         }
 
-        .lux-subtext {
-            color: var(--subtle-text);
-            font-weight: 300;
-            font-size: 0.875rem; /* text-sm */
-            margin-top: 0.5rem;
-            letter-spacing: 0.05em;
-            font-style: italic;
-            opacity: 0;
-            animation: textReveal 1s forwards ease-out 1.8s;
+        .term-body {
+            padding: 18px 18px 20px;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 12px;
+            line-height: 1.6;
         }
 
-        /* Reveal animation for the text */
-        @keyframes textReveal {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .line {
+            margin: 6px 0;
+            display: none; /* JS इसे लाइन-बाय-लाइन ट्रिगर करेगा */
+            align-items: center;
         }
+        .line.visible { display: flex; }
+        .line b { color: #6ee7ff; }
+        .muted { color: rgba(255, 255, 255, 0.45); }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 5px;
+            height: 18px;
+            border-radius: 5px;
+            margin-right: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.02);
+            font-weight: 800;
+            font-size: 10px;
+        }
+        .tag.ok { color: #51ffb8; border-color: rgba(81, 255, 184, 0.2); }
+        .tag.run { color: #b08cff; border-color: rgba(176, 140, 255, 0.2); }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 13px;
+            margin-left: 6px;
+            background: #b08cff;
+            box-shadow: 0 0 10px #b08cff;
+            animation: blink 0.8s steps(2, end) infinite;
+        }
+
+        .progress {
+            margin-top: 16px;
+            height: 6px;
+            border-radius: 999px;
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            display: none;
+        }
+        .progress.visible { display: block; }
+
+        .fill {
+            position: absolute;
+            inset: 0 100% 0 0; /* JS से इसकी विड्थ कंट्रोल होगी */
+            background: linear-gradient(90deg, #6ee7ff, #b08cff);
+            transition: right 0.1s ease-out; /* रियल स्मूथ इंक्रीमेंट */
+        }
+        
+        .glint {
+            position: absolute;
+            inset: -30% -40%;
+            background: linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.2) 25%, transparent 45%);
+            animation: glintMove 1.5s linear infinite;
+            mix-blend-mode: screen;
+        }
+
+        @keyframes glintMove {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        @keyframes blink { 0%, 100% { opacity: 0.1; } 50% { opacity: 1; } }
     </style>
 </head>
 <body>
 
-    <!-- Splash / Luxury Loader Screen -->
+    <!-- Splash Screen -->
     <div id="loader-container">
-        <!-- Suspended & Floating Brand Logo -->
-        <div class="brand-logo-wrapper">
-            <img src="https://growshal.com/wp-content/uploads/2023/12/cropped-admin-ajax2.png" alt="Growshal Logo" class="brand-logo">
-        </div>
-        
-        <!-- Complex 'Orbit' Loading Animation -->
-        <div class="luxury-spinner">
-            <div class="luxury-spinner-core"></div>
-        </div>
+        <div class="ui-loader" id="hacker-terminal" role="status" aria-label="Loading">
+            <div class="term-bar">
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                <div class="term-title">SECURE_CONNECT.SH</div>
+            </div>
 
-        <!-- Sophisticated Typography -->
-        <div class="lux-text-wrapper px-4">
-            <h2 class="lux-heading">Connecting to DARK WEB</h2>
-            <p class="lux-subtext">
-                World's safe browsing with no tracking...
-            </p>
+            <div class="term-body">
+                <div class="line" id="line1"><b>$</b> uniquezone --connect</div>
+                <div class="line muted" id="line2">› initializing handshake [<span id="ms-timer">0ms</span>]...</div>
+                <div class="line" id="line3"><span class="tag ok">OK</span> tunnel secured via async_proxy</div>
+                <div class="line" id="line4">
+                    <span class="tag run">FETCH</span> pulling secure_dom (<span id="byte-counter">0kb</span>)
+                    <span class="cursor" id="term-cursor" aria-hidden="true"></span>
+                </div>
+
+                <div class="progress" id="term-progress">
+                    <div class="fill" id="progress-fill"></div>
+                    <div class="glint" aria-hidden="true"></div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- 
-      Fullscreen Site Iframe with app-like behavior.
-      sandbox forces internal navigation for links, ensuring they load *within* the app.
-    -->
+    <!-- Fullscreen Site Iframe -->
     <iframe 
         id="site-frame" 
         src="https://learn.uniquezone.io" 
@@ -228,25 +195,108 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const loader = document.getElementById('loader-container');
+            const loaderContainer = document.getElementById('loader-container');
+            const terminal = document.getElementById('hacker-terminal');
             const iframe = document.getElementById('site-frame');
+            
+            const l1 = document.getElementById('line1');
+            const l2 = document.getElementById('line2');
+            const l3 = document.getElementById('line3');
+            const l4 = document.getElementById('line4');
+            const progress = document.getElementById('term-progress');
+            const fill = document.getElementById('progress-fill');
+            const cursor = document.getElementById('term-cursor');
+            
+            const msTimer = document.getElementById('ms-timer');
+            const byteCounter = document.getElementById('byte-counter');
 
-            // 3 seconds delay for the full luxury sequence to complete
-            setTimeout(function() {
-                // Phase 1: Loader container fades and moves slightly up
-                loader.style.opacity = '0';
-                loader.style.transform = 'translateY(-20px) scale(1.02)';
-                loader.style.backgroundColor = 'transparent'; // Fades gradient texture
+            let currentProgress = 0;
+            let iframeLoaded = false;
+            let targetBytes = Math.floor(Math.random() * (1400 - 900 + 1)) + 900; // हर बार अलग बाइट साइज (900kb - 1400kb)
+
+            // 1. लाइव टाइमर एनीमेशन (असली जैसा दिखाने के लिए रैंडम स्पीड)
+            let start = performance.now();
+            let timerInterval = setInterval(() => {
+                let diff = Math.floor(performance.now() - start);
+                msTimer.textContent = diff + 'ms';
+            }, 40);
+
+            // 2. सीक्वेंशियल शेल बूट
+            setTimeout(() => l1.classList.add('visible'), 200);
+            setTimeout(() => l2.classList.add('visible'), 600);
+            
+            setTimeout(() => {
+                clearInterval(timerInterval); // टाइमर लॉक करें
+                l3.classList.add('visible');
+            }, 1300);
+
+            setTimeout(() => {
+                l4.classList.add('visible');
+                progress.classList.add('visible');
+                startRealLoading();
+            }, 1800);
+
+            // 3. असली नेटवर्क डिपेंडेंट प्रोग्रेस लॉजिक
+            function startRealLoading() {
+                // डिवाइस की परफॉरमेंस चेक करना (Slower CPU = Slower base speed)
+                let hardwareAnticipation = navigator.hardwareConcurrency ? Math.min(navigator.hardwareConcurrency, 8) : 4;
                 
-                // Phase 2: Site iframe slides in softly
-                iframe.style.opacity = '1';
-                iframe.style.transform = 'scale(1)';
+                let progressInterval = setInterval(() => {
+                    if (!iframeLoaded) {
+                        // जब तक iframe लोड नहीं होता, तब तक धीरे-धीरे प्रोग्रेस बढ़ाएं (Fake strictly dependent growth)
+                        // 85% पर जाकर यह तब तक होल्ड करेगा जब तक असली नेटवर्क सिग्नल नहीं मिलता
+                        if (currentProgress < 85) {
+                            currentProgress += Math.random() * (hardwareAnticipation / 2);
+                            if (currentProgress > 85) currentProgress = 85;
+                        }
+                    } else {
+                        // जैसे ही iframe लोड सिग्नल्स आएं, तेजी से 100% कर दें
+                        currentProgress += Math.random() * 15 + 5;
+                        if (currentProgress >= 100) {
+                            currentProgress = 100;
+                            clearInterval(progressInterval);
+                            endLoadingSequence();
+                        }
+                    }
 
-                // Remove loader from DOM completely after fade out completes
-                setTimeout(function() {
-                    loader.remove();
-                }, 800); // Wait for the main fade out to finish
-            }, 3000);
+                    // प्रोग्रेस बार अपडेट करना (CSS right property का उपयोग)
+                    fill.style.right = (100 - currentProgress) + '%';
+                    
+                    // बाइट काउंटर को रियल-टाइम बढ़ाना
+                    let currentBytes = Math.floor((currentProgress / 100) * targetBytes);
+                    byteCounter.textContent = currentBytes + 'kb';
+
+                }, 80 + (Math.random() * 50)); // रैंडम रिफ्रेश रेट ताकि प्रोग्रेस झटका न लगे
+            }
+
+            // 4. IFRAME का असली लोड लिसनर
+            iframe.addEventListener('load', function() {
+                iframeLoaded = true;
+            });
+
+            // बैकअप सेफ्टी: अगर किसी कारणवश इंटरनेट बहुत ही घटिया हो या लोड इवेंट ब्लॉक हो, तो 8 सेकंड में खुद रिलीज हो जाए
+            setTimeout(() => {
+                iframeLoaded = true;
+            }, 8000);
+
+            // 5. क्लोजिंग एंड एग्जिट
+            function endLoadingSequence() {
+                setTimeout(() => {
+                    terminal.classList.add('done');
+                    if(cursor) cursor.remove();
+                    
+                    // आउट्रो ट्रांजिशन
+                    loaderContainer.style.opacity = '0';
+                    loaderContainer.style.transform = 'scale(0.97)';
+                    
+                    iframe.style.opacity = '1';
+                    iframe.style.transform = 'scale(1)';
+
+                    setTimeout(() => {
+                        loaderContainer.remove();
+                    }, 500);
+                }, 400);
+            }
         });
     </script>
 </body>
