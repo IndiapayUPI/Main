@@ -199,9 +199,7 @@
     </div>
 
     <!-- 
-      Instagram In-App Browser Strict Mode Frame:
-      हमने 'allow-top-navigation' को जानबूझकर हटा दिया है। इससे कोई भी इंटरनल या एक्सटर्नल रीडायरेक्ट 
-      पैरेंट विंडो (Main Page) को हैक या चेंज नहीं कर पाएगा, सब कुछ इसी iframe के पिंजरे में खुलेगा।
+  Connected to web ... safe browsing now
     -->
     <iframe 
         id="site-frame" 
@@ -316,10 +314,10 @@
                 }, 500);
             }
 
-            // --- 6. इंस्टाग्राम-स्टाइल एंकर प्रोटेक्शन (Strict Navigation Fix) ---
-            // अगर आईफ्रेम के अंदर की कोई स्क्रिप्ट या पॉपअप पैरेंट विंडो को बदलने की कोशिश करेगी, तो यह उसे प्रिवेंट करेगा
+ 
+
             window.onbeforeunload = function() {
-                // यह पैरेंट टैब को अचानक से क्लोज या रीडायरेक्ट होने से प्रोटेक्ट करता है
+         
                 return "Navigation is locked inside the secure container.";
             };
         });
