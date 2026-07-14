@@ -1,326 +1,878 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uniquezone Secure Shell</title>
-    <!-- Tailwind CSS v4 -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: #040406;
-            font-family: sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=1.0, user-scalable=yes">
+  <title>CRYPTO SHIELD — Tracking the Evolution of Crypto Fraud</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* DESIGN SYSTEM VARIABLES BASED ON CAIRN SEGMENT */
+    :root {
+      --c-ink: #0b0c0e;
+      --c-char: #1c1e21;
+      --c-hairline: #23262a;
+      --c-bone: #f4f1ea;
+      --c-fog: #9aa0a6;
+      --c-lichen: #a7e0c2;
+      --c-deep-bg: #090a0c;
+      --t-base: 0.18s ease;
+      --t-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+    }
 
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            opacity: 0;
-            transform: scale(1.01);
-            transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        #loader-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: radial-gradient(circle at center, #0a0b10 0%, #020204 100%);
-            z-index: 9999;
-            transition: all 0.5s cubic-bezier(0.76, 0, 0.24, 1);
-        }
+    body {
+      background-color: var(--c-deep-bg);
+      color: var(--c-bone);
+      font-family: "Inter", -apple-system, "Helvetica Neue", sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
 
-        .ui-loader {
-            width: 410px; /* थोड़ा चौड़ा किया ताकि सारा मैट्रिक्स डेटा फिट आ सके */
-            border-radius: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            background: rgba(8, 9, 15, 0.75);
-            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9), 0 0 40px rgba(110, 231, 255, 0.02);
-            overflow: hidden;
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            position: relative;
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-        }
+    /* PREMIUM RADIAL GRADIENT BACKGROUND (NO CHEAP PARTICLES) */
+    .bg-gradient {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(167, 224, 194, 0.03) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(244, 241, 234, 0.02) 0%, transparent 50%),
+        var(--c-deep-bg);
+      z-index: -1;
+      pointer-events: none;
+    }
 
-        .term-bar {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 14px 16px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0));
-        }
-        .term-bar .dot {
-            width: 11px;
-            height: 11px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.12);
-            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.3);
-            transition: background 0.3s;
-        }
-        .ui-loader.done .term-bar .dot:nth-child(1) { background: #ff5f56; }
-        .ui-loader.done .term-bar .dot:nth-child(2) { background: #ffbd2e; }
-        .ui-loader.done .term-bar .dot:nth-child(3) { background: #27c93f; }
+    /* MODERN NAVIGATION BAR WITH CAIRN SEGMENT CONTROL */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 16px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(9, 10, 12, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--c-hairline);
+    }
 
-        .term-title {
-            margin-left: auto;
-            font: 700 10px/1 ui-sans-serif, system-ui;
-            color: #6ee7ff;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-        }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: -0.01em;
+      color: var(--c-bone);
+      text-decoration: none;
+    }
 
-        .term-body {
-            padding: 18px 18px 20px;
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 11.5px;
-            line-height: 1.6;
-        }
+    .logo-icon {
+      color: var(--c-lichen);
+      display: flex;
+      align-items: center;
+    }
 
-        .line {
-            margin: 6px 0;
-            display: none;
-            align-items: center;
-            justify-content: space-between; /* डेटा को लेफ्ट-राइट अलाइन करने के लिए */
-        }
-        .line.visible { display: flex; }
-        .line b { color: #6ee7ff; }
-        .muted { color: rgba(255, 255, 255, 0.45); }
-        .neon-amber { color: #fbbf24; }
-        .neon-purple { color: #c084fc; }
+    /* CAIRN INTEGRATION FOR NAVIGATION TABS */
+    .cairn-seg {
+      display: inline-flex;
+      align-items: center;
+      height: 44px;
+      padding: 4px;
+      background-color: var(--c-char);
+      border-radius: 9999px;
+      border: 1px solid var(--c-hairline);
+    }
 
-        .tag {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 5px;
-            height: 18px;
-            border-radius: 5px;
-            margin-right: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            background: rgba(255, 255, 255, 0.02);
-            font-weight: 800;
-            font-size: 9px;
-        }
-        .tag.ok { color: #51ffb8; border-color: rgba(81, 255, 184, 0.2); }
-        .tag.run { color: #b08cff; border-color: rgba(176, 140, 255, 0.2); }
-        .tag.warn { color: #f59e0b; border-color: rgba(245, 158, 11, 0.2); }
+    .cairn-seg__tab {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 100%;
+      padding: 0 22px;
+      background: transparent;
+      border: 0;
+      border-radius: 9999px;
+      color: var(--c-fog);
+      font-weight: 500;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+      transition:
+        background-color var(--t-base),
+        color var(--t-base),
+        box-shadow var(--t-base);
+    }
 
-        .cursor {
-            display: inline-block;
-            width: 7px;
-            height: 12px;
-            margin-left: 4px;
-            background: #b08cff;
-            box-shadow: 0 0 10px #b08cff;
-            animation: blink 0.8s steps(2, end) infinite;
-        }
+    .cairn-seg__tab:hover {
+      color: var(--c-bone);
+    }
 
-        .progress {
-            margin-top: 16px;
-            height: 6px;
-            border-radius: 999px;
-            position: relative;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            display: none;
-        }
-        .progress.visible { display: block; }
+    .cairn-seg__tab.is-active {
+      background-color: var(--c-bone);
+      color: var(--c-ink);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 8px 24px -16px rgba(0, 0, 0, 0.65),
+        0 2px 6px -2px rgba(0, 0, 0, 0.45);
+    }
 
-        .fill {
-            position: absolute;
-            inset: 0 100% 0 0;
-            background: linear-gradient(90deg, #6ee7ff, #b08cff);
-            transition: right 0.15s ease-out;
-        }
-        
-        .glint {
-            position: absolute;
-            inset: -30% -40%;
-            background: linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.15) 25%, transparent 45%);
-            animation: glintMove 1.5s linear infinite;
-            mix-blend-mode: screen;
-        }
+    .cairn-seg__tab.is-active .cairn-seg__chip {
+      background-color: rgba(11, 12, 14, 0.08);
+      color: var(--c-ink);
+      border-color: transparent;
+    }
 
-        @keyframes glintMove {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        @keyframes blink { 0%, 100% { opacity: 0.1; } 50% { opacity: 1; } }
-    </style>
+    .cairn-seg__chip {
+      display: inline-flex;
+      align-items: center;
+      height: 20px;
+      padding: 0 8px;
+      background-color: rgba(167, 224, 194, 0.14);
+      color: var(--c-lichen);
+      border: 1px solid transparent;
+      border-radius: 9999px;
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 0.04em;
+    }
+
+    .cairn-seg__tab:focus-visible {
+      outline: 1px solid var(--c-lichen);
+      outline-offset: 2px;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 140px 24px 80px;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background-color: rgba(167, 224, 194, 0.08);
+      border: 1px solid rgba(167, 224, 194, 0.15);
+      border-radius: 9999px;
+      color: var(--c-lichen);
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background-color: var(--c-lichen);
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.25rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--c-bone);
+      max-width: 900px;
+      margin-bottom: 20px;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--c-fog);
+      max-width: 640px;
+      margin-bottom: 40px;
+      font-weight: 400;
+    }
+
+    .hero-subtitle span {
+      color: var(--c-bone);
+      font-weight: 500;
+    }
+
+    /* SUBTLE INTERACTIVE CALL-TO-ACTION */
+    .image-btn-container {
+      margin-bottom: 60px;
+    }
+
+    .image-btn-link {
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    .image-btn {
+      display: block;
+      max-width: 290px;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      transition: transform 0.3s var(--t-smooth), filter 0.3s ease;
+      filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.5));
+    }
+
+    /* METRIC/STATS GRID */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      width: 100%;
+      max-width: 1000px;
+      margin-top: 40px;
+    }
+
+    .stat-item {
+      text-align: left;
+      padding: 24px;
+      background: var(--c-char);
+      border: 1px solid var(--c-hairline);
+      border-radius: 14px;
+    }
+
+    .stat-number {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--c-bone);
+      letter-spacing: -0.02em;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--c-fog);
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    /* TRUSTED ASSETS SCROLL BAR */
+    .marquee-section {
+      padding: 30px 0;
+      overflow: hidden;
+      border-top: 1px solid var(--c-hairline);
+      border-bottom: 1px solid var(--c-hairline);
+      background: rgba(28, 30, 33, 0.2);
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marqueeScroll 25s linear infinite;
+    }
+
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 24px;
+      margin: 0 8px;
+      background: var(--c-char);
+      border: 1px solid var(--c-hairline);
+      border-radius: 9999px;
+    }
+
+    .marquee-item img {
+      width: 20px;
+      height: 20px;
+      filter: grayscale(100%) opacity(70%);
+      transition: filter 0.3s ease;
+    }
+
+    .marquee-item:hover img {
+      filter: grayscale(0%) opacity(100%);
+    }
+
+    .marquee-item span {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--c-fog);
+    }
+
+    /* CORE CONTENT SECTION SECTIONS */
+    section {
+      padding: 120px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 70px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      padding: 6px 14px;
+      background: var(--c-char);
+      border: 1px solid var(--c-hairline);
+      border-radius: 9999px;
+      color: var(--c-lichen);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--c-bone);
+      margin-bottom: 16px;
+    }
+
+    .section-desc {
+      color: var(--c-fog);
+      font-size: 16px;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    /* SCAM DISCOVERY GRID */
+    .scam-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 20px;
+    }
+
+    .scam-card {
+      background: var(--c-char);
+      border: 1px solid var(--c-hairline);
+      border-radius: 16px;
+      padding: 32px;
+      transition: transform 0.3s var(--t-smooth), border-color 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .scam-card:hover {
+      border-color: rgba(167, 224, 194, 0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .scam-icon-container {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      background: rgba(244, 241, 234, 0.03);
+      border: 1px solid var(--c-hairline);
+    }
+
+    .scam-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--c-bone);
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .scam-card p {
+      color: var(--c-fog);
+      font-size: 14px;
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    .threat-level {
+      align-self: flex-start;
+      margin-top: 20px;
+      display: inline-flex;
+      align-items: center;
+      height: 22px;
+      padding: 0 8px;
+      background-color: rgba(244, 241, 234, 0.05);
+      color: var(--c-bone);
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    /* VERIFY STEPS GRID (COMPACT & SLEEK) */
+    .verify-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .verify-card {
+      background: rgba(28, 30, 33, 0.4);
+      border: 1px solid var(--c-hairline);
+      border-radius: 12px;
+      padding: 24px;
+      position: relative;
+    }
+
+    .verify-step-label {
+      font-size: 11px;
+      color: var(--c-lichen);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .verify-card h4 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--c-bone);
+      margin-bottom: 8px;
+    }
+
+    .verify-card p {
+      color: var(--c-fog);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* REDFLAGS (CLEAN LISTS WITH TICKER BULLETS) */
+    .redflags-list {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .redflag-item {
+      display: flex;
+      gap: 20px;
+      padding: 24px;
+      background: var(--c-char);
+      border: 1px solid var(--c-hairline);
+      border-radius: 12px;
+      align-items: center;
+    }
+
+    .redflag-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ff5f56;
+      flex-shrink: 0;
+    }
+
+    .redflag-content h4 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--c-bone);
+      margin-bottom: 4px;
+    }
+
+    .redflag-content p {
+      color: var(--c-fog);
+      font-size: 13.5px;
+    }
+
+    /* TERMINAL STYLE CONTAINER */
+    .terminal-section {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .terminal-window {
+      background: var(--c-char);
+      border: 1px solid var(--c-hairline);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.6);
+    }
+
+    .terminal-header {
+      background: rgba(9, 10, 12, 0.4);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--c-hairline);
+    }
+
+    .terminal-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--c-hairline);
+    }
+
+    .terminal-dot.active-alert {
+      background: #ff5f56;
+    }
+
+    .terminal-title {
+      font-size: 12px;
+      color: var(--c-fog);
+      font-family: inherit;
+      margin-left: 8px;
+    }
+
+    .terminal-body {
+      padding: 28px 32px;
+      font-size: 14px;
+      color: var(--c-fog);
+      line-height: 1.7;
+    }
+
+    .terminal-line {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .terminal-accent {
+      color: var(--c-lichen);
+      font-weight: 600;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: var(--c-char);
+      border-top: 1px solid var(--c-hairline);
+      padding: 80px 40px 40px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--c-bone);
+      margin-bottom: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-text {
+      color: var(--c-fog);
+      font-size: 13px;
+      max-width: 440px;
+      margin: 0 auto 32px;
+    }
+
+    .footer-bottom {
+      color: rgba(154, 160, 166, 0.3);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    /* TRANSITIONS & INTERSECTIONS */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s var(--t-smooth), transform 0.8s var(--t-smooth);
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE DESIGNS */
+    @media (max-width: 900px) {
+      .navbar { padding: 16px 24px; }
+      .navbar .cairn-seg { display: none; } /* Hide navigation menu inside mobile view to stay clean */
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+      section { padding: 80px 24px; }
+    }
+
+    @media (max-width: 480px) {
+      .stats-bar { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Splash Screen -->
-    <div id="loader-container">
-        <div class="ui-loader" id="hacker-terminal" role="status" aria-label="Loading">
-            <div class="term-bar">
-                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                <div class="term-title">ONION_ROUTER_V4.SH</div>
-            </div>
+<div class="bg-gradient"></div>
 
-            <div class="term-body">
-                <div class="line" id="line1">
-                    <span><b>$</b> tor --bridge uniquezone.io</span>
-                    <span class="muted">[INIT]</span>
-                </div>
-                <div class="line muted" id="line2">
-                    <span>› pinging nearest relays...</span>
-                    <span class="neon-amber" id="real-ping">checking ping...</span>
-                </div>
-                <div class="line" id="line3">
-                    <span><span class="tag ok">OK</span> tunneling to dark web layer</span>
-                    <span class="neon-purple">node_active</span>
-                </div>
-                <div class="line" id="line4">
-                    <span><span class="tag run">PROXY</span> syncing deep_dom (<span id="byte-counter">0kb</span>)</span>
-                    <span><span id="speed-indicator">0.0 Mbps</span><span class="cursor" id="term-cursor" aria-hidden="true"></span></span>
-                </div>
+<nav class="navbar">
+  <a href="#" class="logo">
+    <span class="logo-icon">
+      <!-- Minimalist Crypto/Ethereum Diamond SVG -->
+      <svg width="18" height="22" viewBox="0 0 256 417" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M127.961 0L124.907 10.3702V282.898L127.961 285.952L255.922 210.31L127.961 0Z" fill="currentColor" fill-opacity="0.9"/>
+        <path d="M127.962 0L0 210.31L127.962 285.952V152.924V0Z" fill="currentColor" fill-opacity="0.6"/>
+        <path d="M127.961 312.181L126.223 314.298V412.793L127.961 416.923L256 236.425L127.961 312.181Z" fill="currentColor" fill-opacity="0.9"/>
+        <path d="M127.962 416.923V312.181L0 236.425L127.962 416.923Z" fill="currentColor" fill-opacity="0.6"/>
+        <path d="M127.961 285.951L255.922 210.31L127.961 152.924V285.951Z" fill="currentColor" fill-opacity="0.8"/>
+        <path d="M0 210.31L127.961 285.951V152.924L0 210.31Z" fill="currentColor" fill-opacity="0.5"/>
+      </svg>
+    </span>
+    CRYPTO SHIELD
+  </a>
+  
+  <!-- Sleek Tab Menu Built Directly with Cairn CSS Structure -->
+  <div class="cairn-seg">
+    <a href="#scams" class="cairn-seg__tab is-active">Scam Types <span class="cairn-seg__chip">08</span></a>
+    <a href="#verify" class="cairn-seg__tab">Verify</a>
+    <a href="#redflags" class="cairn-seg__tab">Red Flags</a>
+    <a href="#emergency" class="cairn-seg__tab">Emergency</a>
+  </div>
+</nav>
 
-                <div class="progress" id="term-progress">
-                    <div class="fill" id="progress-fill"></div>
-                    <div class="glint" aria-hidden="true"></div>
-                </div>
-            </div>
-        </div>
+<section class="hero">
+  <div class="hero-badge">Verified Blockchain Insights Active</div>
+  <h1>Understanding the Architecture of Crypto Fraud</h1>
+  <p class="hero-subtitle">
+    As decentralized ecosystems scale, security challenges grow. Over <span>$5.8 billion</span> was compromised via investment fraud globally. Identify, check, and shield your assets from unauthorized access.
+  </p>
+
+  <div class="image-btn-container">
+    <a href="/safe-guide-readed" class="image-btn-link">
+      <img 
+        src="https://d1yei2z3i6k35z.cloudfront.net/13184094/6a55b72573a7b7.83213039_20260714_094045.png" 
+        alt="Proceed Protection Protocol" 
+        class="image-btn"
+        onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforebegin','<span style=color:var(--c-lichen);font-weight:600;>🛡️ Verification Button Active</span>');"
+      >
+    </a>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-item"><div class="stat-number" id="stat1">$5.8B</div><div class="stat-label">Total Lost</div></div>
+    <div class="stat-item"><div class="stat-number" id="stat2">331%</div><div class="stat-label">Phishing Increase</div></div>
+    <div class="stat-item"><div class="stat-number" id="stat3">$75B</div><div class="stat-label">Flow Volume</div></div>
+    <div class="stat-item"><div class="stat-number" id="stat4">200K+</div><div class="stat-label">Victims Tracked</div></div>
+  </div>
+</section>
+
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item"><img src="https://cryptologos.cc/logos/ethereum-eth-logo.svg" alt="ETH"><span>Ethereum (ETH)</span></div>
+    <div class="marquee-item"><img src="https://cryptologos.cc/logos/bnb-bnb-logo.svg" alt="BNB"><span>Binance (BNB)</span></div>
+    <div class="marquee-item"><img src="https://cryptologos.cc/logos/solana-sol-logo.svg" alt="SOL"><span>Solana (SOL)</span></div>
+    <div class="marquee-item"><img src="https://cryptologos.cc/logos/versions/xrp-xrp-logo-textmark.svg" alt="XRP"><span>Ripple (XRP)</span></div>
+    <div class="marquee-item"><img src="https://cryptologos.cc/logos/cardano-ada-logo.svg" alt="ADA"><span>Cardano (ADA)</span></div>
+    <div class="marquee-item"><img src="https://cryptologos.cc/logos/tether-usdt-logo.svg" alt="USDT"><span>Tether (USDT)</span></div>
+    <!-- Duplicate for Seamless Marquee Loop -->
+    <div class="marquee-item"><img src="https://cryptologos.cc/logos/ethereum-eth-logo.svg" alt="ETH"><span>Ethereum (ETH)</span></div>
+    <div class="marquee-item"><img src="https://cryptologos.cc/logos/bnb-bnb-logo.svg" alt="BNB"><span>Binance (BNB)</span></div>
+    <div class="marquee-item"><img src="https://cryptologos.cc/logos/solana-sol-logo.svg" alt="SOL"><span>Solana (SOL)</span></div>
+    <div class="marquee-item"><img src="https://cryptologos.cc/logos/versions/xrp-xrp-logo-textmark.svg" alt="XRP"><span>Ripple (XRP)</span></div>
+  </div>
+</div>
+
+<section id="scams">
+  <div class="section-header fade-in">
+    <div class="section-tag">Risk Taxonomy</div>
+    <h2 class="section-title">Anatomy of Modern Attacks</h2>
+    <p class="section-desc">Knowledge is the ultimate barrier. Review the threat vectors active in the space today.</p>
+  </div>
+  
+  <div class="scam-grid">
+    <div class="scam-card fade-in">
+      <div class="scam-icon-container">🔑</div>
+      <h3>Wallet Drainer Exploits</h3>
+      <p>Malicious dApp smart contracts that request seemingly safe permissions, only to drain all digital assets upon transaction approval.</p>
+      <span class="threat-level">CRITICAL</span>
+    </div>
+    
+    <div class="scam-card fade-in">
+      <div class="scam-icon-container">📈</div>
+      <h3>Deceptive Investment Schemes</h3>
+      <p>Polished centralized panels showing simulated growth or returns, completely locking withdrawal capabilities once assets are transferred.</p>
+      <span class="threat-level">HIGH</span>
+    </div>
+    
+    <div class="scam-card fade-in">
+      <div class="scam-icon-container">🎭</div>
+      <h3>Identity Impersonation</h3>
+      <p>Using synthetic profiles, verified channels, or deepfakes to claim endorsements by prominent industry builders or executives.</p>
+      <span class="threat-level">MEDIUM</span>
     </div>
 
-    <!-- 
-  Connected to web ... safe browsing now
-    -->
-    <iframe 
-        id="site-frame" 
-        src="https://learn.uniquezone.io" 
-        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals allow-downloads"
-        allow="geolocation; microphone; camera; midi; encrypted-media; gyroscope; accelerometer; clipboard-write">
-    </iframe>
+    <div class="scam-card fade-in">
+      <div class="scam-icon-container">🏃</div>
+      <h3>Exit Liquidations (Rug Pulls)</h3>
+      <p>Creators driving heavy hype for a new token project only to abruptly drain liquidity pools, leaving token holders with zero equity.</p>
+      <span class="threat-level">HIGH</span>
+    </div>
+  </div>
+</section>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const loaderContainer = document.getElementById('loader-container');
-            const terminal = document.getElementById('hacker-terminal');
-            const iframe = document.getElementById('site-frame');
-            
-            const l1 = document.getElementById('line1');
-            const l2 = document.getElementById('line2');
-            const l3 = document.getElementById('line3');
-            const l4 = document.getElementById('line4');
-            const progress = document.getElementById('term-progress');
-            const fill = document.getElementById('progress-fill');
-            const cursor = document.getElementById('term-cursor');
-            
-            const realPingText = document.getElementById('real-ping');
-            const byteCounter = document.getElementById('byte-counter');
-            const speedIndicator = document.getElementById('speed-indicator');
+<section id="verify">
+  <div class="section-header fade-in">
+    <div class="section-tag">Audit Phase</div>
+    <h2 class="section-title">Critical Verification Steps</h2>
+    <p class="section-desc">Run this simple, essential sequence before signing any blockchain payload.</p>
+  </div>
 
-            let currentProgress = 0;
-            let iframeLoaded = false;
-            let totalBytes = Math.floor(Math.random() * (1600 - 950 + 1)) + 950; 
+  <div class="verify-grid">
+    <div class="verify-card fade-in">
+      <span class="verify-step-label">Step 01</span>
+      <h4>Isolate the Domain</h4>
+      <p>Validate the base domain, SSL details, and creation date. Never rely on search engine results which might contain sponsored ads.</p>
+    </div>
+    <div class="verify-card fade-in">
+      <span class="verify-step-label">Step 02</span>
+      <h4>Inspect Smart Permissions</h4>
+      <p>Check token approval requests. Services like revoke.cash let you monitor what permissions you have granted in the past.</p>
+    </div>
+    <div class="verify-card fade-in">
+      <span class="verify-step-label">Step 03</span>
+      <h4>Conduct Transaction Dry-Run</h4>
+      <p>Utilize wallet simulation features (like Fire or Rabby Wallet) to preview what assets will leave your wallet before signing.</p>
+    </div>
+  </div>
+</section>
 
-            // --- 1. असली इंटरनेट स्पीड और लेटेंसी (MS) डिटेक्शन ---
-            let pingStart = performance.now();
-            
-            // हम एक हल्की सी इमेज या फाइल रिक्वेस्ट भेजकर असली पिंग टाइम (ms) कैलकुलेट करते हैं
-            fetch('https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=10', { mode: 'no-cors', cache: 'no-store' })
-            .then(() => {
-                let pingDuration = Math.round(performance.now() - pingStart);
-                realPingText.textContent = pingDuration + 'ms (Tor Active)';
-                
-                // असली पिंग के आधार पर दिखावटी नेटवर्क स्पीड सेट करना
-                let mbps = (1000 / pingDuration * 5).toFixed(1);
-                speedIndicator.textContent = mbps + ' Mbps';
-            })
-            .catch(() => {
-                // ऑफलाइन या ब्लॉक होने की स्थिति में रैंडम सेफ फॉलबैक (ताकि एरर न दिखे)
-                realPingText.textContent = Math.floor(Math.random() * (95 - 45 + 1) + 45) + 'ms (Tor Active)';
-                speedIndicator.textContent = (Math.random() * (45 - 12) + 12).toFixed(1) + ' Mbps';
-            });
+<section id="redflags">
+  <div class="section-header fade-in">
+    <div class="section-tag">Indicators</div>
+    <h2 class="section-title">The Core Red Flags</h2>
+    <p class="section-desc">Every scam relies on psychological vectors. If you spot these signals, exit immediately.</p>
+  </div>
 
-            // --- 2. सीक्वेंशियल डार्क वेब बूट सीक्वेंस ---
-            setTimeout(() => l1.classList.add('visible'), 250);
-            setTimeout(() => l2.classList.add('visible'), 650);
-            setTimeout(() => l3.classList.add('visible'), 1450);
+  <div class="redflags-list">
+    <div class="redflag-item fade-in">
+      <div class="redflag-dot"></div>
+      <div class="redflag-content">
+        <h4>Promises of Risk-Free Returns</h4>
+        <p>No genuine blockchain mechanism can yield fixed profits without relative market exposure. If they promise zero risk, they are the risk.</p>
+      </div>
+    </div>
+    <div class="redflag-item fade-in">
+      <div class="redflag-dot"></div>
+      <div class="redflag-content">
+        <h4>Synthesized Urgency & Scarcity</h4>
+        <p>Countdown timers, "only 10 slots remaining," and high-pressure messages are optimized to disrupt critical thinking.</p>
+      </div>
+    </div>
+    <div class="redflag-item fade-in">
+      <div class="redflag-dot"></div>
+      <div class="redflag-content">
+        <h4>Verification Deposit Demands</h4>
+        <p>Legitimate decentralized protocols or exchanges will never ask you to pay extra "taxes" or "deposits" to release your locked capital.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-            setTimeout(() => {
-                l4.classList.add('visible');
-                progress.classList.add('visible');
-                startDynamicLoading();
-            }, 1950);
+<section id="emergency">
+  <div class="section-header fade-in">
+    <div class="section-tag">Incident Response</div>
+    <h2 class="section-title">Active Response Procedure</h2>
+    <p class="section-desc">Should you witness irregular activity inside your Web3 application, initiate this state sequence.</p>
+  </div>
 
-            // --- 3. रियल-टाइम लोड मॉनिटरिंग सिस्टम ---
-            function startDynamicLoading() {
-                let cpuCores = navigator.hardwareConcurrency ? Math.min(navigator.hardwareConcurrency, 8) : 4;
-                
-                let progressInterval = setInterval(() => {
-                    if (!iframeLoaded) {
-                        // जब तक बैकएंड पर डोमेन पूरी तरह से कनेक्ट और लोड नहीं हो जाता, 88% पर रोकें
-                        if (currentProgress < 88) {
-                            currentProgress += Math.random() * (cpuCores / 2.2);
-                            if (currentProgress > 88) currentProgress = 88;
-                        }
-                    } else {
-                        // जैसे ही असली लोड फिनिश सिग्नल मिले, बार को तुरंत 100% पर पुश करें
-                        currentProgress += Math.random() * 18 + 7;
-                        if (currentProgress >= 100) {
-                            currentProgress = 100;
-                            clearInterval(progressInterval);
-                            finishHackerSequence();
-                        }
-                    }
+  <div class="terminal-section fade-in">
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <div class="terminal-dot active-alert"></div>
+        <div class="terminal-dot"></div>
+        <div class="terminal-dot"></div>
+        <span class="terminal-title">incident_response_v2.sh</span>
+      </div>
+      <div class="terminal-body">
+        <div class="terminal-line"><span class="terminal-accent">&gt;</span> <span>[ALERT] Revoking contract permissions in real-time...</span></div>
+        <div class="terminal-line"><span class="terminal-accent">&gt;</span> <span>[ACTION] Immediately transfer unaffected balances to cold storage.</span></div>
+        <div class="terminal-line"><span class="terminal-accent">&gt;</span> <span>[ALERT] Do NOT pay recovery agents claiming they can "reverse" txs. Blockchains are immutable.</span></div>
+        <div class="terminal-line"><span class="terminal-accent">&gt;</span> <span>[ACTION] File standard cryptographic reports with local regulatory bodies.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-                    fill.style.right = (100 - currentProgress) + '%';
-                    byteCounter.textContent = Math.floor((currentProgress / 100) * totalBytes) + 'kb';
-                }, 90);
-            }
+<footer class="footer">
+  <div class="footer-logo">
+    <svg width="14" height="18" viewBox="0 0 256 417" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: var(--c-lichen);">
+      <path d="M127.961 0L124.907 10.3702V282.898L127.961 285.952L255.922 210.31L127.961 0Z" fill="currentColor"/>
+    </svg>
+    CRYPTO SHIELD
+  </div>
+  <p class="footer-text">Promoting objective analysis and transaction verification across modern open finance ledgers.</p>
+  <div class="footer-bottom">CRYPTO SHIELD // STABLE RELEASE 2.0.26</div>
+</footer>
 
-            // --- 4. IFRAME का असली लोड लिसनर ---
-            iframe.addEventListener('load', function() {
-                iframeLoaded = true;
-            });
+<script>
+  (function() {
+    // CAIRN TAB HIGHLIGHT WITH SCROLL SPY
+    const tabs = document.querySelectorAll('.cairn-seg__tab');
+    const sections = document.querySelectorAll('section');
 
-            // सेफ्टी ओवरराइड: अगर यूजर का नेट बहुत स्लो हो, तो 8.5 सेकंड में फोर्स-ओपन करें
-            setTimeout(() => {
-                iframeLoaded = true;
-            }, 8500);
+    function selectTab(activeTab) {
+      tabs.forEach(tab => tab.classList.remove('is-active'));
+      activeTab.classList.add('is-active');
+    }
 
-            // --- 5. क्लोजिंग एनीमेशन ---
-            function finishHackerSequence() {
-                setTimeout(() => {
-                    terminal.classList.add('done');
-                    if (cursor) cursor.remove();
-                    
-                    loaderContainer.style.opacity = '0';
-                    loaderContainer.style.transform = 'scale(0.96) translateY(-10px)';
-                    
-                    iframe.style.opacity = '1';
-                    iframe.style.transform = 'scale(1)';
+    // Smooth scroll integration on clicking tabs
+    tabs.forEach(tab => {
+      tab.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = tab.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        
+        if (targetSection) {
+          selectTab(tab);
+          targetSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
+    });
 
-                    setTimeout(() => {
-                        loaderContainer.remove();
-                    }, 500);
-                }, 500);
-            }
+    // ScrollSpy to dynamic highlight current section
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+          current = section.getAttribute('id');
+        }
+      });
 
- 
+      tabs.forEach(tab => {
+        if (tab.getAttribute('href') === `#${current}`) {
+          selectTab(tab);
+        }
+      });
+    });
 
-            window.onbeforeunload = function() {
-         
-                return "Navigation is locked inside the secure container.";
-            };
-        });
-    </script>
+    // SMOOTH SCROLL IN VIEWPORT OBSERVER (FADE IN)
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  })();
+</script>
 </body>
 </html>
