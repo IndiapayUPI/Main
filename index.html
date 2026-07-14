@@ -22,8 +22,7 @@
             height: 100%;
             border: none;
             opacity: 0;
-            transform: scale(1.01);
-            transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transition: opacity 0.5s ease; /* साईट दिखने का स्मूथ फ़ेड */
         }
 
         #loader-container {
@@ -36,43 +35,37 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: radial-gradient(circle at center, #0a0b10 0%, #020204 100%);
+            background: #040406;
             z-index: 9999;
-            transition: all 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* पूरे लोडर का स्मूथ फ़ेड आउट */
         }
 
         .ui-loader {
-            width: 410px; /* थोड़ा चौड़ा किया ताकि सारा मैट्रिक्स डेटा फिट आ सके */
-            border-radius: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            background: rgba(8, 9, 15, 0.75);
-            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9), 0 0 40px rgba(110, 231, 255, 0.02);
+            width: 430px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #090a10;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8);
             overflow: hidden;
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
             position: relative;
             font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
         .term-bar {
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 14px 16px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0));
+            padding: 12px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.02);
         }
         .term-bar .dot {
             width: 11px;
             height: 11px;
             border-radius: 999px;
-            background: rgba(255, 255, 255, 0.12);
-            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.3);
-            transition: background 0.3s;
+            background: rgba(255, 255, 255, 0.15);
         }
-        .ui-loader.done .term-bar .dot:nth-child(1) { background: #ff5f56; }
-        .ui-loader.done .term-bar .dot:nth-child(2) { background: #ffbd2e; }
-        .ui-loader.done .term-bar .dot:nth-child(3) { background: #27c93f; }
 
         .term-title {
             margin-left: auto;
@@ -83,9 +76,9 @@
         }
 
         .term-body {
-            padding: 18px 18px 20px;
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 11.5px;
+            padding: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 12px;
             line-height: 1.6;
         }
 
@@ -93,11 +86,11 @@
             margin: 6px 0;
             display: none;
             align-items: center;
-            justify-content: space-between; /* डेटा को लेफ्ट-राइट अलाइन करने के लिए */
+            justify-content: space-between;
         }
         .line.visible { display: flex; }
         .line b { color: #6ee7ff; }
-        .muted { color: rgba(255, 255, 255, 0.45); }
+        .muted { color: rgba(255, 255, 255, 0.4); }
         .neon-amber { color: #fbbf24; }
         .neon-purple { color: #c084fc; }
 
@@ -107,16 +100,14 @@
             justify-content: center;
             padding: 0 5px;
             height: 18px;
-            border-radius: 5px;
+            border-radius: 4px;
             margin-right: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             font-weight: 800;
             font-size: 9px;
         }
-        .tag.ok { color: #51ffb8; border-color: rgba(81, 255, 184, 0.2); }
-        .tag.run { color: #b08cff; border-color: rgba(176, 140, 255, 0.2); }
-        .tag.warn { color: #f59e0b; border-color: rgba(245, 158, 11, 0.2); }
+        .tag.ok { color: #51ffb8; background: rgba(81, 255, 184, 0.05); }
+        .tag.run { color: #b08cff; background: rgba(176, 140, 255, 0.05); }
 
         .cursor {
             display: inline-block;
@@ -124,18 +115,16 @@
             height: 12px;
             margin-left: 4px;
             background: #b08cff;
-            box-shadow: 0 0 10px #b08cff;
             animation: blink 0.8s steps(2, end) infinite;
         }
 
         .progress {
             margin-top: 16px;
-            height: 6px;
+            height: 4px;
             border-radius: 999px;
             position: relative;
             overflow: hidden;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.05);
             display: none;
         }
         .progress.visible { display: block; }
@@ -144,28 +133,31 @@
             position: absolute;
             inset: 0 100% 0 0;
             background: linear-gradient(90deg, #6ee7ff, #b08cff);
-            transition: right 0.15s ease-out;
-        }
-        
-        .glint {
-            position: absolute;
-            inset: -30% -40%;
-            background: linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.15) 25%, transparent 45%);
-            animation: glintMove 1.5s linear infinite;
-            mix-blend-mode: screen;
+            transition: right 0.1s ease-out;
         }
 
-        @keyframes glintMove {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+        /* Success स्क्रीन का इन-एनीमेशन */
+        #success-screen {
+            display: none;
+            opacity: 0;
+            transform: scale(0.96);
+            transition: opacity 0.4s ease, transform 0.4s ease;
         }
+        #success-screen.show {
+            display: flex;
+            opacity: 1;
+            transform: scale(1);
+        }
+
         @keyframes blink { 0%, 100% { opacity: 0.1; } 50% { opacity: 1; } }
     </style>
 </head>
 <body>
 
-    <!-- Splash Screen -->
+    <!-- Splash Screen Base -->
     <div id="loader-container">
+        
+        <!-- Phase 1: Terminal Loader -->
         <div class="ui-loader" id="hacker-terminal" role="status" aria-label="Loading">
             <div class="term-bar">
                 <span class="dot"></span><span class="dot"></span><span class="dot"></span>
@@ -186,21 +178,36 @@
                     <span class="neon-purple">node_active</span>
                 </div>
                 <div class="line" id="line4">
-                    <span><span class="tag run">PROXY</span> syncing deep_dom (<span id="byte-counter">0kb</span>)</span>
-                    <span><span id="speed-indicator">0.0 Mbps</span><span class="cursor" id="term-cursor" aria-hidden="true"></span></span>
+                    <span><span class="tag run">PROXY</span> <span id="proxy-route">Routing: Guard Node</span></span>
+                    <span><span id="speed-indicator">0 Kbps</span><span class="cursor" id="term-cursor" aria-hidden="true"></span></span>
                 </div>
 
                 <div class="progress" id="term-progress">
                     <div class="fill" id="progress-fill"></div>
-                    <div class="glint" aria-hidden="true"></div>
                 </div>
             </div>
         </div>
+
+        <!-- Phase 2: तुम्हारी दी हुई ओरिजिनल स्मूथ लाइन्स वाली डिज़ाइन (बिना बैकग्राउंड ब्लर/ग्लो के) -->
+        <div id="success-screen" class="mx-auto w-full max-w-xs relative flex flex-col items-center justify-center text-center overflow-visible">
+            <h3 class="text-3xl font-bold tracking-wide text-white">Dark Web Connected</h3>
+            
+            <div class="w-full relative flex flex-col items-center justify-center h-[5px] mt-3">
+                <div class="absolute inset-x-auto top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-full blur-sm"></div>
+                <div class="absolute inset-x-auto top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-full"></div>
+                <div class="absolute inset-x-auto top-0 bg-gradient-to-r from-transparent via-purple-400 to-transparent h-[5px] w-1/2 blur-sm"></div>
+                <div class="absolute inset-x-auto top-0 bg-gradient-to-r from-transparent via-purple-400 to-transparent h-px w-1/2"></div>
+                <div style="" class="absolute inset-0 w-full h-full bg-[#040406] [mask-image:radial-gradient(50%_200px_at_top,transparent_20%,white)]"></div>
+            </div>
+
+            <p class="mt-6 text-sm text-gray-300 font-mono tracking-wider">
+                Your Virtual IP : <span id="allocated-ip" class="text-cyan-400 font-bold">Allocating...</span>
+            </p>
+        </div>
+
     </div>
 
-    <!-- 
-  Connected to web ... safe browsing now
-    -->
+    <!-- Main Content Frame -->
     <iframe 
         id="site-frame" 
         src="https://learn.uniquezone.io" 
@@ -212,6 +219,8 @@
         document.addEventListener("DOMContentLoaded", function() {
             const loaderContainer = document.getElementById('loader-container');
             const terminal = document.getElementById('hacker-terminal');
+            const successScreen = document.getElementById('success-screen');
+            const allocatedIpText = document.getElementById('allocated-ip');
             const iframe = document.getElementById('site-frame');
             
             const l1 = document.getElementById('line1');
@@ -220,104 +229,121 @@
             const l4 = document.getElementById('line4');
             const progress = document.getElementById('term-progress');
             const fill = document.getElementById('progress-fill');
-            const cursor = document.getElementById('term-cursor');
             
             const realPingText = document.getElementById('real-ping');
-            const byteCounter = document.getElementById('byte-counter');
+            const proxyRoute = document.getElementById('proxy-route');
             const speedIndicator = document.getElementById('speed-indicator');
 
             let currentProgress = 0;
             let iframeLoaded = false;
-            let totalBytes = Math.floor(Math.random() * (1600 - 950 + 1)) + 950; 
+            let minimumTimePassed = false;
+            let progressInterval;
 
-            // --- 1. असली इंटरनेट स्पीड और लेटेंसी (MS) डिटेक्शन ---
+            const proxyNodes = [
+                { percent: 0, text: "Hop 1: [DE] Frankfurt Guard Node" },
+                { percent: 35, text: "Hop 2: [IS] Reykjavik Middle Relay" },
+                { percent: 70, text: "Hop 3: [SE] Stockholm Exit Node" }
+            ];
+
+            function generateVirtualIP() {
+                return `${Math.floor(Math.random() * 899999 + 100000)}.${Math.floor(Math.random() * 8999 + 1000)}.${Math.floor(Math.random() * 89999 + 10000)}`;
+            }
+
+            // Real Ping Tracker
             let pingStart = performance.now();
-            
-            // हम एक हल्की सी इमेज या फाइल रिक्वेस्ट भेजकर असली पिंग टाइम (ms) कैलकुलेट करते हैं
             fetch('https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=10', { mode: 'no-cors', cache: 'no-store' })
             .then(() => {
-                let pingDuration = Math.round(performance.now() - pingStart);
-                realPingText.textContent = pingDuration + 'ms (Tor Active)';
-                
-                // असली पिंग के आधार पर दिखावटी नेटवर्क स्पीड सेट करना
-                let mbps = (1000 / pingDuration * 5).toFixed(1);
-                speedIndicator.textContent = mbps + ' Mbps';
+                realPingText.textContent = Math.round(performance.now() - pingStart) + 'ms (Tor Active)';
             })
             .catch(() => {
-                // ऑफलाइन या ब्लॉक होने की स्थिति में रैंडम सेफ फॉलबैक (ताकि एरर न दिखे)
-                realPingText.textContent = Math.floor(Math.random() * (95 - 45 + 1) + 45) + 'ms (Tor Active)';
-                speedIndicator.textContent = (Math.random() * (45 - 12) + 12).toFixed(1) + ' Mbps';
+                realPingText.textContent = Math.floor(Math.random() * 42 + 45) + 'ms (Tor Active)';
             });
 
-            // --- 2. सीक्वेंशियल डार्क वेब बूट सीक्वेंस ---
-            setTimeout(() => l1.classList.add('visible'), 250);
-            setTimeout(() => l2.classList.add('visible'), 650);
-            setTimeout(() => l3.classList.add('visible'), 1450);
+            // Text Appear Sequence
+            setTimeout(() => l1.classList.add('visible'), 150);
+            setTimeout(() => l2.classList.add('visible'), 350);
+            setTimeout(() => l3.classList.add('visible'), 700);
 
             setTimeout(() => {
                 l4.classList.add('visible');
                 progress.classList.add('visible');
                 startDynamicLoading();
-            }, 1950);
+            }, 1000);
 
-            // --- 3. रियल-टाइम लोड मॉनिटरिंग सिस्टम ---
             function startDynamicLoading() {
-                let cpuCores = navigator.hardwareConcurrency ? Math.min(navigator.hardwareConcurrency, 8) : 4;
-                
-                let progressInterval = setInterval(() => {
-                    if (!iframeLoaded) {
-                        // जब तक बैकएंड पर डोमेन पूरी तरह से कनेक्ट और लोड नहीं हो जाता, 88% पर रोकें
-                        if (currentProgress < 88) {
-                            currentProgress += Math.random() * (cpuCores / 2.2);
-                            if (currentProgress > 88) currentProgress = 88;
-                        }
-                    } else {
-                        // जैसे ही असली लोड फिनिश सिग्नल मिले, बार को तुरंत 100% पर पुश करें
-                        currentProgress += Math.random() * 18 + 7;
+                progressInterval = setInterval(() => {
+                    if (currentProgress < 100) {
+                        currentProgress += Math.random() * 4 + 2;
                         if (currentProgress >= 100) {
                             currentProgress = 100;
                             clearInterval(progressInterval);
-                            finishHackerSequence();
+                            switchToIPScreen();
                         }
                     }
-
                     fill.style.right = (100 - currentProgress) + '%';
-                    byteCounter.textContent = Math.floor((currentProgress / 100) * totalBytes) + 'kb';
-                }, 90);
+                    
+                    let activeNode = proxyNodes[0].text;
+                    for (let node of proxyNodes) {
+                        if (currentProgress >= node.percent) activeNode = node.text;
+                    }
+                    proxyRoute.textContent = activeNode;
+
+                    if (Math.random() < 0.3) {
+                        speedIndicator.textContent = Math.floor(Math.random() * 330 + 120) + ' Kbps';
+                    } else {
+                        speedIndicator.textContent = (Math.random() * 2.7 + 1.1).toFixed(1) + ' Mbps';
+                    }
+                }, 50);
             }
 
-            // --- 4. IFRAME का असली लोड लिसनर ---
-            iframe.addEventListener('load', function() {
-                iframeLoaded = true;
-            });
-
-            // सेफ्टी ओवरराइड: अगर यूजर का नेट बहुत स्लो हो, तो 8.5 सेकंड में फोर्स-ओपन करें
-            setTimeout(() => {
-                iframeLoaded = true;
-            }, 8500);
-
-            // --- 5. क्लोजिंग एनीमेशन ---
-            function finishHackerSequence() {
+            function switchToIPScreen() {
+                // टर्मिनल को फेड आउट करके हाइड करें
+                terminal.style.opacity = '0';
+                terminal.style.transform = 'scale(0.95)';
+                
                 setTimeout(() => {
-                    terminal.classList.add('done');
-                    if (cursor) cursor.remove();
+                    terminal.style.display = 'none';
+                    allocatedIpText.textContent = generateVirtualIP();
                     
-                    loaderContainer.style.opacity = '0';
-                    loaderContainer.style.transform = 'scale(0.96) translateY(-10px)';
-                    
-                    iframe.style.opacity = '1';
-                    iframe.style.transform = 'scale(1)';
+                    // तुम्हारी दी हुई स्मूथ एंडिंग लाइन वाली स्क्रीन शो करें
+                    successScreen.classList.add('show');
 
+                    // पूरे 3 सेकंड का हार्ड होल्ड (ताकि एनीमेशन दिखे)
+                    setTimeout(() => {
+                        minimumTimePassed = true;
+                        checkAndFinalize();
+                    }, 1000);
+                }, 300);
+            }
+
+            function checkAndFinalize() {
+                // दोनों कंडीशन मैच होने पर ही स्क्रीन हटेगी
+                if (iframeLoaded && minimumTimePassed) {
+                    // पूरे लोडर कंटेनर को स्मूथली फेड-आउट करें
+                    loaderContainer.style.opacity = '0';
+                    
                     setTimeout(() => {
                         loaderContainer.remove();
-                    }, 500);
-                }, 500);
+                        iframe.style.opacity = '1'; // वेबसाइट को विजिबल करें
+                    }, 700); // 600ms फेड आउट टाइमिंग
+                } else {
+                    // अगर साईट अभी भी लोड हो रही है तो थोड़ी-थोड़ी देर में री-चेक करें
+                    setTimeout(checkAndFinalize, 50);
+                }
             }
 
- 
+            iframe.addEventListener('load', function() {
+                iframeLoaded = true;
+                checkAndFinalize();
+            });
+
+            // सेफ्टी बैकअप
+            setTimeout(() => {
+                iframeLoaded = true;
+                checkAndFinalize();
+            }, 9500);
 
             window.onbeforeunload = function() {
-         
                 return "Navigation is locked inside the secure container.";
             };
         });
