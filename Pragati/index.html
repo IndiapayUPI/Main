@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+    (window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '807304822145447');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=807304822145447&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pragati Mohari - Skill Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root { 
+      --p-blue: #1e3a8a; 
+      --purple: #7e22ce; 
+      --text: #0f172a; 
+      --muted: #475569; 
+      --white: #ffffff; 
+      /* Updated banner image URL */
+      --banner-bg: url('https://i.pinimg.com/736x/70/63/c3/7063c39f3c06be7e31f855fa01220390.jpg');
+      /* Shared original background URL */
+      --shared-bg: url('https://img.freepik.com/free-vector/elegant-hand-painted-pastel-pink-alcohol-ink-background_1048-19138.jpg?semt=ais_hybrid&w=740&q=80');
+    }  
+
+    * { margin:0; padding:0; box-sizing:border-box; }  
+
+    body {     
+      font-family:'Inter', sans-serif; 
+      color:var(--text);     
+      background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #fff 100%),                 
+                  var(--shared-bg) center/cover fixed;  
+    }  
+
+    .cnt { max-width:1000px; margin:0 auto; min-height:100vh; background:transparent; }  
+
+    /* Banner with 16:9 responsive aspect ratio styling */
+    .bnr {     
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      max-height: 380px;
+      background: var(--banner-bg) center/cover no-repeat;     
+      border-bottom: 4px solid var(--purple);   
+    }  
+
+    .lay { display:grid; grid-template-columns:320px 1fr; gap:25px; padding:0 20px 40px; }  
+
+    .side { 
+      margin-top:-80px; 
+      background:var(--white); 
+      border:1px solid #e2e8f0; 
+      border-radius:24px; 
+      padding:30px 20px; 
+      text-align:center; 
+      box-shadow:0 10px 25px rgba(0,0,0,0.05); 
+    }  
+
+    .avt { 
+      width:140px; 
+      height:140px; 
+      border-radius:50%; 
+      margin:0 auto 15px; 
+      border:6px solid var(--white); 
+      object-fit:cover; 
+      box-shadow:0 8px 20px rgba(0,0,0,0.1); 
+    }  
+
+    .ttl { display:flex; align-items:center; justify-content:center; gap:8px; font-size:22px; font-weight:800; letter-spacing:-0.5px; }  
+    
+    .hnd { color:#0088cc; font-weight:600; font-size:15px; margin-bottom:25px; display:block; text-decoration:none; }  
+
+    .sts { display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; margin-bottom:30px; }  
+
+    .stc { background:#f8fafc; padding:12px 2px; border-radius:12px; border:1px solid #edf2f7; }  
+    .stc b { display:block; font-size:17px; font-weight:800; }  
+    .stc span { font-size:10px; color:var(--muted); text-transform:uppercase; font-weight:700; }    
+
+    .btn {     
+      display:flex; align-items:center; justify-content:center; gap:12px; width:100%;     
+      background: linear-gradient(135deg, var(--p-blue) 0%, var(--purple) 100%);     
+      color:#fff; padding:18px; border-radius:50px; text-decoration:none; font-weight:800;     
+      font-size:16px; text-transform:uppercase; letter-spacing:1px;     
+      box-shadow: 0 4px 0 rgba(0,0,0,0.15); transition: 0.2s; border:none;   
+    }  
+
+    .btn:active { transform: translateY(2px); box-shadow: none; }  
+    .btn svg { width:24px; height:24px; fill:white; }  
+
+    .main { padding-top:40px; }  
+    .sttl { font-size:20px; font-weight:800; margin-bottom:20px; display:flex; align-items:center; gap:10px; }  
+    .sttl svg { width:24px; fill: var(--purple); }  
+
+    /* Skills Grid Layout for Fancy Tags */
+    .skills-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 40px;
+    }
+
+    .box { 
+      background:var(--white); 
+      padding:25px; 
+      border-radius:16px; 
+      border:1px dashed #cbd5e1; 
+      font-size:15px; 
+      line-height:1.7; 
+      color:#334155; 
+    }  
+
+    /* Custom Fancy Tag Styles */
+    .fancy {
+      background-color: #ffffff;
+      border: 2px solid #000;
+      border-radius: 0;
+      box-sizing: border-box;
+      color: #fff;
+      cursor: pointer;
+      display: block;
+      width: 100%;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin: 0;
+      outline: none;
+      overflow: visible;
+      padding: 1.25em 2em;
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+      text-transform: none;
+      transition: all 0.3s ease-in-out;
+      user-select: none;
+      font-size: 13px;
+    }
+
+    .fancy::before {
+      content: " ";
+      width: 1.5625rem;
+      height: 2px;
+      background: black;
+      top: 50%;
+      left: 1.5em;
+      position: absolute;
+      transform: translateY(-50%);
+      transform-origin: center;
+      transition: background 0.3s linear, width 0.3s linear;
+    }
+
+    .fancy .text {
+      font-size: 1.125em;
+      line-height: 1.33333em;
+      padding-left: 2em;
+      display: block;
+      text-align: left;
+      transition: all 0.3s ease-in-out;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: black;
+    }
+
+    .fancy .top-key {
+      height: 2px;
+      width: 1.5625rem;
+      top: -2px;
+      left: 0.625rem;
+      position: absolute;
+      background: #e8e8e8;
+      transition: width 0.5s ease-out, left 0.3s ease-out;
+    }
+
+    .fancy .bottom-key-1 {
+      height: 2px;
+      width: 1.5625rem;
+      right: 1.875rem;
+      bottom: -2px;
+      position: absolute;
+      background: #e8e8e8;
+      transition: width 0.5s ease-out, right 0.3s ease-out;
+    }
+
+    .fancy .bottom-key-2 {
+      height: 2px;
+      width: 0.625rem;
+      right: 0.625rem;
+      bottom: -2px;
+      position: absolute;
+      background: #e8e8e8;
+      transition: width 0.5s ease-out, right 0.3s ease-out;
+    }
+
+    .fancy:hover {
+      color: white;
+      background: black;
+    }
+
+    .fancy:hover::before {
+      width: 0.9375rem;
+      background: white;
+    }
+
+    .fancy:hover .text {
+      color: white;
+      padding-left: 1.5em;
+    }
+
+    .fancy:hover .top-key {
+      left: -2px;
+      width: 0px;
+    }
+
+    .fancy:hover .bottom-key-1,
+    .fancy:hover .bottom-key-2 {
+      right: 0;
+      width: 0;
+    }
+
+    @media (max-width:768px) {     
+      .lay { grid-template-columns:1fr; padding:0 10px 20px; }     
+      .side { margin-top:-60px; } 
+    }
+  </style>
+</head>
+<body>
+
+<div class="cnt">  
+  <div class="bnr"></div>  
+  
+  <div class="lay">    
+    <aside class="side">      
+      <img src="https://i.pinimg.com/736x/92/b6/ab/92b6ab7e3296aeb296457b381247ae53.jpg" class="avt" alt="Pragati Mohari">      
+      
+      <div class="ttl">
+        Pragati Mohari 
+        <svg style="width:20px; fill:#0088cc;" viewBox="0 0 24 24">
+          <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.5-1.5 2.6 2.6 6.4-6.4 1.5 1.5-7.9 7.9z"/>
+        </svg>
+      </div>      
+      
+      <a href="https://t.me/+OFddAlybyZ5kMjZl" class="hnd">Skill Growth & Mentorship</a>            
+      
+      <div class="sts">        
+        <div class="stc"><b>50K+</b><span>Learners</span></div>        
+        <div class="stc"><b>100+</b><span>Guides</span></div>        
+        <div class="stc"><b>98%</b><span>Success</span></div>      
+      </div>      
+      
+      <a href="https://t.me/+OFddAlybyZ5kMjZl" class="btn" target="_blank">        
+        <svg viewBox="0 0 24 24">
+          <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.896-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+        </svg>        
+        JOIN OFFICIAL CHANNEL      
+      </a>    
+    </aside>    
+
+    <main class="main">      
+      <h2 class="sttl">
+        <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
+        Featured Skill Modules
+      </h2>      
+
+      <div class="skills-container">        
+        <a class="fancy" href="https://t.me/+OFddAlybyZ5kMjZl" target="_blank">
+          <span class="top-key"></span>
+          <span class="text">High-Income Digital Skills</span>
+          <span class="bottom-key-1"></span>
+          <span class="bottom-key-2"></span>
+        </a>
+
+        <a class="fancy" href="https://t.me/+OFddAlybyZ5kMjZl" target="_blank">
+          <span class="top-key"></span>
+          <span class="text">Career & Skill Building Roadmaps</span>
+          <span class="bottom-key-1"></span>
+          <span class="bottom-key-2"></span>
+        </a>
+
+        <a class="fancy" href="https://t.me/+OFddAlybyZ5kMjZl" target="_blank">
+          <span class="top-key"></span>
+          <span class="text">Personal Growth & Mentorship</span>
+          <span class="bottom-key-1"></span>
+          <span class="bottom-key-2"></span>
+        </a>
+      </div>      
+
+      <h2 class="sttl">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+        About Pragati Mohari
+      </h2>      
+      
+      <div class="box">        
+        <b>Welcome to Pragati Mohari’s Learning Community!</b><br><br>        
+        Unlock your true potential with structured roadmaps, high-value skill building content, and modern industry insights. Whether you are looking to master high-demand digital skills, boost your productivity, or map out your career path, you'll find step-by-step guidance right here.
+        <br><br>
+        Join our thriving community today to get access to daily learning materials, practical resources, and direct updates! 
+        This whole campaign managed by a verified Indian advertising agency @quicklygrow You can search this username on Telegram if you are a teacher or something wanna run ads on Meta PVT.LTD   
+      </div>    
+    </main>  
+  </div>
+</div>
+
+</body>
+</html>
