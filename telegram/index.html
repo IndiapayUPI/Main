@@ -1,259 +1,544 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark scroll-smooth">
 <head>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '27998404266419444');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=27998404266419444&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+    <!-- Meta Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '27998404266419444');
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=27998404266419444&ev=PageView&noscript=1"/>
+    </noscript>
+    <!-- End Meta Pixel Code -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>GrowShal | Luxury Advertising/Marketing</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>GrowShal | Premier Performance Marketing Agency</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: '#07070a',
+                        cardDark: '#0e0f14',
+                        accentViolet: '#8b5cf6',
+                        accentCyan: '#06b6d4',
+                        accentGold: '#f59e0b',
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', '-apple-system', 'sans-serif'],
+                        display: ['Syne', 'Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        :root {
-            --accent: #7000ff;
-            --glass: rgba(255, 255, 255, 0.85);
-            --border: rgba(0, 0, 0, 0.08);
-            --text: #1a1a1e;
+        * {
+            -webkit-tap-highlight-color: transparent;
+            box-sizing: border-box;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8f9fa;
-            color: var(--text);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #06070a;
+            color: #e2e8f0;
             overflow-x: hidden;
-            line-height: 1.6;
+            letter-spacing: -0.01em;
         }
 
-        /* Luxury Nebula Background */
-        .nebula-bg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
-            background: radial-gradient(circle at 20% 30%, rgba(0, 229, 255, 0.08) 0%, transparent 40%),
-                        radial-gradient(circle at 80% 70%, rgba(112, 0, 255, 0.08) 0%, transparent 40%);
-            animation: nebula-float 20s ease-in-out infinite alternate;
-        }
-        @keyframes nebula-float {
-            from { transform: translate(-5%, -5%) rotate(0deg); }
-            to { transform: translate(5%, 5%) rotate(5deg); }
+        .font-display {
+            font-family: 'Syne', sans-serif;
         }
 
-        /* Top Nav Refined */
-        .top-nav {
-            position: fixed; top: 0; width: 100%; height: 65px; z-index: 1000;
-            background: var(--glass);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            display: flex; align-items: center; justify-content: space-between; padding: 0 15px;
-            max-width: 480px; left: 50%; transform: translateX(-50%);
-        }
-        .nav-brand { display: flex; align-items: center; gap: 8px; font-weight: 700; letter-spacing: -0.5px; font-size: 1rem; }
-        .nav-logo { height: 28px; }
-
-        /* Nav DM Button - Fade Zoom Anim */
-        .nav-dm-btn {
-            background: #000; color: #fff; text-decoration: none; padding: 8px 16px; 
-            border-radius: 12px; font-size: 0.8rem; font-weight: 600;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-        .nav-dm-btn:active { transform: scale(0.9) opacity(0.8); }
-
-        .app-container { max-width: 480px; margin: 0 auto; padding: 100px 20px 120px; }
-
-        /* Main Card - Laser Border */
-        .card-frame {
-            position: relative; border-radius: 30px; padding: 1.5px;
-            background: linear-gradient(135deg, #00d2ff, #9d50bb, #00d2ff);
-            background-size: 200% 200%;
-            animation: border-flow 4s linear infinite;
-            margin-bottom: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-        }
-        @keyframes border-flow { 0% {background-position: 0% 50%} 50% {background-position: 100% 50%} 100% {background-position: 0% 50%} }
-        
-        .card-inner { background: white; border-radius: 28px; padding: 25px; display: flex; flex-direction: column; gap: 15px; }
-
-        .metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 10px 0; }
-        .metric-box { border-left: 2px solid #00e5ff; padding-left: 12px; }
-        .metric-label { font-size: 0.65rem; text-transform: uppercase; color: #888; letter-spacing: 1px; }
-        .metric-value { font-size: 1.2rem; font-weight: 600; }
-
-        /* Fade-Zoom Animation for all Major Buttons */
-        .btn-animate {
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            will-change: transform, opacity;
-        }
-        .btn-animate:hover { transform: scale(1.02); }
-        .btn-animate:active { transform: scale(0.95); opacity: 0.9; }
-
-        /* Killer Telegram Button */
-        .tg-link {
-            text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px;
-            background: #000; color: #fff; padding: 18px; border-radius: 18px;
-            font-weight: 600; letter-spacing: 1px; font-size: 0.9rem;
-            position: relative; overflow: hidden;
-        }
-        .tg-link::after {
-            content: ""; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transform: skewX(-25deg); animation: shine 3s infinite;
-        }
-        @keyframes shine { 0% { left: -100%; } 100% { left: 200%; } }
-
-        /* Image Grids */
-        .section-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 15px; font-weight: 800; text-align: center; }
-        .grid-16-9 { display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px; }
-        .img-box { width: 100%; border-radius: 20px; overflow: hidden; border: 1px solid var(--border); aspect-ratio: 16/9; }
-        .img-box img { width: 100%; height: 100%; object-fit: cover; }
-        
-        .grid-9-16 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .img-box-v { aspect-ratio: 9/16; border-radius: 15px; overflow: hidden; border: 1px solid var(--border); }
-        .img-box-v img { width: 100%; height: 100%; object-fit: cover; }
-
-        /* Floating Bottom Bar */
-        .floating-cta-wrapper {
-            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(150px);
-            width: 90%; max-width: 400px; z-index: 2000;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .floating-cta-wrapper.active { transform: translateX(-50%) translateY(0); }
-
-        .pay-btn {
-            display: flex; align-items: center; padding: 18px 20px; border-radius: 22px;
-            background: #000; color: #fff; text-decoration: none; font-weight: 700;
-            font-size: 1rem; box-shadow: 0 15px 35px rgba(0,0,0,0.25);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .pay-icon-box {
-            width: 45px; height: 45px; background: #222; border-radius: 14px;
-            display: flex; align-items: center; justify-content: center; margin-right: 15px;
+        /* Subtle Ambient Glow Mesh */
+        .ambient-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+            background: 
+                radial-gradient(circle at 15% 15%, rgba(139, 92, 246, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 65%, rgba(6, 182, 212, 0.06) 0%, transparent 45%),
+                radial-gradient(circle at 50% 90%, rgba(245, 158, 11, 0.04) 0%, transparent 40%);
         }
 
-        .socials { display: flex; justify-content: center; gap: 25px; margin-top: 40px; }
-        .socials a { color: #888; font-size: 1.4rem; transition: 0.3s; }
-        .socials a:hover { color: var(--accent); }
+        /* Fine Noise Grain Overlay */
+        .bg-grain {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+        }
 
+        /* Handcrafted Luxury Card Effect */
+        .luxury-card {
+            background: rgba(15, 16, 22, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 
+                0 30px 60px -12px rgba(0, 0, 0, 0.7),
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+        }
+
+        /* Minimal Hairline Border Glow */
+        .luxury-border-glow {
+            position: relative;
+        }
+        .luxury-border-glow::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.02), rgba(139,92,246,0.3));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        /* Tactile Mobile Button Animation */
+        .tap-bounce {
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .tap-bounce:active {
+            transform: scale(0.96);
+        }
+
+        /* Shimmer Ray on Telegram Button */
+        .btn-shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shimmer::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -150%;
+            width: 80%;
+            height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            transform: rotate(25deg);
+            animation: shimmerPass 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes shimmerPass {
+            0% { left: -150%; }
+            30% { left: 200%; }
+            100% { left: 200%; }
+        }
+
+        /* Luxury Image Frame Hover */
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(10, 11, 16, 0.8);
+            cursor: pointer;
+        }
+        .gallery-item img {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.04);
+        }
+        .gallery-item .overlay-zoom {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(2px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .gallery-item:hover .overlay-zoom {
+            opacity: 1;
+        }
+
+        /* Custom Scrollbar for sleek desktop preview */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #06070a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 3px;
+        }
     </style>
 </head>
-<body>
+<body class="bg-obsidian bg-grain min-h-screen text-slate-200 antialiased selection:bg-accentViolet/30 selection:text-white pb-32">
 
-    <div class="nebula-bg"></div>
+    <!-- Ambient Mesh Background -->
+    <div class="ambient-mesh"></div>
 
-    <nav class="top-nav">
-        <div class="nav-brand">
-            <img src="https://growshal.com/wp-content/uploads/2023/12/cropped-admin-ajax2.png" class="nav-logo" alt="Logo">
-            <span>GROWSHAL</span>
-        </div>
-        <a href="/dm" class="nav-dm-btn btn-animate">Chat With Us</a>
-    </nav>
+    <header class="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-3 pb-2">
+        <nav class="w-full max-w-md sm:max-w-lg h-14 px-4 flex items-center justify-between rounded-2xl bg-black/60 backdrop-blur-xl border border-white/10 shadow-2xl">
+            <!-- Brand Mark -->
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-white/10 to-white/5 border border-white/15 p-1 flex items-center justify-center">
+                    <img src="https://growshal.com/wp-content/uploads/2023/12/cropped-admin-ajax2.png" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/80x80/1a1a24/ffffff?text=GS';" 
+                         alt="GrowShal Logo" 
+                         class="w-full h-full object-contain rounded-lg">
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-display font-bold tracking-tight text-sm text-white">GROWSHAL</span>
+                    <span class="text-[9px] uppercase tracking-widest text-slate-400 font-semibold -mt-0.5">Media Group</span>
+                </div>
+            </div>
 
-    <div class="app-container">
-        
-        <div class="card-frame">
-            <div class="card-inner">
-                <span style="font-size: 0.6rem; letter-spacing: 4px; color: #7000ff; font-weight: 700;">Verified Agency</span>
-                <h1 style="font-size: 2rem; font-weight: 300;">Hey I'am <b>Growshal</b></h1>
-                
-                <div class="metrics">
-                    <div class="metric-box">
-                        <span class="metric-label">Cost Per Member</span>
-                        <div class="metric-value">Max 25₹</div>
+            <!-- Direct Chat Action Button -->
+            <a href="/dm" class="tap-bounce flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-white text-black font-semibold text-xs shadow-lg hover:bg-slate-100">
+                <i class="fa-regular fa-paper-plane text-[11px]"></i>
+                <span>Direct Message</span>
+            </a>
+        </nav>
+    </header>
+
+    <main class="w-full max-w-md sm:max-w-lg mx-auto px-4 pt-22 sm:pt-24 flex flex-col gap-8 mt-16">
+
+        <!-- HERO BRAND CARD -->
+        <section class="luxury-card luxury-border-glow rounded-3xl p-6 relative overflow-hidden flex flex-col gap-6">
+            
+            <!-- Live Availability Status Tag -->
+            <div class="flex items-center justify-between">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[11px] font-medium tracking-wide">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </span>
+                    <span>Accepting Q3 Campaigns</span>
+                </div>
+                <span class="text-[11px] text-slate-500 font-mono">EST. 2021</span>
+            </div>
+
+            <!-- Main Intro Typography -->
+            <div class="flex flex-col gap-2">
+                <span class="text-xs uppercase tracking-[0.2em] font-bold text-accentViolet">Performance Marketing</span>
+                <h1 class="font-display text-3xl sm:text-4xl font-extrabold text-white leading-[1.15] tracking-tight">
+                    Scale Your Reach.<br>
+                    <span class="bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">Zero Wasted Ad Spend.</span>
+                </h1>
+                <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mt-1 font-normal">
+                    We engineer high-converting paid acquisition campaigns designed for ultra-low CAC and instant community growth.
+                </p>
+            </div>
+
+            <!-- Key Metric Performance Cards -->
+            <div class="grid grid-cols-2 gap-3 pt-1">
+                <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.06] flex flex-col gap-1">
+                    <div class="flex items-center justify-between text-slate-400">
+                        <span class="text-[10px] uppercase tracking-wider font-semibold">Member CAC</span>
+                        <i class="fa-solid fa-arrow-trend-down text-emerald-400 text-xs"></i>
                     </div>
-                    <div class="metric-box">
-                        <span class="metric-label">Quality</span>
-                        <div class="metric-value">100%</div>
+                    <div class="text-xl font-display font-extrabold text-white">
+                        Max ₹25 <span class="text-xs font-normal text-slate-400">/sub</span>
                     </div>
                 </div>
 
-                <a href="/tg" class="tg-link btn-animate">
-                    <i class="fab fa-telegram-plane"></i> JOIN TELEGRAM CHANNEL
+                <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.06] flex flex-col gap-1">
+                    <div class="flex items-center justify-between text-slate-400">
+                        <span class="text-[10px] uppercase tracking-wider font-semibold">Lead Integrity</span>
+                        <i class="fa-solid fa-shield-check text-accentCyan text-xs"></i>
+                    </div>
+                    <div class="text-xl font-display font-extrabold text-white">
+                        100% <span class="text-xs font-normal text-slate-400">Verified</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Primary CTA -->
+            <a href="/tg" class="btn-shimmer tap-bounce w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-accentViolet to-indigo-600 font-semibold text-sm text-white flex items-center justify-center gap-3 shadow-xl border border-white/20">
+                <i class="fa-brands fa-telegram text-lg"></i>
+                <span class="tracking-wide font-bold">JOIN TELEGRAM CHANNEL</span>
+                <i class="fa-solid fa-arrow-right text-xs opacity-80"></i>
+            </a>
+
+        </section>
+
+        <section class="flex flex-col gap-4">
+            <!-- Section Header -->
+            <div class="flex items-center justify-between px-1">
+                <div class="flex items-center gap-2">
+                    <div class="w-1.5 h-1.5 rounded-full bg-accentViolet"></div>
+                    <h2 class="font-display text-xs uppercase tracking-[0.15em] font-bold text-slate-300">
+                        Verified Live Campaigns
+                    </h2>
+                </div>
+                <span class="text-[11px] text-slate-500">Real Dashboard Data</span>
+            </div>
+
+            <!-- Horizontal 16:9 Screenshots Grid -->
+            <div class="flex flex-col gap-3.5">
+                
+                <div class="gallery-item aspect-[16/9] shadow-2xl" onclick="openLightbox('https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd161af27255.60399124_Screenshot2026-05-08041504.png')">
+                    <img src="https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd161af27255.60399124_Screenshot2026-05-08041504.png" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/800x450/0f1016/ffffff?text=Campaign+Proof+1';" 
+                         alt="Meta Ads Performance Proof" 
+                         class="w-full h-full object-cover">
+                    <div class="overlay-zoom">
+                        <span class="px-3 py-1.5 rounded-full bg-black/80 text-white text-xs font-medium border border-white/20 flex items-center gap-2">
+                            <i class="fa-solid fa-expand text-[10px]"></i> Expand Proof
+                        </span>
+                    </div>
+                </div>
+
+                <div class="gallery-item aspect-[16/9] shadow-2xl" onclick="openLightbox('https://freelancershahin.com/wp-content/uploads/2025/11/3-google.png')">
+                    <img src="https://freelancershahin.com/wp-content/uploads/2025/11/3-google.png" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/800x450/0f1016/ffffff?text=Google+Ads+Analytics';" 
+                         alt="Google Ads Performance Proof" 
+                         class="w-full h-full object-cover">
+                    <div class="overlay-zoom">
+                        <span class="px-3 py-1.5 rounded-full bg-black/80 text-white text-xs font-medium border border-white/20 flex items-center gap-2">
+                            <i class="fa-solid fa-expand text-[10px]"></i> Expand Proof
+                        </span>
+                    </div>
+                </div>
+
+                <div class="gallery-item aspect-[16/9] shadow-2xl" onclick="openLightbox('https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd161af2fbc0.17325006_Screenshot2026-05-08040719.png')">
+                    <img src="https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd161af2fbc0.17325006_Screenshot2026-05-08040719.png" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/800x450/0f1016/ffffff?text=Ad+Account+Spend+Dashboard';" 
+                         alt="Ad Account Spend Dashboard" 
+                         class="w-full h-full object-cover">
+                    <div class="overlay-zoom">
+                        <span class="px-3 py-1.5 rounded-full bg-black/80 text-white text-xs font-medium border border-white/20 flex items-center gap-2">
+                            <i class="fa-solid fa-expand text-[10px]"></i> Expand Proof
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="flex flex-col gap-4">
+            <!-- Section Header -->
+            <div class="flex items-center justify-between px-1">
+                <div class="flex items-center gap-2">
+                    <div class="w-1.5 h-1.5 rounded-full bg-accentCyan"></div>
+                    <h2 class="font-display text-xs uppercase tracking-[0.15em] font-bold text-slate-300">
+                        Client Case Studies
+                    </h2>
+                </div>
+                <span class="text-[11px] text-slate-500">Tap image for full view</span>
+            </div>
+
+            <!-- Vertical 9:16 Grid -->
+            <div class="grid grid-cols-2 gap-3">
+                
+                <div class="gallery-item aspect-[9/16] shadow-xl" onclick="openLightbox('https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd08fc781190.28213852_bd7c99ec-d6cd-44e0-bbfd-2d31ea5a3f09.jfif')">
+                    <img src="https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd08fc781190.28213852_bd7c99ec-d6cd-44e0-bbfd-2d31ea5a3f09.jfif" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/400x711/0f1016/ffffff?text=Case+Study+1';" 
+                         alt="Client Case Study 1" 
+                         class="w-full h-full object-cover">
+                    <div class="overlay-zoom">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-lg"></i>
+                    </div>
+                </div>
+
+                <div class="gallery-item aspect-[9/16] shadow-xl" onclick="openLightbox('https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd0c668bec62.41319206_photo_2026-01-14_02-02-56.jpg')">
+                    <img src="https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd0c668bec62.41319206_photo_2026-01-14_02-02-56.jpg" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/400x711/0f1016/ffffff?text=Case+Study+2';" 
+                         alt="Client Case Study 2" 
+                         class="w-full h-full object-cover">
+                    <div class="overlay-zoom">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-lg"></i>
+                    </div>
+                </div>
+
+                <div class="gallery-item aspect-[9/16] shadow-xl" onclick="openLightbox('https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd0d30dfe0e8.59788428_photo_2025-05-18_19-37-02.jpg')">
+                    <img src="https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd0d30dfe0e8.59788428_photo_2025-05-18_19-37-02.jpg" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/400x711/0f1016/ffffff?text=Case+Study+3';" 
+                         alt="Client Case Study 3" 
+                         class="w-full h-full object-cover">
+                    <div class="overlay-zoom">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-lg"></i>
+                    </div>
+                </div>
+
+                <div class="gallery-item aspect-[9/16] shadow-xl" onclick="openLightbox('https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd0d64ee33d6.88195498_Gemini_Generated_Image_fjusxsfjusxsfjus.png')">
+                    <img src="https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd0d64ee33d6.88195498_Gemini_Generated_Image_fjusxsfjusxsfjus.png" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/400x711/0f1016/ffffff?text=Case+Study+4';" 
+                         alt="Client Case Study 4" 
+                         class="w-full h-full object-cover">
+                    <div class="overlay-zoom">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-lg"></i>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="luxury-card rounded-2xl p-5 border border-white/10 flex flex-col gap-4">
+            <h3 class="font-display text-xs font-bold uppercase tracking-[0.15em] text-slate-400 text-center">
+                The GrowShal Advantage
+            </h3>
+            
+            <div class="grid grid-cols-3 gap-3 text-center">
+                <div class="flex flex-col items-center gap-2 p-3 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+                    <div class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400">
+                        <i class="fa-solid fa-chart-line text-sm"></i>
+                    </div>
+                    <span class="text-[11px] font-semibold text-slate-300">Targeted Growth</span>
+                </div>
+
+                <div class="flex flex-col items-center gap-2 p-3 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+                    <div class="w-8 h-8 rounded-lg bg-accentViolet/10 flex items-center justify-center text-accentViolet">
+                        <i class="fa-solid fa-user-check text-sm"></i>
+                    </div>
+                    <span class="text-[11px] font-semibold text-slate-300">100% Real Traffic</span>
+                </div>
+
+                <div class="flex flex-col items-center gap-2 p-3 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+                    <div class="w-8 h-8 rounded-lg bg-accentCyan/10 flex items-center justify-center text-accentCyan">
+                        <i class="fa-solid fa-headset text-sm"></i>
+                    </div>
+                    <span class="text-[11px] font-semibold text-slate-300">24/7 VIP Support</span>
+                </div>
+            </div>
+        </section>
+
+        <footer class="flex flex-col items-center gap-6 pt-4 pb-6">
+            <!-- Social Icon Bar -->
+            <div class="flex items-center justify-center gap-4">
+                <a href="/ig" class="tap-bounce w-11 h-11 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-slate-300 hover:text-white hover:border-white/20 transition-all">
+                    <i class="fa-brands fa-instagram text-base"></i>
+                </a>
+                <a href="#" onclick="copyAgencyLink(event)" class="tap-bounce w-11 h-11 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-slate-300 hover:text-white hover:border-white/20 transition-all">
+                    <i class="fa-brands fa-linkedin-in text-base"></i>
+                </a>
+                <a href="/dm" class="tap-bounce w-11 h-11 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-slate-300 hover:text-white hover:border-white/20 transition-all">
+                    <i class="fa-brands fa-telegram text-base"></i>
                 </a>
             </div>
-        </div>
 
-        <h3 class="section-title">Latest Results</h3>
-        <div class="grid-16-9">
-            <div class="img-box"><img src="https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd161af27255.60399124_Screenshot2026-05-08041504.png" alt="1"></div>
-            <div class="img-box"><img src="https://freelancershahin.com/wp-content/uploads/2025/11/3-google.png" alt="2"></div>
-            <div class="img-box"><img src="https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd161af2fbc0.17325006_Screenshot2026-05-08040719.png" alt="3"></div>
-        </div>
+            <p class="text-[11px] text-slate-500 font-medium tracking-wide">
+                © 2026 GROWSHAL MEDIA GROUP. ALL RIGHTS RESERVED.
+            </p>
+        </footer>
 
-        <h3 class="section-title">Clint's Results</h3>
-        <div class="grid-9-16">
-            <div class="img-box-v"><img src="https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd08fc781190.28213852_bd7c99ec-d6cd-44e0-bbfd-2d31ea5a3f09.jfif" alt="1"></div>
-            <div class="img-box-v"><img src="https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd0c668bec62.41319206_photo_2026-01-14_02-02-56.jpg" alt="2"></div>
-            <div class="img-box-v"><img src="https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd0d30dfe0e8.59788428_photo_2025-05-18_19-37-02.jpg" alt="3"></div>
-            <div class="img-box-v"><img src="https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd0d64ee33d6.88195498_Gemini_Generated_Image_fjusxsfjusxsfjus.png" alt="4"></div>
-        </div>
+    </main>
 
-        <div class="socials">
-            <a href="/ig"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="/dm"><i class="fab fa-telegram"></i></a>
-        </div>
-    </div>
-
-    <div class="floating-cta-wrapper" id="scrollCta">
-        <a href="/ap" class="pay-btn btn-animate">
-            <div class="pay-icon-box">
-                <i class="fas fa-bolt" style="color: hwb(226 0% 0%);"></i>
+    <!-- FLOATING BOTTOM CTA BAR -->
+    <div id="scrollCta" class="fixed bottom-5 left-1/2 -translate-x-1/2 w-[92%] max-w-md sm:max-w-lg z-40 transition-all duration-500 ease-out transform translate-y-32 opacity-0 pointer-events-none">
+        <a href="/ap" class="tap-bounce flex items-center justify-between p-3.5 rounded-2xl bg-black/90 backdrop-blur-2xl border border-white/20 shadow-2xl text-white">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-accentGold to-amber-600 flex items-center justify-center text-slate-950 font-black shadow-inner">
+                    <i class="fa-solid fa-bolt text-lg"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-[10px] text-accentGold uppercase tracking-widest font-extrabold">Exclusive Growth Plan</span>
+                    <span class="text-xs font-bold text-white">Activate at <span class="text-emerald-400">₹17,999</span> Only</span>
+                </div>
             </div>
-            Active Plan At ₹17,999 Only
+            <span class="px-3.5 py-2 rounded-xl bg-white text-black font-extrabold text-xs shadow-md">
+                Claim <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i>
+            </span>
         </a>
     </div>
 
+    <!-- LIGHTBOX IMAGE MODAL -->
+    <div id="lightbox" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl hidden flex items-center justify-center p-4 transition-all duration-300" onclick="closeLightbox()">
+        <button class="absolute top-6 right-6 text-slate-400 hover:text-white bg-white/10 hover:bg-white/20 w-11 h-11 rounded-full flex items-center justify-center text-xl transition-all border border-white/10">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="max-w-full max-h-[85vh] p-1 rounded-2xl bg-gradient-to-b from-white/10 to-transparent">
+            <img id="lightboxImg" src="" alt="Proof High Res Preview" class="max-w-full max-h-[82vh] rounded-xl object-contain shadow-2xl">
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed top-20 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-xl bg-slate-900/90 backdrop-blur-md border border-white/20 text-white font-medium text-xs shadow-2xl opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2">
+        <i class="fa-solid fa-circle-check text-emerald-400"></i>
+        <span id="toastMsg">Notification Message</span>
+    </div>
+
     <script>
-        let isScrolling;
+        // Scroll behavior for Floating CTA Bar (Smooth threshold detection)
+        let scrollTimeout;
         const scrollCta = document.getElementById('scrollCta');
 
         window.addEventListener('scroll', function () {
-            // Show bar on scroll
-            scrollCta.classList.add('active');
+            if (window.scrollY > 150) {
+                scrollCta.classList.remove('translate-y-32', 'opacity-0', 'pointer-events-none');
+                scrollCta.classList.add('translate-y-0', 'opacity-100');
+            } else {
+                scrollCta.classList.add('translate-y-32', 'opacity-0', 'pointer-events-none');
+                scrollCta.classList.remove('translate-y-0', 'opacity-100');
+            }
 
-            // Reset timeout
-            window.clearTimeout(isScrolling);
+            window.clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(function() {
+                // Auto hide if idle for 5 seconds
+                if (window.scrollY > 150) {
+                    scrollCta.classList.add('translate-y-32', 'opacity-0', 'pointer-events-none');
+                }
+            }, 5000);
+        });
 
-            // Hide after 4 seconds of inactivity
-            isScrolling = setTimeout(function() {
-                scrollCta.classList.remove('active');
-            }, 4000);
-        }, false);
+        // Lightbox Image Viewer Logic
+        function openLightbox(imgUrl) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            lightboxImg.src = imgUrl;
+            lightbox.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // Copy Agency Profile Link
+        function copyAgencyLink(e) {
+            e.preventDefault();
+            const dummy = document.createElement('input');
+            document.body.appendChild(dummy);
+            dummy.value = window.location.href;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+            
+            showToast('Agency profile link copied to clipboard!');
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            toastMsg.textContent = msg;
+            toast.classList.remove('opacity-0', 'pointer-events-none');
+            
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'pointer-events-none');
+            }, 3000);
+        }
     </script>
-
 </body>
 </html>
-<div id="insta-quick" style="position:fixed; top:20px; left:20px; z-index:9999; display:none;">
-    <a href="instagram://user?username=growshal">
-        <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/instagram-follow.png" 
-             style="width:110px; height:auto; image-rendering:-webkit-optimize-contrast; image-rendering:crisp-edges;" 
-             alt="Follow">
-    </a>
-</div>
-
-<div id="insta-p" style="position:fixed; top:20px; left:20px; z-index:9999; display:none;">
-    <a href="instagram://user?username=growshal">
-        <img // src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/instagram-follow.png" 
-             style="width:115px; image-rendering:-webkit-optimize-contrast;" alt="Insta">
-    </a>
-</div>
-
-<script>
-    //setTimeout(() => { document.getElementById('insta-p').style.display = 'block'; }, 6000);
-</script>
