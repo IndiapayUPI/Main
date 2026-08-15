@@ -21,7 +21,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>GrowShal | Luxury Advertising/Marketing</title>
+    <title>GrowShal | Classic Luxury Media & Advertising</title>
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -31,33 +31,33 @@
             theme: {
                 extend: {
                     colors: {
-                        obsidian: '#07070a',
-                        cardDark: '#0e0f14',
-                        accentViolet: '#7000ff',
-                        accentCyan: '#00e5ff',
-                        accentGold: '#f59e0b',
+                        classicOnyx: '#0b0c10',
+                        classicNavy: '#080a0f',
+                        goldLeaf: '#d4af37',
+                        champagne: '#f3e5ab',
+                        bronze: '#aa771c',
                     },
                     fontFamily: {
                         sans: ['Inter', '-apple-system', 'sans-serif'],
-                        display: ['Syne', 'Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'Georgia', 'serif'],
+                        classic: ['Cormorant Garamond', 'serif'],
                     }
                 }
             }
         }
     </script>
 
-    <!-- Google Fonts & FontAwesome -->
+    <!-- Google Fonts & FontAwesome for Classic Elegance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --accent: #e2e8f0;
-            --glass: rgba(255, 255, 255, 0.05);
-            --border: rgba(255, 255, 255, 0.22);
-            --text: #f8fafc;
+            --gold-gradient: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+            --silver-gold: linear-gradient(135deg, #ffffff 0%, #dfc88a 50%, #997424 100%);
+            --classic-bg: #07080b;
         }
 
         * { 
@@ -69,19 +69,18 @@
         
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #040508;
-            color: var(--text);
+            background-color: var(--classic-bg);
+            color: #f1f5f9;
             overflow-x: hidden;
             line-height: 1.6;
-            letter-spacing: -0.01em;
         }
 
-        .font-display {
-            font-family: 'Syne', sans-serif;
+        .font-serif-classic {
+            font-family: 'Playfair Display', 'Cormorant Garamond', serif;
         }
 
-        /* Ambient Diamond & Silver Background Glow */
-        .nebula-bg {
+        /* Classic Ambient Vignette Background */
+        .classic-bg {
             position: fixed; 
             top: 0; 
             left: 0; 
@@ -89,52 +88,28 @@
             height: 100vh; 
             z-index: -1;
             background: 
-                radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 15% 45%, rgba(226, 232, 240, 0.08) 0%, transparent 45%),
-                radial-gradient(circle at 85% 75%, rgba(148, 163, 184, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 50% 90%, rgba(255, 255, 255, 0.06) 0%, transparent 45%);
-            animation: nebula-float 16s ease-in-out infinite alternate;
+                radial-gradient(circle at 50% 10%, rgba(212, 175, 55, 0.08) 0%, transparent 45%),
+                radial-gradient(circle at 80% 80%, rgba(170, 119, 28, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 20% 50%, rgba(15, 23, 42, 0.9) 0%, transparent 70%),
+                #07080b;
             pointer-events: none;
         }
 
-        @keyframes nebula-float {
-            from { transform: scale(1) translate(-1%, -1%) rotate(0deg); }
-            to { transform: scale(1.06) translate(1%, 1%) rotate(3deg); }
+        /* Classic Gold Metallic Text Animation */
+        .gold-shimmer-text {
+            background: var(--gold-gradient);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gold-sweep 6s linear infinite;
         }
 
-        /* Diamond Particle Sparkle Layer */
-        .diamond-sparkles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-            background-image: 
-                radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 40px 70px, rgba(226, 232, 240, 0.8), rgba(0,0,0,0)),
-                radial-gradient(1.5px 1.5px at 90px 40px, #ffffff, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 160px 120px, rgba(255,255,255,0.9), rgba(0,0,0,0)),
-                radial-gradient(1.5px 1.5px at 230px 190px, #e2e8f0, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 310px 80px, #ffffff, rgba(0,0,0,0));
-            background-repeat: repeat;
-            background-size: 350px 350px;
-            opacity: 0.35;
-            animation: sparkle-twinkle 6s infinite alternate;
+        @keyframes gold-sweep {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
         }
 
-        @keyframes sparkle-twinkle {
-            0% { opacity: 0.25; transform: translateY(0); }
-            100% { opacity: 0.45; transform: translateY(-10px); }
-        }
-
-        /* Fine Noise Grain Overlay */
-        .bg-grain {
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
-        }
-
-        /* Top Nav - Ultra Crystalline Diamond Glass Bar */
+        /* Top Classic Header Navigation */
         .top-nav {
             position: fixed; 
             top: 14px; 
@@ -142,210 +117,164 @@
             transform: translateX(-50%);
             width: calc(100% - 24px);
             max-width: 480px; 
-            height: 62px; 
+            height: 64px; 
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.04);
-            backdrop-filter: blur(28px) saturate(200%); 
-            -webkit-backdrop-filter: blur(28px) saturate(200%);
-            border: 1px solid rgba(255, 255, 255, 0.32);
-            border-radius: 22px;
+            background: rgba(12, 14, 20, 0.92);
+            backdrop-filter: blur(20px); 
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            border-radius: 16px;
             display: flex; 
             align-items: center; 
             justify-content: space-between; 
-            padding: 0 16px;
+            padding: 0 18px;
             box-shadow: 
-                0 20px 40px rgba(0, 0, 0, 0.7),
-                0 0 20px rgba(255, 255, 255, 0.12),
-                inset 0 1px 2px rgba(255, 255, 255, 0.6),
-                inset 0 -1px 2px rgba(255, 255, 255, 0.1);
-            position: fixed;
-            overflow: hidden;
+                0 15px 35px rgba(0, 0, 0, 0.9),
+                0 0 15px rgba(212, 175, 55, 0.1),
+                inset 0 1px 1px rgba(255, 248, 220, 0.3);
         }
 
-        .top-nav::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -150%;
-            width: 80%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
-            transform: skewX(-30deg);
-            animation: silver-sweep 7s infinite ease-in-out;
-        }
-
-        @keyframes silver-sweep {
-            0% { left: -150%; }
-            30% { left: 200%; }
-            100% { left: 200%; }
-        }
-
-        /* Diamond Shimmer Text Gradient */
-        .silver-diamond-text {
-            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 35%, #ffffff 50%, #94a3b8 70%, #ffffff 100%);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: text-shine 4s linear infinite;
-        }
-
-        @keyframes text-shine {
-            to { background-position: 200% center; }
-        }
-
-        /* Fade-Zoom Animation for Interactive Buttons */
-        .btn-animate {
-            transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
-            will-change: transform, opacity;
-        }
-        .btn-animate:hover { transform: scale(1.02); box-shadow: 0 0 25px rgba(255, 255, 255, 0.3); }
-        .btn-animate:active { transform: scale(0.94); opacity: 0.85; }
-
-        /* Liquid Silver & Diamond Laser Border Frame */
-        .card-frame {
+        /* Gold Foil Border Frame */
+        .classic-card-frame {
             position: relative; 
-            border-radius: 32px; 
+            border-radius: 24px; 
             padding: 1.5px;
-            background: linear-gradient(135deg, #ffffff 0%, #94a3b8 25%, #ffffff 50%, #cbd5e1 75%, #ffffff 100%);
-            background-size: 300% 300%;
-            animation: liquid-chrome 5s ease infinite;
+            background: var(--gold-gradient);
+            background-size: 200% 200%;
+            animation: border-gold 8s ease infinite;
             box-shadow: 
-                0 30px 70px rgba(0, 0, 0, 0.85),
-                0 0 35px rgba(255, 255, 255, 0.15);
+                0 25px 50px rgba(0, 0, 0, 0.9),
+                0 0 30px rgba(212, 175, 55, 0.12);
         }
 
-        @keyframes liquid-chrome { 
+        @keyframes border-gold { 
             0% { background-position: 0% 50%; } 
             50% { background-position: 100% 50%; } 
             100% { background-position: 0% 50%; } 
         }
-        
-        /* Transparent Diamond Cut Inner Panel */
-        .card-inner { 
-            background: rgba(12, 14, 22, 0.82); 
-            backdrop-filter: blur(30px) saturate(190%);
-            -webkit-backdrop-filter: blur(30px) saturate(190%);
-            border-radius: 30px; 
-            padding: 26px; 
+
+        .classic-card-inner { 
+            background: rgba(14, 16, 22, 0.95); 
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 22.5px; 
+            padding: 28px 24px; 
             display: flex; 
             flex-direction: column; 
-            gap: 18px; 
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4);
+            gap: 20px; 
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.15);
         }
 
+        /* Classic Metric Badges */
         .metrics { 
             display: grid; 
             grid-template-columns: 1fr 1fr; 
-            gap: 12px; 
+            gap: 14px; 
             margin: 6px 0; 
         }
 
-        .metric-box { 
-            border-left: 3px solid #ffffff; 
-            padding-left: 14px; 
-            background: rgba(255, 255, 255, 0.04);
-            border-radius: 0 16px 16px 0;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        .classic-metric-card {
+            background: linear-gradient(145deg, rgba(20, 24, 33, 0.8), rgba(10, 12, 18, 0.9));
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 16px;
+            padding: 14px 14px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
         }
 
-        .metric-label { 
-            font-size: 0.65rem; 
-            text-transform: uppercase; 
-            color: #cbd5e1; 
-            letter-spacing: 1.2px; 
-            font-weight: 700;
+        .classic-metric-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(212, 175, 55, 0.6);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15);
         }
 
-        .metric-value { 
-            font-size: 1.28rem; 
-            font-weight: 800; 
-            color: #ffffff;
-            text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
-        }
-
-        /* Shimmer Silver & Platinum Telegram Link Button */
-        .tg-link {
+        /* Gold Foil Button Styling */
+        .gold-btn {
             text-decoration: none; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
             gap: 10px;
-            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 40%, #cbd5e1 100%); 
-            color: #05060a; 
-            padding: 17px; 
-            border-radius: 20px;
+            background: var(--gold-gradient); 
+            color: #0b0c10; 
+            padding: 16px; 
+            border-radius: 16px;
             font-weight: 800; 
-            letter-spacing: 0.8px; 
-            font-size: 0.88rem;
+            letter-spacing: 1px; 
+            font-size: 0.85rem;
             position: relative; 
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 254, 220, 0.8);
             box-shadow: 
-                0 12px 30px rgba(255, 255, 255, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 1);
+                0 10px 25px rgba(212, 175, 55, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
         }
 
-        .tg-link::after {
-            content: ""; 
-            position: absolute; 
-            top: 0; 
-            left: -100%; 
-            width: 60%; 
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
-            transform: skewX(-25deg); 
-            animation: diamond-shine 3.2s infinite;
+        .gold-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.4);
         }
 
-        @keyframes diamond-shine { 
-            0% { left: -100%; } 
-            40% { left: 200%; } 
-            100% { left: 200%; } 
+        .gold-btn:active {
+            transform: scale(0.96);
         }
 
-        /* Image Grids Section */
-        .section-title { 
-            font-size: 0.75rem; 
-            text-transform: uppercase; 
-            letter-spacing: 2.5px; 
-            color: #e2e8f0; 
-            margin-bottom: 16px; 
-            font-weight: 800; 
-            text-align: center; 
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        /* Section Titles with Classic Crest & Rules */
+        .classic-section-header { 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px; 
         }
 
+        .classic-section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #f3e5ab;
+            text-transform: uppercase;
+        }
+
+        .section-line {
+            height: 1px;
+            flex-grow: 1;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
+        }
+
+        /* Image Grids */
         .grid-16-9 { 
             display: flex; 
             flex-direction: column; 
             gap: 16px; 
-            margin-bottom: 28px; 
+            margin-bottom: 32px; 
         }
 
         .img-box { 
             width: 100%; 
-            border-radius: 22px; 
+            border-radius: 18px; 
             overflow: hidden; 
-            border: 1px solid rgba(255, 255, 255, 0.22); 
+            border: 1px solid rgba(212, 175, 55, 0.25); 
             aspect-ratio: 16/9; 
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(16px);
+            background: rgba(15, 18, 26, 0.8);
             position: relative;
             cursor: pointer;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            transition: border-color 0.3s ease;
         }
 
         .img-box img { 
             width: 100%; 
             height: 100%; 
             object-fit: cover; 
-            transition: transform 0.5s ease;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .img-box:hover {
+            border-color: rgba(212, 175, 55, 0.7);
         }
 
         .img-box:hover img {
@@ -360,28 +289,32 @@
 
         .img-box-v { 
             aspect-ratio: 9/16; 
-            border-radius: 20px; 
+            border-radius: 18px; 
             overflow: hidden; 
-            border: 1px solid rgba(255, 255, 255, 0.22); 
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.25); 
+            background: rgba(15, 18, 26, 0.8);
             position: relative;
             cursor: pointer;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            transition: border-color 0.3s ease;
         }
 
         .img-box-v img { 
             width: 100%; 
             height: 100%; 
             object-fit: cover; 
-            transition: transform 0.5s ease;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .img-box-v:hover {
+            border-color: rgba(212, 175, 55, 0.7);
         }
 
         .img-box-v:hover img {
             transform: scale(1.05);
         }
 
-        /* Floating Bottom Bar Wrapper - Crystalline Diamond Bar */
+        /* Floating Bottom Bar Wrapper */
         .floating-cta-wrapper {
             position: fixed; 
             bottom: 24px; 
@@ -401,281 +334,263 @@
             pointer-events: auto;
         }
 
-        .pay-btn {
+        .classic-pay-btn {
             display: flex; 
             align-items: center; 
             justify-content: space-between;
-            padding: 14px 18px; 
-            border-radius: 24px;
-            background: rgba(255, 255, 255, 0.06); 
+            padding: 12px 16px; 
+            border-radius: 20px;
+            background: rgba(12, 14, 20, 0.95); 
             color: #fff; 
             text-decoration: none; 
-            font-weight: 700;
-            font-size: 0.92rem; 
             box-shadow: 
-                0 25px 50px rgba(0, 0, 0, 0.85), 
-                0 0 30px rgba(255, 255, 255, 0.15),
-                inset 0 1px 2px rgba(255, 255, 255, 0.6),
-                inset 0 -1px 2px rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.32);
-            backdrop-filter: blur(28px) saturate(200%);
-            -webkit-backdrop-filter: blur(28px) saturate(200%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .pay-btn::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 60%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
-            transform: skewX(-25deg);
-            animation: silver-sweep 6s infinite ease-in-out;
+                0 25px 60px rgba(0, 0, 0, 0.95), 
+                0 0 20px rgba(212, 175, 55, 0.2),
+                inset 0 1px 1px rgba(255, 248, 220, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
         }
 
         .pay-icon-box {
-            width: 44px; 
-            height: 44px; 
-            background: linear-gradient(135deg, #ffffff, #94a3b8); 
-            border-radius: 16px;
+            width: 42px; 
+            height: 42px; 
+            background: var(--gold-gradient); 
+            border-radius: 14px;
             display: flex; 
             align-items: center; 
-            justify-content: center; 
+            justify-content: center;
             margin-right: 12px;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3), inset 0 1px 0 rgba(255,255,255,0.8);
-            color: #05060a;
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+            color: #0b0c10;
         }
 
         .socials { 
             display: flex; 
             justify-content: center; 
-            gap: 20px; 
+            gap: 18px; 
             margin-top: 35px; 
         }
 
         .socials a { 
-            width: 48px;
-            height: 48px;
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            color: #e2e8f0; 
-            font-size: 1.25rem; 
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            background: rgba(20, 24, 33, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: #d4af37; 
+            font-size: 1.1rem; 
             display: flex;
             align-items: center;
             justify-content: center;
-            backdrop-filter: blur(12px);
-            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3);
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease; 
         }
 
         .socials a:hover { 
-            color: #05060a; 
-            background: #ffffff;
-            border-color: #ffffff;
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+            color: #0b0c10; 
+            background: var(--gold-gradient);
+            border-color: #d4af37;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
             transform: translateY(-3px);
         }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #040508; }
-        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.3); border-radius: 3px; }
     </style>
 </head>
-<body class="bg-obsidian bg-grain min-h-screen text-slate-200 antialiased selection:bg-white/30 selection:text-white pb-32">
+<body>
+    <div class="classic-bg"></div>
 
-    <!-- Ambient Floating Background Effect & Sparkles -->
-    <div class="nebula-bg"></div>
-    <div class="diamond-sparkles"></div>
-
-    <!-- Top Navigation Bar (Super Luxury Diamond Glass) -->
+    <!-- Top Navigation Bar (Classic Gold Glass Header) -->
     <nav class="top-nav">
         <div class="flex items-center gap-3">
-            <div class="w-8 h-8 rounded-xl bg-white/10 border border-white/30 p-1 flex items-center justify-center shadow-inner">
+            <div class="w-9 h-9 rounded-lg bg-black/40 border border-amber-500/40 p-1 flex items-center justify-center shadow-inner">
                 <img src="https://growshal.com/wp-content/uploads/2023/12/cropped-admin-ajax2.png" 
-                     onerror="this.onerror=null; this.src='https://placehold.co/80x80/1a1a24/ffffff?text=GS';" 
-                     alt="Logo" class="w-full h-full object-contain rounded-lg">
+                     onerror="this.onerror=null; this.src='https://placehold.co/80x80/0b0c10/d4af37?text=GS';" 
+                     alt="Logo" class="w-full h-full object-contain rounded">
             </div>
             <div class="flex flex-col">
-                <span class="font-display font-extrabold text-sm tracking-tight text-white leading-tight">GROWSHAL</span>
-                <span class="text-[9px] uppercase tracking-widest text-slate-300 font-bold -mt-0.5">Media Group</span>
+                <span class="font-serif-classic font-bold text-lg tracking-wider text-amber-100 leading-none">GROWSHAL</span>
+                <span class="text-[8px] uppercase tracking-[0.25em] text-amber-400/90 font-semibold mt-0.5">Media House</span>
             </div>
         </div>
-        <a href="/dm" class="nav-dm-btn btn-animate px-4 py-2 bg-gradient-to-r from-white via-slate-100 to-slate-300 text-black font-extrabold text-xs rounded-xl shadow-lg border border-white/80 flex items-center gap-2">
-            <i class="fa-regular fa-paper-plane text-[11px]"></i>
-            <span>Chat With Us</span>
+        <a href="/dm" class="px-3.5 py-1.5 bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600 text-black font-extrabold text-xs rounded-lg shadow-md border border-amber-100/50 flex items-center gap-1.5 transition-transform hover:scale-105 active:scale-95">
+            <i class="fa-regular fa-paper-plane text-[10px]"></i>
+            <span class="font-sans font-bold tracking-tight">Consultation</span>
         </a>
     </nav>
 
     <!-- Main App Content Container -->
     <main class="w-full max-w-md mx-auto px-4 pt-24 pb-12 flex flex-col gap-8">
         
-        <!-- Hero Card with Liquid Silver Chrome Border -->
-        <div class="card-frame">
-            <div class="card-inner">
+        <!-- Hero Card with Classic Gold Foil Frame -->
+        <div class="classic-card-frame">
+            <div class="classic-card-inner">
                 <div class="flex items-center justify-between">
-                    <span style="font-size: 0.65rem; letter-spacing: 3px; font-weight: 800;" class="uppercase silver-diamond-text">
-                        Verified Diamond Agency
+                    <span style="font-size: 0.65rem; letter-spacing: 2.5px; font-weight: 700;" class="uppercase gold-shimmer-text flex items-center gap-1.5 font-serif-classic">
+                        <i class="fa-solid fa-crown text-amber-400 text-[10px]"></i>
+                        Prestige Growth House
                     </span>
-                    <span class="text-[10px] text-slate-300 font-mono bg-white/10 px-2.5 py-0.5 rounded-md border border-white/20 backdrop-filter blur-md">
+                    <span class="text-[9px] text-amber-300 font-serif border border-amber-400/40 bg-amber-950/40 px-2.5 py-0.5 rounded backdrop-blur-md font-medium tracking-wider">
                         EST. 2021
                     </span>
                 </div>
 
                 <div>
-                    <h1 class="font-display text-2xl font-extrabold text-white tracking-tight">
-                        Hey, I'm <span class="silver-diamond-text">Growshal</span>
+                    <h1 class="font-serif-classic text-3xl font-bold text-white tracking-wide leading-tight">
+                        Greetings, I'm <span class="gold-shimmer-text">Growshal</span>
                     </h1>
-                    <p class="text-xs text-slate-300 mt-1 font-normal leading-relaxed">
-                        Performance Driven Ads & Organic Community Growth Specialists.
+                    <p class="text-xs text-slate-300 mt-2 font-normal leading-relaxed tracking-wide">
+                        Precision Digital Acquisition & Private Community Growth Strategy.
                     </p>
                 </div>
                 
-                <!-- Performance Metrics Grid -->
+                <!-- Performance Metrics Tags -->
                 <div class="metrics">
-                    <div class="metric-box">
-                        <span class="metric-label">Cost Per Member</span>
-                        <div class="metric-value">Max 25₹</div>
+                    <div class="classic-metric-card">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-[9px] uppercase tracking-widest text-amber-300/80 font-semibold flex items-center gap-1">
+                                <i class="fa-solid fa-chart-line text-[9px] text-amber-400"></i>
+                                CPM Target
+                            </span>
+                        </div>
+                        <div class="font-serif-classic text-xl font-bold text-amber-100 tracking-tight">Max ₹25</div>
                     </div>
-                    <div class="metric-box" style="border-left-color: #cbd5e1;">
-                        <span class="metric-label">Lead Quality</span>
-                        <div class="metric-value">100%</div>
+
+                    <div class="classic-metric-card">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-[9px] uppercase tracking-widest text-amber-300/80 font-semibold flex items-center gap-1">
+                                <i class="fa-solid fa-shield-halved text-[9px] text-amber-400"></i>
+                                Verification
+                            </span>
+                        </div>
+                        <div class="font-serif-classic text-xl font-bold text-amber-100 tracking-tight">100% Client</div>
                     </div>
                 </div>
 
-                <!-- Primary Telegram CTA -->
-                <a href="/tg" class="tg-link btn-animate">
-                    <i class="fab fa-telegram-plane text-lg"></i>
-                    <span>JOIN TELEGRAM CHANNEL</span>
-                    <i class="fa-solid fa-arrow-right text-xs opacity-80 ml-1"></i>
+                <!-- Telegram CTA Button -->
+                <a href="/tg" class="gold-btn">
+                    <i class="fab fa-telegram-plane text-base"></i>
+                    <span class="font-sans font-extrabold text-xs">JOIN TELEGRAM CHANNEL</span>
+                    <i class="fa-solid fa-chevron-right text-[10px] opacity-70"></i>
                 </a>
             </div>
         </div>
 
         <!-- Section: Latest Results (16:9 Grid) -->
         <section>
-            <h3 class="section-title flex items-center justify-center gap-2">
-                <i class="fa-solid fa-chart-line text-[11px]"></i>
-                Latest Results
-            </h3>
+            <div class="classic-section-header">
+                <div class="section-line"></div>
+                <h3 class="classic-section-title">
+                    <i class="fa-solid fa-award text-xs text-amber-400 mr-1.5"></i>
+                    Performance Showcase
+                </h3>
+                <div class="section-line"></div>
+            </div>
+
             <div class="grid-16-9">
-                <div class="img-box shadow-xl" onclick="openLightbox('https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd161af27255.60399124_Screenshot2026-05-08041504.png')">
+                <div class="img-box" onclick="openLightbox('https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd161af27255.60399124_Screenshot2026-05-08041504.png')">
                     <img src="https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd161af27255.60399124_Screenshot2026-05-08041504.png" 
-                         onerror="this.onerror=null; this.src='https://placehold.co/800x450/0f1016/ffffff?text=Latest+Result+1';" 
-                         alt="Result Screenshot 1">
+                         onerror="this.onerror=null; this.src='https://placehold.co/800x450/0b0c10/d4af37?text=Performance+Record+1';" 
+                         alt="Performance Case 1">
                 </div>
-                <div class="img-box shadow-xl" onclick="openLightbox('https://freelancershahin.com/wp-content/uploads/2025/11/3-google.png')">
+                <div class="img-box" onclick="openLightbox('https://freelancershahin.com/wp-content/uploads/2025/11/3-google.png')">
                     <img src="https://freelancershahin.com/wp-content/uploads/2025/11/3-google.png" 
-                         onerror="this.onerror=null; this.src='https://placehold.co/800x450/0f1016/ffffff?text=Latest+Result+2';" 
-                         alt="Result Screenshot 2">
+                         onerror="this.onerror=null; this.src='https://placehold.co/800x450/0b0c10/d4af37?text=Performance+Record+2';" 
+                         alt="Performance Case 2">
                 </div>
-                <div class="img-box shadow-xl" onclick="openLightbox('https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd161af2fbc0.17325006_Screenshot2026-05-08040719.png')">
+                <div class="img-box" onclick="openLightbox('https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd161af2fbc0.17325006_Screenshot2026-05-08040719.png')">
                     <img src="https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd161af2fbc0.17325006_Screenshot2026-05-08040719.png" 
-                         onerror="this.onerror=null; this.src='https://placehold.co/800x450/0f1016/ffffff?text=Latest+Result+3';" 
-                         alt="Result Screenshot 3">
+                         onerror="this.onerror=null; this.src='https://placehold.co/800x450/0b0c10/d4af37?text=Performance+Record+3';" 
+                         alt="Performance Case 3">
                 </div>
             </div>
         </section>
 
         <!-- Section: Client's Results (9:16 Vertical Grid) -->
         <section>
-            <h3 class="section-title flex items-center justify-center gap-2">
-                <i class="fa-solid fa-user-check text-[11px]"></i>
-                Clint's Results
-            </h3>
+            <div class="classic-section-header">
+                <div class="section-line"></div>
+                <h3 class="classic-section-title">
+                    <i class="fa-solid fa-gem text-xs text-amber-400 mr-1.5"></i>
+                    Verified Case Studies
+                </h3>
+                <div class="section-line"></div>
+            </div>
+
             <div class="grid-9-16">
-                <div class="img-box-v shadow-xl" onclick="openLightbox('https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd08fc781190.28213852_bd7c99ec-d6cd-44e0-bbfd-2d31ea5a3f09.jfif')">
+                <div class="img-box-v" onclick="openLightbox('https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd08fc781190.28213852_bd7c99ec-d6cd-44e0-bbfd-2d31ea5a3f09.jfif')">
                     <img src="https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd08fc781190.28213852_bd7c99ec-d6cd-44e0-bbfd-2d31ea5a3f09.jfif" 
-                         onerror="this.onerror=null; this.src='https://placehold.co/400x711/0f1016/ffffff?text=Client+Proof+1';" 
-                         alt="Client Case Study 1">
+                         onerror="this.onerror=null; this.src='https://placehold.co/400x711/0b0c10/d4af37?text=Client+Proof+1';" 
+                         alt="Client Case 1">
                 </div>
-                <div class="img-box-v shadow-xl" onclick="openLightbox('https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd0c668bec62.41319206_photo_2026-01-14_02-02-56.jpg')">
+                <div class="img-box-v" onclick="openLightbox('https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd0c668bec62.41319206_photo_2026-01-14_02-02-56.jpg')">
                     <img src="https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd0c668bec62.41319206_photo_2026-01-14_02-02-56.jpg" 
-                         onerror="this.onerror=null; this.src='https://placehold.co/400x711/0f1016/ffffff?text=Client+Proof+2';" 
-                         alt="Client Case Study 2">
+                         onerror="this.onerror=null; this.src='https://placehold.co/400x711/0b0c10/d4af37?text=Client+Proof+2';" 
+                         alt="Client Case 2">
                 </div>
-                <div class="img-box-v shadow-xl" onclick="openLightbox('https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd0d30dfe0e8.59788428_photo_2025-05-18_19-37-02.jpg')">
+                <div class="img-box-v" onclick="openLightbox('https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd0d30dfe0e8.59788428_photo_2025-05-18_19-37-02.jpg')">
                     <img src="https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd0d30dfe0e8.59788428_photo_2025-05-18_19-37-02.jpg" 
-                         onerror="this.onerror=null; this.src='https://placehold.co/400x711/0f1016/ffffff?text=Client+Proof+3';" 
-                         alt="Client Case Study 3">
+                         onerror="this.onerror=null; this.src='https://placehold.co/400x711/0b0c10/d4af37?text=Client+Proof+3';" 
+                         alt="Client Case 3">
                 </div>
-                <div class="img-box-v shadow-xl" onclick="openLightbox('https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd0d64ee33d6.88195498_Gemini_Generated_Image_fjusxsfjusxsfjus.png')">
+                <div class="img-box-v" onclick="openLightbox('https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd0d64ee33d6.88195498_Gemini_Generated_Image_fjusxsfjusxsfjus.png')">
                     <img src="https://d1yei2z3i6k35z.cloudfront.net/13184094/69fd0d64ee33d6.88195498_Gemini_Generated_Image_fjusxsfjusxsfjus.png" 
-                         onerror="this.onerror=null; this.src='https://placehold.co/400x711/0f1016/ffffff?text=Client+Proof+4';" 
-                         alt="Client Case Study 4">
+                         onerror="this.onerror=null; this.src='https://placehold.co/400x711/0b0c10/d4af37?text=Client+Proof+4';" 
+                         alt="Client Case 4">
                 </div>
             </div>
         </section>
 
         <!-- Footer Social Links -->
         <div class="socials">
-            <a href="/ig" class="btn-animate" title="Instagram">
+            <a href="/ig" title="Instagram">
                 <i class="fab fa-instagram"></i>
             </a>
-            <a href="#" class="btn-animate" onclick="copyAgencyLink(event)" title="LinkedIn / Copy Link">
+            <a href="#" onclick="copyAgencyLink(event)" title="LinkedIn / Share Link">
                 <i class="fab fa-linkedin-in"></i>
             </a>
-            <a href="/dm" class="btn-animate" title="Telegram DM">
+            <a href="/dm" title="Telegram DM">
                 <i class="fab fa-telegram-plane"></i>
             </a>
         </div>
 
-        <p class="text-center text-[10px] text-slate-400 font-mono tracking-wider pt-4">
+        <p class="text-center text-[10px] text-amber-200/50 font-serif tracking-widest pt-4">
             © 2026 GROWSHAL MEDIA GROUP. ALL RIGHTS RESERVED.
         </p>
-
     </main>
 
-    <!-- Floating Bottom Bar (Translucent Diamond Glass Bar) -->
+    <!-- Floating Bottom CTA Bar -->
     <div class="floating-cta-wrapper" id="scrollCta">
-        <a href="/ap" class="pay-btn btn-animate">
+        <a href="/ap" class="classic-pay-btn">
             <div class="flex items-center">
                 <div class="pay-icon-box">
-                    <i class="fas fa-bolt text-lg"></i>
+                    <i class="fas fa-crown text-base"></i>
                 </div>
                 <div class="flex flex-col">
-                    <span class="text-[9px] uppercase tracking-wider text-slate-300 font-extrabold">Exclusive Deal</span>
-                    <span class="text-xs sm:text-sm font-bold text-white">Active Plan At <span class="text-white underline decoration-slate-400">₹17,999</span> Only</span>
+                    <span class="text-[8px] uppercase tracking-widest text-amber-400 font-bold flex items-center gap-1">
+                        <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping"></span> Limited Retainer
+                    </span>
+                    <span class="text-xs sm:text-sm font-serif-classic font-bold text-amber-100">Activate Plan At <span class="text-amber-400 font-extrabold underline decoration-amber-500">₹17,999</span></span>
                 </div>
             </div>
-            <span class="px-3.5 py-1.5 rounded-xl bg-white text-black font-extrabold text-xs shadow-md flex items-center gap-1 border border-white">
-                Claim <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            <span class="px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-amber-300 to-amber-500 text-black font-extrabold text-xs shadow-md flex items-center gap-1">
+                Acquire <i class="fa-solid fa-chevron-right text-[9px]"></i>
             </span>
         </a>
     </div>
 
     <!-- Lightbox Modal for Full View -->
-    <div id="lightbox" class="fixed inset-0 z-[3000] bg-black/95 backdrop-blur-xl hidden flex items-center justify-center p-4 transition-all duration-300" onclick="closeLightbox()">
-        <button class="absolute top-6 right-6 text-slate-400 hover:text-white bg-white/10 hover:bg-white/20 w-11 h-11 rounded-full flex items-center justify-center text-xl transition-all border border-white/10">
+    <div id="lightbox" class="fixed inset-0 z-[3000] bg-black/95 backdrop-blur-md hidden flex items-center justify-center p-4 transition-all duration-300" onclick="closeLightbox()">
+        <button class="absolute top-6 right-6 text-amber-200 hover:text-white bg-amber-950/40 border border-amber-500/30 w-11 h-11 rounded-full flex items-center justify-center text-xl transition-all">
             <i class="fa-solid fa-xmark"></i>
         </button>
-        <div class="max-w-full max-h-[85vh] p-1 rounded-2xl bg-gradient-to-b from-white/10 to-transparent">
+        <div class="max-w-full max-h-[85vh] p-1 rounded-2xl bg-gradient-to-b from-amber-500/20 to-transparent">
             <img id="lightboxImg" src="" alt="Proof High Res Preview" class="max-w-full max-h-[82vh] rounded-xl object-contain shadow-2xl">
         </div>
     </div>
 
-    <!-- Instagram Quick Overlays from original snippet -->
-    <div id="insta-quick" style="position:fixed; top:20px; left:20px; z-index:9999; display:none;">
-        <a href="instagram://user?username=growshal">
-            <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/instagram-follow.png" 
-                 style="width:110px; height:auto; image-rendering:-webkit-optimize-contrast; image-rendering:crisp-edges;" 
-                 alt="Follow">
-        </a>
-    </div>
-
-    <div id="insta-p" style="position:fixed; top:20px; left:20px; z-index:9999; display:none;">
-        <a href="instagram://user?username=growshal">
-            <img style="width:115px; image-rendering:-webkit-optimize-contrast;" alt="Insta">
-        </a>
-    </div>
-
     <!-- Toast Notification -->
-    <div id="toast" class="fixed top-20 left-1/2 -translate-x-1/2 z-[4000] px-4 py-2.5 rounded-xl bg-slate-900/90 backdrop-blur-md border border-white/20 text-white font-medium text-xs shadow-2xl opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2">
-        <i class="fa-solid fa-circle-check text-emerald-400"></i>
+    <div id="toast" class="fixed top-20 left-1/2 -translate-x-1/2 z-[4000] px-4 py-2.5 rounded-xl bg-neutral-900/90 backdrop-blur-md border border-amber-500/30 text-amber-100 font-medium text-xs shadow-2xl opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2">
+        <i class="fa-solid fa-circle-check text-amber-400"></i>
         <span id="toastMsg">Notification Message</span>
     </div>
 
@@ -685,17 +600,14 @@
         const scrollCta = document.getElementById('scrollCta');
 
         window.addEventListener('scroll', function () {
-            // Show bar on scroll if past 100px
             if (window.scrollY > 100) {
                 scrollCta.classList.add('active');
             } else {
                 scrollCta.classList.remove('active');
             }
 
-            // Reset timeout
             window.clearTimeout(isScrolling);
 
-            // Hide after 4 seconds of scroll inactivity
             isScrolling = setTimeout(function() {
                 if (window.scrollY > 100) {
                     scrollCta.classList.remove('active');
@@ -741,9 +653,6 @@
                 toast.classList.add('opacity-0', 'pointer-events-none');
             }, 3000);
         }
-
-        // Optional Insta timer from original snippet
-        // setTimeout(() => { document.getElementById('insta-p').style.display = 'block'; }, 6000);
     </script>
 </body>
 </html>
