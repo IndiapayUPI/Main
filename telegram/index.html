@@ -54,10 +54,10 @@
 
     <style>
         :root {
-            --accent: #7000ff;
-            --glass: rgba(7, 7, 10, 0.75);
-            --border: rgba(255, 255, 255, 0.1);
-            --text: #f1f5f9;
+            --accent: #e2e8f0;
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.22);
+            --text: #f8fafc;
         }
 
         * { 
@@ -69,7 +69,7 @@
         
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #06070a;
+            background-color: #040508;
             color: var(--text);
             overflow-x: hidden;
             line-height: 1.6;
@@ -80,7 +80,7 @@
             font-family: 'Syne', sans-serif;
         }
 
-        /* Ambient Nebula Background Overlay */
+        /* Ambient Diamond & Silver Background Glow */
         .nebula-bg {
             position: fixed; 
             top: 0; 
@@ -89,43 +89,108 @@
             height: 100vh; 
             z-index: -1;
             background: 
-                radial-gradient(circle at 15% 20%, rgba(0, 229, 255, 0.12) 0%, transparent 45%),
-                radial-gradient(circle at 85% 80%, rgba(112, 0, 255, 0.14) 0%, transparent 45%),
-                radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.05) 0%, transparent 40%);
-            animation: nebula-float 18s ease-in-out infinite alternate;
+                radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 15% 45%, rgba(226, 232, 240, 0.08) 0%, transparent 45%),
+                radial-gradient(circle at 85% 75%, rgba(148, 163, 184, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 90%, rgba(255, 255, 255, 0.06) 0%, transparent 45%);
+            animation: nebula-float 16s ease-in-out infinite alternate;
             pointer-events: none;
         }
 
         @keyframes nebula-float {
-            from { transform: scale(1) translate(-2%, -2%) rotate(0deg); }
-            to { transform: scale(1.08) translate(2%, 2%) rotate(4deg); }
+            from { transform: scale(1) translate(-1%, -1%) rotate(0deg); }
+            to { transform: scale(1.06) translate(1%, 1%) rotate(3deg); }
+        }
+
+        /* Diamond Particle Sparkle Layer */
+        .diamond-sparkles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 40px 70px, rgba(226, 232, 240, 0.8), rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 160px 120px, rgba(255,255,255,0.9), rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 230px 190px, #e2e8f0, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 310px 80px, #ffffff, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 350px 350px;
+            opacity: 0.35;
+            animation: sparkle-twinkle 6s infinite alternate;
+        }
+
+        @keyframes sparkle-twinkle {
+            0% { opacity: 0.25; transform: translateY(0); }
+            100% { opacity: 0.45; transform: translateY(-10px); }
         }
 
         /* Fine Noise Grain Overlay */
         .bg-grain {
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
         }
 
-        /* Top Nav Refined Glass Bar */
+        /* Top Nav - Ultra Crystalline Diamond Glass Bar */
         .top-nav {
             position: fixed; 
-            top: 12px; 
+            top: 14px; 
             left: 50%;
             transform: translateX(-50%);
             width: calc(100% - 24px);
             max-width: 480px; 
-            height: 60px; 
+            height: 62px; 
             z-index: 1000;
-            background: rgba(10, 11, 16, 0.75);
-            backdrop-filter: blur(20px); 
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(28px) saturate(200%); 
+            -webkit-backdrop-filter: blur(28px) saturate(200%);
+            border: 1px solid rgba(255, 255, 255, 0.32);
+            border-radius: 22px;
             display: flex; 
             align-items: center; 
             justify-content: space-between; 
             padding: 0 16px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.7),
+                0 0 20px rgba(255, 255, 255, 0.12),
+                inset 0 1px 2px rgba(255, 255, 255, 0.6),
+                inset 0 -1px 2px rgba(255, 255, 255, 0.1);
+            position: fixed;
+            overflow: hidden;
+        }
+
+        .top-nav::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 80%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+            transform: skewX(-30deg);
+            animation: silver-sweep 7s infinite ease-in-out;
+        }
+
+        @keyframes silver-sweep {
+            0% { left: -150%; }
+            30% { left: 200%; }
+            100% { left: 200%; }
+        }
+
+        /* Diamond Shimmer Text Gradient */
+        .silver-diamond-text {
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 35%, #ffffff 50%, #94a3b8 70%, #ffffff 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: text-shine 4s linear infinite;
+        }
+
+        @keyframes text-shine {
+            to { background-position: 200% center; }
         }
 
         /* Fade-Zoom Animation for Interactive Buttons */
@@ -133,34 +198,40 @@
             transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
             will-change: transform, opacity;
         }
-        .btn-animate:hover { transform: scale(1.02); }
+        .btn-animate:hover { transform: scale(1.02); box-shadow: 0 0 25px rgba(255, 255, 255, 0.3); }
         .btn-animate:active { transform: scale(0.94); opacity: 0.85; }
 
-        /* Main Card - Laser Border Animation */
+        /* Liquid Silver & Diamond Laser Border Frame */
         .card-frame {
             position: relative; 
-            border-radius: 30px; 
+            border-radius: 32px; 
             padding: 1.5px;
-            background: linear-gradient(135deg, #00d2ff, #7000ff, #00d2ff);
-            background-size: 200% 200%;
-            animation: border-flow 4s linear infinite;
-            box-shadow: 0 30px 60px -10px rgba(112, 0, 255, 0.25);
+            background: linear-gradient(135deg, #ffffff 0%, #94a3b8 25%, #ffffff 50%, #cbd5e1 75%, #ffffff 100%);
+            background-size: 300% 300%;
+            animation: liquid-chrome 5s ease infinite;
+            box-shadow: 
+                0 30px 70px rgba(0, 0, 0, 0.85),
+                0 0 35px rgba(255, 255, 255, 0.15);
         }
 
-        @keyframes border-flow { 
+        @keyframes liquid-chrome { 
             0% { background-position: 0% 50%; } 
             50% { background-position: 100% 50%; } 
             100% { background-position: 0% 50%; } 
         }
         
+        /* Transparent Diamond Cut Inner Panel */
         .card-inner { 
-            background: rgba(14, 15, 22, 0.92); 
-            backdrop-filter: blur(24px);
-            border-radius: 28px; 
-            padding: 24px; 
+            background: rgba(12, 14, 22, 0.82); 
+            backdrop-filter: blur(30px) saturate(190%);
+            -webkit-backdrop-filter: blur(30px) saturate(190%);
+            border-radius: 30px; 
+            padding: 26px; 
             display: flex; 
             flex-direction: column; 
-            gap: 16px; 
+            gap: 18px; 
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4);
         }
 
         .metrics { 
@@ -171,46 +242,53 @@
         }
 
         .metric-box { 
-            border-left: 3px solid #00e5ff; 
-            padding-left: 12px; 
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 0 14px 14px 0;
-            padding-top: 8px;
-            padding-bottom: 8px;
+            border-left: 3px solid #ffffff; 
+            padding-left: 14px; 
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 0 16px 16px 0;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
         .metric-label { 
             font-size: 0.65rem; 
             text-transform: uppercase; 
-            color: #94a3b8; 
-            letter-spacing: 1px; 
-            font-weight: 600;
+            color: #cbd5e1; 
+            letter-spacing: 1.2px; 
+            font-weight: 700;
         }
 
         .metric-value { 
-            font-size: 1.25rem; 
+            font-size: 1.28rem; 
             font-weight: 800; 
             color: #ffffff;
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
         }
 
-        /* Shimmer Telegram Button */
+        /* Shimmer Silver & Platinum Telegram Link Button */
         .tg-link {
             text-decoration: none; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
             gap: 10px;
-            background: linear-gradient(135deg, #7000ff, #4c1d95); 
-            color: #fff; 
-            padding: 16px; 
-            border-radius: 18px;
-            font-weight: 700; 
+            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 40%, #cbd5e1 100%); 
+            color: #05060a; 
+            padding: 17px; 
+            border-radius: 20px;
+            font-weight: 800; 
             letter-spacing: 0.8px; 
             font-size: 0.88rem;
             position: relative; 
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 10px 25px rgba(112, 0, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 
+                0 12px 30px rgba(255, 255, 255, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 1);
         }
 
         .tg-link::after {
@@ -220,44 +298,47 @@
             left: -100%; 
             width: 60%; 
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
             transform: skewX(-25deg); 
-            animation: shine 3.5s infinite;
+            animation: diamond-shine 3.2s infinite;
         }
 
-        @keyframes shine { 
+        @keyframes diamond-shine { 
             0% { left: -100%; } 
             40% { left: 200%; } 
             100% { left: 200%; } 
         }
 
-        /* Image Grids */
+        /* Image Grids Section */
         .section-title { 
             font-size: 0.75rem; 
             text-transform: uppercase; 
-            letter-spacing: 2px; 
-            color: #00e5ff; 
-            margin-bottom: 14px; 
+            letter-spacing: 2.5px; 
+            color: #e2e8f0; 
+            margin-bottom: 16px; 
             font-weight: 800; 
             text-align: center; 
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
         }
 
         .grid-16-9 { 
             display: flex; 
             flex-direction: column; 
-            gap: 14px; 
+            gap: 16px; 
             margin-bottom: 28px; 
         }
 
         .img-box { 
             width: 100%; 
-            border-radius: 20px; 
+            border-radius: 22px; 
             overflow: hidden; 
-            border: 1px solid rgba(255, 255, 255, 0.1); 
+            border: 1px solid rgba(255, 255, 255, 0.22); 
             aspect-ratio: 16/9; 
-            background: rgba(15, 16, 22, 0.8);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
             position: relative;
             cursor: pointer;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.3);
         }
 
         .img-box img { 
@@ -268,23 +349,25 @@
         }
 
         .img-box:hover img {
-            transform: scale(1.03);
+            transform: scale(1.04);
         }
         
         .grid-9-16 { 
             display: grid; 
             grid-template-columns: 1fr 1fr; 
-            gap: 12px; 
+            gap: 14px; 
         }
 
         .img-box-v { 
             aspect-ratio: 9/16; 
-            border-radius: 18px; 
+            border-radius: 20px; 
             overflow: hidden; 
-            border: 1px solid rgba(255, 255, 255, 0.1); 
-            background: rgba(15, 16, 22, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.22); 
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
             position: relative;
             cursor: pointer;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.3);
         }
 
         .img-box-v img { 
@@ -295,17 +378,17 @@
         }
 
         .img-box-v:hover img {
-            transform: scale(1.04);
+            transform: scale(1.05);
         }
 
-        /* Floating Bottom Bar Wrapper */
+        /* Floating Bottom Bar Wrapper - Crystalline Diamond Bar */
         .floating-cta-wrapper {
             position: fixed; 
             bottom: 24px; 
             left: 50%; 
             transform: translateX(-50%) translateY(160px);
             width: calc(100% - 32px); 
-            max-width: 440px; 
+            max-width: 450px; 
             z-index: 2000;
             transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
             opacity: 0;
@@ -323,28 +406,47 @@
             align-items: center; 
             justify-content: space-between;
             padding: 14px 18px; 
-            border-radius: 22px;
-            background: rgba(10, 11, 16, 0.92); 
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.06); 
             color: #fff; 
             text-decoration: none; 
             font-weight: 700;
             font-size: 0.92rem; 
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 30px rgba(112, 0, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            backdrop-filter: blur(20px);
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.85), 
+                0 0 30px rgba(255, 255, 255, 0.15),
+                inset 0 1px 2px rgba(255, 255, 255, 0.6),
+                inset 0 -1px 2px rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.32);
+            backdrop-filter: blur(28px) saturate(200%);
+            -webkit-backdrop-filter: blur(28px) saturate(200%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pay-btn::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+            transform: skewX(-25deg);
+            animation: silver-sweep 6s infinite ease-in-out;
         }
 
         .pay-icon-box {
-            width: 42px; 
-            height: 42px; 
-            background: linear-gradient(135deg, #f59e0b, #d97706); 
-            border-radius: 14px;
+            width: 44px; 
+            height: 44px; 
+            background: linear-gradient(135deg, #ffffff, #94a3b8); 
+            border-radius: 16px;
             display: flex; 
             align-items: center; 
             justify-content: center; 
             margin-right: 12px;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.4);
-            color: #000;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3), inset 0 1px 0 rgba(255,255,255,0.8);
+            color: #05060a;
         }
 
         .socials { 
@@ -355,51 +457,55 @@
         }
 
         .socials a { 
-            width: 46px;
-            height: 46px;
-            border-radius: 14px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #cbd5e1; 
-            font-size: 1.2rem; 
+            width: 48px;
+            height: 48px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #e2e8f0; 
+            font-size: 1.25rem; 
             display: flex;
             align-items: center;
             justify-content: center;
+            backdrop-filter: blur(12px);
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3);
             transition: all 0.3s ease; 
         }
 
         .socials a:hover { 
-            color: #ffffff; 
-            background: rgba(112, 0, 255, 0.3);
-            border-color: rgba(112, 0, 255, 0.5);
-            transform: translateY(-2px);
+            color: #05060a; 
+            background: #ffffff;
+            border-color: #ffffff;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+            transform: translateY(-3px);
         }
 
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #06070a; }
-        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 3px; }
+        ::-webkit-scrollbar-track { background: #040508; }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.3); border-radius: 3px; }
     </style>
 </head>
-<body class="bg-obsidian bg-grain min-h-screen text-slate-200 antialiased selection:bg-accentViolet/30 selection:text-white pb-32">
+<body class="bg-obsidian bg-grain min-h-screen text-slate-200 antialiased selection:bg-white/30 selection:text-white pb-32">
 
-    <!-- Ambient Floating Background Effect -->
+    <!-- Ambient Floating Background Effect & Sparkles -->
     <div class="nebula-bg"></div>
+    <div class="diamond-sparkles"></div>
 
-    <!-- Top Navigation Bar (Best Loved Component) -->
+    <!-- Top Navigation Bar (Super Luxury Diamond Glass) -->
     <nav class="top-nav">
         <div class="flex items-center gap-3">
-            <div class="w-8 h-8 rounded-xl bg-white/10 border border-white/20 p-1 flex items-center justify-center">
+            <div class="w-8 h-8 rounded-xl bg-white/10 border border-white/30 p-1 flex items-center justify-center shadow-inner">
                 <img src="https://growshal.com/wp-content/uploads/2023/12/cropped-admin-ajax2.png" 
                      onerror="this.onerror=null; this.src='https://placehold.co/80x80/1a1a24/ffffff?text=GS';" 
                      alt="Logo" class="w-full h-full object-contain rounded-lg">
             </div>
             <div class="flex flex-col">
-                <span class="font-display font-bold text-sm tracking-tight text-white leading-tight">GROWSHAL</span>
-                <span class="text-[9px] uppercase tracking-widest text-slate-400 font-semibold -mt-0.5">Media Group</span>
+                <span class="font-display font-extrabold text-sm tracking-tight text-white leading-tight">GROWSHAL</span>
+                <span class="text-[9px] uppercase tracking-widest text-slate-300 font-bold -mt-0.5">Media Group</span>
             </div>
         </div>
-        <a href="/dm" class="nav-dm-btn btn-animate px-4 py-2 bg-white text-black font-bold text-xs rounded-xl shadow-lg flex items-center gap-2">
+        <a href="/dm" class="nav-dm-btn btn-animate px-4 py-2 bg-gradient-to-r from-white via-slate-100 to-slate-300 text-black font-extrabold text-xs rounded-xl shadow-lg border border-white/80 flex items-center gap-2">
             <i class="fa-regular fa-paper-plane text-[11px]"></i>
             <span>Chat With Us</span>
         </a>
@@ -408,23 +514,23 @@
     <!-- Main App Content Container -->
     <main class="w-full max-w-md mx-auto px-4 pt-24 pb-12 flex flex-col gap-8">
         
-        <!-- Hero Card with Laser Flow Border -->
+        <!-- Hero Card with Liquid Silver Chrome Border -->
         <div class="card-frame">
             <div class="card-inner">
                 <div class="flex items-center justify-between">
-                    <span style="font-size: 0.65rem; letter-spacing: 3px; color: #00e5ff; font-weight: 800;" class="uppercase">
-                        Verified Agency
+                    <span style="font-size: 0.65rem; letter-spacing: 3px; font-weight: 800;" class="uppercase silver-diamond-text">
+                        Verified Diamond Agency
                     </span>
-                    <span class="text-[10px] text-slate-400 font-mono bg-white/5 px-2 py-0.5 rounded-md border border-white/10">
+                    <span class="text-[10px] text-slate-300 font-mono bg-white/10 px-2.5 py-0.5 rounded-md border border-white/20 backdrop-filter blur-md">
                         EST. 2021
                     </span>
                 </div>
 
                 <div>
                     <h1 class="font-display text-2xl font-extrabold text-white tracking-tight">
-                        Hey, I'am <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-accentCyan">Growshal</span>
+                        Hey, I'm <span class="silver-diamond-text">Growshal</span>
                     </h1>
-                    <p class="text-xs text-slate-400 mt-1 font-normal leading-relaxed">
+                    <p class="text-xs text-slate-300 mt-1 font-normal leading-relaxed">
                         Performance Driven Ads & Organic Community Growth Specialists.
                     </p>
                 </div>
@@ -435,7 +541,7 @@
                         <span class="metric-label">Cost Per Member</span>
                         <div class="metric-value">Max 25₹</div>
                     </div>
-                    <div class="metric-box" style="border-left-color: #7000ff;">
+                    <div class="metric-box" style="border-left-color: #cbd5e1;">
                         <span class="metric-label">Lead Quality</span>
                         <div class="metric-value">100%</div>
                     </div>
@@ -445,7 +551,7 @@
                 <a href="/tg" class="tg-link btn-animate">
                     <i class="fab fa-telegram-plane text-lg"></i>
                     <span>JOIN TELEGRAM CHANNEL</span>
-                    <i class="fa-solid fa-arrow-right text-xs opacity-70 ml-1"></i>
+                    <i class="fa-solid fa-arrow-right text-xs opacity-80 ml-1"></i>
                 </a>
             </div>
         </div>
@@ -518,13 +624,13 @@
             </a>
         </div>
 
-        <p class="text-center text-[10px] text-slate-500 font-mono tracking-wider pt-4">
+        <p class="text-center text-[10px] text-slate-400 font-mono tracking-wider pt-4">
             © 2026 GROWSHAL MEDIA GROUP. ALL RIGHTS RESERVED.
         </p>
 
     </main>
 
-    <!-- Floating Bottom Bar (Best Loved Component) -->
+    <!-- Floating Bottom Bar (Translucent Diamond Glass Bar) -->
     <div class="floating-cta-wrapper" id="scrollCta">
         <a href="/ap" class="pay-btn btn-animate">
             <div class="flex items-center">
@@ -532,11 +638,11 @@
                     <i class="fas fa-bolt text-lg"></i>
                 </div>
                 <div class="flex flex-col">
-                    <span class="text-[9px] uppercase tracking-wider text-amber-400 font-extrabold">Exclusive Deal</span>
-                    <span class="text-xs sm:text-sm font-bold text-white">Active Plan At <span class="text-emerald-400">₹17,999</span> Only</span>
+                    <span class="text-[9px] uppercase tracking-wider text-slate-300 font-extrabold">Exclusive Deal</span>
+                    <span class="text-xs sm:text-sm font-bold text-white">Active Plan At <span class="text-white underline decoration-slate-400">₹17,999</span> Only</span>
                 </div>
             </div>
-            <span class="px-3 py-1.5 rounded-xl bg-white text-black font-extrabold text-xs shadow-md flex items-center gap-1">
+            <span class="px-3.5 py-1.5 rounded-xl bg-white text-black font-extrabold text-xs shadow-md flex items-center gap-1 border border-white">
                 Claim <i class="fa-solid fa-chevron-right text-[10px]"></i>
             </span>
         </a>
