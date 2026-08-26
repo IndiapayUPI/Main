@@ -30,7 +30,7 @@
 
     html, body {
       width: 100%;
-      min-height: 100%;
+      height: 100%;
       background: var(--bg);
       font-family: 'Plus Jakarta Sans', sans-serif;
       color: var(--text-primary);
@@ -43,11 +43,12 @@
     .app-screen {
       width: 100%;
       max-width: 440px;
-      min-height: 100vh;
+      height: 100vh;
+      max-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: max(20px, env(safe-area-inset-top, 20px)) 18px max(24px, env(safe-area-inset-bottom, 24px));
+      padding: max(14px, env(safe-area-inset-top, 14px)) 16px max(14px, env(safe-area-inset-bottom, 14px));
       margin: 0 auto;
     }
 
@@ -56,45 +57,46 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-bottom: 14px;
+      padding-bottom: 10px;
       border-bottom: 1px solid var(--surface-border);
+      flex-shrink: 0;
     }
 
     .brand-meta {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .logo {
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
+      width: 38px;
+      height: 38px;
+      border-radius: 9px;
       object-fit: cover;
       border: 1px solid var(--surface-border);
       background: #000;
     }
 
     .agency-title {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 800;
       letter-spacing: -0.3px;
       line-height: 1.2;
     }
 
     .agency-subtitle {
-      font-size: 11px;
+      font-size: 10.5px;
       color: var(--text-secondary);
       font-weight: 500;
     }
 
     .telegram-badge {
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 700;
       color: var(--text-primary);
       background: var(--surface);
       border: 1px solid var(--surface-border);
-      padding: 6px 12px;
+      padding: 5px 10px;
       border-radius: 20px;
       text-decoration: none;
       display: inline-flex;
@@ -103,38 +105,45 @@
       flex-shrink: 0;
     }
 
+    /* MAIN CONTENT WRAPPER */
+    .content-body {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: auto 0;
+    }
+
     /* CARD ILLUSTRATION CONTAINER */
     .package-card {
       background: rgba(255, 255, 255, 0.03);
-      border-radius: 18px;
+      border-radius: 16px;
       border: 1px solid var(--surface-border);
-      padding: 16px;
+      padding: 12px;
       position: relative;
       overflow: hidden;
-      margin: 16px 0;
     }
 
     .time-badge {
       position: absolute;
-      top: 12px;
-      right: 12px;
+      top: 10px;
+      right: 10px;
       background: rgba(18, 18, 21, 0.85);
       backdrop-filter: blur(8px);
       color: white;
-      padding: 4px 10px;
+      padding: 3px 8px;
       border-radius: 50px;
       display: flex;
       align-items: center;
-      gap: 6px;
-      font-size: 10px;
+      gap: 5px;
+      font-size: 9.5px;
       font-weight: 600;
       z-index: 10;
       border: 1px solid var(--surface-border);
     }
 
     .clock-icon {
-      width: 12px;
-      height: 12px;
+      width: 11px;
+      height: 11px;
       border: 1.5px solid white;
       border-radius: 50%;
       position: relative;
@@ -144,7 +153,7 @@
       content: "";
       position: absolute;
       width: 1.5px;
-      height: 4px;
+      height: 3.5px;
       background: white;
       top: 1px;
       left: 50%;
@@ -161,9 +170,9 @@
     /* 2D PHYSICS INTERACTIVE STAGE */
     .physics-stage-container {
       width: 100%;
-      height: 160px;
+      height: 140px;
       background: radial-gradient(circle at 50% 50%, #101622 0%, #060709 100%);
-      border-radius: 14px;
+      border-radius: 12px;
       position: relative;
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.08);
@@ -180,16 +189,16 @@
     }
 
     .card-title {
-      font-size: 15px;
+      font-size: 14px;
       color: #fff;
       font-weight: 700;
-      margin-top: 12px;
+      margin-top: 8px;
     }
 
     .card-description {
-      font-size: 11px;
+      font-size: 10.5px;
       color: var(--text-secondary);
-      line-height: 1.4;
+      line-height: 1.35;
       margin-top: 2px;
     }
 
@@ -198,16 +207,16 @@
       background: rgba(255, 255, 255, 0.05);
       color: #fff;
       border: 1px solid var(--surface-border);
-      padding: 8px 16px;
+      padding: 6px 14px;
       border-radius: 50px;
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
       text-decoration: none;
       display: block;
       text-align: center;
-      margin-top: 10px;
+      margin-top: 8px;
     }
 
     .view-status-btn:hover {
@@ -215,28 +224,26 @@
       color: #000;
     }
 
-    /* SPEC MATRIX (PERFECT ALIGNED GRID) */
+    /* SPEC MATRIX */
     .spec-matrix {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 8px;
-      margin-bottom: 12px;
     }
 
     .spec-cell {
       background: var(--surface);
       border: 1px solid var(--surface-border);
       border-radius: 12px;
-      padding: 10px 12px;
+      padding: 9px 12px;
       text-decoration: none;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      min-height: 56px;
+      min-height: 52px;
       transition: all 0.2s ease;
     }
 
-    /* Client Telegram Clickable button styling */
     .spec-cell.clickable {
       cursor: pointer;
       background: linear-gradient(180deg, rgba(200, 255, 92, 0.05) 0%, var(--surface) 100%);
@@ -246,16 +253,15 @@
     .spec-cell.clickable:hover {
       background: rgba(200, 255, 92, 0.12);
       border-color: var(--accent-lime);
-      transform: translateY(-1px);
     }
 
     .spec-label {
-      font-size: 9.5px;
+      font-size: 9px;
       color: var(--text-secondary);
       text-transform: uppercase;
       letter-spacing: 0.4px;
       font-weight: 600;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -264,7 +270,7 @@
     }
 
     .spec-value {
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 700;
       color: var(--text-primary);
       white-space: nowrap;
@@ -277,16 +283,16 @@
     .financial-hero {
       background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
       border: 1px solid var(--surface-border);
-      border-radius: 16px;
-      padding: 14px 16px;
+      border-radius: 14px;
+      padding: 11px 14px;
     }
 
     .summary-row {
       display: flex;
       justify-content: space-between;
-      font-size: 12px;
+      font-size: 11.5px;
       color: var(--text-secondary);
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .summary-row.discount {
@@ -297,7 +303,7 @@
     .total-divider {
       height: 1px;
       background: var(--surface-border);
-      margin: 10px 0;
+      margin: 8px 0;
     }
 
     .total-row {
@@ -307,18 +313,18 @@
     }
 
     .total-label {
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 600;
       color: var(--text-primary);
     }
 
     .total-sub {
-      font-size: 10px;
+      font-size: 9.5px;
       color: var(--text-secondary);
     }
 
     .total-amount {
-      font-size: 26px;
+      font-size: 23px;
       font-weight: 800;
       letter-spacing: -0.5px;
       color: var(--text-primary);
@@ -327,20 +333,20 @@
 
     /* BOTTOM ACTION AREA */
     .action-section {
-      margin-top: auto;
-      padding-top: 14px;
+      padding-top: 4px;
+      flex-shrink: 0;
     }
 
     .checkbox-container-wrapper {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      margin-bottom: 12px;
+      gap: 8px;
+      margin-bottom: 8px;
     }
 
     .checkbox-text {
-      font-size: 11px;
+      font-size: 10.5px;
       color: var(--text-secondary);
       user-select: none;
       cursor: pointer;
@@ -349,7 +355,7 @@
     /* NEON CHECKBOX */
     .neon-checkbox {
       --primary: #00ffaa;
-      --size: 22px;
+      --size: 20px;
       position: relative;
       width: var(--size);
       height: var(--size);
@@ -398,7 +404,7 @@
       stroke-dashoffset: 0;
     }
 
-    /* CARD HOVER BUTTON (.Btn) */
+    /* CONFIRM BUTTON */
     .button-container {
       display: flex;
       justify-content: center;
@@ -407,7 +413,7 @@
 
     .Btn {
       width: 100%;
-      height: 48px;
+      height: 45px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -416,17 +422,17 @@
       border-radius: 12px;
       color: white;
       font-weight: 600;
-      font-size: 15px;
+      font-size: 14.5px;
       gap: 10px;
       cursor: pointer;
-      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       position: relative;
       overflow: hidden;
       transition-duration: .3s;
     }
 
     .svgIcon {
-      width: 18px;
+      width: 17px;
     }
 
     .svgIcon path {
@@ -457,10 +463,10 @@
     }
 
     .legal-footer {
-      font-size: 9px;
+      font-size: 8.5px;
       color: #71717A;
       text-align: center;
-      margin-top: 10px;
+      margin-top: 6px;
     }
   </style>
 </head>
@@ -483,8 +489,8 @@
     </a>
   </div>
 
-  <!-- MID SECTION PACKAGES & SPECS -->
-  <div>
+  <!-- MID CONTENT -->
+  <div class="content-body">
     <!-- ANIMATED PHYSICS COLLISION CARD -->
     <div class="package-card">
       <div class="time-badge">
@@ -579,7 +585,7 @@
 </div>
 
 <script>
-  /* 2D REAL-TIME RETINA HIGH-DPI COLLISION ENGINE */
+  /* 2D RETINA PHYSICS ENGINE WITH VECTOR LOGO DRAWERS */
   function initOceanPhysics() {
     const stage = document.getElementById("physicsWrapper");
     const canvas = document.getElementById("oceanPhysicsCanvas");
@@ -604,57 +610,109 @@
 
     resizeCanvas();
 
-    // High-Res Logos
-    const imgMeta = new Image();
-    imgMeta.crossOrigin = "anonymous";
-    imgMeta.src = "https://pngimg.com/d/meta_PNG5.png";
-
-    const imgGoogle = new Image();
-    imgGoogle.crossOrigin = "anonymous";
-    imgGoogle.src = "https://static.vecteezy.com/system/resources/previews/042/712/671/original/google-ads-icon-logo-symbol-free-png.png";
-
-    const imgGrowshal = new Image();
-    imgGrowshal.crossOrigin = "anonymous";
-    imgGrowshal.src = "https://growshal.com/wp-content/uploads/2023/12/cropped-admin-ajax2.png";
-
     const BASE_SPEED = 0.45;
 
-    // Circle Bubbles
+    // Direct Vector-Rendered Brand Nodes (0ms loading delay, 100% reliable)
     const bubbles = [
       {
         x: width * 0.22,
         y: height * 0.35,
         vx: 0.45,
         vy: 0.3,
-        radius: 26,
-        img: imgMeta,
+        radius: 25,
+        type: 'meta',
         color: "#0081fb",
-        glow: "rgba(0, 129, 251, 0.45)",
-        padFactor: 0.72
+        glow: "rgba(0, 129, 251, 0.45)"
       },
       {
         x: width * 0.78,
         y: height * 0.65,
         vx: -0.4,
         vy: -0.35,
-        radius: 26,
-        img: imgGoogle,
+        radius: 25,
+        type: 'google',
         color: "#fabb00",
-        glow: "rgba(250, 187, 0, 0.45)",
-        padFactor: 0.72
+        glow: "rgba(250, 187, 0, 0.45)"
       },
       {
         x: width * 0.5,
         y: height * 0.5,
         vx: 0.35,
         vy: -0.4,
-        radius: 28,
-        img: imgGrowshal,
+        radius: 27,
+        type: 'growshal',
         color: "#c8ff5c",
-        glow: "rgba(200, 255, 92, 0.5)",
-        padFactor: 0.72
+        glow: "rgba(200, 255, 92, 0.5)"
       }
     ];
+
+    // Native Vector Logo Renderer (No External Image Dependency)
+    function drawVectorLogo(ctx, type, x, y, r) {
+      ctx.save();
+      ctx.translate(x, y);
+
+      if (type === 'meta') {
+        // Meta Infinity Loop Logo
+        const s = r * 0.052;
+        ctx.scale(s, s);
+        ctx.fillStyle = "#0081fb";
+        const metaPath = new Path2D("M -9.5 -6 C -15.5 -6 -19 -2 -19 3 C -19 8 -15 11 -10 11 C -5.8 11 -2.5 8 0.5 3 C 3.5 8 6.8 11 11 11 C 16 11 20 8 20 3 C 20 -2 16.5 -6 10.5 -6 C 6.5 -6 3.2 -3.5 0.5 1 C -2.2 -3.5 -5.5 -6 -9.5 -6 Z M -9.5 -2.5 C -7.5 -2.5 -5.5 -0.5 -3.5 3 C -5.5 6.5 -7.5 8 -9.5 8 C -12.5 8 -15.2 6 -15.2 2.8 C -15.2 -0.2 -12.5 -2.5 -9.5 -2.5 Z M 10.5 -2.5 C 13.5 -2.5 16.2 -0.2 16.2 2.8 C 16.2 6 13.5 8 10.5 8 C 8.5 8 6.5 6.5 4.5 3 C 6.5 -0.5 8.5 -2.5 10.5 -2.5 Z");
+        ctx.fill(metaPath);
+      } else if (type === 'google') {
+        // Google Ads Logo
+        const s = r * 0.046;
+        ctx.scale(s, s);
+        // Yellow Bar
+        ctx.fillStyle = "#fbbc04";
+        ctx.beginPath();
+        ctx.roundRect(-14, -13, 10, 26, 5);
+        ctx.fill();
+        // Blue Bar
+        ctx.fillStyle = "#4285f4";
+        ctx.save();
+        ctx.rotate(0.55);
+        ctx.beginPath();
+        ctx.roundRect(1, -17, 10, 34, 5);
+        ctx.fill();
+        ctx.restore();
+        // Green Circle
+        ctx.fillStyle = "#34a853";
+        ctx.beginPath();
+        ctx.arc(-9, 8, 5.5, 0, Math.PI * 2);
+        ctx.fill();
+      } else if (type === 'growshal') {
+        // Growshal Hexagonal Logo
+        const s = r * 0.054;
+        ctx.scale(s, s);
+        ctx.strokeStyle = "#ffffff";
+        ctx.lineWidth = 2.4;
+        ctx.lineJoin = "round";
+        ctx.beginPath();
+        ctx.moveTo(0, -14);
+        ctx.lineTo(12, -7);
+        ctx.lineTo(12, 7);
+        ctx.lineTo(0, 14);
+        ctx.lineTo(-12, 7);
+        ctx.lineTo(-12, -7);
+        ctx.closePath();
+        ctx.stroke();
+
+        ctx.strokeStyle = "var(--accent-lime)";
+        ctx.lineWidth = 2.4;
+        ctx.beginPath();
+        ctx.moveTo(-5, -6);
+        ctx.lineTo(6, -6);
+        ctx.lineTo(6, -1);
+        ctx.lineTo(-2, -1);
+        ctx.lineTo(-2, 5);
+        ctx.lineTo(6, 5);
+        ctx.lineTo(6, 2);
+        ctx.lineTo(2, 2);
+        ctx.stroke();
+      }
+
+      ctx.restore();
+    }
 
     // Speed Boost on Click / Tap
     function applyClickImpulse(e) {
@@ -672,7 +730,7 @@
         b.vy += (dy / dist) * force;
 
         const currentSpeed = Math.sqrt(b.vx * b.vx + b.vy * b.vy);
-        const MAX_BOOST = 4.8;
+        const MAX_BOOST = 4.5;
         if (currentSpeed > MAX_BOOST) {
           b.vx = (b.vx / currentSpeed) * MAX_BOOST;
           b.vy = (b.vy / currentSpeed) * MAX_BOOST;
@@ -687,54 +745,37 @@
 
     let time = 0;
 
-    function drawContainedImage(ctx, img, x, y, radius, padFactor) {
-      if (!img || !img.complete || img.naturalWidth === 0) return;
-      const nw = img.naturalWidth;
-      const nh = img.naturalHeight;
-      const maxDim = radius * 2 * padFactor;
-      const scale = Math.min(maxDim / nw, maxDim / nh);
-      const dw = nw * scale;
-      const dh = nh * scale;
-
-      ctx.save();
-      ctx.beginPath();
-      ctx.arc(x, y, radius - 2, 0, Math.PI * 2);
-      ctx.clip();
-      ctx.drawImage(img, x - dw / 2, y - dh / 2, dw, dh);
-      ctx.restore();
-    }
-
     function draw() {
       ctx.clearRect(0, 0, width, height);
       time += 0.015;
 
-      // Draw Stage Grid
+      // Draw Grid
       ctx.strokeStyle = "rgba(255, 255, 255, 0.025)";
       ctx.lineWidth = 1;
-      for (let x = 0; x < width; x += 26) {
+      for (let x = 0; x < width; x += 24) {
         ctx.beginPath();
         ctx.moveTo(x, 0);
         ctx.lineTo(x, height);
         ctx.stroke();
       }
-      for (let y = 0; y < height; y += 26) {
+      for (let y = 0; y < height; y += 24) {
         ctx.beginPath();
         ctx.moveTo(0, y);
         ctx.lineTo(width, y);
         ctx.stroke();
       }
 
-      // Draw Proximity Laser Strings
+      // Draw Laser Strings
       for (let i = 0; i < bubbles.length; i++) {
         for (let j = i + 1; j < bubbles.length; j++) {
           const dx = bubbles[j].x - bubbles[i].x;
           const dy = bubbles[j].y - bubbles[i].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 135) {
+          if (dist < 130) {
             ctx.beginPath();
             ctx.moveTo(bubbles[i].x, bubbles[i].y);
             ctx.lineTo(bubbles[j].x, bubbles[j].y);
-            const alpha = (1 - dist / 135) * 0.45;
+            const alpha = (1 - dist / 130) * 0.45;
             ctx.strokeStyle = `rgba(200, 255, 92, ${alpha})`;
             ctx.lineWidth = 1.5;
             ctx.setLineDash([4, 4]);
@@ -777,6 +818,7 @@
           b.vy = -Math.abs(b.vy);
         }
 
+        // Draw Outer Glowing Circle Frame
         ctx.save();
         ctx.shadowColor = b.glow;
         ctx.shadowBlur = 14;
@@ -790,7 +832,8 @@
         ctx.stroke();
         ctx.restore();
 
-        drawContainedImage(ctx, b.img, b.x, b.y, b.radius, b.padFactor);
+        // Draw Vector Logo Inside Circle
+        drawVectorLogo(ctx, b.type, b.x, b.y, b.radius);
       });
 
       // Collision Resolution
