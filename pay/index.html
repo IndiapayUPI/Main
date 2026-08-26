@@ -102,7 +102,7 @@
       gap: 4px;
     }
 
-    /* CARD ILLUSTRATION (ANIMATED SPACE & ROCKET) */
+    /* CARD ILLUSTRATION CONTAINER */
     .package-card {
       background: rgba(255, 255, 255, 0.03);
       border-radius: 18px;
@@ -157,105 +157,25 @@
       100% { transform: translateX(-50%) rotate(360deg); }
     }
 
-    /* SPACE & STARS VIEWPORT */
-    .space-container {
+    /* 2D PHYSICS INTERACTIVE STAGE */
+    .physics-stage-container {
       width: 100%;
-      height: 140px;
-      background: radial-gradient(ellipse at bottom, #111a24 0%, #08090d 100%);
+      height: 160px;
+      background: radial-gradient(circle at 50% 50%, #101622 0%, #060709 100%);
       border-radius: 14px;
       position: relative;
       overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      cursor: pointer;
+      user-select: none;
     }
 
-    #stars {
+    #oceanPhysicsCanvas {
       position: absolute;
-      top: 0;
-      left: 0;
+      inset: 0;
       width: 100%;
       height: 100%;
-      background: transparent;
-    }
-
-    #stars::before, #stars::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 2px;
-      height: 2px;
-      border-radius: 50%;
-      background: transparent;
-      box-shadow: 
-        20px 10px rgba(255,255,255,0.8), 50px 80px rgba(255,255,255,0.7), 80px 30px rgba(255,255,255,0.9),
-        120px 110px rgba(255,255,255,0.6), 160px 40px rgba(255,255,255,0.8), 200px 95px rgba(255,255,255,0.9),
-        240px 20px rgba(255,255,255,0.7), 280px 100px rgba(255,255,255,0.8), 320px 50px rgba(255,255,255,0.6),
-        360px 120px rgba(255,255,255,0.9), 390px 30px rgba(255,255,255,0.7), 70px 130px rgba(255,255,255,0.5),
-        150px 140px rgba(255,255,255,0.8), 230px 135px rgba(255,255,255,0.7), 310px 125px rgba(255,255,255,0.8),
-        370px 85px rgba(255,255,255,0.5), 100px 70px rgba(255,255,255,0.9), 270px 65px rgba(255,255,255,0.6);
-      animation: animStarDown 2s linear infinite;
-    }
-
-    #stars::after {
-      top: -140px;
-    }
-
-    /* Stars Moving Downwards */
-    @keyframes animStarDown {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(140px); }
-    }
-
-    /* ROCKET UPWARD ANIMATION & THRUSTER FIRE */
-    .rocket-wrapper {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      animation: rocketUpwardHover 1.8s ease-in-out infinite;
-      z-index: 5;
-    }
-
-    .rocket-svg {
-      width: 46px;
-      height: 46px;
-      filter: drop-shadow(0 0 12px rgba(200, 255, 92, 0.5));
-    }
-
-    /* Flame / Thruster effect */
-    .rocket-flame {
-      width: 8px;
-      height: 20px;
-      background: linear-gradient(180deg, #c8ff5c 0%, #ff9800 45%, #ff3b30 80%, transparent 100%);
-      border-radius: 50% 50% 25% 25%;
-      margin-top: -3px;
-      filter: drop-shadow(0 0 6px #ff7b00);
-      animation: flameFlicker 0.15s infinite alternate ease-in-out;
-    }
-
-    @keyframes flameFlicker {
-      0% {
-        height: 16px;
-        transform: scaley(0.85);
-        opacity: 0.85;
-      }
-      100% {
-        height: 27px;
-        transform: scaleX(1.2);
-        opacity: 1;
-      }
-    }
-
-    @keyframes rocketUpwardHover {
-      0%, 100% {
-        transform: translatex(7px);
-      }
-      50% {
-        transform: translatex(-7px);
-      }
+      z-index: 1;
     }
 
     .card-title {
@@ -558,37 +478,16 @@
 
   <!-- MID SECTION PACKAGES & SPECS -->
   <div>
-    <!-- ANIMATED SPACE & ROCKET CARD -->
+    <!-- ANIMATED PHYSICS COLLISION CARD -->
     <div class="package-card">
       <div class="time-badge">
         <div class="clock-icon"></div>
         <span id="serviceDurationBadge">1 Month Active</span>
       </div>
 
-      <!-- SPACE CONTAINER -->
-      <div class="space-container">
-        <div id="stars"></div>
-        <div class="rocket-wrapper">
-          <svg class="rocket-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Left Fin -->
-            <path d="M19 36C12 43 11 51 11 51C11 51 19 50 25 43" fill="#9ecc40"/>
-            <!-- Right Fin -->
-            <path d="M45 36C52 43 53 51 53 51C53 51 45 50 39 43" fill="#9ecc40"/>
-            <!-- Rocket Body -->
-            <path d="M32 5C22 17 21 34 22 47C26 49 38 49 42 47C43 34 42 17 32 5Z" fill="var(--accent-lime)"/>
-            <!-- Rocket Nose Shadow/Accent -->
-            <path d="M32 5C37 11 39 17 40 23H24C25 17 27 11 32 5Z" fill="#ffffff" fill-opacity="0.3"/>
-            <!-- Center Porthole Outer -->
-            <circle cx="32" cy="27" r="6.5" fill="#0c1015"/>
-            <!-- Center Porthole Glass -->
-            <circle cx="32" cy="27" r="4.5" fill="#c8ff5c"/>
-            <!-- Center Porthole Glare -->
-            <circle cx="30.5" cy="25.5" r="1.5" fill="#ffffff"/>
-            <!-- Base Engine Nozzle -->
-            <path d="M26 48H38L36 53H28L26 48Z" fill="#71717A"/>
-          </svg>
-          <div class="rocket-flame"></div>
-        </div>
+      <!-- 2D INFINITE COLLISION STAGE -->
+      <div class="physics-stage-container" id="physicsWrapper">
+        <canvas id="oceanPhysicsCanvas"></canvas>
       </div>
 
       <div class="card-title">Ads Management Service</div>
@@ -671,6 +570,254 @@
 </div>
 
 <script>
+  /* 2D REAL-TIME COLLISION & WAVE PHYSICS ENGINE WITH CLICK-BOOST */
+  function initOceanPhysics() {
+    const stage = document.getElementById("physicsWrapper");
+    const canvas = document.getElementById("oceanPhysicsCanvas");
+    if (!canvas || !stage) return;
+    const ctx = canvas.getContext("2d");
+    let width = canvas.width = stage.clientWidth;
+    let height = canvas.height = stage.clientHeight;
+
+    // Load Logos
+    const imgMeta = new Image();
+    imgMeta.src = "https://pngimg.com/d/meta_PNG5.png";
+
+    const imgGoogle = new Image();
+    imgGoogle.src = "https://static.vecteezy.com/system/resources/previews/042/712/671/original/google-ads-icon-logo-symbol-free-png.png";
+
+    const imgGrowshal = new Image();
+    imgGrowshal.src = "https://growshal.com/wp-content/uploads/2023/12/cropped-admin-ajax2.png";
+
+    const BASE_SPEED = 0.45;
+
+    // Circle Bubbles / Boats
+    const bubbles = [
+      {
+        x: width * 0.22,
+        y: height * 0.35,
+        vx: 0.45,
+        vy: 0.3,
+        radius: 26,
+        img: imgMeta,
+        color: "#0081fb",
+        glow: "rgba(0, 129, 251, 0.45)",
+        padFactor: 0.72 // Proportional containment for Meta
+      },
+      {
+        x: width * 0.78,
+        y: height * 0.65,
+        vx: -0.4,
+        vy: -0.35,
+        radius: 26,
+        img: imgGoogle,
+        color: "#fabb00",
+        glow: "rgba(250, 187, 0, 0.45)",
+        padFactor: 0.72
+      },
+      {
+        x: width * 0.5,
+        y: height * 0.5,
+        vx: 0.35,
+        vy: -0.4,
+        radius: 28,
+        img: imgGrowshal,
+        color: "#c8ff5c",
+        glow: "rgba(200, 255, 92, 0.5)",
+        padFactor: 0.72
+      }
+    ];
+
+    // Speed Boost on Click / Tap
+    function applyClickImpulse(e) {
+      const rect = canvas.getBoundingClientRect();
+      const clickX = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
+      const clickY = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top;
+
+      bubbles.forEach(b => {
+        const dx = b.x - clickX;
+        const dy = b.y - clickY;
+        const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+        
+        // Add repulsive force radiating from click point
+        const force = Math.max(1.8, 3.5 - dist / 60);
+        b.vx += (dx / dist) * force;
+        b.vy += (dy / dist) * force;
+
+        // Cap maximum boosted speed
+        const currentSpeed = Math.sqrt(b.vx * b.vx + b.vy * b.vy);
+        const MAX_BOOST = 4.8;
+        if (currentSpeed > MAX_BOOST) {
+          b.vx = (b.vx / currentSpeed) * MAX_BOOST;
+          b.vy = (b.vy / currentSpeed) * MAX_BOOST;
+        }
+      });
+    }
+
+    stage.addEventListener("click", applyClickImpulse);
+    stage.addEventListener("touchstart", (e) => {
+      applyClickImpulse(e);
+    }, { passive: true });
+
+    let time = 0;
+
+    // Helper: Draw Aspect Ratio Maintained Image Inside Circle
+    function drawContainedImage(ctx, img, x, y, radius, padFactor) {
+      if (!img || !img.complete || img.naturalWidth === 0) return;
+      const nw = img.naturalWidth;
+      const nh = img.naturalHeight;
+      const maxDim = radius * 2 * padFactor;
+      const scale = Math.min(maxDim / nw, maxDim / nh);
+      const dw = nw * scale;
+      const dh = nh * scale;
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(x, y, radius - 2, 0, Math.PI * 2);
+      ctx.clip();
+      ctx.drawImage(img, x - dw / 2, y - dh / 2, dw, dh);
+      ctx.restore();
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      time += 0.015;
+
+      // Draw Subtle Stage Grid
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.025)";
+      ctx.lineWidth = 1;
+      for (let x = 0; x < width; x += 26) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, height);
+        ctx.stroke();
+      }
+      for (let y = 0; y < height; y += 26) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(width, y);
+        ctx.stroke();
+      }
+
+      // Draw Proximity Laser Strings
+      for (let i = 0; i < bubbles.length; i++) {
+        for (let j = i + 1; j < bubbles.length; j++) {
+          const dx = bubbles[j].x - bubbles[i].x;
+          const dy = bubbles[j].y - bubbles[i].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 135) {
+            ctx.beginPath();
+            ctx.moveTo(bubbles[i].x, bubbles[i].y);
+            ctx.lineTo(bubbles[j].x, bubbles[j].y);
+            const alpha = (1 - dist / 135) * 0.45;
+            ctx.strokeStyle = `rgba(200, 255, 92, ${alpha})`;
+            ctx.lineWidth = 1.5;
+            ctx.setLineDash([4, 4]);
+            ctx.stroke();
+            ctx.setLineDash([]);
+          }
+        }
+      }
+
+      // Update & Draw Bubbles
+      bubbles.forEach((b, idx) => {
+        // Natural Ocean Sway
+        const waveX = Math.cos(time + idx * 2) * 0.08;
+        const waveY = Math.sin(time + idx * 2.5) * 0.08;
+
+        b.x += b.vx + waveX;
+        b.y += b.vy + waveY;
+
+        // Smoothly Ease Boosted Speed Back to Base Speed (Friction)
+        const speed = Math.sqrt(b.vx * b.vx + b.vy * b.vy);
+        if (speed > BASE_SPEED) {
+          b.vx *= 0.985;
+          b.vy *= 0.985;
+        } else if (speed < BASE_SPEED * 0.7) {
+          b.vx = (b.vx / (speed || 1)) * BASE_SPEED;
+          b.vy = (b.vy / (speed || 1)) * BASE_SPEED;
+        }
+
+        // Wall Boundaries & Rebound
+        if (b.x - b.radius < 0) {
+          b.x = b.radius;
+          b.vx = Math.abs(b.vx);
+        } else if (b.x + b.radius > width) {
+          b.x = width - b.radius;
+          b.vx = -Math.abs(b.vx);
+        }
+
+        if (b.y - b.radius < 0) {
+          b.y = b.radius;
+          b.vy = Math.abs(b.vy);
+        } else if (b.y + b.radius > height) {
+          b.y = height - b.radius;
+          b.vy = -Math.abs(b.vy);
+        }
+
+        // Draw Outer Frame
+        ctx.save();
+        ctx.shadowColor = b.glow;
+        ctx.shadowBlur = 14;
+
+        ctx.beginPath();
+        ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
+        ctx.fillStyle = "#121216";
+        ctx.fill();
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = b.color;
+        ctx.stroke();
+        ctx.restore();
+
+        // Draw Non-Distorted Original Aspect Ratio Image
+        drawContainedImage(ctx, b.img, b.x, b.y, b.radius, b.padFactor);
+      });
+
+      // Elastic Body Collision Simulation
+      for (let i = 0; i < bubbles.length; i++) {
+        for (let j = i + 1; j < bubbles.length; j++) {
+          const b1 = bubbles[i];
+          const b2 = bubbles[j];
+          const dx = b2.x - b1.x;
+          const dy = b2.y - b1.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          const minDist = b1.radius + b2.radius;
+
+          if (distance < minDist && distance > 0) {
+            // Overlap Separation
+            const overlap = (minDist - distance) / 2;
+            const nx = dx / distance;
+            const ny = dy / distance;
+
+            b1.x -= nx * overlap;
+            b1.y -= ny * overlap;
+            b2.x += nx * overlap;
+            b2.y += ny * overlap;
+
+            // Momentum Swap
+            const kx = b1.vx - b2.vx;
+            const ky = b1.vy - b2.vy;
+            const p = 2 * (nx * kx + ny * ky) / 2;
+
+            b1.vx -= p * nx;
+            b1.vy -= p * ny;
+            b2.vx += p * nx;
+            b2.vy += p * ny;
+          }
+        }
+      }
+
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+
+    window.addEventListener("resize", () => {
+      width = canvas.width = stage.clientWidth;
+      height = canvas.height = stage.clientHeight;
+    });
+  }
+
   const HIDDEN_PAYMENT_CONFIG = {
     upiId: "editing@apl",
     payeeName: "Ads Services",
@@ -783,7 +930,10 @@
     }, 300);
   }
 
-  window.addEventListener("DOMContentLoaded", parseURLParameters);
+  window.addEventListener("DOMContentLoaded", () => {
+    parseURLParameters();
+    initOceanPhysics();
+  });
 </script>
 
 </body>
