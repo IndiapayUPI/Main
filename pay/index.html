@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>Growshal — Payment Checkout</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,7 +30,7 @@
 
     html, body {
       width: 100%;
-      height: 100%;
+      min-height: 100%;
       background: var(--bg);
       font-family: 'Plus Jakarta Sans', sans-serif;
       color: var(--text-primary);
@@ -47,7 +47,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 20px 18px;
+      padding: max(20px, env(safe-area-inset-top, 20px)) 18px max(24px, env(safe-area-inset-bottom, 24px));
       margin: 0 auto;
     }
 
@@ -100,6 +100,7 @@
       display: inline-flex;
       align-items: center;
       gap: 4px;
+      flex-shrink: 0;
     }
 
     /* CARD ILLUSTRATION CONTAINER */
@@ -214,7 +215,7 @@
       color: #000;
     }
 
-    /* SPEC MATRIX */
+    /* SPEC MATRIX (PERFECT ALIGNED GRID) */
     .spec-matrix {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -228,7 +229,10 @@
       border-radius: 12px;
       padding: 10px 12px;
       text-decoration: none;
-      display: block;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 56px;
       transition: all 0.2s ease;
     }
 
@@ -246,24 +250,27 @@
     }
 
     .spec-label {
-      font-size: 10px;
+      font-size: 9.5px;
       color: var(--text-secondary);
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.4px;
       font-weight: 600;
-      margin-bottom: 2px;
+      margin-bottom: 4px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 4px;
+      white-space: nowrap;
     }
 
     .spec-value {
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 700;
       color: var(--text-primary);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      line-height: 1.2;
     }
 
     /* FINANCIAL DISPLAY */
@@ -504,13 +511,15 @@
       <!-- CLICKABLE CLIENT TELEGRAM BUTTON -->
       <a id="clientTelegramLink" href="#" target="_blank" class="spec-cell clickable">
         <div class="spec-label">
-          <span>Client Telegram</span>
+          <span>Client TG</span>
           <span style="font-size: 8px; color: var(--accent-lime);">↗ Save Date</span>
         </div>
         <div class="spec-value" id="clientTelegram">@client</div>
       </a>
       <div class="spec-cell">
-        <div class="spec-label">Service Period</div>
+        <div class="spec-label">
+          <span>Period</span>
+        </div>
         <div class="spec-value" id="serviceMonths">1 Month</div>
       </div>
     </div>
@@ -570,28 +579,47 @@
 </div>
 
 <script>
-  /* 2D REAL-TIME COLLISION & WAVE PHYSICS ENGINE WITH CLICK-BOOST */
+  /* 2D REAL-TIME RETINA HIGH-DPI COLLISION ENGINE */
   function initOceanPhysics() {
     const stage = document.getElementById("physicsWrapper");
     const canvas = document.getElementById("oceanPhysicsCanvas");
     if (!canvas || !stage) return;
     const ctx = canvas.getContext("2d");
-    let width = canvas.width = stage.clientWidth;
-    let height = canvas.height = stage.clientHeight;
 
-    // Load Logos
+    let width = stage.clientWidth;
+    let height = stage.clientHeight;
+    let dpr = window.devicePixelRatio || 1;
+
+    function resizeCanvas() {
+      width = stage.clientWidth;
+      height = stage.clientHeight;
+      dpr = window.devicePixelRatio || 1;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.resetTransform();
+      ctx.scale(dpr, dpr);
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = "high";
+    }
+
+    resizeCanvas();
+
+    // High-Res Logos
     const imgMeta = new Image();
+    imgMeta.crossOrigin = "anonymous";
     imgMeta.src = "https://pngimg.com/d/meta_PNG5.png";
 
     const imgGoogle = new Image();
+    imgGoogle.crossOrigin = "anonymous";
     imgGoogle.src = "https://static.vecteezy.com/system/resources/previews/042/712/671/original/google-ads-icon-logo-symbol-free-png.png";
 
     const imgGrowshal = new Image();
+    imgGrowshal.crossOrigin = "anonymous";
     imgGrowshal.src = "https://growshal.com/wp-content/uploads/2023/12/cropped-admin-ajax2.png";
 
     const BASE_SPEED = 0.45;
 
-    // Circle Bubbles / Boats
+    // Circle Bubbles
     const bubbles = [
       {
         x: width * 0.22,
@@ -602,7 +630,7 @@
         img: imgMeta,
         color: "#0081fb",
         glow: "rgba(0, 129, 251, 0.45)",
-        padFactor: 0.72 // Proportional containment for Meta
+        padFactor: 0.72
       },
       {
         x: width * 0.78,
@@ -639,12 +667,10 @@
         const dy = b.y - clickY;
         const dist = Math.sqrt(dx * dx + dy * dy) || 1;
         
-        // Add repulsive force radiating from click point
         const force = Math.max(1.8, 3.5 - dist / 60);
         b.vx += (dx / dist) * force;
         b.vy += (dy / dist) * force;
 
-        // Cap maximum boosted speed
         const currentSpeed = Math.sqrt(b.vx * b.vx + b.vy * b.vy);
         const MAX_BOOST = 4.8;
         if (currentSpeed > MAX_BOOST) {
@@ -661,7 +687,6 @@
 
     let time = 0;
 
-    // Helper: Draw Aspect Ratio Maintained Image Inside Circle
     function drawContainedImage(ctx, img, x, y, radius, padFactor) {
       if (!img || !img.complete || img.naturalWidth === 0) return;
       const nw = img.naturalWidth;
@@ -683,7 +708,7 @@
       ctx.clearRect(0, 0, width, height);
       time += 0.015;
 
-      // Draw Subtle Stage Grid
+      // Draw Stage Grid
       ctx.strokeStyle = "rgba(255, 255, 255, 0.025)";
       ctx.lineWidth = 1;
       for (let x = 0; x < width; x += 26) {
@@ -721,14 +746,12 @@
 
       // Update & Draw Bubbles
       bubbles.forEach((b, idx) => {
-        // Natural Ocean Sway
         const waveX = Math.cos(time + idx * 2) * 0.08;
         const waveY = Math.sin(time + idx * 2.5) * 0.08;
 
         b.x += b.vx + waveX;
         b.y += b.vy + waveY;
 
-        // Smoothly Ease Boosted Speed Back to Base Speed (Friction)
         const speed = Math.sqrt(b.vx * b.vx + b.vy * b.vy);
         if (speed > BASE_SPEED) {
           b.vx *= 0.985;
@@ -738,7 +761,6 @@
           b.vy = (b.vy / (speed || 1)) * BASE_SPEED;
         }
 
-        // Wall Boundaries & Rebound
         if (b.x - b.radius < 0) {
           b.x = b.radius;
           b.vx = Math.abs(b.vx);
@@ -755,7 +777,6 @@
           b.vy = -Math.abs(b.vy);
         }
 
-        // Draw Outer Frame
         ctx.save();
         ctx.shadowColor = b.glow;
         ctx.shadowBlur = 14;
@@ -769,11 +790,10 @@
         ctx.stroke();
         ctx.restore();
 
-        // Draw Non-Distorted Original Aspect Ratio Image
         drawContainedImage(ctx, b.img, b.x, b.y, b.radius, b.padFactor);
       });
 
-      // Elastic Body Collision Simulation
+      // Collision Resolution
       for (let i = 0; i < bubbles.length; i++) {
         for (let j = i + 1; j < bubbles.length; j++) {
           const b1 = bubbles[i];
@@ -784,7 +804,6 @@
           const minDist = b1.radius + b2.radius;
 
           if (distance < minDist && distance > 0) {
-            // Overlap Separation
             const overlap = (minDist - distance) / 2;
             const nx = dx / distance;
             const ny = dy / distance;
@@ -794,7 +813,6 @@
             b2.x += nx * overlap;
             b2.y += ny * overlap;
 
-            // Momentum Swap
             const kx = b1.vx - b2.vx;
             const ky = b1.vy - b2.vy;
             const p = 2 * (nx * kx + ny * ky) / 2;
@@ -812,10 +830,7 @@
 
     draw();
 
-    window.addEventListener("resize", () => {
-      width = canvas.width = stage.clientWidth;
-      height = canvas.height = stage.clientHeight;
-    });
+    window.addEventListener("resize", resizeCanvas);
   }
 
   const HIDDEN_PAYMENT_CONFIG = {
