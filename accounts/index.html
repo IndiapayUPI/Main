@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookGrow Agency | Facebook & Google Agency Ad Accounts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-pure: #030206;
+            --bg-card: rgba(13, 11, 26, 0.85);
+            --primary: #5c35ff;
+            --primary-glow: #7c5cff;
+            --accent-green: #10b981;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(124, 92, 255, 0.4);
+            --text-main: #f8fafc;
+            --text-muted: #8e95ab;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg-pure);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+
+        /* High-Grade Radial Spotlight Background */
+        .spotlight-bg {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+            height: 900px;
+            background: 
+                radial-gradient(ellipse 65% 55% at 50% -10%, rgba(92, 53, 255, 0.28) 0%, transparent 70%),
+                radial-gradient(circle 350px at 80% 20%, rgba(217, 70, 239, 0.12) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .grid-mask {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: radial-gradient(ellipse at top, black 30%, transparent 75%);
+            -webkit-mask-image: radial-gradient(ellipse at top, black 30%, transparent 75%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Clean Enterprise Nav */
+        nav {
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-size: 19px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, #a78bfa, #5c35ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Sharp Glass WhatsApp Button */
+        .btn-wa-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #fff;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.25s ease;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-wa-nav:hover {
+            border-color: var(--primary-glow);
+            background: rgba(92, 53, 255, 0.15);
+            box-shadow: 0 0 15px rgba(92, 53, 255, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .online-dot {
+            width: 7px;
+            height: 7px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-green);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 70px 0 40px;
+            text-align: center;
+        }
+
+        /* Modern pill tracker badges */
+        .badge-capsule {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            border-radius: 999px;
+            margin-bottom: 24px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #d1d5db;
+        }
+
+        .badge-capsule .live-tag {
+            color: var(--accent-green);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: clamp(32px, 5.5vw, 62px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1.8px;
+            margin-bottom: 20px;
+        }
+
+        h1 span {
+            background: linear-gradient(180deg, #ffffff 30%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: clamp(15px, 2vw, 18px);
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 36px;
+            font-weight: 500;
+        }
+
+        /* CTA Main Button */
+        .btn-main {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(180deg, #6c47ff 0%, #4e2fda 100%);
+            color: #fff;
+            padding: 16px 36px;
+            border-radius: 999px;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 35px rgba(78, 47, 218, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-main:hover {
+            box-shadow: 0 0 50px rgba(78, 47, 218, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Feature Pillars */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 48px 0;
+            text-align: left;
+        }
+
+        .pillar-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.25s ease;
+        }
+
+        .pillar-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-3px);
+        }
+
+        .pillar-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pillar-card p {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Full Width Payment Card */
+        .payment-box {
+            margin: 60px 0;
+            background: linear-gradient(180deg, rgba(20, 16, 44, 0.7) 0%, rgba(9, 7, 20, 0.9) 100%);
+            border: 1px solid var(--border-hover);
+            border-radius: 16px;
+            padding: 36px 30px;
+        }
+
+        .payment-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .payment-head h3 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .payment-head p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .payment-icon-strip {
+            width: 100%;
+            background: #020105;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .payment-icon-strip img {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            display: block;
+        }
+
+        .payment-perks {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            text-align: left;
+        }
+
+        .pay-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            font-size: 13px;
+        }
+
+        .pay-item strong {
+            display: block;
+            color: #fff;
+            margin-bottom: 4px;
+            font-size: 13.5px;
+        }
+
+        /* Comparison Section */
+        .comparison-wrap {
+            margin: 70px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .section-header h2 {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            font-size: 13.5px;
+        }
+
+        th {
+            background: rgba(5, 4, 11, 0.95);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .pro-highlight {
+            color: #a78bfa;
+            font-weight: 700;
+        }
+
+        /* Pricing Grid */
+        .pricing-section {
+            margin: 70px 0;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .pricing-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.25s ease;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary-glow);
+            background: linear-gradient(180deg, rgba(32, 23, 80, 0.7) 0%, rgba(13, 11, 26, 0.9) 100%);
+            box-shadow: 0 0 35px rgba(92, 53, 255, 0.2);
+        }
+
+        .plan-name {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .plan-price {
+            font-size: 44px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 2px;
+        }
+
+        .plan-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 22px;
+        }
+
+        .plan-perks {
+            list-style: none;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .plan-perks li {
+            font-size: 13.5px;
+            color: #cbd5e1;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .plan-perks li::before {
+            content: "✓";
+            color: var(--accent-green);
+            font-weight: 800;
+        }
+
+        .btn-card {
+            display: block;
+            text-align: center;
+            padding: 13px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.25s ease;
+        }
+
+        .btn-card:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .btn-card.featured-btn {
+            background: var(--primary);
+            border-color: var(--primary-glow);
+            box-shadow: 0 0 20px rgba(78, 47, 218, 0.4);
+        }
+
+        .btn-card.featured-btn:hover {
+            background: var(--primary-glow);
+            color: #fff;
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 34px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 13.5px;
+        }
+
+        /* Mobile Breakpoint Fixes */
+        @media (max-width: 768px) {
+            .pillars-grid, .payment-perks, .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            .payment-head {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .hero {
+                padding: 50px 0 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="spotlight-bg"></div>
+<div class="grid-mask"></div>
+
+<div class="container">
+    <nav>
+        <div class="logo">BookGrow <span>Agency</span></div>
+        <a href="https://wa.me/447735379710?text=Hi,%20I%20need%20BookGrow%20Facebook%20and%20Google%20Agency%20Ad%20Accounts" class="btn-wa-nav">
+            <span class="online-dot"></span>
+            <span>WhatsApp Desk</span>
+        </a>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="badge-capsule">
+            <span class="live-tag">● ACTIVE PIPELINE</span>
+            <span>Facebook & Google Agency Ad Accounts</span>
+        </div>
+
+        <h1>Scale Uncapped With <span>Agency Ad Accounts</span></h1>
+        
+        <p>Zero bans, no arbitrary card holds, and your ad reject problem permanently solved. High-trust whitelisted profiles engineered for high-volume media buyers and iGaming funnels.</p>
+
+        <a href="#pricing" class="btn-main">
+            <span>Claim 7-Day Trial ($3)</span>
+            <span>→</span>
+        </a>
+
+        <!-- PILLARS -->
+        <div class="pillars-grid">
+            <div class="pillar-card">
+                <h3>⚡ FAST AD APPROVE</h3>
+                <p>Whitelisted agency routes bypass automated bots. Get your Facebook & Google ad sets approved in 5 to 15 minutes.</p>
+            </div>
+            <div class="pillar-card">
+                <h3>🚫 NO REJECTION</h3>
+                <p>Ad reject problem solved. Enterprise tier trust score allows you to run aggressive creatives that normal BM accounts reject.</p>
+            </div>
+            <div class="pillar-card">
+                <h3>🎰 BEST FOR iGAMING SITE ADS</h3>
+                <p>Purpose-built for betting, casino, crypto, and affiliate funnels. Run continuously without losing pixels or domains.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FULL WIDTH PAYMENT INTEGRATION -->
+    <section class="payment-box">
+        <div class="payment-head">
+            <div>
+                <h3>Supported Instant Payment Methods</h3>
+                <p>Fast, friction-free crypto & Web3 top-ups for unrestricted global scaling.</p>
+            </div>
+            <span class="badge-capsule" style="margin: 0; border-color: rgba(34, 197, 94, 0.4); color: #4ade80;">
+                Instant Balance Credit
+            </span>
+        </div>
+
+        <div class="payment-icon-strip">
+            <img src="https://bestwallet.com/wp-content/uploads/2024/12/store-icon.svg" alt="Best Wallet Integration">
+        </div>
+
+        <div class="payment-perks">
+            <div class="pay-item">
+                <strong>Best Wallet & Crypto Direct</strong>
+                Seamless deposits via Best Wallet, USDT (TRC20/ERC20), BTC, and direct wire rails.
+            </div>
+            <div class="pay-item">
+                <strong>Zero Card Holds or Freezes</strong>
+                Avoid payment threshold loops, suspicious activity flags, or banking declines.
+            </div>
+            <div class="pay-item">
+                <strong>100% Balance Migration Security</strong>
+                If an account faces any unexpected downtime, your unused funds are instantly moved to a fresh account.
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPARISON -->
+    <section class="comparison-wrap">
+        <div class="section-header">
+            <h2>BookGrow Agency vs Self-Serve Accounts</h2>
+            <p>Why scaling operators avoid standard pre-paid profiles.</p>
+        </div>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Capability</th>
+                        <th>BookGrow Agency Ad Account</th>
+                        <th>Standard Personal / Normal BM</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Approval Latency</td>
+                        <td class="pro-highlight">FAST AD APPROVE (Minutes)</td>
+                        <td>24 to 48 Hours</td>
+                    </tr>
+                    <tr>
+                        <td>Creative Review Resistance</td>
+                        <td class="pro-highlight">NO REJECTION (High Authority Whitelist)</td>
+                        <td>Continuous policy strikes & disprovals</td>
+                    </tr>
+                    <tr>
+                        <td>iGaming & Casino Viability</td>
+                        <td class="pro-highlight">100% Battle-Tested & Resilient</td>
+                        <td>Immediate account restriction</td>
+                    </tr>
+                    <tr>
+                        <td>Daily Spending Ceiling</td>
+                        <td class="pro-highlight">Unlimited from Day 1</td>
+                        <td>Capped at $25 - $50/day limits</td>
+                    </tr>
+                    <tr>
+                        <td>Top-Up Method</td>
+                        <td class="pro-highlight">Best Wallet, USDT, Crypto, Wire</td>
+                        <td>Local credit cards (frequent declines)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing-section" id="pricing">
+        <div class="section-header">
+            <h2>Agency Ad Account Pricing</h2>
+            <p>Pick your model and get direct account delivery on WhatsApp.</p>
+        </div>
+
+        <div class="pricing-grid">
+            <!-- 7 Days Trial -->
+            <div class="pricing-card">
+                <div>
+                    <div class="plan-name">7 Days Trial</div>
+                    <div class="plan-price">$3</div>
+                    <div class="plan-desc">First 7 days testing trial</div>
+                    <ul class="plan-perks">
+                        <li>1x Whitelisted Agency Ad Account</li>
+                        <li>Facebook or Google Ads selection</li>
+                        <li>FAST AD APPROVE configuration</li>
+                        <li>Ad reject problems solved</li>
+                        <li>Direct WhatsApp onboarding</li>
+                    </ul>
+                </div>
+                <a href="https://wa.me/447735379710?text=Hi,%20I%20want%20to%20buy%20the%20$3%20Trial%20Agency%20Ad%20Account" class="btn-card">
+                    Claim Trial ($3)
+                </a>
+            </div>
+
+            <!-- Monthly Rented -->
+            <div class="pricing-card featured">
+                <div>
+                    <span class="badge-capsule" style="margin-bottom: 12px; border-color: var(--primary-glow); color: #c4b5fd;">
+                        Most Popular
+                    </span>
+                    <div class="plan-name">Monthly Rented</div>
+                    <div class="plan-price">$30</div>
+                    <div class="plan-desc">Billed monthly after trial period</div>
+                    <ul class="plan-perks">
+                        <li>Unlimited Daily Spend Facebook & Google</li>
+                        <li>NO REJECTION whitelisted infrastructure</li>
+                        <li>Best for iGaming & casino offers</li>
+                        <li>Best Wallet & instant crypto top-up</li>
+                        <li>Instant replacement guarantee</li>
+                        <li>Dedicated Account Rep on WhatsApp</li>
+                    </ul>
+                </div>
+                <a href="https://wa.me/447735379710?text=Hi,%20I%20want%20to%20rent%20the%20$30/mo%20Agency%20Ad%20Account" class="btn-card featured-btn">
+                    Start Renting ($30)
+                </a>
+            </div>
+
+            <!-- Lifetime -->
+            <div class="pricing-card">
+                <div>
+                    <div class="plan-name">Lifetime Asset</div>
+                    <div class="plan-price">$120</div>
+                    <div class="plan-desc">One-time payment (Full ownership)</div>
+                    <ul class="plan-perks">
+                        <li>Permanent Agency Ad Account asset</li>
+                        <li>Zero recurring monthly rental charges</li>
+                        <li>Highest enterprise trust tier</li>
+                        <li>Ideal for long-term media buying scale</li>
+                        <li>Lifetime replacement backup cover</li>
+                        <li>24/7 dedicated support channel</li>
+                    </ul>
+                </div>
+                <a href="https://wa.me/447735379710?text=Hi,%20I%20want%20to%20buy%20the%20$120%20Lifetime%20Agency%20Ad%20Account" class="btn-card">
+                    Get Lifetime ($120)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 BookGrow Agency Account. Direct WhatsApp: +44 7735 379710</p>
+    </footer>
+</div>
+
+</body>
+</html>
