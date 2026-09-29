@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Sahil P2P — Best P2P Dealer in India (INR ⇄ USDT)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,8 +10,8 @@
 
   <style>
     /* =========================================================
-       CSS RESET & DESIGN SYSTEM VARIABLES (90FPS SMOOTHNESS)
-       ========================================================= */
+        CSS RESET & DESIGN SYSTEM VARIABLES (90/120FPS MOBILE OPTIMIZED)
+        ========================================================= */
     :root {
       --zi-default-overlay: 1000;
       --zi-shot-overlay: 1001;
@@ -27,11 +27,9 @@
       --text-main: #0d0c22;
       --text-muted: #6e6d7a;
       --text-subtle: #9e9ea7;
-      --radius-sm: 8px;
-      --radius-md: 14px;
-      --radius-lg: 20px;
-      --shadow-soft: 0px 20px 48px rgba(0, 0, 0, 0.08);
-      --shadow-modal: 0px 24px 64px rgba(0, 0, 0, 0.35);
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
       --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       --font-mono: 'JetBrains Mono', Consolas, monospace;
       --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
@@ -60,74 +58,54 @@
     body::before {
       content: '';
       position: fixed;
-      top: -20%;
+      top: -15%;
       left: 50%;
       transform: translateX(-50%);
-      width: 700px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(79, 60, 201, 0.25) 0%, rgba(234, 76, 137, 0.15) 50%, transparent 75%);
+      width: 600px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(79, 60, 201, 0.22) 0%, rgba(234, 76, 137, 0.12) 50%, transparent 75%);
       pointer-events: none;
       z-index: 0;
-      filter: blur(80px);
+      filter: blur(60px);
     }
 
     .container {
       width: 100%;
-      max-width: 1040px;
+      max-width: 600px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 16px;
       position: relative;
       z-index: 1;
     }
 
     /* =========================================================
-       CUSTOM KEYFRAMES & ANIMATIONS
-       ========================================================= */
+        CUSTOM KEYFRAMES & ANIMATIONS (HARDWARE ACCELERATED)
+        ========================================================= */
     @keyframes fade-in {
       from { opacity: 0; }
       to { opacity: 1; }
     }
-    @keyframes fade-out {
-      from { opacity: 1; }
-      to { opacity: 0; }
-    }
     @keyframes fade-in-up {
       from {
-        transform: translate3d(0, 40px, 0);
+        transform: translate3d(0, 20px, 0);
         opacity: 0;
       }
       to {
         transform: translate3d(0, 0, 0);
         opacity: 1;
-      }
-    }
-    @keyframes fade-out-up {
-      from {
-        transform: translate3d(0, 0, 0);
-        opacity: 1;
-      }
-      to {
-        transform: translate3d(0, -40px, 0);
-        opacity: 0;
       }
     }
     @keyframes pulse {
-      0% {
-        box-shadow: 0 0 0 0 rgba(234, 76, 137, 0.45);
-      }
-      70% {
-        box-shadow: 0 0 0 16px rgba(234, 76, 137, 0);
-      }
-      100% {
-        box-shadow: 0 0 0 0 rgba(234, 76, 137, 0);
-      }
+      0% { box-shadow: 0 0 0 0 rgba(234, 76, 137, 0.45); }
+      70% { box-shadow: 0 0 0 12px rgba(234, 76, 137, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(234, 76, 137, 0); }
     }
 
     /* =========================================================
-       HEADER / NAVBAR
-       ========================================================= */
+        HEADER / NAVBAR
+        ========================================================= */
     header {
-      padding: 24px 0;
+      padding: 18px 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
@@ -153,11 +131,12 @@
 
     .avatar-wrapper {
       position: relative;
-      width: 48px;
-      height: 48px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       border: 2px solid var(--primary);
       padding: 2px;
+      flex-shrink: 0;
     }
 
     .avatar-wrapper img {
@@ -172,15 +151,15 @@
       position: absolute;
       bottom: 2px;
       right: 2px;
-      width: 12px;
-      height: 12px;
+      width: 10px;
+      height: 10px;
       background: #10b981;
       border: 2px solid var(--dark-bg);
       border-radius: 50%;
     }
 
     .brand-title {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 800;
       letter-spacing: -0.02em;
     }
@@ -193,20 +172,20 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(119, 224, 181, 0.12);
+      background: rgba(119, 224, 181, 0.1);
       color: var(--accent-teal);
-      border: 1px solid rgba(119, 224, 181, 0.3);
-      padding: 6px 14px;
+      border: 1px solid rgba(119, 224, 181, 0.25);
+      padding: 5px 12px;
       border-radius: 9999px;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
     }
 
     /* =========================================================
-       HERO SECTION
-       ========================================================= */
+        HERO SECTION
+        ========================================================= */
     .hero {
-      padding: 70px 0 50px;
+      padding: 40px 0 100px;
       text-align: center;
     }
 
@@ -214,32 +193,32 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 18px;
+      padding: 6px 16px;
       border-radius: 9999px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       color: #f1f1f5;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
-      margin-bottom: 24px;
-      animation: fade-in-up 0.5s var(--ease-smooth);
+      margin-bottom: 20px;
+      animation: fade-in-up 0.4s var(--ease-smooth);
     }
 
     .hero-tag .dot {
-      width: 8px;
-      height: 8px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
       background: var(--primary);
       animation: pulse 2s infinite;
     }
 
     .hero-title {
-      font-size: clamp(34px, 5.5vw, 56px);
+      font-size: clamp(30px, 7vw, 46px);
       font-weight: 800;
       line-height: 1.15;
       letter-spacing: -0.03em;
-      margin-bottom: 20px;
-      animation: fade-in-up 0.6s var(--ease-smooth);
+      margin-bottom: 16px;
+      animation: fade-in-up 0.5s var(--ease-smooth);
     }
 
     .hero-title .gradient-text {
@@ -249,44 +228,38 @@
     }
 
     .hero-subtitle {
-      font-size: clamp(16px, 2vw, 20px);
+      font-size: clamp(14px, 3.5vw, 17px);
       color: var(--text-subtle);
-      max-width: 620px;
-      margin: 0 auto 36px;
-      line-height: 1.6;
+      max-width: 500px;
+      margin: 0 auto 30px;
+      line-height: 1.55;
+      animation: fade-in-up 0.6s var(--ease-smooth);
+    }
+
+    /* Rate ticker rows (Full width optimized) */
+    .rate-ticker-row {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 30px;
       animation: fade-in-up 0.7s var(--ease-smooth);
     }
 
-    /* Pairs card grid */
-    .rate-ticker-row {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 40px;
-      animation: fade-in-up 0.8s var(--ease-smooth);
-    }
-
     .rate-pill {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 14px 24px;
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 16px 20px;
       border-radius: var(--radius-md);
       display: flex;
       align-items: center;
-      gap: 16px;
+      justify-content: space-between;
+      width: 100%;
       backdrop-filter: blur(8px);
-      transition: transform 0.25s var(--ease-smooth), border-color 0.25s;
-    }
-
-    .rate-pill:hover {
-      transform: translateY(-3px);
-      border-color: rgba(234, 76, 137, 0.5);
     }
 
     .rate-pill .pair {
       font-weight: 700;
-      font-size: 16px;
+      font-size: 15px;
       color: #fff;
     }
 
@@ -300,110 +273,91 @@
       font-size: 13px;
     }
 
-    /* Start button */
+    /* Main CTA Button - Full Width */
     .btn-main-p2p {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
+      gap: 10px;
+      width: 100%;
       background: linear-gradient(135deg, #ea4c89, #d03572);
       color: #fff;
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 700;
-      padding: 18px 46px;
-      border-radius: 9999px;
+      padding: 18px 24px;
+      border-radius: var(--radius-md);
       border: none;
       cursor: pointer;
-      box-shadow: 0 10px 30px rgba(234, 76, 137, 0.4);
-      transition: all 0.25s var(--ease-smooth);
-      animation: fade-in-up 0.9s var(--ease-smooth);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn-main-p2p:hover {
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 16px 40px rgba(234, 76, 137, 0.55);
-      background: linear-gradient(135deg, #f05a96, #ea4c89);
+      box-shadow: 0 10px 30px rgba(234, 76, 137, 0.35);
+      transition: transform 0.2s var(--ease-smooth), box-shadow 0.2s;
+      animation: fade-in-up 0.8s var(--ease-smooth);
+      will-change: transform;
     }
 
     .btn-main-p2p:active {
-      transform: translateY(1px);
+      transform: scale(0.98);
     }
 
-    /* Trust highlights */
+    /* Trust highlights grid */
     .trust-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-      margin-top: 60px;
-      padding-bottom: 70px;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 30px;
     }
 
     .trust-card {
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid rgba(255, 255, 255, 0.06);
-      padding: 24px;
+      padding: 20px;
       border-radius: var(--radius-md);
       text-align: left;
-      transition: border-color 0.2s;
-    }
-
-    .trust-card:hover {
-      border-color: rgba(255, 255, 255, 0.15);
     }
 
     .trust-icon {
-      width: 40px;
-      height: 40px;
+      width: 36px;
+      height: 36px;
       background: rgba(79, 60, 201, 0.15);
       border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       color: #9b8bf4;
     }
 
     .trust-card h3 {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .trust-card p {
-      font-size: 13.5px;
+      font-size: 13px;
       color: var(--text-subtle);
-      line-height: 1.5;
+      line-height: 1.45;
     }
 
     /* =========================================================
-       BOTTOM SHEET SLIDER / MODAL OVERLAY (90FPS SMOOTH)
-       ========================================================= */
+        BOTTOM SHEET SLIDER / MODAL OVERLAY (90/120FPS SMOOTH)
+        ========================================================= */
     .slider-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
       z-index: var(--zi-default-overlay);
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
       display: flex;
       align-items: flex-end;
       justify-content: center;
-      padding: 0;
-    }
-
-    @media (min-width: 640px) {
-      .slider-overlay {
-        align-items: center;
-        padding: 24px;
-      }
+      will-change: opacity;
     }
 
     .slider-overlay.active {
@@ -415,42 +369,31 @@
       background: #ffffff;
       color: var(--text-main);
       width: 100%;
-      max-width: 520px;
+      max-width: 600px;
       border-radius: 24px 24px 0 0;
-      box-shadow: var(--shadow-modal);
+      box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.3);
       transform: translate3d(0, 100%, 0);
-      transition: transform 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.15);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
-      max-height: 90vh;
+      max-height: 85vh;
       overflow-y: auto;
       will-change: transform;
     }
 
-    @media (min-width: 640px) {
-      .slider-modal {
-        border-radius: var(--radius-lg);
-        transform: translate3d(0, 40px, 0) scale(0.96);
-      }
-    }
-
     .slider-overlay.active .slider-modal {
-      transform: translate3d(0, 0, 0) scale(1);
+      transform: translate3d(0, 0, 0);
     }
 
-    /* Sheet Grab bar for mobile */
     .sheet-handle {
-      width: 48px;
-      height: 5px;
-      background: #e2e2e8;
+      width: 40px;
+      height: 4px;
+      background: #d4d4dc;
       border-radius: 99px;
-      margin: 12px auto 6px;
-    }
-    @media (min-width: 640px) {
-      .sheet-handle { display: none; }
+      margin: 10px auto 4px;
     }
 
     .modal-header-inner {
-      padding: 20px 28px 16px;
+      padding: 16px 20px 14px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -458,17 +401,14 @@
     }
 
     .modal-header-title {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 800;
       color: var(--dark-bg);
-      display: flex;
-      align-items: center;
-      gap: 10px;
     }
 
     .close-btn {
-      width: 36px;
-      height: 36px;
+      width: 32px;
+      height: 32px;
       background: #f1f1f5;
       border: none;
       border-radius: 50%;
@@ -477,122 +417,99 @@
       justify-content: center;
       cursor: pointer;
       color: var(--text-muted);
-      transition: 0.2s;
-    }
-
-    .close-btn:hover {
-      background: #e4e4ea;
-      color: #000;
     }
 
     .modal-body {
-      padding: 28px;
+      padding: 20px;
     }
 
-    /* Steps container */
     .step-view {
       display: none;
-      animation: fade-in-up 0.35s var(--ease-smooth);
     }
 
     .step-view.active {
       display: block;
+      animation: fade-in-up 0.25s var(--ease-smooth);
     }
 
     .step-title {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 800;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
       color: var(--darker-bg);
     }
 
     .step-subtitle {
-      font-size: 14px;
+      font-size: 13px;
       color: var(--text-muted);
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
-    /* Option selection buttons */
     .choice-group {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 12px;
     }
 
     .choice-card {
       border: 1.5px solid var(--surface-border);
       border-radius: var(--radius-md);
-      padding: 18px 20px;
+      padding: 16px;
       background: var(--surface-subtle);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      transition: all 0.22s var(--ease-smooth);
-      text-align: left;
+      width: 100%;
+      transition: border-color 0.15s, background 0.15s;
     }
 
-    .choice-card:hover {
-      border-color: var(--accent-purple);
-      background: #fff;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(79, 60, 201, 0.08);
+    .choice-card:active {
+      transform: scale(0.98);
     }
 
     .choice-card .content-left h4 {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       color: var(--darker-bg);
-      margin-bottom: 4px;
+      margin-bottom: 3px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
 
     .choice-card .content-left p {
-      font-size: 13px;
+      font-size: 12.5px;
       color: var(--text-muted);
-      line-height: 1.4;
     }
 
     .arrow-badge {
-      width: 32px;
-      height: 32px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
       background: #ecebf0;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      transition: 0.2s;
+      color: var(--text-muted);
     }
 
-    .choice-card:hover .arrow-badge {
-      background: var(--primary);
-      color: #fff;
-    }
-
-    /* =========================================================
-       BUY USDT CALCULATOR VIEW
-       ========================================================= */
+    /* Calculator View */
     .calculator-box {
       background: var(--surface-subtle);
       border: 1px solid var(--surface-border);
       border-radius: var(--radius-md);
-      padding: 20px;
-      margin-bottom: 20px;
-    }
-
-    .input-field-group {
+      padding: 16px;
       margin-bottom: 16px;
     }
 
     .input-field-group label {
       display: block;
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 700;
       color: var(--text-main);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .input-row {
@@ -603,28 +520,22 @@
 
     .input-row input {
       width: 100%;
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 700;
       font-family: var(--font-mono);
-      padding: 14px 75px 14px 18px;
+      padding: 12px 65px 12px 14px;
       border: 2px solid var(--surface-border);
       border-radius: var(--radius-sm);
       outline: none;
       color: var(--dark-bg);
       background: #fff;
-      transition: 0.2s;
-    }
-
-    .input-row input:focus {
-      border-color: var(--accent-purple);
-      box-shadow: 0 0 0 4px rgba(79, 60, 201, 0.12);
     }
 
     .currency-suffix {
       position: absolute;
-      right: 18px;
+      right: 14px;
       font-weight: 700;
-      font-size: 14px;
+      font-size: 13px;
       color: var(--text-muted);
       pointer-events: none;
     }
@@ -633,16 +544,16 @@
       background: #fff;
       border: 1px dashed #d1ceda;
       border-radius: 10px;
-      padding: 16px;
-      margin-top: 14px;
+      padding: 14px;
+      margin-top: 12px;
     }
 
     .estimate-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 14px;
-      margin-bottom: 8px;
+      font-size: 13.5px;
+      margin-bottom: 6px;
     }
 
     .estimate-row:last-child {
@@ -656,7 +567,7 @@
     }
 
     .range-highlight {
-      font-size: 18px;
+      font-size: 16px;
       color: var(--accent-purple);
       font-weight: 800;
     }
@@ -665,68 +576,62 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 8px;
       width: 100%;
       background: #0088cc;
       color: #fff;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
-      padding: 16px;
+      padding: 15px;
       border-radius: var(--radius-md);
       border: none;
       cursor: pointer;
       text-decoration: none;
-      transition: 0.2s;
-      margin-top: 18px;
-      box-shadow: 0 8px 24px rgba(0, 136, 204, 0.3);
-    }
-
-    .btn-action-tg:hover {
-      background: #0077b5;
-      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 136, 204, 0.3);
     }
 
     .btn-back {
       background: none;
       border: none;
       color: var(--text-muted);
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
       cursor: pointer;
-      margin-bottom: 16px;
-      padding: 4px 0;
-      transition: 0.2s;
+      margin-bottom: 12px;
+      padding: 2px 0;
     }
 
-    .btn-back:hover {
-      color: var(--dark-bg);
-    }
-
-    /* Floating quick contact */
+    /* Floating quick contact with 5-second reveal transition */
     .floating-contact {
       position: fixed;
-      bottom: 24px;
-      right: 24px;
+      bottom: 20px;
+      right: 20px;
       z-index: 99;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       background: #229ed9;
       color: #fff;
-      padding: 12px 20px;
+      padding: 12px 18px;
       border-radius: 9999px;
       text-decoration: none;
       font-weight: 700;
-      font-size: 14px;
-      box-shadow: 0 10px 25px rgba(34, 158, 217, 0.45);
-      transition: 0.25s var(--ease-smooth);
+      font-size: 13.5px;
+      box-shadow: 0 8px 24px rgba(34, 158, 217, 0.45);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(15px);
+      transition: opacity 0.4s var(--ease-smooth), transform 0.4s var(--ease-smooth), visibility 0.4s;
+      will-change: opacity, transform;
     }
 
-    .floating-contact:hover {
-      transform: translateY(-3px) scale(1.03);
+    .floating-contact.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
     }
   </style>
 </head>
@@ -745,10 +650,10 @@
         </div>
       </a>
       <div class="badge-verified">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
         </svg>
-        Verified P2P Merchant
+        Verified Merchant
       </div>
     </div>
   </header>
@@ -770,22 +675,22 @@
         Instant liquidity at honest market rates. Deal online with split transactions or conduct 100% secure face-to-face deals across India.
       </p>
 
-      <!-- Current Pairs -->
+      <!-- Current Pairs (Full Width) -->
       <div class="rate-ticker-row">
         <div class="rate-pill">
           <span class="pair">INR to USDT</span>
-          <span class="approx">Approx ₹92 - ₹100</span>
+          <span class="approx">₹92 - ₹100</span>
         </div>
         <div class="rate-pill">
           <span class="pair">USDT to INR</span>
-          <span class="approx">Instant Cashout / F2F</span>
+          <span class="approx">Instant / F2F</span>
         </div>
       </div>
 
-      <!-- Trigger Slider Button -->
+      <!-- Trigger Slider Button (Full Width) -->
       <button class="btn-main-p2p" id="startP2PBtn">
         Start P2P Now
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <line x1="5" y1="12" x2="19" y2="12"></line>
           <polyline points="12 5 19 12 12 19"></polyline>
         </svg>
@@ -795,32 +700,32 @@
       <div class="trust-grid">
         <div class="trust-card">
           <div class="trust-icon">
-            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
           </div>
           <h3>Face To Face Deals</h3>
-          <p>Direct in-person physical deals available in top cities for ultimate safety, trust & crystal-clear transparency.</p>
+          <p>Direct in-person physical deals available in top cities for ultimate safety and transparency.</p>
         </div>
         <div class="trust-card">
           <div class="trust-icon">
-            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M7 15h0M2 9.5h20"></path></svg>
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M7 15h0M2 9.5h20"></path></svg>
           </div>
           <h3>Small & Split Orders</h3>
-          <p>Trade any volume. For larger tickets, split transactions multiple times to minimize banking risk and secure funds.</p>
+          <p>Trade any volume safely. Split large transactions multiple times to minimize banking risks.</p>
         </div>
         <div class="trust-card">
           <div class="trust-icon">
-            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
           </div>
           <h3>Zero Fraud Shield</h3>
-          <p>Verified account transfers and escrow-grade integrity directly managed by Sahil P2P.</p>
+          <p>Verified account transfers and escrow-grade integrity managed directly by Sahil P2P.</p>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ================= FLOATING DIRECT CHAT ================= -->
-  <a href="https://t.me/SAHIL_P2P_01?text=Hello%20Sahil,%20I%20want%20to%20do%20a%20P2P%20deal." target="_blank" class="floating-contact">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+  <!-- ================= FLOATING DIRECT CHAT (Appears after 5s) ================= -->
+  <a href="https://t.me/SAHIL_P2P_01?text=Hello%20Sahil,%20I%20want%20to%20do%20a%20P2P%20deal." target="_blank" class="floating-contact" id="floatingContact">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
       <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.535-.194 1.006.128.832.942z"/>
     </svg>
     Chat on Telegram
@@ -832,11 +737,9 @@
       <div class="sheet-handle"></div>
       
       <div class="modal-header-inner">
-        <div class="modal-header-title">
-          <span>Sahil P2P Express</span>
-        </div>
+        <div class="modal-header-title">Sahil P2P Express</div>
         <button class="close-btn" id="closeModalBtn" aria-label="Close modal">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
@@ -845,46 +748,44 @@
 
       <div class="modal-body">
         
-        <!-- STEP 1: WHAT DO YOU WANT? -->
+        <!-- STEP 1 -->
         <div class="step-view active" id="step1">
           <h2 class="step-title">What do you want?</h2>
           <p class="step-subtitle">Select your transaction type to continue</p>
 
           <div class="choice-group">
-            <!-- Option A: USDT to INR (Sell) -->
             <div class="choice-card" id="btnSellUsdt">
               <div class="content-left">
                 <h4>
                   USDT to INR
-                  <span style="font-size: 11px; background: #eef2ff; color: #4f3cc9; padding: 2px 8px; border-radius: 6px;">Sell</span>
+                  <span style="font-size: 10px; background: #eef2ff; color: #4f3cc9; padding: 2px 6px; border-radius: 4px;">Sell</span>
                 </h4>
-                <p>I want to sell my USDT and want INR</p>
+                <p>I want to sell my USDT and get INR</p>
               </div>
               <div class="arrow-badge">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
               </div>
             </div>
 
-            <!-- Option B: INR to USDT (Buy) -->
             <div class="choice-card" id="btnBuyUsdt">
               <div class="content-left">
                 <h4>
                   INR to USDT
-                  <span style="font-size: 11px; background: #fdf2f8; color: #ea4c89; padding: 2px 8px; border-radius: 6px;">Buy</span>
+                  <span style="font-size: 10px; background: #fdf2f8; color: #ea4c89; padding: 2px 6px; border-radius: 4px;">Buy</span>
                 </h4>
                 <p>I want to buy USDT with INR</p>
               </div>
               <div class="arrow-badge">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- STEP 2A: USDT TO INR -> DEAL TYPE SELECTION -->
+        <!-- STEP 2A -->
         <div class="step-view" id="stepSellDealType">
           <button class="btn-back" onclick="goToStep('step1')">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
             Back
           </button>
           
@@ -892,43 +793,37 @@
           <p class="step-subtitle">Choose your preferred transaction medium</p>
 
           <div class="choice-group">
-            <!-- Face to Face Deal -->
             <div class="choice-card" onclick="sendSellTelegram('Face to face deal for better trust and transparency')">
               <div class="content-left">
-                <h4>
-                  🤝 Face to Face Deal
-                </h4>
-                <p>Face to face deal for better trust and transparency</p>
+                <h4>🤝 Face to Face Deal</h4>
+                <p>In-person physical cash/bank trade for transparency</p>
               </div>
               <div class="arrow-badge">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
               </div>
             </div>
 
-            <!-- Deal Online -->
             <div class="choice-card" onclick="sendSellTelegram('Deal online (small amount or split deal in multiple times)')">
               <div class="content-left">
-                <h4>
-                  ⚡ Deal Online
-                </h4>
-                <p>You can deal with small amount & if big you can deal in split much more times</p>
+                <h4>⚡ Deal Online</h4>
+                <p>Small amounts or multi-split transfers for safety</p>
               </div>
               <div class="arrow-badge">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- STEP 2B: INR TO USDT -> BUY CALCULATOR -->
+        <!-- STEP 2B -->
         <div class="step-view" id="stepBuyCalculator">
           <button class="btn-back" onclick="goToStep('step1')">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
             Back
           </button>
 
           <h2 class="step-title">How many USDT do you want?</h2>
-          <p class="step-subtitle">Rate is not fixed. Current approx range is ₹92 - ₹100 / USDT</p>
+          <p class="step-subtitle">Current approximate range: ₹92 - ₹100 / USDT</p>
 
           <div class="calculator-box">
             <div class="input-field-group">
@@ -939,13 +834,12 @@
               </div>
             </div>
 
-            <!-- Estimated Calculation -->
             <div class="estimate-display">
               <div class="estimate-row">
                 <span style="color: var(--text-muted);">Required INR budget:</span>
                 <span class="range-highlight" id="inrRangeText">₹9,200 - ₹10,000 INR</span>
               </div>
-              <div class="estimate-row" style="font-size: 13px; color: var(--text-muted); border-top: 1px solid #f0f0f4; padding-top: 8px;">
+              <div class="estimate-row" style="font-size: 12.5px; color: var(--text-muted); border-top: 1px solid #f0f0f4; padding-top: 6px;">
                 <span>Estimated unit rate:</span>
                 <span class="estimate-val">₹92 - ₹100 / USDT</span>
               </div>
@@ -953,17 +847,24 @@
           </div>
 
           <a id="buyTelegramActionBtn" href="#" target="_blank" class="btn-action-tg">
-            <span id="buyBtnLabelText">Do you have? Buy 100 USDT now</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            <span id="buyBtnLabelText">Buy 100 USDT now</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
           </a>
         </div>
 
       </div>
     </div>
-  </div>
+  </main>
 
   <!-- ================= JAVASCRIPT LOGIC ================= -->
   <script>
+    // 5-Second Delay Telegram Floating Button Reveal
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        document.getElementById('floatingContact').classList.add('show');
+      }, 5000);
+    });
+
     const startP2PBtn = document.getElementById('startP2PBtn');
     const sliderOverlay = document.getElementById('sliderOverlay');
     const closeModalBtn = document.getElementById('closeModalBtn');
@@ -976,73 +877,55 @@
     const buyBtnLabelText = document.getElementById('buyBtnLabelText');
     const buyTelegramActionBtn = document.getElementById('buyTelegramActionBtn');
 
-    // Rate boundaries
     const MIN_RATE = 92;
     const MAX_RATE = 100;
 
-    // Open Bottom Sheet Slider
     startP2PBtn.addEventListener('click', () => {
       goToStep('step1');
       sliderOverlay.classList.add('active');
       document.body.style.overflow = 'hidden';
     });
 
-    // Close Slider
     function closeSlider() {
       sliderOverlay.classList.remove('active');
       document.body.style.overflow = '';
     }
 
     closeModalBtn.addEventListener('click', closeSlider);
-
     sliderOverlay.addEventListener('click', (e) => {
-      if (e.target === sliderOverlay) {
-        closeSlider();
-      }
+      if (e.target === sliderOverlay) closeSlider();
     });
 
-    // Step Switcher
     function goToStep(stepId) {
       document.querySelectorAll('.step-view').forEach(view => {
         view.classList.remove('active');
       });
       const target = document.getElementById(stepId);
-      if (target) {
-        target.classList.add('active');
-      }
+      if (target) target.classList.add('active');
     }
 
-    // Step 1 Navigations
-    btnSellUsdt.addEventListener('click', () => {
-      goToStep('stepSellDealType');
-    });
-
+    btnSellUsdt.addEventListener('click', () => goToStep('stepSellDealType'));
     btnBuyUsdt.addEventListener('click', () => {
       goToStep('stepBuyCalculator');
       updateBuyCalculation();
     });
 
-    // Dynamic Buy Calculation
     function updateBuyCalculation() {
       let qty = parseFloat(usdtAmountInput.value);
-      if (isNaN(qty) || qty <= 0) {
-        qty = 0;
-      }
+      if (isNaN(qty) || qty <= 0) qty = 0;
 
       const minInr = Math.round(qty * MIN_RATE).toLocaleString('en-IN');
       const maxInr = Math.round(qty * MAX_RATE).toLocaleString('en-IN');
 
       inrRangeText.textContent = `₹${minInr} - ₹${maxInr} INR`;
-      buyBtnLabelText.textContent = `Do you have? Buy ${qty} USDT now`;
+      buyBtnLabelText.textContent = `Buy ${qty} USDT now`;
 
-      // Telegram dynamic URL construction
       const message = `Hello Sahil, I want to BUY ${qty} USDT with INR (Approx Budget: ₹${minInr} - ₹${maxInr} INR). Please share live rate and payment details.`;
       buyTelegramActionBtn.href = `https://t.me/SAHIL_P2P_01?text=${encodeURIComponent(message)}`;
     }
 
     usdtAmountInput.addEventListener('input', updateBuyCalculation);
 
-    // Direct Telegram Link for Selling USDT
     function sendSellTelegram(dealType) {
       const message = `Hello Sahil, I want to SELL my USDT for INR. Chosen deal method: ${dealType}. Please let me know the procedure.`;
       const url = `https://t.me/SAHIL_P2P_01?text=${encodeURIComponent(message)}`;
