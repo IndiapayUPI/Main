@@ -250,73 +250,99 @@
       font-size: 12.5px;
     }
 
-    /* CUSTOM ANIMATED BORDER BUTTON */
-    .btn-main-p2p {
-      --black: #000000;
-      --ch-black: #141414;
-      --eer-black: #1b1b1b;
-      --night-rider: #2e2e2e;
-      --white: #ffffff;
-      --af-white: #f3f3f3;
-      --ch-white: #e1e1e1;
-      border-radius: var(--radius-md);
-      width: 100%;
-      height: 54px;
+    /* CUSTOM ANIMATED BUTTON STYLING (Requested Style) */
+    .animated-button {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      padding: 0px 20px;
-      border: none;
-      color: white;
-      position: relative;
-      cursor: pointer;
-      font-weight: 700;
+      gap: 4px;
+      width: 100%;
+      padding: 16px 36px;
+      border: 4px solid;
+      border-color: transparent;
       font-size: 16px;
+      background-color: var(--accent-teal);
+      border-radius: 100px;
+      font-weight: 600;
+      color: #000000;
+      box-shadow: 0 0 0 2px #00ffff;
+      cursor: pointer;
+      overflow: hidden;
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
       font-family: var(--font-sans);
-      transition-duration: 0.2s;
-      background-color: var(--ch-black);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
       animation: fade-in-up 0.6s var(--ease-smooth);
     }
 
-    .btn-main-p2p:before,
-    .btn-main-p2p:after {
-      content: "";
+    .animated-button svg {
       position: absolute;
-      left: -1px;
-      top: -1px;
-      border-radius: calc(var(--radius-md) + 1px);
-      background: linear-gradient(
-        45deg,
-        var(--ch-black),
-        var(--eer-black),
-        var(--night-rider),
-        var(--ch-white),
-        var(--night-rider),
-        var(--eer-black),
-        var(--ch-black),
-        var(--ch-black)
-      );
-      background-size: 400%;
-      width: calc(100% + 2px);
-      height: calc(100% + 2px);
-      z-index: -1;
-      animation: steam 20s linear infinite;
+      width: 24px;
+      height: 24px;
+      fill: #ffffff;
+      z-index: 9;
+      transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
     }
 
-    @keyframes steam {
-      0% { background-position: 0 0; }
-      50% { background-position: 400% 0; }
-      100% { background-position: 0 0; }
+    .animated-button .arr-1 {
+      right: 16px;
     }
 
-    .btn-main-p2p:after {
-      filter: blur(20px);
+    .animated-button .arr-2 {
+      left: -25%;
     }
 
-    .btn-main-p2p:active {
-      transform: scale(0.97);
+    .animated-button .circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 20px;
+      background-color: #c5e5e4;
+      border-radius: 50%;
+      opacity: 0;
+      transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+      z-index: 0;
+    }
+
+    .animated-button .text {
+      position: relative;
+      z-index: 1;
+      transform: translateX(-12px);
+      transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .animated-button:hover {
+      box-shadow: 0 0 0 12px transparent;
+      color: #212121;
+      border-radius: 12px;
+    }
+
+    .animated-button:hover .arr-1 {
+      right: -25%;
+    }
+
+    .animated-button:hover .arr-2 {
+      left: 16px;
+    }
+
+    .animated-button:hover .text {
+      transform: translateX(12px);
+    }
+
+    .animated-button:hover svg {
+      fill: #1f387e;
+    }
+
+    .animated-button:active {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 4px greenyellow;
+    }
+
+    .animated-button:hover .circle {
+      width: 220px;
+      height: 220px;
+      opacity: 1;
     }
 
     .trust-grid {
@@ -591,15 +617,8 @@
       font-weight: 800;
     }
 
-    /* Apply custom button style to action buttons */
+    /* Action Button style for Telegram links inside modal */
     .btn-action-tg {
-      --black: #000000;
-      --ch-black: #141414;
-      --eer-black: #1b1b1b;
-      --night-rider: #2e2e2e;
-      --white: #ffffff;
-      --af-white: #f3f3f3;
-      --ch-white: #e1e1e1;
       border-radius: var(--radius-md);
       width: 100%;
       height: 48px;
@@ -608,7 +627,7 @@
       justify-content: center;
       gap: 10px;
       padding: 0px 20px;
-      border: none;
+      border: 1px solid var(--surface-border);
       color: white;
       position: relative;
       cursor: pointer;
@@ -616,37 +635,14 @@
       font-size: 14.5px;
       font-family: var(--font-sans);
       text-decoration: none;
-      background-color: var(--ch-black);
+      background-color: var(--surface-light);
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.2s;
     }
 
-    .btn-action-tg:before,
-    .btn-action-tg:after {
-      content: "";
-      position: absolute;
-      left: -1px;
-      top: -1px;
-      border-radius: calc(var(--radius-md) + 1px);
-      background: linear-gradient(
-        45deg,
-        var(--ch-black),
-        var(--eer-black),
-        var(--night-rider),
-        var(--ch-white),
-        var(--night-rider),
-        var(--eer-black),
-        var(--ch-black),
-        var(--ch-black)
-      );
-      background-size: 400%;
-      width: calc(100% + 2px);
-      height: calc(100% + 2px);
-      z-index: -1;
-      animation: steam 20s linear infinite;
-    }
-
-    .btn-action-tg:after {
-      filter: blur(20px);
+    .btn-action-tg:hover {
+      background-color: var(--surface-subtle);
+      border-color: var(--accent-teal);
     }
 
     .btn-back {
@@ -744,12 +740,12 @@
         </div>
       </div>
 
-      <button class="btn-main-p2p" id="startP2PBtn">
-        <span>Start P2P Deal Now</span>
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-          <polyline points="12 5 19 12 12 19"></polyline>
-        </svg>
+      <!-- Updated Animated Button -->
+      <button class="animated-button" id="startP2PBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24"><path d="M16.1716 10.9999L10.7574 5.58578L12.1716 4.17157L20 12L12.1716 19.8284L10.7574 18.4142L16.1716 13H4V10.9999H16.1716Z"></path></svg>
+        <span class="text">Start P2P Deal Now</span>
+        <span class="circle"></span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24"><path d="M16.1716 10.9999L10.7574 5.58578L12.1716 4.17157L20 12L12.1716 19.8284L10.7574 18.4142L16.1716 13H4V10.9999H16.1716Z"></path></svg>
       </button>
 
       <div class="trust-grid">
@@ -778,7 +774,7 @@
     </section>
   </main>
 
-  <!-- FLOATING DIRECT CHAT (5-Second Delay) -->
+  <!-- FLOATING DIRECT CHAT -->
   <a href="https://t.me/SAHIL_P2P_01?text=Hello%20Sahil,%20I%20want%20to%20do%20a%20P2P%20deal." target="_blank" class="floating-contact" id="floatingContact">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
       <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.535-.194 1.006.128.832.942z"/>
