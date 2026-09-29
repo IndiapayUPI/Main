@@ -9,24 +9,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 
   <style>
-    /* =========================================================
-        CSS RESET & DESIGN SYSTEM VARIABLES (90/120FPS MOBILE OPTIMIZED)
-        ========================================================= */
     :root {
       --zi-default-overlay: 1000;
-      --zi-shot-overlay: 1001;
       --primary: #ea4c89;
       --primary-hover: #f082ac;
       --accent-purple: #4f3cc9;
       --accent-teal: #77e0b5;
       --dark-bg: #0d0c22;
       --darker-bg: #060318;
-      --surface-light: #ffffff;
-      --surface-subtle: #f8f8fc;
-      --surface-border: #e7e7e9;
-      --text-main: #0d0c22;
-      --text-muted: #6e6d7a;
-      --text-subtle: #9e9ea7;
+      --surface-light: #16152b;
+      --surface-subtle: #121124;
+      --surface-border: #262442;
+      --text-main: #ffffff;
+      --text-muted: #9e9ea7;
+      --text-subtle: #7a798a;
       --radius-sm: 10px;
       --radius-md: 16px;
       --radius-lg: 24px;
@@ -54,19 +50,18 @@
       position: relative;
     }
 
-    /* Ambient background gradient glow */
+    /* Crisp Ambient Background Glow */
     body::before {
       content: '';
       position: fixed;
-      top: -15%;
+      top: -10%;
       left: 50%;
       transform: translateX(-50%);
-      width: 600px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(79, 60, 201, 0.22) 0%, rgba(234, 76, 137, 0.12) 50%, transparent 75%);
+      width: 500px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(79, 60, 201, 0.2) 0%, rgba(234, 76, 137, 0.1) 60%, transparent 80%);
       pointer-events: none;
       z-index: 0;
-      filter: blur(60px);
     }
 
     .container {
@@ -78,41 +73,27 @@
       z-index: 1;
     }
 
-    /* =========================================================
-        CUSTOM KEYFRAMES & ANIMATIONS (HARDWARE ACCELERATED)
-        ========================================================= */
-    @keyframes fade-in {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
     @keyframes fade-in-up {
-      from {
-        transform: translate3d(0, 20px, 0);
-        opacity: 0;
-      }
-      to {
-        transform: translate3d(0, 0, 0);
-        opacity: 1;
-      }
-    }
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(234, 76, 137, 0.45); }
-      70% { box-shadow: 0 0 0 12px rgba(234, 76, 137, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(234, 76, 137, 0); }
+      from { transform: translate3d(0, 16px, 0); opacity: 0; }
+      to { transform: translate3d(0, 0, 0); opacity: 1; }
     }
 
-    /* =========================================================
-        HEADER / NAVBAR
-        ========================================================= */
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(119, 224, 181, 0.45); }
+      70% { box-shadow: 0 0 0 10px rgba(119, 224, 181, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(119, 224, 181, 0); }
+    }
+
+    /* HEADER */
     header {
-      padding: 18px 0;
+      padding: 16px 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(13, 12, 34, 0.85);
+      background: rgba(13, 12, 34, 0.9);
     }
 
     .nav-flex {
@@ -131,11 +112,11 @@
 
     .avatar-wrapper {
       position: relative;
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
-      border: 2px solid var(--primary);
-      padding: 2px;
+      border: 2px solid var(--accent-teal);
+      padding: 1px;
       flex-shrink: 0;
     }
 
@@ -149,29 +130,29 @@
 
     .online-indicator {
       position: absolute;
-      bottom: 2px;
-      right: 2px;
-      width: 10px;
-      height: 10px;
+      bottom: 1px;
+      right: 1px;
+      width: 9px;
+      height: 9px;
       background: #10b981;
       border: 2px solid var(--dark-bg);
       border-radius: 50%;
     }
 
     .brand-title {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 800;
       letter-spacing: -0.02em;
     }
 
     .brand-title span {
-      color: var(--primary);
+      color: var(--accent-teal);
     }
 
     .badge-verified {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       background: rgba(119, 224, 181, 0.1);
       color: var(--accent-teal);
       border: 1px solid rgba(119, 224, 181, 0.25);
@@ -181,11 +162,9 @@
       font-weight: 600;
     }
 
-    /* =========================================================
-        HERO SECTION
-        ========================================================= */
+    /* HERO */
     .hero {
-      padding: 40px 0 100px;
+      padding: 36px 0 90px;
       text-align: center;
     }
 
@@ -193,73 +172,71 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 16px;
+      padding: 6px 14px;
       border-radius: 9999px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       color: #f1f1f5;
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 600;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       animation: fade-in-up 0.4s var(--ease-smooth);
     }
 
     .hero-tag .dot {
-      width: 7px;
-      height: 7px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
-      background: var(--primary);
+      background: var(--accent-teal);
       animation: pulse 2s infinite;
     }
 
     .hero-title {
-      font-size: clamp(30px, 7vw, 46px);
+      font-size: clamp(28px, 6.5vw, 42px);
       font-weight: 800;
       line-height: 1.15;
       letter-spacing: -0.03em;
-      margin-bottom: 16px;
-      animation: fade-in-up 0.5s var(--ease-smooth);
+      margin-bottom: 14px;
+      animation: fade-in-up 0.45s var(--ease-smooth);
     }
 
     .hero-title .gradient-text {
-      background: linear-gradient(135deg, #fff 30%, #ea4c89 75%, #4f3cc9 100%);
+      background: linear-gradient(135deg, #fff 30%, #77e0b5 75%, #4f3cc9 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .hero-subtitle {
-      font-size: clamp(14px, 3.5vw, 17px);
-      color: var(--text-subtle);
-      max-width: 500px;
-      margin: 0 auto 30px;
-      line-height: 1.55;
-      animation: fade-in-up 0.6s var(--ease-smooth);
+      font-size: clamp(14px, 3.2vw, 16px);
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto 26px;
+      line-height: 1.5;
+      animation: fade-in-up 0.5s var(--ease-smooth);
     }
 
-    /* Rate ticker rows (Full width optimized) */
     .rate-ticker-row {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      margin-bottom: 30px;
-      animation: fade-in-up 0.7s var(--ease-smooth);
+      gap: 10px;
+      margin-bottom: 24px;
+      animation: fade-in-up 0.55s var(--ease-smooth);
     }
 
     .rate-pill {
-      background: rgba(255, 255, 255, 0.025);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 16px 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      padding: 15px 18px;
       border-radius: var(--radius-md);
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      backdrop-filter: blur(8px);
     }
 
     .rate-pill .pair {
       font-weight: 700;
-      font-size: 15px;
+      font-size: 14.5px;
       color: #fff;
     }
 
@@ -270,86 +247,127 @@
       background: rgba(119, 224, 181, 0.1);
       padding: 4px 10px;
       border-radius: 6px;
-      font-size: 13px;
+      font-size: 12.5px;
     }
 
-    /* Main CTA Button - Full Width */
+    /* CUSTOM ANIMATED BORDER BUTTON */
     .btn-main-p2p {
+      --black: #000000;
+      --ch-black: #141414;
+      --eer-black: #1b1b1b;
+      --night-rider: #2e2e2e;
+      --white: #ffffff;
+      --af-white: #f3f3f3;
+      --ch-white: #e1e1e1;
+      border-radius: var(--radius-md);
+      width: 100%;
+      height: 54px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      width: 100%;
-      background: linear-gradient(135deg, #ea4c89, #d03572);
-      color: #fff;
-      font-size: 17px;
-      font-weight: 700;
-      padding: 18px 24px;
-      border-radius: var(--radius-md);
+      padding: 0px 20px;
       border: none;
+      color: white;
+      position: relative;
       cursor: pointer;
-      box-shadow: 0 10px 30px rgba(234, 76, 137, 0.35);
-      transition: transform 0.2s var(--ease-smooth), box-shadow 0.2s;
-      animation: fade-in-up 0.8s var(--ease-smooth);
-      will-change: transform;
+      font-weight: 700;
+      font-size: 16px;
+      font-family: var(--font-sans);
+      transition-duration: 0.2s;
+      background-color: var(--ch-black);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      animation: fade-in-up 0.6s var(--ease-smooth);
+    }
+
+    .btn-main-p2p:before,
+    .btn-main-p2p:after {
+      content: "";
+      position: absolute;
+      left: -1px;
+      top: -1px;
+      border-radius: calc(var(--radius-md) + 1px);
+      background: linear-gradient(
+        45deg,
+        var(--ch-black),
+        var(--eer-black),
+        var(--night-rider),
+        var(--ch-white),
+        var(--night-rider),
+        var(--eer-black),
+        var(--ch-black),
+        var(--ch-black)
+      );
+      background-size: 400%;
+      width: calc(100% + 2px);
+      height: calc(100% + 2px);
+      z-index: -1;
+      animation: steam 20s linear infinite;
+    }
+
+    @keyframes steam {
+      0% { background-position: 0 0; }
+      50% { background-position: 400% 0; }
+      100% { background-position: 0 0; }
+    }
+
+    .btn-main-p2p:after {
+      filter: blur(20px);
     }
 
     .btn-main-p2p:active {
-      transform: scale(0.98);
+      transform: scale(0.97);
     }
 
-    /* Trust highlights grid */
     .trust-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 14px;
-      margin-top: 30px;
+      gap: 12px;
+      margin-top: 24px;
     }
 
     .trust-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      padding: 20px;
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 18px;
       border-radius: var(--radius-md);
       text-align: left;
     }
 
     .trust-icon {
-      width: 36px;
-      height: 36px;
-      background: rgba(79, 60, 201, 0.15);
-      border-radius: 10px;
+      width: 34px;
+      height: 34px;
+      background: rgba(119, 224, 181, 0.1);
+      border-radius: 9px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 12px;
-      color: #9b8bf4;
+      margin-bottom: 10px;
+      color: var(--accent-teal);
     }
 
     .trust-card h3 {
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 700;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
     }
 
     .trust-card p {
-      font-size: 13px;
+      font-size: 12.5px;
       color: var(--text-subtle);
-      line-height: 1.45;
+      line-height: 1.4;
     }
 
-    /* =========================================================
-        BOTTOM SHEET SLIDER / MODAL OVERLAY (90/120FPS SMOOTH)
-        ========================================================= */
+    /* SLIDER MODAL (DARK THEME) */
     .slider-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       z-index: var(--zi-default-overlay);
       opacity: 0;
       visibility: hidden;
@@ -357,7 +375,6 @@
       display: flex;
       align-items: flex-end;
       justify-content: center;
-      will-change: opacity;
     }
 
     .slider-overlay.active {
@@ -366,18 +383,18 @@
     }
 
     .slider-modal {
-      background: #ffffff;
+      background: var(--dark-bg);
       color: var(--text-main);
       width: 100%;
       max-width: 600px;
       border-radius: 24px 24px 0 0;
-      box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.3);
+      border-top: 1px solid var(--surface-border);
+      box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.5);
       transform: translate3d(0, 100%, 0);
       transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
       max-height: 85vh;
       overflow-y: auto;
-      will-change: transform;
     }
 
     .slider-overlay.active .slider-modal {
@@ -385,15 +402,15 @@
     }
 
     .sheet-handle {
-      width: 40px;
+      width: 38px;
       height: 4px;
-      background: #d4d4dc;
+      background: var(--surface-border);
       border-radius: 99px;
       margin: 10px auto 4px;
     }
 
     .modal-header-inner {
-      padding: 16px 20px 14px;
+      padding: 14px 18px 12px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -401,16 +418,16 @@
     }
 
     .modal-header-title {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 800;
-      color: var(--dark-bg);
+      color: var(--text-main);
     }
 
     .close-btn {
-      width: 32px;
-      height: 32px;
-      background: #f1f1f5;
-      border: none;
+      width: 30px;
+      height: 30px;
+      background: var(--surface-light);
+      border: 1px solid var(--surface-border);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -420,7 +437,7 @@
     }
 
     .modal-body {
-      padding: 20px;
+      padding: 18px;
     }
 
     .step-view {
@@ -429,33 +446,33 @@
 
     .step-view.active {
       display: block;
-      animation: fade-in-up 0.25s var(--ease-smooth);
+      animation: fade-in-up 0.2s var(--ease-smooth);
     }
 
     .step-title {
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 800;
       margin-bottom: 4px;
-      color: var(--darker-bg);
+      color: var(--text-main);
     }
 
     .step-subtitle {
       font-size: 13px;
       color: var(--text-muted);
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
     .choice-group {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
 
     .choice-card {
-      border: 1.5px solid var(--surface-border);
+      border: 1px solid var(--surface-border);
       border-radius: var(--radius-md);
-      padding: 16px;
-      background: var(--surface-subtle);
+      padding: 15px;
+      background: var(--surface-light);
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -466,28 +483,31 @@
 
     .choice-card:active {
       transform: scale(0.98);
+      background: var(--surface-subtle);
+      border-color: var(--accent-teal);
     }
 
     .choice-card .content-left h4 {
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 700;
-      color: var(--darker-bg);
-      margin-bottom: 3px;
+      color: var(--text-main);
+      margin-bottom: 2px;
       display: flex;
       align-items: center;
       gap: 6px;
     }
 
     .choice-card .content-left p {
-      font-size: 12.5px;
+      font-size: 12px;
       color: var(--text-muted);
     }
 
     .arrow-badge {
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
-      background: #ecebf0;
+      background: var(--surface-subtle);
+      border: 1px solid var(--surface-border);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -495,18 +515,17 @@
       color: var(--text-muted);
     }
 
-    /* Calculator View */
     .calculator-box {
-      background: var(--surface-subtle);
+      background: var(--surface-light);
       border: 1px solid var(--surface-border);
       border-radius: var(--radius-md);
-      padding: 16px;
-      margin-bottom: 16px;
+      padding: 15px;
+      margin-bottom: 14px;
     }
 
     .input-field-group label {
       display: block;
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 700;
       color: var(--text-main);
       margin-bottom: 6px;
@@ -520,40 +539,40 @@
 
     .input-row input {
       width: 100%;
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 700;
       font-family: var(--font-mono);
-      padding: 12px 65px 12px 14px;
+      padding: 12px 60px 12px 14px;
       border: 2px solid var(--surface-border);
       border-radius: var(--radius-sm);
       outline: none;
-      color: var(--dark-bg);
-      background: #fff;
+      color: var(--text-main);
+      background: var(--surface-subtle);
     }
 
     .currency-suffix {
       position: absolute;
       right: 14px;
       font-weight: 700;
-      font-size: 13px;
+      font-size: 12.5px;
       color: var(--text-muted);
       pointer-events: none;
     }
 
     .estimate-display {
-      background: #fff;
-      border: 1px dashed #d1ceda;
+      background: var(--surface-subtle);
+      border: 1px dashed var(--surface-border);
       border-radius: 10px;
-      padding: 14px;
-      margin-top: 12px;
+      padding: 12px;
+      margin-top: 10px;
     }
 
     .estimate-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 13.5px;
-      margin-bottom: 6px;
+      font-size: 13px;
+      margin-bottom: 5px;
     }
 
     .estimate-row:last-child {
@@ -563,48 +582,87 @@
     .estimate-val {
       font-family: var(--font-mono);
       font-weight: 700;
-      color: var(--darker-bg);
+      color: var(--text-main);
     }
 
     .range-highlight {
-      font-size: 16px;
-      color: var(--accent-purple);
+      font-size: 15px;
+      color: var(--accent-teal);
       font-weight: 800;
     }
 
+    /* Apply custom button style to action buttons */
     .btn-action-tg {
+      --black: #000000;
+      --ch-black: #141414;
+      --eer-black: #1b1b1b;
+      --night-rider: #2e2e2e;
+      --white: #ffffff;
+      --af-white: #f3f3f3;
+      --ch-white: #e1e1e1;
+      border-radius: var(--radius-md);
+      width: 100%;
+      height: 48px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      width: 100%;
-      background: #0088cc;
-      color: #fff;
-      font-size: 15px;
-      font-weight: 700;
-      padding: 15px;
-      border-radius: var(--radius-md);
+      gap: 10px;
+      padding: 0px 20px;
       border: none;
+      color: white;
+      position: relative;
       cursor: pointer;
+      font-weight: 700;
+      font-size: 14.5px;
+      font-family: var(--font-sans);
       text-decoration: none;
-      box-shadow: 0 6px 20px rgba(0, 136, 204, 0.3);
+      background-color: var(--ch-black);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-action-tg:before,
+    .btn-action-tg:after {
+      content: "";
+      position: absolute;
+      left: -1px;
+      top: -1px;
+      border-radius: calc(var(--radius-md) + 1px);
+      background: linear-gradient(
+        45deg,
+        var(--ch-black),
+        var(--eer-black),
+        var(--night-rider),
+        var(--ch-white),
+        var(--night-rider),
+        var(--eer-black),
+        var(--ch-black),
+        var(--ch-black)
+      );
+      background-size: 400%;
+      width: calc(100% + 2px);
+      height: calc(100% + 2px);
+      z-index: -1;
+      animation: steam 20s linear infinite;
+    }
+
+    .btn-action-tg:after {
+      filter: blur(20px);
     }
 
     .btn-back {
       background: none;
       border: none;
       color: var(--text-muted);
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 600;
       display: inline-flex;
       align-items: center;
       gap: 4px;
       cursor: pointer;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       padding: 2px 0;
     }
 
-    /* Floating quick contact with 5-second reveal transition */
     .floating-contact {
       position: fixed;
       bottom: 20px;
@@ -613,19 +671,19 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      background: #229ed9;
+      background: #141414;
+      border: 1px solid var(--surface-border);
       color: #fff;
-      padding: 12px 18px;
+      padding: 11px 16px;
       border-radius: 9999px;
       text-decoration: none;
       font-weight: 700;
-      font-size: 13.5px;
-      box-shadow: 0 8px 24px rgba(34, 158, 217, 0.45);
+      font-size: 13px;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.45);
       opacity: 0;
       visibility: hidden;
-      transform: translateY(15px);
-      transition: opacity 0.4s var(--ease-smooth), transform 0.4s var(--ease-smooth), visibility 0.4s;
-      will-change: opacity, transform;
+      transform: translateY(12px);
+      transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s;
     }
 
     .floating-contact.show {
@@ -637,7 +695,7 @@
 </head>
 <body>
 
-  <!-- ================= HEADER ================= -->
+  <!-- HEADER -->
   <header>
     <div class="container nav-flex">
       <a href="#" class="brand">
@@ -650,7 +708,7 @@
         </div>
       </a>
       <div class="badge-verified">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
         </svg>
         Verified Merchant
@@ -658,7 +716,7 @@
     </div>
   </header>
 
-  <!-- ================= HERO ================= -->
+  <!-- HERO -->
   <main class="container">
     <section class="hero">
       <div class="hero-tag">
@@ -675,7 +733,6 @@
         Instant liquidity at honest market rates. Deal online with split transactions or conduct 100% secure face-to-face deals across India.
       </p>
 
-      <!-- Current Pairs (Full Width) -->
       <div class="rate-ticker-row">
         <div class="rate-pill">
           <span class="pair">INR to USDT</span>
@@ -687,51 +744,49 @@
         </div>
       </div>
 
-      <!-- Trigger Slider Button (Full Width) -->
       <button class="btn-main-p2p" id="startP2PBtn">
-        Start P2P Now
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <span>Start P2P Deal Now</span>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <line x1="5" y1="12" x2="19" y2="12"></line>
           <polyline points="12 5 19 12 12 19"></polyline>
         </svg>
       </button>
 
-      <!-- Trust Badges -->
       <div class="trust-grid">
         <div class="trust-card">
           <div class="trust-icon">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
           </div>
           <h3>Face To Face Deals</h3>
-          <p>Direct in-person physical deals available in top cities for ultimate safety and transparency.</p>
+          <p>Direct in-person physical deals available in top cities for ultimate safety.</p>
         </div>
         <div class="trust-card">
           <div class="trust-icon">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M7 15h0M2 9.5h20"></path></svg>
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M7 15h0M2 9.5h20"></path></svg>
           </div>
           <h3>Small & Split Orders</h3>
-          <p>Trade any volume safely. Split large transactions multiple times to minimize banking risks.</p>
+          <p>Trade any volume safely by splitting transactions multiple times.</p>
         </div>
         <div class="trust-card">
           <div class="trust-icon">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
           </div>
           <h3>Zero Fraud Shield</h3>
-          <p>Verified account transfers and escrow-grade integrity managed directly by Sahil P2P.</p>
+          <p>Verified account transfers managed directly with absolute escrow safety.</p>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ================= FLOATING DIRECT CHAT (Appears after 5s) ================= -->
+  <!-- FLOATING DIRECT CHAT (5-Second Delay) -->
   <a href="https://t.me/SAHIL_P2P_01?text=Hello%20Sahil,%20I%20want%20to%20do%20a%20P2P%20deal." target="_blank" class="floating-contact" id="floatingContact">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
       <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.535-.194 1.006.128.832.942z"/>
     </svg>
     Chat on Telegram
   </a>
 
-  <!-- ================= BOTTOM SHEET SLIDER MODAL ================= -->
+  <!-- BOTTOM SHEET MODAL -->
   <div class="slider-overlay" id="sliderOverlay">
     <div class="slider-modal" id="sliderModal">
       <div class="sheet-handle"></div>
@@ -739,7 +794,7 @@
       <div class="modal-header-inner">
         <div class="modal-header-title">Sahil P2P Express</div>
         <button class="close-btn" id="closeModalBtn" aria-label="Close modal">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
@@ -758,7 +813,7 @@
               <div class="content-left">
                 <h4>
                   USDT to INR
-                  <span style="font-size: 10px; background: #eef2ff; color: #4f3cc9; padding: 2px 6px; border-radius: 4px;">Sell</span>
+                  <span style="font-size: 10px; background: rgba(79, 60, 201, 0.2); color: #a89af7; padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(79, 60, 201, 0.3);">Sell</span>
                 </h4>
                 <p>I want to sell my USDT and get INR</p>
               </div>
@@ -771,7 +826,7 @@
               <div class="content-left">
                 <h4>
                   INR to USDT
-                  <span style="font-size: 10px; background: #fdf2f8; color: #ea4c89; padding: 2px 6px; border-radius: 4px;">Buy</span>
+                  <span style="font-size: 10px; background: rgba(119, 224, 181, 0.1); color: var(--accent-teal); padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(119, 224, 181, 0.25);">Buy</span>
                 </h4>
                 <p>I want to buy USDT with INR</p>
               </div>
@@ -785,7 +840,7 @@
         <!-- STEP 2A -->
         <div class="step-view" id="stepSellDealType">
           <button class="btn-back" onclick="goToStep('step1')">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
             Back
           </button>
           
@@ -793,20 +848,26 @@
           <p class="step-subtitle">Choose your preferred transaction medium</p>
 
           <div class="choice-group">
-            <div class="choice-card" onclick="sendSellTelegram('Face to face deal for better trust and transparency')">
+            <div class="choice-card" onclick="sendSellTelegram('face to face')">
               <div class="content-left">
-                <h4>🤝 Face to Face Deal</h4>
-                <p>In-person physical cash/bank trade for transparency</p>
+                <h4>
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="vertical-align: middle; margin-right: 4px;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                  Face to Face Deal
+                </h4>
+                <p>i want to sell my USDT face to face</p>
               </div>
               <div class="arrow-badge">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
               </div>
             </div>
 
-            <div class="choice-card" onclick="sendSellTelegram('Deal online (small amount or split deal in multiple times)')">
+            <div class="choice-card" onclick="sendSellTelegram('online')">
               <div class="content-left">
-                <h4>⚡ Deal Online</h4>
-                <p>Small amounts or multi-split transfers for safety</p>
+                <h4>
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="vertical-align: middle; margin-right: 4px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                  Deal Online
+                </h4>
+                <p>i want to sell my USDT (online / split transfer)</p>
               </div>
               <div class="arrow-badge">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -818,7 +879,7 @@
         <!-- STEP 2B -->
         <div class="step-view" id="stepBuyCalculator">
           <button class="btn-back" onclick="goToStep('step1')">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
             Back
           </button>
 
@@ -839,7 +900,7 @@
                 <span style="color: var(--text-muted);">Required INR budget:</span>
                 <span class="range-highlight" id="inrRangeText">₹9,200 - ₹10,000 INR</span>
               </div>
-              <div class="estimate-row" style="font-size: 12.5px; color: var(--text-muted); border-top: 1px solid #f0f0f4; padding-top: 6px;">
+              <div class="estimate-row" style="font-size: 12px; color: var(--text-muted); border-top: 1px dashed var(--surface-border); padding-top: 6px; margin-top: 6px;">
                 <span>Estimated unit rate:</span>
                 <span class="estimate-val">₹92 - ₹100 / USDT</span>
               </div>
@@ -848,15 +909,14 @@
 
           <a id="buyTelegramActionBtn" href="#" target="_blank" class="btn-action-tg">
             <span id="buyBtnLabelText">Buy 100 USDT now</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
           </a>
         </div>
 
       </div>
     </div>
-  </main>
+  </div>
 
-  <!-- ================= JAVASCRIPT LOGIC ================= -->
   <script>
     // 5-Second Delay Telegram Floating Button Reveal
     window.addEventListener('DOMContentLoaded', () => {
@@ -868,7 +928,6 @@
     const startP2PBtn = document.getElementById('startP2PBtn');
     const sliderOverlay = document.getElementById('sliderOverlay');
     const closeModalBtn = document.getElementById('closeModalBtn');
-    const sliderModal = document.getElementById('sliderModal');
 
     const btnSellUsdt = document.getElementById('btnSellUsdt');
     const btnBuyUsdt = document.getElementById('btnBuyUsdt');
@@ -920,14 +979,19 @@
       inrRangeText.textContent = `₹${minInr} - ₹${maxInr} INR`;
       buyBtnLabelText.textContent = `Buy ${qty} USDT now`;
 
-      const message = `Hello Sahil, I want to BUY ${qty} USDT with INR (Approx Budget: ₹${minInr} - ₹${maxInr} INR). Please share live rate and payment details.`;
+      const message = `i want to buy ${qty} usdt what's the rate right now`;
       buyTelegramActionBtn.href = `https://t.me/SAHIL_P2P_01?text=${encodeURIComponent(message)}`;
     }
 
     usdtAmountInput.addEventListener('input', updateBuyCalculation);
 
-    function sendSellTelegram(dealType) {
-      const message = `Hello Sahil, I want to SELL my USDT for INR. Chosen deal method: ${dealType}. Please let me know the procedure.`;
+    function sendSellTelegram(type) {
+      let message = "";
+      if (type === 'face to face') {
+        message = "i want to sell my USDT face to face";
+      } else {
+        message = "i want to sell my USDT";
+      }
       const url = `https://t.me/SAHIL_P2P_01?text=${encodeURIComponent(message)}`;
       window.open(url, '_blank');
       closeSlider();
