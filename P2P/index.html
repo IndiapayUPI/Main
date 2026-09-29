@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Sahil P2P — Best P2P Dealer in India (INR ⇄ USDT)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --zi-default-overlay: 1000;
+      --primary: #ea4c89;
+      --primary-hover: #f082ac;
+      --accent-purple: #4f3cc9;
+      --accent-teal: #77e0b5;
+      --dark-bg: #0d0c22;
+      --darker-bg: #060318;
+      --surface-light: #16152b;
+      --surface-subtle: #121124;
+      --surface-border: #262442;
+      --text-main: #ffffff;
+      --text-muted: #9e9ea7;
+      --text-subtle: #7a798a;
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', Consolas, monospace;
+      --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--dark-bg);
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      position: relative;
+    }
+
+    /* Crisp Ambient Background Glow */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 500px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(79, 60, 201, 0.2) 0%, rgba(234, 76, 137, 0.1) 60%, transparent 80%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes fade-in-up {
+      from { transform: translate3d(0, 16px, 0); opacity: 0; }
+      to { transform: translate3d(0, 0, 0); opacity: 1; }
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(119, 224, 181, 0.45); }
+      70% { box-shadow: 0 0 0 10px rgba(119, 224, 181, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(119, 224, 181, 0); }
+    }
+
+    /* HEADER */
+    header {
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(13, 12, 34, 0.9);
+    }
+
+    .nav-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .avatar-wrapper {
+      position: relative;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 2px solid var(--accent-teal);
+      padding: 1px;
+      flex-shrink: 0;
+    }
+
+    .avatar-wrapper img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .online-indicator {
+      position: absolute;
+      bottom: 1px;
+      right: 1px;
+      width: 9px;
+      height: 9px;
+      background: #10b981;
+      border: 2px solid var(--dark-bg);
+      border-radius: 50%;
+    }
+
+    .brand-title {
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-title span {
+      color: var(--accent-teal);
+    }
+
+    .badge-verified {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(119, 224, 181, 0.1);
+      color: var(--accent-teal);
+      border: 1px solid rgba(119, 224, 181, 0.25);
+      padding: 5px 12px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 36px 0 90px;
+      text-align: center;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #f1f1f5;
+      font-size: 12.5px;
+      font-weight: 600;
+      margin-bottom: 18px;
+      animation: fade-in-up 0.4s var(--ease-smooth);
+    }
+
+    .hero-tag .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-teal);
+      animation: pulse 2s infinite;
+    }
+
+    .hero-title {
+      font-size: clamp(28px, 6.5vw, 42px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 14px;
+      animation: fade-in-up 0.45s var(--ease-smooth);
+    }
+
+    .hero-title .gradient-text {
+      background: linear-gradient(135deg, #fff 30%, #77e0b5 75%, #4f3cc9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(14px, 3.2vw, 16px);
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto 26px;
+      line-height: 1.5;
+      animation: fade-in-up 0.5s var(--ease-smooth);
+    }
+
+    .rate-ticker-row {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+      animation: fade-in-up 0.55s var(--ease-smooth);
+    }
+
+    .rate-pill {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      padding: 15px 18px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .rate-pill .pair {
+      font-weight: 700;
+      font-size: 14.5px;
+      color: #fff;
+    }
+
+    .rate-pill .approx {
+      font-family: var(--font-mono);
+      color: var(--accent-teal);
+      font-weight: 600;
+      background: rgba(119, 224, 181, 0.1);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12.5px;
+    }
+
+    /* CUSTOM ANIMATED BUTTON STYLING */
+    .animated-button {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      width: 100%;
+      padding: 16px 36px;
+      border: 4px solid;
+      border-color: transparent;
+      font-size: 16px;
+      background-color: var(--accent-teal);
+      border-radius: 100px;
+      font-weight: 600;
+      color: #000000;
+      box-shadow: 0 0 0 2px #00ffff;
+      cursor: pointer;
+      overflow: hidden;
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      font-family: var(--font-sans);
+      animation: fade-in-up 0.6s var(--ease-smooth);
+    }
+
+    .animated-button svg {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      fill: #ffffff;
+      z-index: 9;
+      transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .animated-button .arr-1 {
+      right: 16px;
+    }
+
+    .animated-button .arr-2 {
+      left: -25%;
+    }
+
+    .animated-button .circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 20px;
+      background-color: #c5e5e4;
+      border-radius: 50%;
+      opacity: 0;
+      transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+      z-index: 0;
+    }
+
+    .animated-button .text {
+      position: relative;
+      z-index: 1;
+      transform: translateX(-12px);
+      transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .animated-button:hover {
+      box-shadow: 0 0 0 12px transparent;
+      color: #212121;
+      border-radius: 12px;
+    }
+
+    .animated-button:hover .arr-1 {
+      right: -25%;
+    }
+
+    .animated-button:hover .arr-2 {
+      left: 16px;
+    }
+
+    .animated-button:hover .text {
+      transform: translateX(12px);
+    }
+
+    .animated-button:hover svg {
+      fill: #1f387e;
+    }
+
+    .animated-button:active {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 4px greenyellow;
+    }
+
+    .animated-button:hover .circle {
+      width: 220px;
+      height: 220px;
+      opacity: 1;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .trust-card {
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 18px;
+      border-radius: var(--radius-md);
+      text-align: left;
+    }
+
+    .trust-icon {
+      width: 34px;
+      height: 34px;
+      background: rgba(119, 224, 181, 0.1);
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      color: var(--accent-teal);
+    }
+
+    .trust-card h3 {
+      font-size: 14.5px;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+
+    .trust-card p {
+      font-size: 12.5px;
+      color: var(--text-subtle);
+      line-height: 1.4;
+    }
+
+    /* SLIDER MODAL (DARK THEME) */
+    .slider-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: var(--zi-default-overlay);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .slider-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .slider-modal {
+      background: var(--dark-bg);
+      color: var(--text-main);
+      width: 100%;
+      max-width: 600px;
+      border-radius: 24px 24px 0 0;
+      border-top: 1px solid var(--surface-border);
+      box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.5);
+      transform: translate3d(0, 100%, 0);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+
+    .slider-overlay.active .slider-modal {
+      transform: translate3d(0, 0, 0);
+    }
+
+    .sheet-handle {
+      width: 38px;
+      height: 4px;
+      background: var(--surface-border);
+      border-radius: 99px;
+      margin: 10px auto 4px;
+    }
+
+    .modal-header-inner {
+      padding: 14px 18px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--surface-border);
+    }
+
+    .modal-header-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .close-btn {
+      width: 30px;
+      height: 30px;
+      background: var(--surface-light);
+      border: 1px solid var(--surface-border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    .modal-body {
+      padding: 18px;
+    }
+
+    .step-view {
+      display: none;
+    }
+
+    .step-view.active {
+      display: block;
+      animation: fade-in-up 0.2s var(--ease-smooth);
+    }
+
+    .step-title {
+      font-size: 19px;
+      font-weight: 800;
+      margin-bottom: 4px;
+      color: var(--text-main);
+    }
+
+    .step-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .choice-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .choice-card {
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 15px;
+      background: var(--surface-light);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      transition: border-color 0.15s, background 0.15s;
+    }
+
+    .choice-card:active {
+      transform: scale(0.98);
+      background: var(--surface-subtle);
+      border-color: var(--accent-teal);
+    }
+
+    .choice-card .content-left h4 {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 2px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .choice-card .content-left p {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .arrow-badge {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--surface-subtle);
+      border: 1px solid var(--surface-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--text-muted);
+    }
+
+    .calculator-box {
+      background: var(--surface-light);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 15px;
+      margin-bottom: 14px;
+    }
+
+    .input-field-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .input-row {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .input-row input {
+      width: 100%;
+      font-size: 19px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      padding: 12px 60px 12px 14px;
+      border: 2px solid var(--surface-border);
+      border-radius: var(--radius-sm);
+      outline: none;
+      color: var(--text-main);
+      background: var(--surface-subtle);
+    }
+
+    .currency-suffix {
+      position: absolute;
+      right: 14px;
+      font-weight: 700;
+      font-size: 12.5px;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .estimate-display {
+      background: var(--surface-subtle);
+      border: 1px dashed var(--surface-border);
+      border-radius: 10px;
+      padding: 12px;
+      margin-top: 10px;
+    }
+
+    .estimate-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .estimate-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .estimate-val {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .range-highlight {
+      font-size: 15px;
+      color: var(--accent-teal);
+      font-weight: 800;
+    }
+
+    /* Action Button style for WhatsApp links inside modal */
+    .btn-action-wa {
+      border-radius: var(--radius-md);
+      width: 100%;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0px 20px;
+      border: 1px solid var(--surface-border);
+      color: white;
+      position: relative;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 14.5px;
+      font-family: var(--font-sans);
+      text-decoration: none;
+      background-color: var(--surface-light);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.2s;
+    }
+
+    .btn-action-wa:hover {
+      background-color: var(--surface-subtle);
+      border-color: var(--accent-teal);
+    }
+
+    .btn-back {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 12.5px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      margin-bottom: 10px;
+      padding: 2px 0;
+    }
+
+    .floating-contact {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 99;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #141414;
+      border: 1px solid var(--surface-border);
+      color: #fff;
+      padding: 11px 16px;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 13px;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.45);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px);
+      transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s;
+    }
+
+    .floating-contact.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container nav-flex">
+      <a href="#" class="brand">
+        <div class="avatar-wrapper">
+          <img src="https://d1yei2z3i6k35z.cloudfront.net/13184094/6aa6e6f86b5e55.81674691_730376455_18113066110777222_5660903907453500367_n.jpg" alt="Sahil P2P Official DP" />
+          <div class="online-indicator" title="Online Now"></div>
+        </div>
+        <div>
+          <div class="brand-title">Sahil <span>P2P</span></div>
+        </div>
+      </a>
+      <div class="badge-verified">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+        </svg>
+        Verified Merchant
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main class="container">
+    <section class="hero">
+      <div class="hero-tag">
+        <span class="dot"></span>
+        FIX RATE : BEST P2P DEALER IN INDIA
+      </div>
+
+      <h1 class="hero-title">
+        Fast, Transparent & Reliable<br />
+        <span class="gradient-text">INR ⇄ USDT Exchange</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Instant liquidity at honest market rates. Deal online with split transactions or conduct 100% secure face-to-face deals across India.
+      </p>
+
+      <div class="rate-ticker-row">
+        <div class="rate-pill">
+          <span class="pair">INR to USDT</span>
+          <span class="approx">₹92 - ₹100</span>
+        </div>
+        <div class="rate-pill">
+          <span class="pair">USDT to INR</span>
+          <span class="approx">Instant / F2F</span>
+        </div>
+      </div>
+
+      <!-- Animated Button -->
+      <button class="animated-button" id="startP2PBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24"><path d="M16.1716 10.9999L10.7574 5.58578L12.1716 4.17157L20 12L12.1716 19.8284L10.7574 18.4142L16.1716 13H4V10.9999H16.1716Z"></path></svg>
+        <span class="text">Start P2P Deal Now</span>
+        <span class="circle"></span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24"><path d="M16.1716 10.9999L10.7574 5.58578L12.1716 4.17157L20 12L12.1716 19.8284L10.7574 18.4142L16.1716 13H4V10.9999H16.1716Z"></path></svg>
+      </button>
+
+      <div class="trust-grid">
+        <div class="trust-card">
+          <div class="trust-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+          <h3>Face To Face Deals</h3>
+          <p>Direct in-person physical deals available in top cities for ultimate safety.</p>
+        </div>
+        <div class="trust-card">
+          <div class="trust-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M7 15h0M2 9.5h20"></path></svg>
+          </div>
+          <h3>Small & Split Orders</h3>
+          <p>Trade any volume safely by splitting transactions multiple times.</p>
+        </div>
+        <div class="trust-card">
+          <div class="trust-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          <h3>Zero Fraud Shield</h3>
+          <p>Verified account transfers managed directly with absolute escrow safety.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FLOATING DIRECT WHATSAPP CHAT -->
+  <a href="https://wa.me/917023046903?text=Hello%20Sahil,%20I%20want%20to%20do%20a%20P2P%20deal." target="_blank" class="floating-contact" id="floatingContact">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.124-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+    </svg>
+    Chat on WhatsApp
+  </a>
+
+  <!-- BOTTOM SHEET MODAL -->
+  <div class="slider-overlay" id="sliderOverlay">
+    <div class="slider-modal" id="sliderModal">
+      <div class="sheet-handle"></div>
+      
+      <div class="modal-header-inner">
+        <div class="modal-header-title">Sahil P2P Express</div>
+        <button class="close-btn" id="closeModalBtn" aria-label="Close modal">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        
+        <!-- STEP 1 -->
+        <div class="step-view active" id="step1">
+          <h2 class="step-title">What do you want?</h2>
+          <p class="step-subtitle">Select your transaction type to continue</p>
+
+          <div class="choice-group">
+            <div class="choice-card" id="btnSellUsdt">
+              <div class="content-left">
+                <h4>
+                  USDT to INR
+                  <span style="font-size: 10px; background: rgba(79, 60, 201, 0.2); color: #a89af7; padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(79, 60, 201, 0.3);">Sell</span>
+                </h4>
+                <p>I want to sell my USDT and get INR</p>
+              </div>
+              <div class="arrow-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </div>
+            </div>
+
+            <div class="choice-card" id="btnBuyUsdt">
+              <div class="content-left">
+                <h4>
+                  INR to USDT
+                  <span style="font-size: 10px; background: rgba(119, 224, 181, 0.1); color: var(--accent-teal); padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(119, 224, 181, 0.25);">Buy</span>
+                </h4>
+                <p>I want to buy USDT with INR</p>
+              </div>
+              <div class="arrow-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2A -->
+        <div class="step-view" id="stepSellDealType">
+          <button class="btn-back" onclick="goToStep('step1')">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            Back
+          </button>
+          
+          <h2 class="step-title">How would you like to deal?</h2>
+          <p class="step-subtitle">Choose your preferred transaction medium</p>
+
+          <div class="choice-group">
+            <div class="choice-card" onclick="sendSellWhatsApp('face to face')">
+              <div class="content-left">
+                <h4>
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="vertical-align: middle; margin-right: 4px;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                  Face to Face Deal
+                </h4>
+                <p>i want to sell my USDT face to face</p>
+              </div>
+              <div class="arrow-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </div>
+            </div>
+
+            <div class="choice-card" onclick="sendSellWhatsApp('online')">
+              <div class="content-left">
+                <h4>
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="vertical-align: middle; margin-right: 4px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                  Deal Online
+                </h4>
+                <p>i want to sell my USDT (online / split transfer)</p>
+              </div>
+              <div class="arrow-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2B -->
+        <div class="step-view" id="stepBuyCalculator">
+          <button class="btn-back" onclick="goToStep('step1')">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            Back
+          </button>
+
+          <h2 class="step-title">How many USDT do you want?</h2>
+          <p class="step-subtitle">Current approximate range: ₹92 - ₹100 / USDT</p>
+
+          <div class="calculator-box">
+            <div class="input-field-group">
+              <label for="usdtAmountInput">Enter USDT Quantity</label>
+              <div class="input-row">
+                <input type="number" id="usdtAmountInput" value="100" min="1" step="any" placeholder="e.g. 100" />
+                <span class="currency-suffix">USDT</span>
+              </div>
+            </div>
+
+            <div class="estimate-display">
+              <div class="estimate-row">
+                <span style="color: var(--text-muted);">Required INR budget:</span>
+                <span class="range-highlight" id="inrRangeText">₹9,200 - ₹10,000 INR</span>
+              </div>
+              <div class="estimate-row" style="font-size: 12px; color: var(--text-muted); border-top: 1px dashed var(--surface-border); padding-top: 6px; margin-top: 6px;">
+                <span>Estimated unit rate:</span>
+                <span class="estimate-val">₹92 - ₹100 / USDT</span>
+              </div>
+            </div>
+          </div>
+
+          <a id="buyWhatsAppActionBtn" href="#" target="_blank" class="btn-action-wa">
+            <span id="buyBtnLabelText">Buy 100 USDT now</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 5-Second Delay WhatsApp Floating Button Reveal
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        document.getElementById('floatingContact').classList.add('show');
+      }, 5000);
+    });
+
+    const startP2PBtn = document.getElementById('startP2PBtn');
+    const sliderOverlay = document.getElementById('sliderOverlay');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+
+    const btnSellUsdt = document.getElementById('btnSellUsdt');
+    const btnBuyUsdt = document.getElementById('btnBuyUsdt');
+    const usdtAmountInput = document.getElementById('usdtAmountInput');
+    const inrRangeText = document.getElementById('inrRangeText');
+    const buyBtnLabelText = document.getElementById('buyBtnLabelText');
+    const buyWhatsAppActionBtn = document.getElementById('buyWhatsAppActionBtn');
+
+    const MIN_RATE = 92;
+    const MAX_RATE = 100;
+    const WHATSAPP_NUMBER = "917023046903";
+
+    startP2PBtn.addEventListener('click', () => {
+      goToStep('step1');
+      sliderOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    function closeSlider() {
+      sliderOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    closeModalBtn.addEventListener('click', closeSlider);
+    sliderOverlay.addEventListener('click', (e) => {
+      if (e.target === sliderOverlay) closeSlider();
+    });
+
+    function goToStep(stepId) {
+      document.querySelectorAll('.step-view').forEach(view => {
+        view.classList.remove('active');
+      });
+      const target = document.getElementById(stepId);
+      if (target) target.classList.add('active');
+    }
+
+    btnSellUsdt.addEventListener('click', () => goToStep('stepSellDealType'));
+    btnBuyUsdt.addEventListener('click', () => {
+      goToStep('stepBuyCalculator');
+      updateBuyCalculation();
+    });
+
+    function updateBuyCalculation() {
+      let qty = parseFloat(usdtAmountInput.value);
+      if (isNaN(qty) || qty <= 0) qty = 0;
+
+      const minInr = Math.round(qty * MIN_RATE).toLocaleString('en-IN');
+      const maxInr = Math.round(qty * MAX_RATE).toLocaleString('en-IN');
+
+      inrRangeText.textContent = `₹${minInr} - ₹${maxInr} INR`;
+      buyBtnLabelText.textContent = `Buy ${qty} USDT now`;
+
+      const message = `i want to buy ${qty} usdt what's the rate right now`;
+      buyWhatsAppActionBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    }
+
+    usdtAmountInput.addEventListener('input', updateBuyCalculation);
+
+    function sendSellWhatsApp(type) {
+      let message = "";
+      if (type === 'face to face') {
+        message = "i want to sell my USDT face to face";
+      } else {
+        message = "i want to sell my USDT";
+      }
+      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+      closeSlider();
+    }
+  </script>
+</body>
+</html>
