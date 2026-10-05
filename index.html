@@ -3,350 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uniquezone Secure Shell</title>
-    <!-- Tailwind CSS v4 -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>404 — Not Found</title>
     <style>
-        body, html {
+        :root {
+            --bg: #000000;
+            --gold: #c5a059;
+            --muted: #555555;
+            --font-serif: "Cinzel", "Didot", "Bodoni MT", serif;
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: #040406;
-            font-family: sans-serif;
+            box-sizing: border-box;
         }
 
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            opacity: 0;
-            transition: opacity 0.5s ease; /* साईट दिखने का स्मूथ फ़ेड */
-        }
-
-        #loader-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        body {
+            background-color: var(--bg);
+            color: #ffffff;
+            font-family: var(--font-sans);
+            height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: #040406;
-            z-index: 9999;
-            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* पूरे लोडर का स्मूथ फ़ेड आउट */
-        }
-
-        .ui-loader {
-            width: 430px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: #090a10;
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8);
             overflow: hidden;
             position: relative;
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-            transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
-        .term-bar {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 16px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            background: rgba(255, 255, 255, 0.02);
-        }
-        .term-bar .dot {
-            width: 11px;
-            height: 11px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.15);
+        /* Subtle radial ambient light */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(197, 160, 89, 0.04) 0%, rgba(0, 0, 0, 0) 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
         }
 
-        .term-title {
-            margin-left: auto;
-            font: 700 10px/1 ui-sans-serif, system-ui;
-            color: #6ee7ff;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
+        .container {
+            text-align: center;
+            padding: 2rem;
+            z-index: 10;
         }
 
-        .term-body {
-            padding: 18px;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 12px;
-            line-height: 1.6;
+        .code {
+            font-family: var(--font-serif);
+            font-size: clamp(7rem, 20vw, 15rem);
+            font-weight: 300;
+            line-height: 0.9;
+            letter-spacing: 0.1em;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.02) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            user-select: none;
+            margin-bottom: 0.5rem;
         }
 
         .line {
-            margin: 6px 0;
-            display: none;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .line.visible { display: flex; }
-        .line b { color: #6ee7ff; }
-        .muted { color: rgba(255, 255, 255, 0.4); }
-        .neon-amber { color: #fbbf24; }
-        .neon-purple { color: #c084fc; }
-
-        .tag {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 5px;
-            height: 18px;
-            border-radius: 4px;
-            margin-right: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            font-weight: 800;
-            font-size: 9px;
-        }
-        .tag.ok { color: #51ffb8; background: rgba(81, 255, 184, 0.05); }
-        .tag.run { color: #b08cff; background: rgba(176, 140, 255, 0.05); }
-
-        .cursor {
-            display: inline-block;
-            width: 7px;
-            height: 12px;
-            margin-left: 4px;
-            background: #b08cff;
-            animation: blink 0.8s steps(2, end) infinite;
+            width: 30px;
+            height: 1px;
+            background: var(--gold);
+            margin: 1.5rem auto;
+            opacity: 0.6;
         }
 
-        .progress {
-            margin-top: 16px;
-            height: 4px;
-            border-radius: 999px;
-            position: relative;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.05);
-            display: none;
+        .text {
+            font-family: var(--font-serif);
+            font-size: clamp(0.75rem, 2vw, 1rem);
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--muted);
+            font-weight: 300;
         }
-        .progress.visible { display: block; }
-
-        .fill {
-            position: absolute;
-            inset: 0 100% 0 0;
-            background: linear-gradient(90deg, #6ee7ff, #b08cff);
-            transition: right 0.1s ease-out;
-        }
-
-        /* Success स्क्रीन का इन-एनीमेशन */
-        #success-screen {
-            display: none;
-            opacity: 0;
-            transform: scale(0.96);
-            transition: opacity 0.4s ease, transform 0.4s ease;
-        }
-        #success-screen.show {
-            display: flex;
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        @keyframes blink { 0%, 100% { opacity: 0.1; } 50% { opacity: 1; } }
     </style>
 </head>
 <body>
 
-    <!-- Splash Screen Base -->
-    <div id="loader-container">
-        
-        <!-- Phase 1: Terminal Loader -->
-        <div class="ui-loader" id="hacker-terminal" role="status" aria-label="Loading">
-            <div class="term-bar">
-                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                <div class="term-title">ONION_ROUTER_V4.SH</div>
-            </div>
-
-            <div class="term-body">
-                <div class="line" id="line1">
-                    <span><b>$</b> tor --bridge uniquezone.io</span>
-                    <span class="muted">[INIT]</span>
-                </div>
-                <div class="line muted" id="line2">
-                    <span>› pinging nearest relays...</span>
-                    <span class="neon-amber" id="real-ping">checking ping...</span>
-                </div>
-                <div class="line" id="line3">
-                    <span><span class="tag ok">OK</span> tunneling to dark web layer</span>
-                    <span class="neon-purple">node_active</span>
-                </div>
-                <div class="line" id="line4">
-                    <span><span class="tag run">PROXY</span> <span id="proxy-route">Routing: Guard Node</span></span>
-                    <span><span id="speed-indicator">0 Kbps</span><span class="cursor" id="term-cursor" aria-hidden="true"></span></span>
-                </div>
-
-                <div class="progress" id="term-progress">
-                    <div class="fill" id="progress-fill"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Phase 2: तुम्हारी दी हुई ओरिजिनल स्मूथ लाइन्स वाली डिज़ाइन (बिना बैकग्राउंड ब्लर/ग्लो के) -->
-        <div id="success-screen" class="mx-auto w-full max-w-xs relative flex flex-col items-center justify-center text-center overflow-visible">
-            <h3 class="text-3xl font-bold tracking-wide text-white">Dark Web Connected</h3>
-            
-            <div class="w-full relative flex flex-col items-center justify-center h-[5px] mt-3">
-                <div class="absolute inset-x-auto top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-full blur-sm"></div>
-                <div class="absolute inset-x-auto top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-full"></div>
-                <div class="absolute inset-x-auto top-0 bg-gradient-to-r from-transparent via-purple-400 to-transparent h-[5px] w-1/2 blur-sm"></div>
-                <div class="absolute inset-x-auto top-0 bg-gradient-to-r from-transparent via-purple-400 to-transparent h-px w-1/2"></div>
-                <div style="" class="absolute inset-0 w-full h-full bg-[#040406] [mask-image:radial-gradient(50%_200px_at_top,transparent_20%,white)]"></div>
-            </div>
-
-            <p class="mt-6 text-sm text-gray-300 font-mono tracking-wider">
-                Your Virtual IP : <span id="allocated-ip" class="text-cyan-400 font-bold">Allocating...</span>
-            </p>
-        </div>
-
+    <div class="container">
+        <div class="code">404</div>
+        <div class="line"></div>
+        <div class="text">Page Not Found</div>
     </div>
 
-    <!-- Main Content Frame -->
-    <iframe 
-        id="site-frame" 
-        src="https://learn.uniquezone.io" 
-        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals allow-downloads"
-        allow="geolocation; microphone; camera; midi; encrypted-media; gyroscope; accelerometer; clipboard-write">
-    </iframe>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const loaderContainer = document.getElementById('loader-container');
-            const terminal = document.getElementById('hacker-terminal');
-            const successScreen = document.getElementById('success-screen');
-            const allocatedIpText = document.getElementById('allocated-ip');
-            const iframe = document.getElementById('site-frame');
-            
-            const l1 = document.getElementById('line1');
-            const l2 = document.getElementById('line2');
-            const l3 = document.getElementById('line3');
-            const l4 = document.getElementById('line4');
-            const progress = document.getElementById('term-progress');
-            const fill = document.getElementById('progress-fill');
-            
-            const realPingText = document.getElementById('real-ping');
-            const proxyRoute = document.getElementById('proxy-route');
-            const speedIndicator = document.getElementById('speed-indicator');
-
-            let currentProgress = 0;
-            let iframeLoaded = false;
-            let minimumTimePassed = false;
-            let progressInterval;
-
-            const proxyNodes = [
-                { percent: 0, text: "Hop 1: [DE] Frankfurt Guard Node" },
-                { percent: 35, text: "Hop 2: [IS] Reykjavik Middle Relay" },
-                { percent: 70, text: "Hop 3: [SE] Stockholm Exit Node" }
-            ];
-
-            function generateVirtualIP() {
-                return `${Math.floor(Math.random() * 899999 + 100000)}.${Math.floor(Math.random() * 8999 + 1000)}.${Math.floor(Math.random() * 89999 + 10000)}`;
-            }
-
-            // Real Ping Tracker
-            let pingStart = performance.now();
-            fetch('https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=10', { mode: 'no-cors', cache: 'no-store' })
-            .then(() => {
-                realPingText.textContent = Math.round(performance.now() - pingStart) + 'ms (Tor Active)';
-            })
-            .catch(() => {
-                realPingText.textContent = Math.floor(Math.random() * 42 + 45) + 'ms (Tor Active)';
-            });
-
-            // Text Appear Sequence
-            setTimeout(() => l1.classList.add('visible'), 150);
-            setTimeout(() => l2.classList.add('visible'), 350);
-            setTimeout(() => l3.classList.add('visible'), 700);
-
-            setTimeout(() => {
-                l4.classList.add('visible');
-                progress.classList.add('visible');
-                startDynamicLoading();
-            }, 1000);
-
-            function startDynamicLoading() {
-                progressInterval = setInterval(() => {
-                    if (currentProgress < 100) {
-                        currentProgress += Math.random() * 4 + 2;
-                        if (currentProgress >= 100) {
-                            currentProgress = 100;
-                            clearInterval(progressInterval);
-                            switchToIPScreen();
-                        }
-                    }
-                    fill.style.right = (100 - currentProgress) + '%';
-                    
-                    let activeNode = proxyNodes[0].text;
-                    for (let node of proxyNodes) {
-                        if (currentProgress >= node.percent) activeNode = node.text;
-                    }
-                    proxyRoute.textContent = activeNode;
-
-                    if (Math.random() < 0.3) {
-                        speedIndicator.textContent = Math.floor(Math.random() * 330 + 120) + ' Kbps';
-                    } else {
-                        speedIndicator.textContent = (Math.random() * 2.7 + 1.1).toFixed(1) + ' Mbps';
-                    }
-                }, 50);
-            }
-
-            function switchToIPScreen() {
-                // टर्मिनल को फेड आउट करके हाइड करें
-                terminal.style.opacity = '0';
-                terminal.style.transform = 'scale(0.95)';
-                
-                setTimeout(() => {
-                    terminal.style.display = 'none';
-                    allocatedIpText.textContent = generateVirtualIP();
-                    
-                    // तुम्हारी दी हुई स्मूथ एंडिंग लाइन वाली स्क्रीन शो करें
-                    successScreen.classList.add('show');
-
-                    // पूरे 3 सेकंड का हार्ड होल्ड (ताकि एनीमेशन दिखे)
-                    setTimeout(() => {
-                        minimumTimePassed = true;
-                        checkAndFinalize();
-                    }, 1000);
-                }, 300);
-            }
-
-            function checkAndFinalize() {
-                // दोनों कंडीशन मैच होने पर ही स्क्रीन हटेगी
-                if (iframeLoaded && minimumTimePassed) {
-                    // पूरे लोडर कंटेनर को स्मूथली फेड-आउट करें
-                    loaderContainer.style.opacity = '0';
-                    
-                    setTimeout(() => {
-                        loaderContainer.remove();
-                        iframe.style.opacity = '1'; // वेबसाइट को विजिबल करें
-                    }, 700); // 600ms फेड आउट टाइमिंग
-                } else {
-                    // अगर साईट अभी भी लोड हो रही है तो थोड़ी-थोड़ी देर में री-चेक करें
-                    setTimeout(checkAndFinalize, 50);
-                }
-            }
-
-            iframe.addEventListener('load', function() {
-                iframeLoaded = true;
-                checkAndFinalize();
-            });
-
-            // सेफ्टी बैकअप
-            setTimeout(() => {
-                iframeLoaded = true;
-                checkAndFinalize();
-            }, 9500);
-
-            window.onbeforeunload = function() {
-                return "Navigation is locked inside the secure container.";
-            };
-        });
-    </script>
 </body>
 </html>
