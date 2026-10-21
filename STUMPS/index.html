@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>STUMPS ™❤️ | Cricket Predictions</title>
+  
+  <!-- Font Awesome for clean Telegram & Cricket icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: #000000;
+      color: #ffffff;
+      font-family: 'Montserrat', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow-x: hidden;
+      padding: 24px 16px;
+    }
+
+    /* Dimmed Background Overlay */
+    .bg-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://i.pinimg.com/736x/95/56/c3/9556c3f07601b6a533d2e9c204a2d37e.jpg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      opacity: 0.18;
+      filter: grayscale(100%) contrast(120%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Main Container */
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Logo Styling */
+    .avatar-wrapper {
+      position: relative;
+      width: 110px;
+      height: 110px;
+      margin-bottom: 20px;
+    }
+
+    .avatar-wrapper::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      animation: pulseGlow 3s infinite ease-in-out;
+    }
+
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ffffff;
+      background-color: #111;
+      display: block;
+    }
+
+    /* Channel Identity */
+    .channel-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .channel-badge {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    .about-text {
+      font-size: 0.88rem;
+      color: #b5b5b5;
+      line-height: 1.55;
+      margin-bottom: 30px;
+      padding: 0 10px;
+    }
+
+    /* Animated Border Action Buttons */
+    .btn-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .animated-border-btn {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      padding: 16px 20px;
+      background-color: #000000;
+      color: #ffffff;
+      text-decoration: none;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 1.5px solid #ffffff;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    /* Ripple / Expanding Border Animation */
+    .animated-border-btn::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 12px;
+      border: 2px solid #ffffff;
+      opacity: 0;
+      animation: rippleBorder 2.4s infinite cubic-bezier(0.24, 0, 0.38, 1);
+    }
+
+    .animated-border-btn:hover,
+    .animated-border-btn:active {
+      background-color: #0f0f0f;
+      transform: scale(0.98);
+      border-color: #e5e5e5;
+    }
+
+    /* Secondary Minimal Button */
+    .secondary-btn {
+      background-color: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #ddd;
+      font-size: 0.85rem;
+      padding: 13px 18px;
+    }
+
+    .secondary-btn::before {
+      animation: none;
+    }
+
+    .secondary-btn:hover {
+      border-color: rgba(255, 255, 255, 0.7);
+      color: #fff;
+    }
+
+    /* Footer Stats or Highlights */
+    .stats-row {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .stat-box {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .stat-number {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #fff;
+    }
+
+    .stat-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Keyframes for the border animations */
+    @keyframes rippleBorder {
+      0% {
+        transform: scale(0.97);
+        opacity: 0.9;
+        border-color: #ffffff;
+      }
+      50% {
+        border-color: rgba(255, 255, 255, 0.4);
+      }
+      100% {
+        transform: scale(1.08);
+        opacity: 0;
+        border-color: rgba(255, 255, 255, 0);
+      }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.3;
+      }
+      50% {
+        transform: scale(1.06);
+        opacity: 0.7;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Wallpaper Layer -->
+  <div class="bg-overlay"></div>
+
+  <main class="container">
+    
+    <!-- Profile / Channel Logo -->
+    <div class="avatar-wrapper">
+      <img 
+        class="avatar-img" 
+        src="https://nwscdn.com/media/wysiwyg/cricket/Ultra_Durable_Cricket_Stumps.jpg" 
+        alt="STUMPS Logo" 
+      />
+    </div>
+
+    <!-- Title & Badge -->
+    <h1 class="channel-name">STUMPS ™❤️</h1>
+    <span class="channel-badge">Cricket Analysis & Tips</span>
+
+    <!-- Bio / About -->
+    <p class="about-text">
+      Real-time match predictions, pitch reports, toss updates, and session analysis. Join the official channel for cricket insights.
+    </p>
+
+    <!-- Interactive Buttons -->
+    <div class="btn-container">
+      <!-- Primary Animated CTA Button -->
+      <a href="https://t.me/+e6Exv5IliEw2MDVl" target="_blank" rel="noopener noreferrer" class="animated-border-btn">
+        <i class="fa-brands fa-telegram fa-lg"></i>
+        <span>Join Telegram Channel</span>
+      </a>
+
+      <!-- Secondary Quick Link -->
+      <a href="https://t.me/+e6Exv5IliEw2MDVl" target="_blank" rel="noopener noreferrer" class="animated-border-btn secondary-btn">
+        <i class="fa-solid fa-bolt"></i>
+        <span>Today's Match Tips</span>
+      </a>
+    </div>
+
+    <!-- Minimal Metrics -->
+    <div class="stats-row">
+      <div class="stat-box">
+        <span class="stat-number">IPL & T20</span>
+        <span class="stat-label">Coverage</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">Free Access</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-number">Daily</span>
+        <span class="stat-label">Updates</span>
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>
