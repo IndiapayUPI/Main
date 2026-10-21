@@ -1,25 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18528247735"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-18528247735');
-</script>
-
-
-
-
-
-  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Sruthan Stox | Master Institutional Price Action</title>
-  
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18528247735"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18528247735');
+  </script>
+
+  <!-- Google Ads Direct Click Conversion Script -->
+  <script>
+    function openTelegramLead(e) {
+      if (e && e.preventDefault) e.preventDefault();
+
+      var webUrl = 'https://t.me/+n0pwVx9NmoxkMjFl';
+      var appUrl = 'tg://resolve?domain=+n0pwVx9NmoxkMjFl';
+      var redirected = false;
+
+      function navigate() {
+        if (!redirected) {
+          redirected = true;
+          // Attempt deep link launch, fallback to standard web URL
+          window.location.href = webUrl;
+        }
+      }
+
+      // Safety timeout: Redirects within 300ms even if Google's server ping lags
+      var fallbackTimer = setTimeout(navigate, 300);
+
+      if (typeof gtag === 'function') {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-18528247735/TccoCPyJ6KQdELe_-oJF',
+          'value': 1.0,
+          'currency': 'INR',
+          'event_callback': function() {
+            clearTimeout(fallbackTimer);
+            navigate();
+          }
+        });
+      } else {
+        clearTimeout(fallbackTimer);
+        navigate();
+      }
+
+      return false;
+    }
+  </script>
+
   <style>
     :root {
       --bg: #05080f;
@@ -27,6 +60,7 @@
       --card-border: #182338;
       --gold-primary: #d4af37;
       --gold-gradient: linear-gradient(135deg, #f3e098 0%, #c99b27 50%, #9e7514 100%);
+      --tg-blue: #0088cc;
       --text-white: #ffffff;
       --text-gold: #e2c875;
       --text-muted: #8493a8;
@@ -100,7 +134,7 @@
       display: block;
     }
 
-    /* Sleek Gold Banner Button fitted on Image Bottom (Blocks watermark on both cards) */
+    /* Sleek Gold Banner Button fitted on Image Bottom (Blocks watermark) */
     .image-dock-btn {
       position: absolute;
       bottom: 0;
@@ -120,6 +154,7 @@
       text-transform: uppercase;
       box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.85);
       z-index: 5;
+      cursor: pointer;
     }
 
     /* Core Copy for HNI / Capital-Rich Leads */
@@ -169,7 +204,7 @@
       gap: 10px;
       width: 100%;
       height: 52px;
-      background: #0088cc;
+      background: var(--tg-blue);
       border: 1px solid rgba(255, 255, 255, 0.25);
       border-radius: 8px;
       color: #ffffff;
@@ -179,6 +214,7 @@
       letter-spacing: 0.6px;
       margin-bottom: 8px;
       box-shadow: 0 6px 20px rgba(0, 136, 204, 0.35);
+      cursor: pointer;
     }
 
     .btn-royal-tg svg {
@@ -217,7 +253,7 @@
       color: var(--text-muted);
     }
 
-    /* Disclaimer */
+    /* Legal Disclaimer */
     footer {
       font-size: 0.68rem;
       color: #556275;
@@ -230,8 +266,8 @@
 <body>
 
   <main class="container">
-    
-    <!-- Classic Header -->
+
+    <!-- Header -->
     <header class="brand-bar">
       <img class="brand-logo" src="https://d1yei2z3i6k35z.cloudfront.net/13184094/6ad8e750e2d060.67880915_photo_2026-10-18_19-25-13.jpg" alt="Sruthan Stox Logo" width="44" height="44" fetchpriority="high">
       <span class="brand-name">SRUTHAN STOX</span>
@@ -240,7 +276,7 @@
     <!-- Top Creative (Bottom Button Overlay Covers Logo) -->
     <div class="image-box">
       <img class="ad-asset" src="https://d1yei2z3i6k35z.cloudfront.net/13184094/6ad8e6b8e65881.64478821_Gemini_Generated_Image_b555gmb555gmb555.png" alt="Master The Stock Market" width="480" height="360" fetchpriority="high">
-      <a href="/SST/thank-you" class="image-dock-btn">
+      <a href="https://t.me/+n0pwVx9NmoxkMjFl" onclick="return openTelegramLead(event);" class="image-dock-btn">
         ENTER FREE MASTERCLASS ON TELEGRAM &rarr;
       </a>
     </div>
@@ -251,7 +287,7 @@
     <p class="desc">Designed for serious market participants seeking calculated risk management, institutional order-flow setups, and disciplined execution.</p>
 
     <!-- Direct Telegram Conversion Action -->
-    <a href="/SST/thank-you" class="btn-royal-tg">
+    <a href="https://t.me/+n0pwVx9NmoxkMjFl" onclick="return openTelegramLead(event);" class="btn-royal-tg">
       <svg viewBox="0 0 24 24">
         <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.536-.196 1.006.128.832.921z"/>
       </svg>
@@ -278,13 +314,13 @@
     <!-- Bottom Secondary Creative (Bottom Button Overlay Covers Logo) -->
     <div class="image-box" style="margin-top: 18px;">
       <img class="ad-asset" src="https://d1yei2z3i6k35z.cloudfront.net/13184094/6ad8e6e2b28458.51576466_Gemini_Generated_Image_l53rljl53rljl53r.png" alt="Start Your Trading Journey" width="480" height="270" loading="lazy">
-      <a href="/SST/thank-you" class="image-dock-btn">
+      <a href="https://t.me/+n0pwVx9NmoxkMjFl" onclick="return openTelegramLead(event);" class="image-dock-btn">
         ACCESS VIP TRADING COMMUNITY &rarr;
       </a>
     </div>
 
     <!-- Secondary Direct CTA -->
-    <a href="/SST/thank-you" class="btn-royal-tg">
+    <a href="https://t.me/+n0pwVx9NmoxkMjFl" onclick="return openTelegramLead(event);" class="btn-royal-tg">
       <svg viewBox="0 0 24 24">
         <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.536-.196 1.006.128.832.921z"/>
       </svg>
