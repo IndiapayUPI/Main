@@ -1,1 +1,317 @@
-<< wait... bhai me isko abhi create kar rhaa hu... thoda sa time lagega bas >> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Redirecting to Telegram | Sruthan Stox</title>
+
+  <style>
+    :root {
+      --bg: #05080f;
+      --card: #0b111e;
+      --card-border: #182338;
+      --gold-primary: #d4af37;
+      --gold-gradient: linear-gradient(135deg, #f3e098 0%, #c99b27 50%, #9e7514 100%);
+      --tg-blue: #0088cc;
+      --text-white: #ffffff;
+      --text-gold: #e2c875;
+      --text-muted: #8493a8;
+      --font-display: "Cinzel", "Playfair Display", "Times New Roman", Georgia, serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-white);
+      font-family: var(--font-sans);
+      line-height: 1.5;
+      text-align: center;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 30px 16px 40px;
+    }
+
+    /* Brand Bar */
+    .brand-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .brand-logo {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold-primary);
+      object-fit: cover;
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    /* Countdown Counter Badge */
+    .timer-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      background: rgba(212, 175, 55, 0.08);
+      color: var(--text-gold);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+    }
+
+    .countdown-num {
+      font-size: 1.1rem;
+      color: #ffffff;
+      font-weight: 800;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: 1.65rem;
+      line-height: 1.25;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+
+    h1 span {
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .instruction {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 22px;
+      padding: 0 8px;
+    }
+
+    /* Primary Telegram Action Button */
+    .btn-telegram {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      height: 56px;
+      background: var(--tg-blue);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 10px;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      box-shadow: 0 8px 24px rgba(0, 136, 204, 0.4);
+      margin-bottom: 12px;
+    }
+
+    .btn-telegram svg {
+      width: 24px;
+      height: 24px;
+      fill: #ffffff;
+      flex-shrink: 0;
+    }
+
+    .fallback-note {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-bottom: 26px;
+    }
+
+    /* Onboarding Steps */
+    .steps-container {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 18px 16px;
+      text-align: left;
+      margin-bottom: 24px;
+    }
+
+    .steps-title {
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      color: var(--text-white);
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 6px;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .step-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .step-number {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--gold-primary);
+      color: var(--gold-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .step-text strong {
+      display: block;
+      font-size: 0.85rem;
+      color: #ffffff;
+      margin-bottom: 2px;
+    }
+
+    .step-text span {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    /* Google Ads Safe Financial Compliance Box */
+    .compliance-box {
+      background: rgba(11, 17, 30, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 12px;
+      text-align: left;
+      margin-bottom: 16px;
+    }
+
+    .compliance-box p {
+      font-size: 0.68rem;
+      color: #64748b;
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+
+    .compliance-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    footer {
+      font-size: 0.68rem;
+      color: #475569;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="container">
+
+    <!-- Header -->
+    <header class="brand-bar">
+      <img class="brand-logo" src="https://d1yei2z3i6k35z.cloudfront.net/13184094/6ad8e750e2d060.67880915_photo_2026-10-18_19-25-13.jpg" alt="Sruthan Stox" width="46" height="46" fetchpriority="high">
+      <span class="brand-name">SRUTHAN STOX</span>
+    </header>
+
+    <!-- Visual 3s Countdown Pill -->
+    <div class="timer-pill">
+      <span>Opening Telegram in</span>
+      <span class="countdown-num" id="countdown">3</span>s...
+    </div>
+
+    <h1>Connecting To <span>Private Desk</span></h1>
+    <p class="instruction">Your exclusive pass is verified. Launching your Telegram channel access automatically...</p>
+
+    <!-- Direct Telegram CTA Link -->
+    <a href="https://t.me/+n0pwVx9NmoxkMjFl" id="tgLink" class="btn-telegram">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.536-.196 1.006.128.832.921z"/>
+      </svg>
+      OPEN TELEGRAM CHANNEL NOW
+    </a>
+    <p class="fallback-note">If Telegram doesn't launch automatically, tap the button above.</p>
+
+    <!-- Instructions / Next Steps -->
+    <div class="steps-container">
+      <div class="steps-title">Next Steps</div>
+      
+      <div class="step-item">
+        <div class="step-number">1</div>
+        <div class="step-text">
+          <strong>Tap "Join Channel"</strong>
+          <span>Accept the invitation prompt inside your Telegram application.</span>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-number">2</div>
+        <div class="step-text">
+          <strong>Pin The Channel</strong>
+          <span>Keep Sruthan Stox at the top of your chat list for live setups.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Google Ads Policy Compliant Disclaimers -->
+    <section class="compliance-box">
+      <p><strong>Regulatory &amp; Risk Notice:</strong> Sruthan Stox content is intended solely for financial literacy, strategy breakdown, and educational purposes. We do not offer advisory tips or guaranteed returns.</p>
+      <p>Trading in financial markets carries substantial risk of loss. Always consult a registered advisor before making financial decisions.</p>
+    </section>
+
+    <footer>
+      <p>&copy; 2026 Sruthan Stox. All rights reserved.</p>
+    </footer>
+
+  </main>
+
+  <!-- High-Converting 3-Second Auto-Open Logic -->
+  <script>
+    (function() {
+      var targetUrl = "https://t.me/+n0pwVx9NmoxkMjFl";
+      var seconds = 3;
+      var counterEl = document.getElementById("countdown");
+
+      var interval = setInterval(function() {
+        seconds--;
+        if (counterEl) {
+          counterEl.textContent = seconds;
+        }
+
+        if (seconds <= 0) {
+          clearInterval(interval);
+          // Redirect user directly into the Telegram app link
+          window.location.href = targetUrl;
+        }
+      }, 1000);
+    })();
+  </script>
+
+</body>
+</html>
