@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Market Literacy & Systematic Trading</title>
+  <style>
+    :root {
+      --bg: #000000;
+      --card-bg: rgba(6, 6, 8, 0.78);
+      --border-thin: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(255, 255, 255, 0.22);
+      --text-main: #f8fafc;
+      --text-muted: #848d97;
+      --accent-blue: #0088cc;
+      --accent-cyan: #00f2fe;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2.2rem 1.1rem 3.5rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Fixed Dark Wallpaper Backdrop */
+    .bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        linear-gradient(180deg, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.82) 40%, #000000 100%),
+        url("https://i.pinimg.com/1200x/de/e3/14/dee31462a4fedc68822ad6b77c7b0784.jpg") center/cover no-repeat;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Meta Compliance Indicator */
+    .compliance-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 0.5px solid var(--border-thin);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.73rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: #94a3b8;
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .compliance-pill span {
+      width: 6px;
+      height: 6px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #10b981;
+    }
+
+    header {
+      text-align: center;
+      max-width: 480px;
+      margin-bottom: 2.2rem;
+    }
+
+    header h1 {
+      font-size: 1.95rem;
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      color: #ffffff;
+      line-height: 1.25;
+      margin-bottom: 0.7rem;
+    }
+
+    header h1 b {
+      font-weight: 700;
+      background: linear-gradient(135deg, #ffffff 40%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.55;
+      font-weight: 400;
+    }
+
+    .feed {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      width: 100%;
+      max-width: 440px;
+      margin-bottom: 3rem;
+    }
+
+    /* Classic Super Black Thin Card */
+    .card {
+      position: relative;
+      background: var(--card-bg);
+      border: 0.5px solid var(--border-thin);
+      border-radius: 18px;
+      padding: 1.5rem 1.25rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .card:hover {
+      border-color: var(--border-hover);
+    }
+
+    .card:active {
+      transform: scale(0.985);
+    }
+
+    .meta-tag {
+      position: absolute;
+      top: -10px;
+      background: #000000;
+      border: 0.5px solid rgba(255, 255, 255, 0.16);
+      color: #cbd5e1;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 10px;
+      border-radius: 999px;
+    }
+
+    .avatar-wrap {
+      position: relative;
+      width: 74px;
+      height: 74px;
+      margin-top: 0.4rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      padding: 2px;
+      border: 0.5px solid rgba(255, 255, 255, 0.15);
+      background: #09090b;
+    }
+
+    .sub-pill {
+      position: absolute;
+      bottom: -3px;
+      right: -3px;
+      background: #09090b;
+      border: 0.5px solid rgba(255, 255, 255, 0.15);
+      color: #94a3b8;
+      font-size: 0.62rem;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 999px;
+    }
+
+    .title {
+      font-size: 1.12rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: #f1f5f9;
+      margin-bottom: 0.35rem;
+    }
+
+    .desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin-bottom: 1.3rem;
+      padding: 0 0.4rem;
+      font-weight: 400;
+    }
+
+    /* Big High-Converting Thin-Styled CTA */
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      width: 100%;
+      min-height: 52px;
+      font-size: 0.98rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 0.85rem 1.4rem;
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(0, 136, 204, 0.9) 0%, rgba(0, 102, 160, 0.95) 100%);
+      border: 0.5px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 4px 18px rgba(0, 136, 204, 0.25);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      background: linear-gradient(180deg, #0099e6 0%, #0077b3 100%);
+      box-shadow: 0 6px 22px rgba(0, 136, 204, 0.4);
+    }
+
+    .btn:active {
+      transform: scale(0.975);
+    }
+
+    .btn svg {
+      width: 19px;
+      height: 19px;
+      fill: currentColor;
+    }
+
+    /* Meta Ads Compliance Safe Footer */
+    footer {
+      width: 100%;
+      max-width: 440px;
+      text-align: center;
+      border-top: 0.5px solid var(--border-thin);
+      padding-top: 1.5rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .footer-links a {
+      color: #64748b;
+      font-size: 0.72rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #cbd5e1;
+    }
+
+    .disclaimer {
+      font-size: 0.68rem;
+      color: #52525b;
+      line-height: 1.45;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-canvas"></div>
+
+  <!-- Meta Trust Anchor -->
+  <div class="compliance-pill">
+    <span></span> Financial Research & Education Only
+  </div>
+
+  <header>
+    <h1>Best <b>Skills</b></h1>
+    <p>Esi Skills jisse seekh kar apni life ke gold pahse me ja skte ho. khud ko dusro se better bana skte ho. agar ap bhi reels dekh kar time waste kar rahe ho. to abhi TELEGRAM JOIN kro , time waste karne se accha skills par work karo. jo apko better banaegi.!! below down 👇🏻👇🏻 best learning channel list kar rakhe hai. abhi join karo and let get started !!</p>
+  </header>
+
+  <main class="feed">
+    <!-- Trade With Munaf -->
+    <div class="card">
+      <span class="meta-tag">Derivatives Mechanics</span>
+      <div class="avatar-wrap">
+        <img class="avatar" src="https://play-lh.googleusercontent.com/QG7BVQWhWMx9_9v4Y1HQTwciF2rQCgOkWuMdcId-2WLnwB4wm72QCv8J3irTn-NXgjHr=w240-h480" alt="Trade with Munaf" />
+        <span class="sub-pill">Options</span>
+      </div>
+      <h2 class="title">Trade with Munaf</h2>
+      <p class="desc">Systematic intraday dynamics, options contract analysis, and strict capital allocation drills.</p>
+      <a href="https://t.me/+zVWG5-m3YpdjODFl" target="_blank" rel="noopener noreferrer" class="btn">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+        Join Free Channel
+      </a>
+    </div>
+
+    <!-- Gokul Chhabra -->
+    <div class="card">
+      <span class="meta-tag">Quant Framework</span>
+      <div class="avatar-wrap">
+        <img class="avatar" src="https://www.dilsetrader.in/assets/gokulsir1-BA3WQkQC.png" alt="Gokul Chhabra" />
+        <span class="sub-pill">SEBI RA</span>
+      </div>
+      <h2 class="title">Gokul Chhabra Dil Se Trader</h2>
+      <p class="desc">Algorithmic execution logic, equity flow tracking, and quantitative pattern modeling.</p>
+      <a href="https://t.me/+64_Pvno1J-Q3MTA1" target="_blank" rel="noopener noreferrer" class="btn">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+        Join Free Channel
+      </a>
+    </div>
+
+    <!-- Ayush Bhandari -->
+    <div class="card">
+      <span class="meta-tag">Price Action</span>
+      <div class="avatar-wrap">
+        <img class="avatar" src="https://i.pinimg.com/736x/cd/19/f1/cd19f16560a9f260ae31a19bc4ee2821.jpg" alt="Ayush Bhandari Trader" />
+        <span class="sub-pill">Charts</span>
+      </div>
+      <h2 class="title">Ayush Bhandari Trader</h2>
+      <p class="desc">Clean structural mapping, order block recognition, and high-probability supply-demand levels.</p>
+      <a href="https://t.me/AyushBhandariTrader" target="_blank" rel="noopener noreferrer" class="btn">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+        Join Free Channel
+      </a>
+    </div>
+
+    <!-- Halal Trader -->
+    <div class="card">
+      <span class="meta-tag">Ethical Equity</span>
+      <div class="avatar-wrap">
+        <img class="avatar" src="https://i.pinimg.com/1200x/67/ae/12/67ae128a54936898ac0bc4b999a6ba28.jpg" alt="Halal Trader" />
+        <span class="sub-pill">Halal</span>
+      </div>
+      <h2 class="title">Halal Trader Community</h2>
+      <p class="desc">Ethical cash stock screening, Shariah debt-ratio evaluation, and non-derivative swing setups.</p>
+      <a href="https://t.me/+uCKCdpdZtNllYzg9" target="_blank" rel="noopener noreferrer" class="btn">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+        Join Free Channel
+      </a>
+    </div>
+  </main>
+
+  <!-- Essential Meta Ads Compliance Footer -->
+  <footer>
+    <div class="footer-links">
+      <a href="#privacy">Privacy Policy</a>
+      <a href="#terms">Terms & Conditions</a>
+      <a href="#contact">Contact Support</a>
+    </div>
+    <p class="disclaimer">
+      <strong>Disclaimer:</strong> All content shared is strictly for educational, research, and technical training purposes. We do not provide guaranteed returns, portfolio management, or tips/recommendations. Trading in equities, derivatives, and financial instruments involves risk of capital loss.
+    </p>
+    <p class="disclaimer" style="margin-top: 6px;">
+      This website is not part of or endorsed by Meta Platforms, Inc. or Facebook Inc.
+    </p>
+  </footer>
+
+</body>
+</html>
