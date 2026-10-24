@@ -1,43 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-
-
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '2156023955290438');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=2156023955290438&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-
-
-
-  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Market Literacy & Systematic Trading</title>
+  <title>Quantitative Market Literacy & Chart Structure</title>
+
+  <!-- Combined Dual Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  
+  // Initialize Both Pixels
+  fbq('init', '1661636628948538');
+  fbq('init', '2156023955290438');
+  
+  // Track PageView on Both Pixels
+  fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1661636628948538&ev=PageView&noscript=1" />
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2156023955290438&ev=PageView&noscript=1" />
+  </noscript>
+  <!-- End Meta Pixel Code -->
+
   <style>
     :root {
-      --bg: #000000;
-      --card-bg: rgba(6, 6, 8, 0.78);
-      --border-thin: rgba(255, 255, 255, 0.08);
-      --border-hover: rgba(255, 255, 255, 0.22);
+      --bg: #030305;
+      --card-bg: rgba(12, 13, 18, 0.85);
+      --border-thin: rgba(255, 255, 255, 0.09);
+      --border-gold: rgba(212, 175, 55, 0.28);
       --text-main: #f8fafc;
-      --text-muted: #848d97;
+      --text-muted: #94a3b8;
       --accent-blue: #0088cc;
-      --accent-cyan: #00f2fe;
+      --emerald: #10b981;
     }
 
     * {
@@ -55,12 +56,13 @@ src="https://www.facebook.com/tr?id=2156023955290438&ev=PageView&noscript=1"
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 2.2rem 1.1rem 3.5rem;
+      justify-content: space-between;
+      padding: 2rem 1.15rem 2.5rem;
       position: relative;
       overflow-x: hidden;
     }
 
-    /* Fixed Dark Wallpaper Backdrop */
+    /* Classic Subtle Grid & Dark Backdrop */
     .bg-canvas {
       position: fixed;
       top: 0;
@@ -68,25 +70,26 @@ src="https://www.facebook.com/tr?id=2156023955290438&ev=PageView&noscript=1"
       width: 100%;
       height: 100%;
       background: 
-        linear-gradient(180deg, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.82) 40%, #000000 100%),
+        radial-gradient(circle at 50% 0%, rgba(0, 136, 204, 0.12) 0%, rgba(0, 0, 0, 0.94) 60%, #030305 100%),
         url("https://i.pinimg.com/1200x/de/e3/14/dee31462a4fedc68822ad6b77c7b0784.jpg") center/cover no-repeat;
       z-index: -1;
       pointer-events: none;
     }
 
-    /* Meta Compliance Indicator */
+    /* Top Compliance Pill */
     .compliance-pill {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      background: rgba(255, 255, 255, 0.02);
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.03);
       border: 0.5px solid var(--border-thin);
       padding: 6px 14px;
       border-radius: 999px;
-      font-size: 0.73rem;
+      font-size: 0.72rem;
       font-weight: 500;
-      letter-spacing: 0.04em;
-      color: #94a3b8;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #cbd5e1;
       margin-bottom: 1.5rem;
       backdrop-filter: blur(8px);
     }
@@ -94,94 +97,51 @@ src="https://www.facebook.com/tr?id=2156023955290438&ev=PageView&noscript=1"
     .compliance-pill span {
       width: 6px;
       height: 6px;
-      background: #10b981;
+      background: var(--emerald);
       border-radius: 50%;
-      box-shadow: 0 0 8px #10b981;
+      box-shadow: 0 0 8px var(--emerald);
     }
 
-    header {
-      text-align: center;
-      max-width: 480px;
-      margin-bottom: 2.2rem;
-    }
-
-    header h1 {
-      font-size: 1.95rem;
-      font-weight: 300;
-      letter-spacing: -0.03em;
-      color: #ffffff;
-      line-height: 1.25;
-      margin-bottom: 0.7rem;
-    }
-
-    header h1 b {
-      font-weight: 700;
-      background: linear-gradient(135deg, #ffffff 40%, #38bdf8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    header p {
-      color: var(--text-muted);
-      font-size: 0.92rem;
-      line-height: 1.55;
-      font-weight: 400;
-    }
-
-    .feed {
-      display: flex;
-      flex-direction: column;
-      gap: 1.4rem;
+    /* Main Hero Card */
+    .hero-card {
       width: 100%;
-      max-width: 440px;
-      margin-bottom: 3rem;
-    }
-
-    /* Classic Super Black Thin Card */
-    .card {
-      position: relative;
+      max-width: 420px;
       background: var(--card-bg);
-      border: 0.5px solid var(--border-thin);
-      border-radius: 18px;
-      padding: 1.5rem 1.25rem 1.25rem;
+      border: 1px solid var(--border-thin);
+      border-radius: 22px;
+      padding: 2rem 1.4rem 1.8rem;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-      transition: transform 0.25s ease, border-color 0.25s ease;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      position: relative;
+      margin-bottom: 2.2rem;
     }
 
-    .card:hover {
-      border-color: var(--border-hover);
-    }
-
-    .card:active {
-      transform: scale(0.985);
-    }
-
-    .meta-tag {
+    .badge-top {
       position: absolute;
-      top: -10px;
-      background: #000000;
-      border: 0.5px solid rgba(255, 255, 255, 0.16);
-      color: #cbd5e1;
-      font-size: 0.65rem;
+      top: -11px;
+      background: #090a0f;
+      border: 0.5px solid var(--border-gold);
+      color: #e2e8f0;
+      font-size: 0.66rem;
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      padding: 2px 10px;
+      padding: 3px 12px;
       border-radius: 999px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     }
 
     .avatar-wrap {
       position: relative;
-      width: 74px;
-      height: 74px;
-      margin-top: 0.4rem;
-      margin-bottom: 0.9rem;
+      width: 96px;
+      height: 96px;
+      margin-top: 0.3rem;
+      margin-bottom: 1.1rem;
     }
 
     .avatar {
@@ -189,92 +149,149 @@ src="https://www.facebook.com/tr?id=2156023955290438&ev=PageView&noscript=1"
       height: 100%;
       border-radius: 50%;
       object-fit: cover;
-      padding: 2px;
-      border: 0.5px solid rgba(255, 255, 255, 0.15);
+      padding: 3px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
       background: #09090b;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
     }
 
-    .sub-pill {
+    .verified-pill {
       position: absolute;
-      bottom: -3px;
-      right: -3px;
-      background: #09090b;
-      border: 0.5px solid rgba(255, 255, 255, 0.15);
-      color: #94a3b8;
+      bottom: 0;
+      right: -6px;
+      background: #064e3b;
+      border: 1px solid #10b981;
+      color: #ecfdf5;
       font-size: 0.62rem;
-      font-weight: 600;
-      padding: 2px 7px;
+      font-weight: 700;
+      padding: 2px 8px;
       border-radius: 999px;
+      letter-spacing: 0.03em;
     }
 
     .title {
-      font-size: 1.12rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      color: #f1f5f9;
-      margin-bottom: 0.35rem;
+      font-size: 1.38rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      margin-bottom: 0.3rem;
+    }
+
+    .subtitle {
+      font-size: 0.82rem;
+      color: #38bdf8;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.15rem;
     }
 
     .desc {
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
-      line-height: 1.45;
-      margin-bottom: 1.3rem;
-      padding: 0 0.4rem;
-      font-weight: 400;
+      line-height: 1.55;
+      margin-bottom: 1.4rem;
     }
 
-    /* Big High-Converting Thin-Styled CTA */
+    /* Value Points for High-Quality Leads */
+    .curriculum-box {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.025);
+      border: 0.5px solid rgba(255, 255, 255, 0.07);
+      border-radius: 14px;
+      padding: 1rem 1.1rem;
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    .curriculum-title {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #64748b;
+      font-weight: 600;
+      margin-bottom: 0.65rem;
+    }
+
+    .curriculum-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .curriculum-list li {
+      font-size: 0.83rem;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .curriculum-list li svg {
+      width: 15px;
+      height: 15px;
+      fill: #38bdf8;
+      flex-shrink: 0;
+    }
+
+    /* High-Converting CTA Button */
     .btn {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 9px;
+      gap: 10px;
       width: 100%;
-      min-height: 52px;
-      font-size: 0.98rem;
+      min-height: 56px;
+      font-size: 1.02rem;
       font-weight: 600;
       letter-spacing: 0.01em;
       color: #ffffff;
       text-decoration: none;
-      padding: 0.85rem 1.4rem;
-      border-radius: 12px;
-      background: linear-gradient(180deg, rgba(0, 136, 204, 0.9) 0%, rgba(0, 102, 160, 0.95) 100%);
-      border: 0.5px solid rgba(255, 255, 255, 0.25);
-      box-shadow: 0 4px 18px rgba(0, 136, 204, 0.25);
+      padding: 0.95rem 1.4rem;
+      border-radius: 14px;
+      background: linear-gradient(180deg, #0099e6 0%, #006699 100%);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      box-shadow: 0 6px 24px rgba(0, 136, 204, 0.35);
       cursor: pointer;
       transition: all 0.2s ease;
     }
 
     .btn:hover {
-      background: linear-gradient(180deg, #0099e6 0%, #0077b3 100%);
-      box-shadow: 0 6px 22px rgba(0, 136, 204, 0.4);
+      background: linear-gradient(180deg, #00aaff 0%, #0077b3 100%);
+      box-shadow: 0 8px 28px rgba(0, 136, 204, 0.5);
+      transform: translateY(-1px);
     }
 
     .btn:active {
-      transform: scale(0.975);
+      transform: scale(0.98);
     }
 
     .btn svg {
-      width: 19px;
-      height: 19px;
+      width: 21px;
+      height: 21px;
       fill: currentColor;
     }
 
-    /* Meta Ads Compliance Safe Footer */
+    .micro-note {
+      font-size: 0.72rem;
+      color: #64748b;
+      margin-top: 0.75rem;
+    }
+
+    /* Meta Ads Safe Footer */
     footer {
       width: 100%;
-      max-width: 440px;
+      max-width: 420px;
       text-align: center;
       border-top: 0.5px solid var(--border-thin);
-      padding-top: 1.5rem;
+      padding-top: 1.4rem;
     }
 
     .footer-links {
       display: flex;
       justify-content: center;
       gap: 1.2rem;
-      margin-bottom: 0.85rem;
+      margin-bottom: 0.8rem;
     }
 
     .footer-links a {
@@ -289,9 +306,9 @@ src="https://www.facebook.com/tr?id=2156023955290438&ev=PageView&noscript=1"
     }
 
     .disclaimer {
-      font-size: 0.68rem;
+      font-size: 0.67rem;
       color: #52525b;
-      line-height: 1.45;
+      line-height: 1.48;
     }
   </style>
 </head>
@@ -299,76 +316,58 @@ src="https://www.facebook.com/tr?id=2156023955290438&ev=PageView&noscript=1"
 
   <div class="bg-canvas"></div>
 
-  <!-- Meta Trust Anchor -->
+  <!-- Top Compliance Trust Indicator -->
   <div class="compliance-pill">
-    <span></span> Financial Research & Education Only
+    <span></span> Financial Market Literacy & Research
   </div>
 
-  <header>
-    <h1>Best <b>Skills</b></h1>
-    <p>Esi Skills jisse seekh kar apni life ke gold pahse me ja skte ho. khud ko dusro se better bana skte ho. agar ap bhi reels dekh kar time waste kar rahe ho. to abhi TELEGRAM JOIN kro , time waste karne se accha skills par work karo. jo apko better banaegi.!! below down 👇🏻👇🏻 best learning channel list kar rakhe hai. abhi join karo and let get started !!</p>
-  </header>
+  <!-- Single Focused Channel Landing Card -->
+  <main class="hero-card">
+    <span class="badge-top">Quantitative Education Hub</span>
 
-  <main class="feed">
-    <!-- Trade With Munaf -->
-    <div class="card">
-      <span class="meta-tag">Derivatives Mechanics</span>
-      <div class="avatar-wrap">
-        <img class="avatar" src="https://play-lh.googleusercontent.com/QG7BVQWhWMx9_9v4Y1HQTwciF2rQCgOkWuMdcId-2WLnwB4wm72QCv8J3irTn-NXgjHr=w240-h480" alt="Trade with Munaf" />
-        <span class="sub-pill">Options</span>
-      </div>
-      <h2 class="title">Trade with Munaf</h2>
-      <p class="desc">Systematic intraday dynamics, options contract analysis, and strict capital allocation drills.</p>
-      <a href="https://t.me/+zVWG5-m3YpdjODFl" target="_blank" rel="noopener noreferrer" class="btn">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
-        Join Free Channel
-      </a>
+    <div class="avatar-wrap">
+      <img class="avatar" src="https://www.dilsetrader.in/assets/gokulsir1-BA3WQkQC.png" alt="Gokul Chhabra" />
+      <span class="verified-pill">SEBI RA</span>
     </div>
 
-    <!-- Gokul Chhabra -->
-    <div class="card">
-      <span class="meta-tag">Quant Framework</span>
-      <div class="avatar-wrap">
-        <img class="avatar" src="https://www.dilsetrader.in/assets/gokulsir1-BA3WQkQC.png" alt="Gokul Chhabra" />
-        <span class="sub-pill">SEBI RA</span>
-      </div>
-      <h2 class="title">Gokul Chhabra Dil Se Trader</h2>
-      <p class="desc">Algorithmic execution logic, equity flow tracking, and quantitative pattern modeling.</p>
-      <a href="https://t.me/+64_Pvno1J-Q3MTA1" target="_blank" rel="noopener noreferrer" class="btn">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
-        Join Free Channel
-      </a>
+    <h1 class="title">Gokul Chhabra Dil Se Trader</h1>
+    <p class="subtitle">Systematic Chart Reading & Market Structure</p>
+
+    <p class="desc">
+      Stop wasting time on random social feeds. Build real analytical skills with structured market research, institutional price behavior studies, and disciplined risk management frameworks.
+    </p>
+
+    <!-- Quality Filter: Sets clear expectations for serious learners -->
+    <div class="curriculum-box">
+      <div class="curriculum-title">What You Will Study Inside:</div>
+      <ul class="curriculum-list">
+        <li>
+          <svg viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+          Quantitative Price Action & Market Mechanics
+        </li>
+        <li>
+          <svg viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+          Institutional Volume & Equity Flow Analysis
+        </li>
+        <li>
+          <svg viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+          Position Sizing & Capital Preservation Logic
+        </li>
+      </ul>
     </div>
 
-    <!-- Ayush Bhandari -->
-    <div class="card">
-      <span class="meta-tag">Price Action</span>
-      <div class="avatar-wrap">
-        <img class="avatar" src="https://i.pinimg.com/736x/cd/19/f1/cd19f16560a9f260ae31a19bc4ee2821.jpg" alt="Ayush Bhandari Trader" />
-        <span class="sub-pill">Charts</span>
-      </div>
-      <h2 class="title">Ayush Bhandari Trader</h2>
-      <p class="desc">Clean structural mapping, order block recognition, and high-probability supply-demand levels.</p>
-      <a href="https://t.me/AyushBhandariTrader" target="_blank" rel="noopener noreferrer" class="btn">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
-        Join Free Channel
-      </a>
-    </div>
+    <!-- Tracked Subscribe CTA Button -->
+    <a href="https://t.me/+64_Pvno1J-Q3MTA1" 
+       id="subscribeBtn"
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="btn"
+       onclick="trackSubscribe(event, this.href)">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+      Join Official Telegram Channel
+    </a>
 
-    <!-- Halal Trader -->
-    <div class="card">
-      <span class="meta-tag">Ethical Equity</span>
-      <div class="avatar-wrap">
-        <img class="avatar" src="https://i.pinimg.com/1200x/67/ae/12/67ae128a54936898ac0bc4b999a6ba28.jpg" alt="Halal Trader" />
-        <span class="sub-pill">Halal</span>
-      </div>
-      <h2 class="title">Halal Trader Community</h2>
-      <p class="desc">Ethical cash stock screening, Shariah debt-ratio evaluation, and non-derivative swing setups.</p>
-      <a href="https://t.me/+uCKCdpdZtNllYzg9" target="_blank" rel="noopener noreferrer" class="btn">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
-        Join Free Channel
-      </a>
-    </div>
+    <span class="micro-note">Instant Access • Strictly Educational Community</span>
   </main>
 
   <!-- Essential Meta Ads Compliance Footer -->
@@ -376,15 +375,37 @@ src="https://www.facebook.com/tr?id=2156023955290438&ev=PageView&noscript=1"
     <div class="footer-links">
       <a href="#privacy">Privacy Policy</a>
       <a href="#terms">Terms & Conditions</a>
-      <a href="#contact">Contact Support</a>
+      <a href="#disclosure">Regulatory Disclosure</a>
     </div>
     <p class="disclaimer">
-      <strong>Disclaimer:</strong> All content shared is strictly for educational, research, and technical training purposes. We do not provide guaranteed returns, portfolio management, or tips/recommendations. Trading in equities, derivatives, and financial instruments involves risk of capital loss.
+      <strong>Educational Disclaimer:</strong> All content, chart breakdowns, and discussions shared are strictly for educational and academic training purposes. We do not offer guaranteed profits, account handling, or financial tips. Participation in financial markets involves risk. Always consult a certified financial planner before making investment decisions.
     </p>
     <p class="disclaimer" style="margin-top: 6px;">
-      This website is not part of or endorsed by Meta Platforms, Inc. or Facebook Inc.
+      This site is not a part of the Meta™ website or Meta Platforms, Inc. Additionally, this site is NOT endorsed by Meta™ in any way.
     </p>
   </footer>
+
+  <!-- Subscribe Event Tracking Script -->
+  <script>
+    function trackSubscribe(event, url) {
+      event.preventDefault();
+      
+      // Fires standard 'Subscribe' event to BOTH initialized Meta Pixels
+      if (typeof fbq === 'function') {
+        fbq('track', 'Subscribe', {
+          content_name: 'Gokul Chhabra Telegram Channel',
+          content_category: 'Financial Education',
+          value: 0.00,
+          currency: 'INR'
+        });
+      }
+
+      // 180ms delay ensures the pixel request finishes before Telegram redirect
+      setTimeout(function() {
+        window.open(url, '_blank', 'noopener,noreferrer');
+      }, 180);
+    }
+  </script>
 
 </body>
 </html>
