@@ -1,43 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1661636628948538');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1661636628948538&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-  
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Malika Learner - Business & Market Analysis</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#faf7f2">
+  <title>Malika Learner — Business & Market Analysis</title>
 
-  <!-- Combined Dual Meta Pixel Code -->
+  <!-- Preconnect for Faster Font Loading on Mobile Data -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+
+  <!-- Clean Combined Dual Meta Pixel Code -->
   <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  
-  fbq('init', '1661636628948538');
-  fbq('init', '2156023955290438');
-  fbq('track', 'PageView');
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    
+    fbq('init', '1661636628948538');
+    fbq('init', '2156023955290438');
+    fbq('track', 'Telegram-Members');
   </script>
   <noscript>
     <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1661636628948538&ev=PageView&noscript=1" />
@@ -46,222 +33,352 @@ src="https://www.facebook.com/tr?id=1661636628948538&ev=PageView&noscript=1"
   <!-- End Meta Pixel Code -->
 
   <style>
-    /* RESET */
+    /* ULTRA PRO RESET & VARIABLES */
+    :root {
+      --bg-outer: #f4efe6;
+      --bg-card: #fffdf9;
+      --gold-primary: #9c7a4a;
+      --gold-light: #e6dac7;
+      --gold-soft: #f9f4ec;
+      --text-dark: #1e1914;
+      --text-body: #4a3f32;
+      --text-muted: #8c7b67;
+      --btn-dark: #141210;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       -webkit-tap-highlight-color: transparent;
+      -webkit-font-smoothing: antialiased;
     }
 
     body {
-      background: #faf7f2;
-      font-family: 'Inter', sans-serif;
-      color: #2c241a;
+      background: var(--bg-outer);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-dark);
+      overflow-x: hidden;
     }
 
-    /* CONTAINER */
+    /* MAIN MOBILE CONTAINER */
     .container {
-      max-width: 480px;
-      margin: auto;
-      background: #fffdf9;
+      max-width: 460px;
+      margin: 0 auto;
+      background: radial-gradient(circle at top, #fffefb 0%, #faf6ef 100%);
       min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 0 40px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 0 50px rgba(30, 25, 20, 0.08);
+      padding-bottom: 92px; /* Space for sticky bottom bar */
+      position: relative;
     }
 
-    /* HERO */
+    /* HERO SECTION */
     .hero {
-      padding: 1.8rem 1.4rem 1.2rem;
+      padding: 1.3rem 1.25rem 1rem;
       text-align: center;
     }
 
-    /* COMPLIANCE BADGE */
+    /* COMPLIANCE & TRUST BADGE */
     .edu-badge {
-      display: inline-block;
-      background: #f4eee4;
-      color: #7c623e;
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 1.2px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f5efe4;
+      color: #725835;
+      font-size: 0.64rem;
+      font-weight: 600;
+      letter-spacing: 1.3px;
       text-transform: uppercase;
-      padding: 5px 12px;
+      padding: 6px 14px;
       border-radius: 50px;
-      margin-bottom: 1.2rem;
-      border: 1px solid #e6dac7;
+      margin-bottom: 1.1rem;
+      border: 1px solid #e2d4be;
+      box-shadow: 0 2px 8px rgba(156, 122, 74, 0.06);
     }
 
-    /* PROFILE */
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      background: #2e8b57;
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.18);
+    }
+
+    /* PROFILE AVATAR WITH LUXURY RING */
     .profile-wrap {
       position: relative;
       display: inline-block;
+      margin-bottom: 0.4rem;
     }
 
     .profile-circle {
-      width: 122px;
-      height: 122px;
+      width: 112px;
+      height: 112px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2.5px solid #d4b88c;
-      padding: 3px;
-      background: #fff;
-      box-shadow: 0 10px 24px rgba(106, 78, 42, 0.12);
+      border: 2px solid #c9ab7d;
+      padding: 4px;
+      background: #ffffff;
+      box-shadow: 0 12px 28px rgba(106, 78, 42, 0.15);
+      display: block;
+    }
+
+    .verified-tick {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      background: #141210;
+      color: #e6dac7;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #ffffff;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    }
+
+    .verified-tick svg {
+      width: 13px;
+      height: 13px;
+      fill: #d4b88c;
     }
 
     .profile-name {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.55rem;
-      font-weight: 600;
-      margin-top: 10px;
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-top: 6px;
       color: #8b6b3e;
-      letter-spacing: 0.5px;
+      letter-spacing: 1.2px;
     }
 
-    /* TITLE */
+    /* HEADINGS */
     .love-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2.25rem;
-      font-weight: 600;
-      margin-top: 0.6rem;
-      color: #6a4e2a;
-      line-height: 1.15;
+      font-size: 2.15rem;
+      font-weight: 700;
+      margin-top: 0.25rem;
+      color: #2c2115;
+      line-height: 1.12;
+      letter-spacing: -0.3px;
     }
 
     .sub-charm {
-      font-size: 0.72rem;
-      color: #b29776;
-      letter-spacing: 1.8px;
+      font-size: 0.68rem;
+      color: #9e8462;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      margin-top: 6px;
-      margin-bottom: 1.1rem;
-      font-weight: 500;
+      margin-top: 7px;
+      margin-bottom: 1rem;
+      font-weight: 600;
     }
 
-    /* CARD */
+    /* MAIN VALUE CARD */
     .message-card {
       background: #ffffff;
-      border-radius: 25px;
-      padding: 1.35rem 1.25rem;
-      margin-top: 0.8rem;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
-      border: 1px solid #f3ece2;
+      border-radius: 24px;
+      padding: 1.3rem 1.15rem;
+      box-shadow: 0 14px 35px rgba(44, 36, 26, 0.05);
+      border: 1px solid #ede3d4;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .message-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 15%;
+      right: 15%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c9ab7d, transparent);
     }
 
     .love-statement {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.55rem;
-      font-weight: 600;
-      color: #9c7a4a;
-      margin-bottom: 8px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #8c6a3b;
+      margin-bottom: 6px;
     }
 
     .description-text {
-      font-size: 0.88rem;
-      color: #4f4436;
+      font-size: 0.86rem;
+      color: var(--text-body);
       line-height: 1.55;
+      font-weight: 400;
     }
 
-    /* STATS */
+    /* PILL STATS */
     .stats-light {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      background: #f9f4ec;
-      padding: 8px 12px;
-      border-radius: 50px;
-      margin-top: 12px;
-      font-size: 0.72rem;
-      font-weight: 500;
-      color: #6a4e2a;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      background: var(--gold-soft);
+      padding: 8px 6px;
+      border-radius: 14px;
+      margin-top: 13px;
+      border: 1px solid #efe5d6;
     }
 
-    /* BUTTON (DARK + BIG + HIGH CONVERTING) */
+    .stats-light span {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: #5e4627;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+    }
+
+    /* PRIMARY CTA BUTTON */
     .btn-link {
       text-decoration: none;
       display: block;
     }
 
     .btn-classic {
-      margin-top: 16px;
+      margin-top: 14px;
       width: 100%;
-      padding: 15px 18px;
+      padding: 16px 20px;
       border-radius: 50px;
-      border: none;
-      background: #141210;
+      border: 1px solid #332d27;
+      background: linear-gradient(135deg, #1d1916 0%, #0d0b09 100%);
       color: #ffffff;
+      font-family: 'Inter', sans-serif;
       font-size: 0.92rem;
       font-weight: 600;
-      letter-spacing: 0.8px;
+      letter-spacing: 0.7px;
       cursor: pointer;
-      transition: all 0.2s ease;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 9px;
-      box-shadow: 0 8px 20px rgba(20, 18, 16, 0.18);
+      gap: 10px;
+      box-shadow: 0 10px 24px rgba(20, 18, 16, 0.24);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      animation: subtlePulse 2.8s infinite ease-in-out;
     }
 
-    .btn-classic:hover {
-      background: #2b2621;
-      transform: scale(1.015);
+    /* Subtle Shimmer Effect on Button */
+    .btn-classic::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 40%;
+      height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(212, 184, 140, 0.22), transparent);
+      transform: rotate(25deg);
+      animation: sheen 3.5s infinite;
+    }
+
+    @keyframes sheen {
+      0% { left: -60%; }
+      35%, 100% { left: 130%; }
+    }
+
+    @keyframes subtlePulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.015); }
     }
 
     .btn-classic:active {
-      transform: scale(0.985);
+      transform: scale(0.97) !important;
     }
 
     .btn-classic svg {
-      width: 18px;
-      height: 18px;
-      fill: #ffffff;
+      width: 20px;
+      height: 20px;
+      fill: #e6dac7;
+      flex-shrink: 0;
     }
 
-    /* PROMISE */
-    .promise-classic {
-      background: #fffcf7;
-      border-radius: 20px;
-      padding: 1.15rem;
-      margin-top: 1rem;
-      border: 1px solid #ede4d6;
-      text-align: left;
-    }
-
-    .promise-text {
-      font-size: 0.84rem;
-      color: #4f4436;
-      line-height: 1.65;
-    }
-
-    .promise-summary {
-      margin-top: 10px;
-      padding-top: 10px;
-      border-top: 1px dashed #e5dac9;
-      text-align: center;
-      font-size: 0.82rem;
-      color: #7c623e;
+    .cta-micro {
+      font-size: 0.68rem;
+      color: #8c7b67;
+      margin-top: 8px;
       font-weight: 500;
     }
 
-    /* FOOTER & ADVERTISER */
+    /* PROMISE / CHECKLIST BOX */
+    .promise-classic {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.1rem 1.15rem;
+      margin-top: 0.95rem;
+      border: 1px solid #ede3d4;
+      text-align: left;
+      box-shadow: 0 6px 20px rgba(44, 36, 26, 0.03);
+    }
+
+    .promise-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .promise-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.84rem;
+      color: #3b3227;
+      font-weight: 500;
+    }
+
+    .check-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #f5efe4;
+      border: 1px solid #dfd0b8;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: #7c5f38;
+      font-size: 0.7rem;
+    }
+
+    .promise-summary {
+      margin-top: 11px;
+      padding-top: 10px;
+      border-top: 1px dashed #e5dac9;
+      text-align: center;
+      font-size: 0.79rem;
+      color: #7c623e;
+      font-weight: 600;
+    }
+
+    /* FOOTER & COMPLIANCE */
     footer {
       font-size: 0.65rem;
       text-align: center;
-      padding: 1.2rem 1.4rem 1.5rem;
+      padding: 1.2rem 1.25rem 1.4rem;
       color: #998c7c;
-      border-top: 1px solid #f2ebe1;
-      background: #faf6ef;
+      border-top: 1px solid #ede4d7;
+      background: #f7f1e7;
     }
 
     .advertiser-box {
       display: inline-block;
-      background: #fff;
-      border: 1px solid #e6dac7;
+      background: #ffffff;
+      border: 1px solid #e2d5c1;
       padding: 5px 14px;
       border-radius: 50px;
       margin-bottom: 10px;
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       color: #5c4b37;
     }
 
@@ -271,25 +388,123 @@ src="https://www.facebook.com/tr?id=1661636628948538&ev=PageView&noscript=1"
       text-decoration: none;
     }
 
-    .advertiser-box a:hover {
-      text-decoration: underline;
-    }
-
     .footer-links {
       margin-bottom: 8px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
     }
 
     .footer-links a {
-      color: #8c7b67;
+      color: #7e6e5c;
       text-decoration: none;
-      margin: 0 6px;
+      font-weight: 500;
     }
 
     .disclaimer-text {
-      font-size: 0.6rem;
-      color: #a39686;
+      font-size: 0.59rem;
+      color: #9c8f7f;
       line-height: 1.45;
       margin-top: 6px;
+    }
+
+    /* STICKY BOTTOM BAR (HIGH CONVERSION ENGINE) */
+    .sticky-bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 460px;
+      background: rgba(255, 253, 249, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid #e6dac7;
+      padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      z-index: 999;
+      box-shadow: 0 -8px 25px rgba(20, 18, 16, 0.08);
+    }
+
+    .sticky-info {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      min-width: 0;
+    }
+
+    .sticky-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid #c9ab7d;
+      flex-shrink: 0;
+    }
+
+    .sticky-text {
+      text-align: left;
+      min-width: 0;
+    }
+
+    .sticky-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #2c2115;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.1;
+    }
+
+    .sticky-sub {
+      font-size: 0.65rem;
+      color: #7c623e;
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    .sticky-btn-link {
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .sticky-btn {
+      background: #141210;
+      color: #ffffff;
+      border: 1px solid #332d27;
+      padding: 11px 16px;
+      border-radius: 50px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(20, 18, 16, 0.2);
+    }
+
+    .sticky-btn:active {
+      transform: scale(0.96);
+    }
+
+    .sticky-btn svg {
+      width: 15px;
+      height: 15px;
+      fill: #e6dac7;
+    }
+
+    /* SMALL SCREEN TWEAKS */
+    @media (max-width: 360px) {
+      .love-title { font-size: 1.9rem; }
+      .profile-circle { width: 98px; height: 98px; }
+      .stats-light span { font-size: 0.62rem; }
     }
   </style>
 </head>
@@ -297,16 +512,30 @@ src="https://www.facebook.com/tr?id=1661636628948538&ev=PageView&noscript=1"
 
   <div class="container">
     <section class="hero">
-      <div class="edu-badge">Educational Research Community</div><br>
+      <!-- Top Trust Badge -->
+      <div class="edu-badge">
+        <span class="badge-dot"></span>
+        Educational Research Community
+      </div>
 
-      <div class="profile-wrap">
-        <img src="https://i.ytimg.com/vi/502WJJCXLRg/oar2.jpg?sqp=-oaymwEYCJUDENAFSFqQAgHyq4qpAwcIARUAAIhC&rs=AOn4CLAyH8YbUeL0Dqs6iCXGEsTF06aBKw&usqp=CCk" alt="Malika Learner" class="profile-circle">
+      <!-- Profile Avatar -->
+      <div>
+        <div class="profile-wrap">
+          <img src="https://i.ytimg.com/vi/502WJJCXLRg/oar2.jpg?sqp=-oaymwEYCJUDENAFSFqQAgHyq4qpAwcIARUAAIhC&rs=AOn4CLAyH8YbUeL0Dqs6iCXGEsTF06aBKw&usqp=CCk" 
+               alt="Malika Learner" 
+               class="profile-circle"
+               loading="eager">
+          <div class="verified-tick" title="Verified Community">
+            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          </div>
+        </div>
       </div>
 
       <div class="profile-name">MALIKA LEARNER</div>
       <h1 class="love-title">Business & Market Analysis</h1>
       <div class="sub-charm">CASE STUDIES • MARKET TRENDS • RESEARCH</div>
 
+      <!-- Primary Conversion Card -->
       <div class="message-card">
         <div class="love-statement">Structured Insights • Smart Learning</div>
         <p class="description-text">
@@ -319,39 +548,49 @@ src="https://www.facebook.com/tr?id=1661636628948538&ev=PageView&noscript=1"
           <span>📈 Case Studies</span>
         </div>
 
-        <!-- TRACKED TELEGRAM CTA BUTTON -->
+        <!-- Primary Tracked Telegram CTA -->
         <a href="https://t.me/+1Lb8S87ST5M0Zjk1" 
-           target="_blank" 
-           rel="noopener noreferrer" 
            class="btn-link"
            onclick="trackSubscribe(event, this.href)">
-          <button class="btn-classic">
+          <button type="button" class="btn-classic">
             <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
-            JOIN TELEGRAM NOW
+            JOIN TELEGRAM CHANNEL
           </button>
         </a>
+        <div class="cta-micro">⚡ Free Access • Instant Join on Telegram</div>
       </div>
 
+      <!-- Value Checklist -->
       <div class="promise-classic">
-        <p class="promise-text">
-          ✔️ Daily Business & Sector Breakdowns <br>
-          ✔️ Market Structure & Trend Reading <br>
-          ✔️ Practical Financial Literacy Notes
-        </p>
+        <ul class="promise-list">
+          <li>
+            <span class="check-icon">✓</span>
+            <span>Daily Business & Sector Breakdowns</span>
+          </li>
+          <li>
+            <span class="check-icon">✓</span>
+            <span>Market Structure & Trend Reading</span>
+          </li>
+          <li>
+            <span class="check-icon">✓</span>
+            <span>Practical Financial Literacy Notes</span>
+          </li>
+        </ul>
         <div class="promise-summary">
           Simple aur structured learning — beginner bhi easily samajh sakta hai.
         </div>
       </div>
     </section>
 
+    <!-- Compliance Footer -->
     <footer>
       <div class="advertiser-box">
         Advertiser: <a href="https://t.me/growshal" target="_blank" rel="noopener noreferrer">Growshal (t.me/Growshal)</a>
       </div>
 
       <div class="footer-links">
-        <a href="#privacy">Privacy Policy</a> • 
-        <a href="#terms">Terms of Use</a> • 
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#terms">Terms of Use</a>
         <a href="#disclaimer">Disclaimer</a>
       </div>
 
@@ -363,11 +602,37 @@ src="https://www.facebook.com/tr?id=1661636628948538&ev=PageView&noscript=1"
     </footer>
   </div>
 
-  <!-- Subscribe Event Tracking Script -->
+  <!-- STICKY BOTTOM CTA BAR FOR MOBILE THUMB REACH -->
+  <div class="sticky-bottom-bar">
+    <div class="sticky-info">
+      <img src="https://i.ytimg.com/vi/502WJJCXLRg/oar2.jpg?sqp=-oaymwEYCJUDENAFSFqQAgHyq4qpAwcIARUAAIhC&rs=AOn4CLAyH8YbUeL0Dqs6iCXGEsTF06aBKw&usqp=CCk" 
+           alt="Malika" 
+           class="sticky-avatar">
+      <div class="sticky-text">
+        <div class="sticky-title">Malika Learner</div>
+        <div class="sticky-sub">Free Research Community</div>
+      </div>
+    </div>
+
+    <a href="https://t.me/+1Lb8S87ST5M0Zjk1" 
+       class="sticky-btn-link"
+       onclick="trackSubscribe(event, this.href)">
+      <button type="button" class="sticky-btn">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+        OPEN APP
+      </button>
+    </a>
+  </div>
+
+  <!-- Smart Telegram Deep Link + Meta Pixel Tracking Script -->
   <script>
+    var isRedirecting = false;
+
     function trackSubscribe(event, url) {
       event.preventDefault();
-      
+      if (isRedirecting) return;
+      isRedirecting = true;
+
       if (typeof fbq === 'function') {
         fbq('track', 'Subscribe', {
           content_name: 'Malika Learner Telegram',
@@ -377,9 +642,16 @@ src="https://www.facebook.com/tr?id=1661636628948538&ev=PageView&noscript=1"
         });
       }
 
+      // 1. Force open Telegram App directly via Deep Link
       setTimeout(function() {
-        window.open(url, '_blank', 'noopener,noreferrer');
-      }, 180);
+        window.location.href = "tg://join?invite=1Lb8S87ST5M0Zjk1";
+      }, 120);
+
+      // 2. Fallback to web link if app doesn't trigger within 800ms
+      setTimeout(function() {
+        window.location.href = "https://t.me/+1Lb8S87ST5M0Zjk1";
+        isRedirecting = false;
+      }, 900);
     }
   </script>
 
