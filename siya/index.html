@@ -2,37 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>SIYA • Cricket Match & Toss Insights</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Cricket Queen Siya - Telegram Channel</title>
+  
   <!-- Meta Pixel Code -->
   <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1612583743229002');
-  fbq('track', 'PageView');
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '807304822145447');
+    fbq('track', 'PageView');
   </script>
   <noscript>
-    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1612583743229002&ev=PageView&noscript=1"/>
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=807304822145447&ev=PageView&noscript=1"/>
   </noscript>
-  <!-- End Meta Pixel Code -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg-dark: #090508;
-      --card-bg: #140c12;
-      --border-rose: rgba(255, 77, 148, 0.22);
-      --pink-primary: #ff2a85;
-      --pink-light: #ff85b3;
-      --text-white: #ffffff;
-      --text-muted: #b5a4b0;
-      --green-live: #10b981;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-sub: #475569;
+      --text-muted: #64748b;
+      --tg-blue: #0088cc;
+      --tg-hover: #0077b5;
+      --green: #10b981;
+      --radius: 12px;
     }
 
     * {
@@ -40,319 +44,412 @@
       padding: 0;
       box-sizing: border-box;
       -webkit-tap-highlight-color: transparent;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
     body {
-      background-color: var(--bg-dark);
-      background-image: radial-gradient(circle at 50% 0%, rgba(255, 42, 133, 0.18) 0%, rgba(9, 5, 8, 1) 70%);
-      color: var(--text-white);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 16px 14px 24px;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding-bottom: 90px;
     }
 
-    .wrapper {
-      width: 100%;
-      max-width: 410px;
+    .top-strip {
+      background: #0f172a;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 16px;
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
       align-items: center;
-      text-align: center;
     }
 
-    /* Live Status Pill */
-    .live-pill {
+    .live-status {
       display: inline-flex;
       align-items: center;
       gap: 7px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-rose);
-      padding: 5px 13px;
-      border-radius: 999px;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      color: #ffd1e3;
-      margin-bottom: 14px;
     }
 
-    .live-dot {
-      width: 7px;
-      height: 7px;
-      background: var(--green-live);
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
       border-radius: 50%;
-      box-shadow: 0 0 8px var(--green-live);
-      animation: blink 1.4s infinite;
     }
 
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.35; }
+    .container {
+      max-width: 580px;
+      margin: 0 auto;
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
 
-    /* Main Conversion Card */
-    .main-card {
-      width: 100%;
+    /* Profile Header */
+    .profile-card {
       background: var(--card-bg);
-      border: 1px solid var(--border-rose);
-      border-radius: 24px;
-      padding: 22px 18px 20px;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.75);
-      position: relative;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      text-align: center;
     }
 
-    /* Profile Avatar */
-    .avatar-box {
-      position: relative;
-      width: 108px;
-      height: 108px;
+    .avatar-wrap {
+      width: 90px;
+      height: 90px;
       margin: 0 auto 12px;
+      position: relative;
     }
 
-    .avatar-box img {
+    .avatar {
       width: 100%;
       height: 100%;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid var(--pink-primary);
-      padding: 2px;
-      background: var(--bg-dark);
-      box-shadow: 0 0 25px rgba(255, 42, 133, 0.35);
-    }
-
-    .verified-badge {
-      position: absolute;
-      bottom: 2px;
-      right: 2px;
-      background: var(--pink-primary);
-      color: #fff;
-      font-size: 0.65rem;
-      font-weight: 700;
-      padding: 2px 7px;
-      border-radius: 99px;
-      border: 2px solid var(--card-bg);
+      border: 3px solid #f1f5f9;
     }
 
     .title {
-      font-size: 1.55rem;
+      font-size: 20px;
       font-weight: 800;
-      color: #ffffff;
-      letter-spacing: 0.3px;
-      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
     }
 
     .subtitle {
-      font-size: 0.85rem;
-      color: var(--pink-light);
-      font-weight: 500;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 2px;
       margin-bottom: 16px;
     }
 
-    /* Compact High-Trust Stats */
-    .stats-bar {
+    .stats-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      border-radius: 14px;
-      padding: 10px 6px;
-      margin-bottom: 16px;
+      gap: 10px;
+      padding: 14px 0;
+      border-top: 1px solid #f1f5f9;
+      border-bottom: 1px solid #f1f5f9;
+      margin-bottom: 18px;
     }
 
-    .stat-item {
-      border-right: 1px solid rgba(255, 255, 255, 0.07);
-    }
-
-    .stat-item:last-child {
-      border-right: none;
-    }
-
-    .stat-num {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: var(--pink-light);
+    .stat-item b {
       display: block;
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--text);
     }
 
-    .stat-label {
-      font-size: 0.68rem;
+    .stat-item span {
+      font-size: 11px;
       color: var(--text-muted);
       text-transform: uppercase;
-      letter-spacing: 0.4px;
+      font-weight: 600;
     }
 
-    /* PRIMARY CTA BUTTON (ABOVE THE FOLD) */
-    .cta-btn {
+    .btn-main {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
       width: 100%;
-      padding: 16px 18px;
-      border-radius: 16px;
-      background: linear-gradient(90deg, #ff1f7a 0%, #d4145a 100%);
-      color: #ffffff;
-      font-size: 1.05rem;
-      font-weight: 800;
+      background: var(--tg-blue);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
       text-decoration: none;
-      letter-spacing: 0.4px;
-      box-shadow: 0 8px 25px rgba(255, 31, 122, 0.45);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      transition: transform 0.15s ease;
-      animation: pulse-btn 2s infinite;
+      padding: 14px 20px;
+      border-radius: 8px;
+      transition: background-color 0.15s ease;
     }
 
-    .cta-btn:active {
-      transform: scale(0.97);
+    .btn-main:hover, .btn-main:active {
+      background: var(--tg-hover);
     }
 
-    .cta-btn svg {
-      width: 22px;
-      height: 22px;
-      fill: #ffffff;
+    .btn-main svg {
+      width: 20px;
+      height: 20px;
+      fill: #fff;
+    }
+
+    /* Content Cards */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .message-bubble {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 14px;
+      color: var(--text-sub);
+    }
+
+    .highlight-box {
+      margin: 10px 0;
+      padding: 10px 12px;
+      background: #ecfdf5;
+      border-left: 3px solid var(--green);
+      font-size: 13px;
+      color: #065f46;
+      border-radius: 4px;
+    }
+
+    /* Checklist / Clean Features */
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13.5px;
+      color: var(--text-sub);
+    }
+
+    .feature-item svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--green);
       flex-shrink: 0;
     }
 
-    @keyframes pulse-btn {
-      0% { box-shadow: 0 0 0 0 rgba(255, 31, 122, 0.55); }
-      70% { box-shadow: 0 0 0 12px rgba(255, 31, 122, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(255, 31, 122, 0); }
+    /* Match History Log */
+    .log-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
     }
 
-    /* Request Link Helper Note */
-    .request-helper {
-      background: rgba(16, 185, 129, 0.1);
-      border: 1px dashed rgba(16, 185, 129, 0.4);
-      color: #a7f3d0;
-      font-size: 0.76rem;
-      font-weight: 600;
-      padding: 8px 10px;
-      border-radius: 10px;
-      margin-top: 12px;
-      margin-bottom: 16px;
-    }
-
-    /* Quick Benefits List */
-    .features-box {
+    .log-table th {
       text-align: left;
-      background: rgba(0, 0, 0, 0.25);
-      border-radius: 14px;
-      padding: 12px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+      padding: 8px 10px;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      font-size: 11px;
+      text-transform: uppercase;
     }
 
-    .feature-row {
+    .log-table td {
+      padding: 10px 10px;
+      border-bottom: 1px solid #f1f5f9;
+      color: var(--text-sub);
+    }
+
+    .status-pass {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--green);
+      background: #ecfdf5;
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    /* Bottom Floating Action Bar */
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #ffffff;
+      border-top: 1px solid var(--border);
+      padding: 12px 16px;
+      z-index: 99;
+      display: flex;
+      justify-content: center;
+    }
+
+    .bottom-bar-inner {
+      width: 100%;
+      max-width: 580px;
       display: flex;
       align-items: center;
-      gap: 9px;
-      font-size: 0.85rem;
-      color: #f1e4ec;
-      font-weight: 500;
+      justify-content: space-between;
+      gap: 14px;
     }
 
-    .feature-row span {
-      color: var(--pink-primary);
-      font-weight: 900;
-      font-size: 0.95rem;
+    .bottom-text {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
     }
 
-    /* Minimal Safe Footer */
-    footer {
-      margin-top: 16px;
-      font-size: 0.65rem;
-      color: #6e5d68;
-      line-height: 1.45;
-      padding: 0 10px;
+    .bottom-text span {
+      display: block;
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .bottom-btn {
+      background: var(--tg-blue);
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 11px 20px;
+      border-radius: 6px;
+      white-space: nowrap;
+      transition: background 0.15s ease;
+    }
+
+    .bottom-btn:active {
+      background: var(--tg-hover);
     }
   </style>
 </head>
 <body>
 
-  <div class="wrapper">
-    <!-- Top Trust Pill -->
-    <div class="live-pill">
-      <span class="live-dot"></span>
-      <span>200K+ ACTIVE CRICKET COMMUNITY</span>
+  <div class="top-strip">
+    <div class="live-status">
+      <span class="dot"></span>
+      <span>Match Updates Live</span>
     </div>
-
-    <!-- Single-Screen Conversion Card -->
-    <div class="main-card">
-      <div class="avatar-box">
-        <img src="https://d1yei2z3i6k35z.cloudfront.net/13184094/695b9500347d9_unnamed7.jpg" alt="Toss Queen Siya">
-        <span class="verified-badge">✓ VIP</span>
-      </div>
-
-      <h1 class="title">🌹 TOSS QUEEN SIYA 🌹</h1>
-      <p class="subtitle">Daily Cricket Toss & Match Analysis</p>
-
-      <!-- Clean Stats -->
-      <div class="stats-bar">
-        <div class="stat-item">
-          <span class="stat-num">95%</span>
-          <span class="stat-label">Analysis</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num">200K+</span>
-          <span class="stat-label">Members</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num">24/7</span>
-          <span class="stat-label">Updates</span>
-        </div>
-      </div>
-
-      <!-- Primary Join Request Button -->
-      <a href="https://t.me/+v-P6GJ9kSd8xMDQ1" 
-         target="_blank" 
-         rel="noopener noreferrer" 
-         class="cta-btn"
-         onclick="trackJoinRequest(event, this.href)">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
-        JOIN TELEGRAM CHANNEL
-      </a>
-
-      <!-- Important instruction for Request Links so leads don't drop off -->
-      <div class="request-helper">
-        ⚡ Tap Button ➔ Click <b>"Request to Join"</b> for Instant Entry!
-      </div>
-
-      <!-- Features List -->
-      <div class="features-box">
-        <div class="feature-row"><span>✓</span> Daily Pre-Match Pitch & Toss Reports</div>
-        <div class="feature-row"><span>✓</span> Live Match Momentum Updates</div>
-        <div class="feature-row"><span>✓</span> Complete Team & Playing XI Insights</div>
-        <div class="feature-row"><span>✓</span> 100% Free Entry for Cricket Fans</div>
-      </div>
-    </div>
-
-    <footer>
-      Disclaimer: This channel shares cricket stats, pitch reports, and sports information for entertainment purposes only. Not affiliated with Meta Platforms, Inc.
-    </footer>
+    <span style="font-size: 12px; color: #cbd5e1;">Free Access</span>
   </div>
 
-  <!-- Pixel Subscribe Tracking for Request Link -->
-  <script>
-    function trackJoinRequest(event, url) {
-      event.preventDefault();
-      
-      if (typeof fbq === 'function') {
-        fbq('track', 'Subscribe', {
-          content_name: 'Toss Queen Siya Request Link',
-          content_category: 'Cricket Insights'
-        });
-      }
+  <div class="container">
+    <!-- Clean Profile -->
+    <div class="profile-card">
+      <div class="avatar-wrap">
+        <img src="https://d1yei2z3i6k35z.cloudfront.net/13184094/69d7dc041cc236.91777255_photo_2026-03-25_21-03-07.jpg" 
+             onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200'" 
+             class="avatar" 
+             alt="Cricket Queen Siya">
+      </div>
+      <div class="title">
+        Cricket Queen Siya
+        <svg style="width:18px; height:18px; fill:#0088cc;" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.5-1.5 2.6 2.6 6.4-6.4 1.5 1.5-7.9 7.9z"/></svg>
+      </div>
+      <div class="subtitle">Cricket Match Analysis & Pitch Reports</div>
 
-      setTimeout(function() {
-        window.open(url, '_blank', 'noopener,noreferrer');
-      }, 160);
-    }
-  </script>
+      <div class="stats-row">
+        <div class="stat-item">
+          <b>248K+</b>
+          <span>Subscribers</span>
+        </div>
+        <div class="stat-item">
+          <b>3,400+</b>
+          <span>Matches</span>
+        </div>
+        <div class="stat-item">
+          <b>98%</b>
+          <span>Accuracy</span>
+        </div>
+      </div>
+
+      <a href="https://t.me/+v-P6GJ9kSd8xMDQ1" target="_blank" class="btn-main">
+        <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.832.942z"/></svg>
+        JOIN TELEGRAM CHANNEL
+      </a>
+    </div>
+
+    <!-- Pinned Update -->
+    <div class="card">
+      <div class="card-title">Latest Telegram Update</div>
+      <div class="message-bubble">
+        <p><strong>Today's Ground Reality & Match Report</strong></p>
+        <p style="margin-top: 4px;">Pitch dry and firm hai. Second innings me dew impact karegi. Fast bowlers ko shuru ke 3 overs me movement milegi.</p>
+        <div class="highlight-box">
+          ✔ 6 Over Session Call: PASS<br>
+          ✔ Toss Prediction: PASS<br>
+          ✔ Winner Call: Profit Booked
+        </div>
+        <span style="font-size: 12px; color: var(--text-muted);">Shared 2 hours ago in Telegram</span>
+      </div>
+    </div>
+
+    <!-- Key Highlights -->
+    <div class="card">
+      <div class="card-title">Channel Benefits</div>
+      <ul class="feature-list">
+        <li class="feature-item">
+          <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          100% Free Public Access (No registration charges)
+        </li>
+        <li class="feature-item">
+          <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          Pitch & weather analysis 3 hours prior to match
+        </li>
+        <li class="feature-item">
+          <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          Proper loss-cut & bookset guidance
+        </li>
+      </ul>
+    </div>
+
+    <!-- Recent Match Log -->
+    <div class="card">
+      <div class="card-title">Recent Matches Log</div>
+      <table class="log-table">
+        <thead>
+          <tr>
+            <th>Match</th>
+            <th>Type</th>
+            <th>Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>MI vs CSK</td>
+            <td>Session + Winner</td>
+            <td><span class="status-pass">PASS</span></td>
+          </tr>
+          <tr>
+            <td>Sixers vs Scorchers</td>
+            <td>Toss Call</td>
+            <td><span class="status-pass">PASS</span></td>
+          </tr>
+          <tr>
+            <td>IND vs ENG</td>
+            <td>Innings Runs</td>
+            <td><span class="status-pass">PASS</span></td>
+          </tr>
+          <tr>
+            <td>DC vs RCB</td>
+            <td>Match Winner</td>
+            <td><span class="status-pass">PASS</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Sticky Bottom Navigation -->
+  <div class="bottom-bar">
+    <div class="bottom-bar-inner">
+      <div class="bottom-text">
+        Cricket Queen Siya
+        <span>Free Lifetime Access</span>
+      </div>
+      <a href="https://t.me/+v-P6GJ9kSd8xMDQ1" target="_blank" class="bottom-btn">
+        Join on Telegram
+      </a>
+    </div>
+  </div>
 
 </body>
 </html>
