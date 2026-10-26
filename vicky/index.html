@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#070709" />
+  <title>Vicky Dada 2015 | Cricket Analyst & Match Predictions</title>
+
+  <!-- Preconnect & Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1898816264886194');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1898816264886194&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+
+  <style>
+    :root {
+      --bg-dark: #060608;
+      --card-bg: rgba(18, 18, 22, 0.88);
+      --gold-primary: #d4af37;
+      --gold-light: #f3e5ab;
+      --gold-border: rgba(212, 175, 55, 0.32);
+      --text-white: #ffffff;
+      --text-muted: #a0a0ab;
+      --accent-green: #2ecc71;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      min-height: 100dvh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient Cricket Stadium Background (From Design 1) */
+    .bg-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://i.pinimg.com/736x/95/56/c3/9556c3f07601b6a533d2e9c204a2d37e.jpg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      opacity: 0.14;
+      filter: grayscale(100%) contrast(125%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Main Mobile Container (From Design 2) */
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 450px;
+      margin: 0 auto;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-bottom: 92px; /* Space for sticky bar */
+      background: radial-gradient(circle at top, rgba(212, 175, 55, 0.08) 0%, rgba(6, 6, 8, 0.95) 70%);
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero {
+      padding: 1.4rem 1.15rem 1rem;
+      text-align: center;
+    }
+
+    /* Top Trust Badge */
+    .trust-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--gold-light);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 50px;
+      margin-bottom: 1.2rem;
+      border: 1px solid var(--gold-border);
+      backdrop-filter: blur(6px);
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent-green);
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.22);
+    }
+
+    /* Profile Avatar with Pulse Ring + Verified Tick */
+    .avatar-wrapper {
+      position: relative;
+      width: 112px;
+      height: 112px;
+      margin: 0 auto 14px;
+    }
+
+    .avatar-wrapper::after {
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold-primary);
+      animation: avatarPulse 2.6s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+      pointer-events: none;
+    }
+
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2.5px solid var(--gold-primary);
+      padding: 3px;
+      background-color: #121215;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6);
+      display: block;
+    }
+
+    .verified-tick {
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      background: var(--gold-primary);
+      color: #000000;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #060608;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+      z-index: 2;
+    }
+
+    .verified-tick i {
+      font-size: 0.72rem;
+    }
+
+    /* Channel Headings */
+    .est-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--gold-primary);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .channel-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #ffffff;
+      line-height: 1.15;
+    }
+
+    .sub-charm {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      margin-top: 6px;
+      margin-bottom: 1.15rem;
+      font-weight: 600;
+    }
+
+    /* Main Value Card */
+    .message-card {
+      background: var(--card-bg);
+      border-radius: 22px;
+      padding: 1.3rem 1.1rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(12px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .message-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 15%;
+      right: 15%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+    }
+
+    .card-headline {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin-bottom: 8px;
+      letter-spacing: 0.4px;
+    }
+
+    .description-text {
+      font-size: 0.85rem;
+      color: #cccccc;
+      line-height: 1.55;
+    }
+
+    /* Pill Stats inside Card */
+    .stats-pills {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 9px 6px;
+      border-radius: 12px;
+      margin: 14px 0 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .stats-pills span {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: #e2e2e2;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    /* CTA Buttons with Auto-Expanding Ripple (From Design 1 + Sheen From Design 2) */
+    .btn-container {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .btn-pulse-wrapper {
+      position: relative;
+      width: 100%;
+      border-radius: 50px;
+    }
+
+    .btn-pulse-wrapper::before,
+    .btn-pulse-wrapper::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50px;
+      border: 1.5px solid var(--gold-primary);
+      pointer-events: none;
+      z-index: 0;
+      animation: expandingBorder 2.4s infinite cubic-bezier(0.2, 0.7, 0.1, 1);
+    }
+
+    .btn-pulse-wrapper::after {
+      animation-delay: 1.2s;
+    }
+
+    .animated-border-btn {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 15px 20px;
+      background: linear-gradient(135deg, #d4af37 0%, #aa8010 100%);
+      color: #050505;
+      text-decoration: none;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.94rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      border-radius: 50px;
+      border: 1px solid #ffe89e;
+      box-shadow: 0 8px 24px rgba(212, 175, 55, 0.28);
+      overflow: hidden;
+      transition: transform 0.15s ease;
+    }
+
+    .animated-border-btn::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 40%;
+      height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+      transform: rotate(25deg);
+      animation: sheen 3.2s infinite;
+    }
+
+    .animated-border-btn:active {
+      transform: scale(0.96);
+    }
+
+    /* Secondary CTA Button */
+    .secondary-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      width: 100%;
+      padding: 13px 18px;
+      background: rgba(255, 255, 255, 0.05);
+      color: #ffffff;
+      text-decoration: none;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      border-radius: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .secondary-btn:active {
+      transform: scale(0.96);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .secondary-btn i {
+      color: var(--gold-primary);
+    }
+
+    .cta-micro {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      margin-top: 10px;
+      font-weight: 500;
+    }
+
+    /* Checklist Box (From Design 2) */
+    .promise-card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      padding: 1.1rem 1.15rem;
+      margin-top: 0.95rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: left;
+      backdrop-filter: blur(10px);
+    }
+
+    .promise-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .promise-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.83rem;
+      color: #e4e4e7;
+      font-weight: 500;
+    }
+
+    .check-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--gold-border);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--gold-primary);
+      font-size: 0.68rem;
+    }
+
+    /* Bottom Trust Metrics Row (From Design 1) */
+    .stats-row {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      margin-top: 1.1rem;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .stat-box {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .stat-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--gold-light);
+    }
+
+    .stat-label {
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+    }
+
+    /* Footer & Disclaimer */
+    footer {
+      font-size: 0.64rem;
+      text-align: center;
+      padding: 1.2rem 1.25rem 1.4rem;
+      color: #777782;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      background: rgba(5, 5, 7, 0.9);
+      margin-top: 1rem;
+    }
+
+    .disclaimer-text {
+      font-size: 0.58rem;
+      color: #686873;
+      line-height: 1.45;
+      margin-top: 6px;
+    }
+
+    /* Sticky Bottom Bar (From Design 2 - Dark Luxury Theme) */
+    .sticky-bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 450px;
+      background: rgba(12, 12, 16, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-top: 1px solid var(--gold-border);
+      padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      z-index: 999;
+      box-shadow: 0 -8px 28px rgba(0, 0, 0, 0.6);
+    }
+
+    .sticky-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .sticky-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid var(--gold-primary);
+      flex-shrink: 0;
+    }
+
+    .sticky-text {
+      text-align: left;
+      min-width: 0;
+    }
+
+    .sticky-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #ffffff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-transform: uppercase;
+    }
+
+    .sticky-sub {
+      font-size: 0.65rem;
+      color: var(--gold-primary);
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    .sticky-btn {
+      background: linear-gradient(135deg, #d4af37 0%, #aa8010 100%);
+      color: #050505;
+      border: 1px solid #ffe89e;
+      padding: 10px 16px;
+      border-radius: 50px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 14px rgba(212, 175, 55, 0.25);
+    }
+
+    .sticky-btn:active {
+      transform: scale(0.96);
+    }
+
+    /* Keyframe Animations */
+    @keyframes expandingBorder {
+      0% {
+        transform: scale(1);
+        opacity: 0.9;
+      }
+      100% {
+        transform: scaleX(1.06) scaleY(1.25);
+        opacity: 0;
+      }
+    }
+
+    @keyframes avatarPulse {
+      0% {
+        transform: scale(1);
+        opacity: 0.85;
+      }
+      100% {
+        transform: scale(1.16);
+        opacity: 0;
+      }
+    }
+
+    @keyframes sheen {
+      0% { left: -60%; }
+      35%, 100% { left: 130%; }
+    }
+
+    @media (max-width: 360px) {
+      .channel-name { font-size: 1.5rem; }
+      .avatar-wrapper { width: 98px; height: 98px; }
+      .stats-pills span { font-size: 0.62rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Stadium Backdrop -->
+  <div class="bg-overlay"></div>
+
+  <div class="container">
+    <section class="hero">
+      
+      <!-- Top Live Badge -->
+      <div class="trust-badge">
+        <span class="badge-dot"></span>
+        Official Cricket Analysis Community
+      </div>
+
+      <!-- Profile Avatar with Pulse & Verified Badge -->
+      <div class="avatar-wrapper">
+        <img 
+          src="https://d1yei2z3i6k35z.cloudfront.net/13184094/6adf12c6b30b29.01825980_photo_2025-05-15_19-36-54.jpg" 
+          alt="Vicky Dada 2015" 
+          class="avatar-img"
+          loading="eager"
+        />
+        <div class="verified-tick" title="Verified Cricket Analyst">
+          <i class="fa-solid fa-check"></i>
+        </div>
+      </div>
+
+      <!-- Identity -->
+      <div class="est-tag">TRUSTED SINCE 2015</div>
+      <h1 class="channel-name">Vicky Dada 2015</h1>
+      <div class="sub-charm">CRICKET ANALYST • MATCH INSIGHTS • PITCH REPORTS</div>
+
+      <!-- Main Conversion Card -->
+      <div class="message-card">
+        <div class="card-headline">Accurate Match Analysis & Live Updates</div>
+        <p class="description-text">
+          Join the official Telegram channel of <strong>Vicky Dada 2015</strong> for deep match breakdowns, toss analysis, pitch reports, and real-time cricket insights backed by years of experience.
+        </p>
+
+        <div class="stats-pills">
+          <span>🏏 Pitch Reports</span>
+          <span>📊 Match Data</span>
+          <span>⚡ Live Updates</span>
+        </div>
+
+        <!-- CTAs -->
+        <div class="btn-container">
+          <!-- Primary Button with Double Ripple -->
+          <div class="btn-pulse-wrapper">
+            <a href="https://t.me/+g77n_IwY4UdmZjI1" class="animated-border-btn" onclick="trackSubscribe(event, this.href)">
+              <i class="fa-brands fa-telegram fa-lg"></i>
+              <span>Join Telegram Channel</span>
+            </a>
+          </div>
+
+          <!-- Secondary Button -->
+          <a href="https://t.me/+g77n_IwY4UdmZjI1" class="secondary-btn" onclick="trackSubscribe(event, this.href)">
+            <i class="fa-solid fa-fire-flame-curved"></i>
+            <span>Today's Match Analysis</span>
+          </a>
+        </div>
+
+        <div class="cta-micro">⚡ 100% Free Access • Instant Join on Telegram</div>
+      </div>
+
+      <!-- Value Checklist -->
+      <div class="promise-card">
+        <ul class="promise-list">
+          <li>
+            <span class="check-icon"><i class="fa-solid fa-check"></i></span>
+            <span>Pre-Match Pitch & Weather Conditions Breakdown</span>
+          </li>
+          <li>
+            <span class="check-icon"><i class="fa-solid fa-check"></i></span>
+            <span>Toss Updates & Playing XI Strength Analysis</span>
+          </li>
+          <li>
+            <span class="check-icon"><i class="fa-solid fa-check"></i></span>
+            <span>All T20, ODI, Test & League Series Coverage</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Bottom Metrics -->
+      <div class="stats-row">
+        <div class="stat-box">
+          <span class="stat-number">Since 2015</span>
+          <span class="stat-label">Experience</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-number">All Series</span>
+          <span class="stat-label">Coverage</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-number">100% Free</span>
+          <span class="stat-label">Telegram Access</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Compliance Footer -->
+    <footer>
+      <div>© 2026 VICKY DADA 2015 • ALL RIGHTS RESERVED</div>
+      <p class="disclaimer-text">
+        <strong>Disclaimer:</strong> All content shared on this channel is strictly for sports information, cricket statistics, and analytical discussion purposes only. This website is not affiliated with or endorsed by Meta Platforms, Inc. or Telegram.
+      </p>
+    </footer>
+  </div>
+
+  <!-- Sticky Bottom CTA Bar -->
+  <div class="sticky-bottom-bar">
+    <div class="sticky-info">
+      <img 
+        src="https://d1yei2z3i6k35z.cloudfront.net/13184094/6adf12c6b30b29.01825980_photo_2025-05-15_19-36-54.jpg" 
+        alt="Vicky Dada 2015" 
+        class="sticky-avatar"
+      />
+      <div class="sticky-text">
+        <div class="sticky-title">Vicky Dada 2015</div>
+        <div class="sticky-sub">Cricket Analyst • Free Channel</div>
+      </div>
+    </div>
+
+    <a href="https://t.me/+g77n_IwY4UdmZjI1" class="sticky-btn" onclick="trackSubscribe(event, this.href)">
+      <i class="fa-brands fa-telegram"></i>
+      <span>Join Now</span>
+    </a>
+  </div>
+
+  <!-- Smart Telegram Deep Link + Meta Pixel Tracking -->
+  <script>
+    var isRedirecting = false;
+
+    function trackSubscribe(event, url) {
+      event.preventDefault();
+      if (isRedirecting) return;
+      isRedirecting = true;
+
+      if (typeof fbq === 'function') {
+        fbq('track', 'Subscribe', {
+          content_name: 'Vicky Dada 2015 Telegram',
+          content_category: 'Cricket Analysis',
+          value: 0.00,
+          currency: 'INR'
+        });
+      }
+
+      // 1. Force open Telegram App directly via Invite Hash
+      setTimeout(function() {
+        window.location.href = "tg://join?invite=g77n_IwY4UdmZjI1";
+      }, 120);
+
+      // 2. Fallback to web link if app doesn't trigger within 850ms
+      setTimeout(function() {
+        window.location.href = url || "https://t.me/+g77n_IwY4UdmZjI1";
+        isRedirecting = false;
+      }, 850);
+    }
+  </script>
+
+</body>
+</html>
