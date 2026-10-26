@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Vicky Dada 2015 - Cricket Analyst</title>
+  
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1898816264886194');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1898816264886194&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-sub: #475569;
+      --text-muted: #64748b;
+      --tg-blue: #0088cc;
+      --tg-hover: #0077b5;
+      --green: #10b981;
+      --radius: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding-bottom: 90px;
+    }
+
+    .top-strip {
+      background: #0f172a;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .live-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+    }
+
+    .container {
+      max-width: 580px;
+      margin: 0 auto;
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Profile Header */
+    .profile-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      text-align: center;
+    }
+
+    .avatar-wrap {
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 12px;
+      position: relative;
+    }
+
+    .avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #f1f5f9;
+    }
+
+    .title {
+      font-size: 20px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 2px;
+      margin-bottom: 16px;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 14px 0;
+      border-top: 1px solid #f1f5f9;
+      border-bottom: 1px solid #f1f5f9;
+      margin-bottom: 18px;
+    }
+
+    .stat-item b {
+      display: block;
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .stat-item span {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .btn-main {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      background: var(--tg-blue);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 14px 20px;
+      border-radius: 8px;
+      transition: background-color 0.15s ease;
+    }
+
+    .btn-main:hover, .btn-main:active {
+      background: var(--tg-hover);
+    }
+
+    .btn-main svg {
+      width: 20px;
+      height: 20px;
+      fill: #fff;
+    }
+
+    /* Content Cards */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .message-bubble {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 14px;
+      color: var(--text-sub);
+    }
+
+    .highlight-box {
+      margin: 10px 0;
+      padding: 10px 12px;
+      background: #ecfdf5;
+      border-left: 3px solid var(--green);
+      font-size: 13px;
+      color: #065f46;
+      border-radius: 4px;
+    }
+
+    /* Checklist / Clean Features */
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13.5px;
+      color: var(--text-sub);
+    }
+
+    .feature-item svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--green);
+      flex-shrink: 0;
+    }
+
+    /* Match History Log */
+    .log-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .log-table th {
+      text-align: left;
+      padding: 8px 10px;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    .log-table td {
+      padding: 10px 10px;
+      border-bottom: 1px solid #f1f5f9;
+      color: var(--text-sub);
+    }
+
+    .status-pass {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--green);
+      background: #ecfdf5;
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    /* Bottom Floating Action Bar */
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #ffffff;
+      border-top: 1px solid var(--border);
+      padding: 12px 16px;
+      z-index: 99;
+      display: flex;
+      justify-content: center;
+    }
+
+    .bottom-bar-inner {
+      width: 100%;
+      max-width: 580px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .bottom-text {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .bottom-text span {
+      display: block;
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .bottom-btn {
+      background: var(--tg-blue);
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 11px 20px;
+      border-radius: 6px;
+      white-space: nowrap;
+      transition: background 0.15s ease;
+    }
+
+    .bottom-btn:active {
+      background: var(--tg-hover);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-strip">
+    <div class="live-status">
+      <span class="dot"></span>
+      <span>Match Updates Live</span>
+    </div>
+    <span style="font-size: 12px; color: #cbd5e1;">Free Access</span>
+  </div>
+
+  <div class="container">
+    
+    <!-- Clean Profile Card -->
+    <div class="profile-card">
+      <div class="avatar-wrap">
+        <img src="https://d1yei2z3i6k35z.cloudfront.net/13184094/6adf12c6b30b29.01825980_photo_2025-05-15_19-36-54.jpg" 
+             class="avatar" 
+             alt="Vicky Dada 2015">
+      </div>
+      <div class="title">
+        Vicky Dada 2015
+        <svg style="width:18px; height:18px; fill:#0088cc;" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.5-1.5 2.6 2.6 6.4-6.4 1.5 1.5-7.9 7.9z"/></svg>
+      </div>
+      <div class="subtitle">Trusted Cricket Analyst Since 2015</div>
+      
+      <div class="stats-row">
+        <div class="stat-item">
+          <b>Since '15</b>
+          <span>Experience</span>
+        </div>
+        <div class="stat-item">
+          <b>All Series</b>
+          <span>Coverage</span>
+        </div>
+        <div class="stat-item">
+          <b>100%</b>
+          <span>Free Access</span>
+        </div>
+      </div>
+
+      <a href="https://t.me/+g77n_IwY4UdmZjI1" target="_blank" class="btn-main" onclick="trackSubscribe(event, this.href)">
+        <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.832.942z"/></svg>
+        JOIN TELEGRAM CHANNEL
+      </a>
+    </div>
+
+    <!-- Pinned Update -->
+    <div class="card">
+      <div class="card-title">Latest Telegram Update</div>
+      <div class="message-bubble">
+        <p><strong>Today's Pitch & Match Breakdown</strong></p>
+        <p style="margin-top: 4px;">Wicket hard aur dry hai. Pehle batting karne wali team ko advantage mil sakta hai. Match report channel par update kar di gayi hai.</p>
+        <div class="highlight-box">
+          ✔ Toss Call: PASS<br>
+          ✔ Session Update: PASS<br>
+          ✔ Match Winner: Profit Booked
+        </div>
+        <span style="font-size: 12px; color: var(--text-muted);">Shared 1 hour ago in Telegram</span>
+      </div>
+    </div>
+
+    <!-- Key Highlights -->
+    <div class="card">
+      <div class="card-title">Channel Benefits</div>
+      <ul class="feature-list">
+        <li class="feature-item">
+          <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          100% Free Public Access (No hidden charges)
+        </li>
+        <li class="feature-item">
+          <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          Detailed pitch conditions & weather updates
+        </li>
+        <li class="feature-item">
+          <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          Real-time match analysis & session tips
+        </li>
+      </ul>
+    </div>
+
+    <!-- Recent Match Log -->
+    <div class="card">
+      <div class="card-title">Recent Matches Log</div>
+      <table class="log-table">
+        <thead>
+          <tr>
+            <th>Match</th>
+            <th>Type</th>
+            <th>Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>IPL / T20 Matches</td>
+            <td>Session + Winner</td>
+            <td><span class="status-pass">PASS</span></td>
+          </tr>
+          <tr>
+            <td>International Series</td>
+            <td>Toss Call</td>
+            <td><span class="status-pass">PASS</span></td>
+          </tr>
+          <tr>
+            <td>Domestic Leagues</td>
+            <td>Match Analysis</td>
+            <td><span class="status-pass">PASS</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- Sticky Bottom Navigation -->
+  <div class="bottom-bar">
+    <div class="bottom-bar-inner">
+      <div class="bottom-text">
+        Vicky Dada 2015
+        <span>Free Lifetime Access</span>
+      </div>
+      <a href="https://t.me/+g77n_IwY4UdmZjI1" target="_blank" class="bottom-btn" onclick="trackSubscribe(event, this.href)">
+        Join on Telegram
+      </a>
+    </div>
+  </div>
+
+  <!-- Smart Telegram Deep Link + Meta Pixel Tracking -->
+  <script>
+    var isRedirecting = false;
+
+    function trackSubscribe(event, url) {
+      event.preventDefault();
+      if (isRedirecting) return;
+      isRedirecting = true;
+
+      if (typeof fbq === 'function') {
+        fbq('track', 'Subscribe', {
+          content_name: 'Vicky Dada 2015 Telegram',
+          content_category: 'Cricket Analysis',
+          value: 0.00,
+          currency: 'INR'
+        });
+      }
+
+      // 1. Force open Telegram App directly via Deep Link
+      setTimeout(function() {
+        window.location.href = "tg://join?invite=g77n_IwY4UdmZjI1";
+      }, 120);
+
+      // 2. Fallback to web link if app doesn't trigger within 800ms
+      setTimeout(function() {
+        window.location.href = url || "https://t.me/+g77n_IwY4UdmZjI1";
+        isRedirecting = false;
+      }, 900);
+    }
+  </script>
+
+</body>
+</html>
