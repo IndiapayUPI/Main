@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>𝘾𝙍𝙄𝘾 𝙊𝙍𝘼𝘾𝙇𝙀 - Elite Cricket Analysis</title>
+
+  <!-- Preconnect & Instant Priority Asset Loading -->
+  <link rel="preconnect" href="https://d1yei2z3i6k35z.cloudfront.net" crossorigin>
+  <link rel="preconnect" href="https://t.me" crossorigin>
+  <link rel="dns-prefetch" href="https://t.me">
+  <link rel="preload" as="image" href="https://d1yei2z3i6k35z.cloudfront.net/13184094/6ae118c9ee1fa8.32265098_567.jpg" fetchpriority="high">
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '29115899541373867');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=29115899541373867&ev=PageView&noscript=1" />
+  </noscript>
+  <!-- End Meta Pixel Code -->
+
+  <!-- Font Awesome & Modern Typography -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #050608;
+      --card-bg: rgba(13, 16, 23, 0.85);
+      --card-inner: #121722;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(56, 189, 248, 0.45);
+      --accent-cyan: #38bdf8;
+      --accent-blue: #0284c7;
+      --text-main: #f8fafc;
+      --text-sub: #94a3b8;
+      --green: #22c55e;
+      --radius: 16px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: 'Montserrat', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow-x: hidden;
+      padding: 0 0 92px;
+    }
+
+    /* Ambient Classic Stadium Backdrop */
+    .bg-overlay {
+      position: fixed;
+      inset: 0;
+      background-image: 
+        radial-gradient(circle at 50% 15%, rgba(56, 189, 248, 0.12), transparent 60%),
+        url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=1200&auto=format&fit=crop');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      opacity: 0.18;
+      filter: grayscale(85%) contrast(130%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Sticky Live Top Desk */
+    .top-strip {
+      width: 100%;
+      background: rgba(5, 6, 8, 0.94);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .live-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--green);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--green);
+      animation: pulseDot 2s infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .top-badge {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      letter-spacing: 0.4px;
+    }
+
+    /* Main Container */
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 440px;
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* Hero Profile Card */
+    .profile-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 20px 22px;
+      text-align: center;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.65);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 1.5px;
+      background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+    }
+
+    /* Avatar with Continuous Sleek Pulse */
+    .avatar-wrapper {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 16px;
+    }
+
+    .avatar-wrapper::after {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 1.5px solid var(--accent-cyan);
+      animation: avatarPulse 2.8s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+      pointer-events: none;
+    }
+
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ffffff;
+      padding: 2px;
+      background: #000;
+      display: block;
+      box-shadow: 0 0 24px rgba(56, 189, 248, 0.35);
+    }
+
+    .channel-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.55rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #ffffff;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .channel-badge {
+      display: inline-block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent-cyan);
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+
+    .about-text {
+      font-size: 0.88rem;
+      color: var(--text-sub);
+      line-height: 1.55;
+      margin-bottom: 20px;
+      padding: 0 6px;
+    }
+
+    /* Classic Stats Grid */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      padding: 12px 8px;
+      background: var(--card-inner);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin-bottom: 22px;
+    }
+
+    .stat-box {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .stat-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: #ffffff;
+    }
+
+    .stat-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-sub);
+      font-weight: 700;
+    }
+
+    /* Auto Expanding Button Architecture */
+    .btn-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .btn-pulse-wrapper {
+      position: relative;
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    .btn-pulse-wrapper::before,
+    .btn-pulse-wrapper::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      border: 1.5px solid var(--accent-cyan);
+      pointer-events: none;
+      z-index: 0;
+      animation: expandingBorder 2.4s infinite cubic-bezier(0.2, 0.7, 0.1, 1);
+    }
+
+    .btn-pulse-wrapper::after {
+      animation-delay: 1.2s;
+    }
+
+    .animated-border-btn {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      padding: 16px 20px;
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: #ffffff;
+      text-decoration: none;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 4px 20px rgba(2, 132, 199, 0.4);
+      transition: transform 0.15s ease, filter 0.15s ease;
+    }
+
+    .animated-border-btn:hover {
+      filter: brightness(1.1);
+    }
+
+    .animated-border-btn:active {
+      transform: scale(0.97);
+      background: #0284c7;
+    }
+
+    /* Secondary Clean Button */
+    .btn-pulse-wrapper.secondary::before,
+    .btn-pulse-wrapper.secondary::after {
+      border-color: rgba(255, 255, 255, 0.35);
+      animation-duration: 3s;
+    }
+
+    .animated-border-btn.secondary-btn {
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      font-size: 0.86rem;
+      padding: 14px 18px;
+      box-shadow: none;
+      color: #f1f5f9;
+    }
+
+    .animated-border-btn.secondary-btn:active {
+      background: #1a2234;
+    }
+
+    /* Content Cards */
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--accent-cyan);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .message-bubble {
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 13px;
+      color: var(--text-sub);
+      line-height: 1.6;
+    }
+
+    .pass-box {
+      margin: 12px 0 10px;
+      padding: 10px 14px;
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid rgba(34, 197, 94, 0.25);
+      border-left: 4px solid var(--green);
+      color: #bbf7d0;
+      font-size: 12.5px;
+      font-weight: 700;
+      border-radius: 6px;
+      line-height: 1.7;
+    }
+
+    /* Feature Checklist */
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #e2e8f0;
+    }
+
+    .feature-item i {
+      color: var(--accent-cyan);
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    /* Table Log */
+    .log-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+    }
+
+    .log-table th {
+      text-align: left;
+      padding: 8px 6px;
+      color: var(--text-sub);
+      border-bottom: 1px solid var(--border);
+      font-size: 10.5px;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+    }
+
+    .log-table td {
+      padding: 11px 6px;
+      border-bottom: 1px solid var(--border);
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .log-table tr:last-child td {
+      border: 0;
+    }
+
+    .status-badge {
+      display: inline-block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10.5px;
+      font-weight: 800;
+      color: #050608;
+      background: var(--accent-cyan);
+      padding: 2px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Fixed Floating Bottom Navigation */
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(5, 6, 8, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border);
+      padding: 12px 18px;
+      z-index: 99;
+      display: flex;
+      justify-content: center;
+    }
+
+    .bottom-bar-inner {
+      width: 100%;
+      max-width: 440px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .bottom-info b {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 0.3px;
+    }
+
+    .bottom-info span {
+      display: block;
+      font-size: 11px;
+      color: var(--accent-cyan);
+      font-weight: 600;
+    }
+
+    .bottom-btn {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: #ffffff;
+      text-decoration: none;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12.5px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 11px 20px;
+      border-radius: 8px;
+      white-space: nowrap;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: transform 0.1s ease;
+    }
+
+    .bottom-btn:active {
+      transform: scale(0.96);
+    }
+
+    /* Keyframe Animations */
+    @keyframes expandingBorder {
+      0% {
+        transform: scale(1);
+        opacity: 0.9;
+      }
+      50% {
+        opacity: 0.45;
+      }
+      100% {
+        transform: scaleX(1.06) scaleY(1.18);
+        opacity: 0;
+      }
+    }
+
+    @keyframes avatarPulse {
+      0% {
+        transform: scale(1);
+        opacity: 0.8;
+      }
+      100% {
+        transform: scale(1.16);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Stadium Backdrop -->
+  <div class="bg-overlay"></div>
+
+  <!-- Sticky Live Desk Status -->
+  <div class="top-strip">
+    <div class="live-status">
+      <span class="dot"></span>
+      <span>Oracle Intelligence Live</span>
+    </div>
+    <span class="top-badge">⚡ 100% Free Public Desk</span>
+  </div>
+
+  <main class="container">
+    <!-- Hero Profile Section -->
+    <div class="profile-card">
+      <div class="avatar-wrapper">
+        <img 
+          src="https://d1yei2z3i6k35z.cloudfront.net/13184094/6ae118c9ee1fa8.32265098_567.jpg" 
+          fetchpriority="high"
+          decoding="sync"
+          class="avatar-img" 
+          alt="𝘾𝙍𝙄𝘾 𝙊𝙍𝘼𝘾𝙇𝙀"
+        />
+      </div>
+
+      <h1 class="channel-name">
+        𝘾𝙍𝙄𝘾 𝙊𝙍𝘼𝘾𝙇𝙀
+        <i class="fa-solid fa-circle-check" style="font-size: 18px; color: var(--accent-cyan);"></i>
+      </h1>
+      <span class="channel-badge">Proprietary Pitch & Match Intelligence</span>
+
+      <p class="about-text">
+        Precision analytics, real-time ground telemetry, boundary line session patterns, and uncompromised winner reports.
+      </p>
+
+      <!-- Trust Stats Grid -->
+      <div class="stats-row">
+        <div class="stat-box">
+          <span class="stat-number">230K+</span>
+          <span class="stat-label">Subscribers</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-number">3,100+</span>
+          <span class="stat-label">Analyses</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-number">99.2%</span>
+          <span class="stat-label">Accuracy</span>
+        </div>
+      </div>
+
+      <!-- Pulse CTAs -->
+      <div class="btn-container">
+        <div class="btn-pulse-wrapper">
+          <a href="https://t.me/+OPHUv-_3u3U0Yzg1" target="_blank" rel="noopener noreferrer" class="animated-border-btn">
+            <i class="fa-brands fa-telegram fa-lg"></i>
+            <span>Join Cric Oracle Telegram</span>
+          </a>
+        </div>
+
+        <div class="btn-pulse-wrapper secondary">
+          <a href="https://t.me/+OPHUv-_3u3U0Yzg1" target="_blank" rel="noopener noreferrer" class="animated-border-btn secondary-btn">
+            <i class="fa-solid fa-bolt"></i>
+            <span>Today's Verified Match Report</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pinned Desk Report -->
+    <div class="card">
+      <div class="card-title">
+        <i class="fa-solid fa-thumbtack"></i> Pinned Oracle Match Intelligence
+      </div>
+      <div class="message-bubble">
+        <strong style="color: #fff; font-size: 13.5px;">Today's Surface Behavior & Session Trajectory</strong>
+        <p style="margin-top: 5px;">Abrasive surface expected to offer grip to finger spinners. Chasing side commands significant mathematical leverage in the second innings under dew.</p>
+        <div class="pass-box">
+          ✔ Toss & Surface Decryption: COMPLETED<br>
+          ✔ 6-Over Powerplay Target Band: PINNED<br>
+          ✔ Match Winner Confirmation: LIVE ON CHANNEL
+        </div>
+        <span style="font-size: 11px; color: var(--text-sub); font-weight: 700;">⚡ Logged & Verified on Telegram</span>
+      </div>
+    </div>
+
+    <!-- Edge Benefits -->
+    <div class="card">
+      <div class="card-title">
+        <i class="fa-solid fa-shield-halved"></i> The Oracle Advantage
+      </div>
+      <ul class="feature-list">
+        <li class="feature-item">
+          <i class="fa-solid fa-circle-dot"></i>
+          Direct Pitch Surface & Soil Condition Insights
+        </li>
+        <li class="feature-item">
+          <i class="fa-solid fa-circle-dot"></i>
+          Exact Toss Probability & Playing XI Confirmation
+        </li>
+        <li class="feature-item">
+          <i class="fa-solid fa-circle-dot"></i>
+          100% Free Public Channel — No VIP Fees
+        </li>
+      </ul>
+    </div>
+
+    <!-- Verified Performance Table -->
+    <div class="card">
+      <div class="card-title">
+        <i class="fa-solid fa-chart-line"></i> Recent Performance Log
+      </div>
+      <table class="log-table">
+        <thead>
+          <tr>
+            <th>Fixture</th>
+            <th>Type</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>MI vs CSK</td>
+            <td>Session + Winner</td>
+            <td><span class="status-badge">ACCURATE</span></td>
+          </tr>
+          <tr>
+            <td>IND vs AUS</td>
+            <td>Toss + Pitch Log</td>
+            <td><span class="status-badge">ACCURATE</span></td>
+          </tr>
+          <tr>
+            <td>RCB vs KKR</td>
+            <td>Powerplay Calls</td>
+            <td><span class="status-badge">ACCURATE</span></td>
+          </tr>
+          <tr>
+            <td>ENG vs SA</td>
+            <td>Match Winner</td>
+            <td><span class="status-badge">ACCURATE</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- Sticky Bottom Bar -->
+  <div class="bottom-bar">
+    <div class="bottom-bar-inner">
+      <div class="bottom-info">
+        <b>𝘾𝙍𝙄𝘾 𝙊𝙍𝘼𝘾𝙇𝙀</b>
+        <span>● Live Insights Active</span>
+      </div>
+      <a href="https://t.me/+OPHUv-_3u3U0Yzg1" target="_blank" rel="noopener noreferrer" class="bottom-btn">
+        Join Channel
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>
