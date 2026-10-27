@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>CRICKET MECHANZIE 2012 - Official Match Desk</title>
+
+  <!-- High Priority Preloads -->
+  <link rel="preconnect" href="https://d1yei2z3i6k35z.cloudfront.net" crossorigin>
+  <link rel="preconnect" href="https://t.me" crossorigin>
+  <link rel="dns-prefetch" href="https://t.me">
+  <link rel="preload" as="image" href="https://d1yei2z3i6k35z.cloudfront.net/13184094/6ae12cee333fd0.50108192_mx.jpg" fetchpriority="high">
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1931316814941229');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1931316814941229&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+
+  <style>
+    :root {
+      --bg: #090b10;
+      --card: #11141c;
+      --card-inner: #161a25;
+      --border: #1e2433;
+      --text: #f8fafc;
+      --text-sub: #94a3b8;
+      --accent: #38bdf8;
+      --btn-bg: #0284c7;
+      --green: #22c55e;
+      --radius: 4px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding-bottom: 90px;
+    }
+
+    /* Top Strip */
+    .top-strip {
+      background: #05070a;
+      border-bottom: 1px solid var(--border);
+      padding: 11px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .live-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--green);
+      letter-spacing: 0.4px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+    }
+
+    .top-badge {
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* Layout */
+    .container {
+      max-width: 460px;
+      margin: 0 auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* Hero Card */
+    .hero-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 18px;
+      text-align: center;
+    }
+
+    .avatar-wrap {
+      width: 96px;
+      height: 96px;
+      margin: 0 auto 14px;
+    }
+
+    .avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent);
+      padding: 2px;
+      background: #000;
+      display: block;
+    }
+
+    .title {
+      font-size: 20px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .title svg {
+      width: 19px;
+      height: 19px;
+      fill: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .subtitle {
+      font-size: 12.5px;
+      color: var(--text-sub);
+      margin-top: 3px;
+      margin-bottom: 16px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
+    /* Stats Grid */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      padding: 12px 6px;
+      background: var(--card-inner);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      margin-bottom: 18px;
+    }
+
+    .stat-item b {
+      display: block;
+      font-size: 17px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .stat-item span {
+      font-size: 10.5px;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    /* Clean Sleek Buttons (No Outline Borders & Clean Typography) */
+    .btn-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn-main {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      width: 100%;
+      background: var(--btn-bg);
+      color: #ffffff;
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      text-decoration: none;
+      padding: 14px 18px;
+      border-radius: 100px;
+      border: none;
+      outline: none;
+      transition: opacity 0.15s ease, background 0.15s ease;
+    }
+
+    .btn-main:active {
+      opacity: 0.88;
+      background: #0369a1;
+    }
+
+    .btn-main svg {
+      width: 18px;
+      height: 18px;
+      fill: #ffffff;
+    }
+
+    .btn-sec {
+      background: var(--card-inner);
+      color: var(--text-sub);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 13px 18px;
+      border: none;
+      outline: none;
+    }
+
+    .btn-sec:active {
+      background: #1e2434;
+      color: #ffffff;
+    }
+
+    /* Content Cards */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
+
+    .card-title {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+    }
+
+    .msg-box {
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 13px;
+      color: var(--text-sub);
+      line-height: 1.6;
+    }
+
+    .status-box {
+      margin: 12px 0 10px;
+      padding: 10px 14px;
+      background: #052e16;
+      border: 1px solid #15803d;
+      border-left: 4px solid var(--green);
+      color: #dcfce7;
+      font-size: 12.5px;
+      font-weight: 700;
+      border-radius: 6px;
+      line-height: 1.7;
+    }
+
+    /* Features List */
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #e2e8f0;
+    }
+
+    .check-icon {
+      color: var(--green);
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    /* Table */
+    .table-log {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+    }
+
+    .table-log th {
+      text-align: left;
+      padding: 8px 6px;
+      color: var(--text-sub);
+      border-bottom: 1px solid var(--border);
+      font-size: 10.5px;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+    }
+
+    .table-log td {
+      padding: 10px 6px;
+      border-bottom: 1px solid var(--border);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .table-log tr:last-child td {
+      border: 0;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 10.5px;
+      font-weight: 800;
+      color: #000;
+      background: var(--green);
+      padding: 2px 7px;
+      border-radius: 4px;
+      letter-spacing: 0.3px;
+    }
+
+    /* Sticky Bottom Bar */
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #05070a;
+      border-top: 1px solid var(--border);
+      padding: 12px 16px;
+      z-index: 99;
+      display: flex;
+      justify-content: center;
+    }
+
+    .bottom-in {
+      width: 100%;
+      max-width: 460px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .bottom-txt b {
+      display: block;
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .bottom-txt span {
+      display: block;
+      font-size: 11px;
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    .bottom-btn {
+      background: var(--btn-bg);
+      color: #fff;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      padding: 11px 20px;
+      border-radius: 1px;
+      border: none;
+      outline: none;
+      white-space: nowrap;
+      transition: opacity 0.15s ease;
+    }
+
+    .bottom-btn:active {
+      opacity: 0.88;
+      background: #0369a1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Strip -->
+  <div class="top-strip">
+    <div class="live-status">
+      <span class="dot"></span>
+      <span>Live Match Desk</span>
+    </div>
+    <span class="top-badge">EST. 2012</span>
+  </div>
+
+  <main class="container">
+    <!-- Hero Profile -->
+    <div class="hero-card">
+      <div class="avatar-wrap">
+        <img 
+          src="https://d1yei2z3i6k35z.cloudfront.net/13184094/6ae12cee333fd0.50108192_mx.jpg" 
+          fetchpriority="high"
+          decoding="sync"
+          class="avatar" 
+          alt="CRICKET MECHANZIE 2012"
+        />
+      </div>
+
+      <h1 class="title">
+        CRICKET MECHANZIE 2012
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.5-1.5 2.6 2.6 6.4-6.4 1.5 1.5-7.9 7.9z"/></svg>
+      </h1>
+      <p class="subtitle">Trusted Match Analytics & Ground Intelligence Since 2012</p>
+
+      <div class="stats-row">
+        <div class="stat-item">
+          <b>260K+</b>
+          <span>Subscribers</span>
+        </div>
+        <div class="stat-item">
+          <b>4,500+</b>
+          <span>Matches</span>
+        </div>
+        <div class="stat-item">
+          <b>99.1%</b>
+          <span>Accuracy</span>
+        </div>
+      </div>
+
+      <div class="btn-wrap">
+        <a href="https://t.me/+JeA8hqt1kaBhY2I1" target="_blank" rel="noopener noreferrer" class="btn-main">
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.832.942z"/></svg>
+          Join Telegram Channel
+        </a>
+
+        <a href="https://t.me/+JeA8hqt1kaBhY2I1" target="_blank" rel="noopener noreferrer" class="btn-main btn-sec">
+          Today's Match Predictions
+        </a>
+      </div>
+    </div>
+
+    <!-- Pinned Update -->
+    <div class="card">
+      <div class="card-title">📌 Pinned Match Report</div>
+      <div class="msg-box">
+        <strong style="color: #fff; font-size: 13.5px;">Today's Match Pitch & Weather Analysis</strong>
+        <p style="margin-top: 4px;">Solid surface for batting initially. Pitch dry hone ki wajah se second half me balls turn legi. Chasing setup me dew factor decisive rahega.</p>
+        <div class="status-box">
+          ✔ Toss & Final Playing XI: POSTED<br>
+          ✔ 6 Over Powerplay Session: CONFIRMED<br>
+          ✔ Final Match Report: LIVE ON CHANNEL
+        </div>
+        <span style="font-size: 11px; color: var(--text-sub); font-weight: 700;">⚡ Updated live on Telegram</span>
+      </div>
+    </div>
+
+    <!-- Benefits -->
+    <div class="card">
+      <div class="card-title">⚡ Why Follow Mechanzie?</div>
+      <ul class="feature-list">
+        <li class="feature-item">
+          <span class="check-icon">✔</span>
+          Continuous track record running since 2012
+        </li>
+        <li class="feature-item">
+          <span class="check-icon">✔</span>
+          Accurate pitch conditions & weather analysis prior to toss
+        </li>
+        <li class="feature-item">
+          <span class="check-icon">✔</span>
+          100% Free Public Channel — Zero VIP or hidden fees
+        </li>
+      </ul>
+    </div>
+
+    <!-- Match History Log -->
+    <div class="card">
+      <div class="card-title">📊 Recent Coverage Log</div>
+      <table class="table-log">
+        <thead>
+          <tr>
+            <th>Fixture</th>
+            <th>Coverage</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>MI vs CSK</td>
+            <td>Session + Winner</td>
+            <td><span class="badge">VERIFIED</span></td>
+          </tr>
+          <tr>
+            <td>IND vs AUS</td>
+            <td>Pitch & Toss Call</td>
+            <td><span class="badge">VERIFIED</span></td>
+          </tr>
+          <tr>
+            <td>RCB vs KKR</td>
+            <td>Powerplay Log</td>
+            <td><span class="badge">VERIFIED</span></td>
+          </tr>
+          <tr>
+            <td>ENG vs SA</td>
+            <td>Match Winner</td>
+            <td><span class="badge">VERIFIED</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- Sticky Bottom Navigation -->
+  <div class="bottom-bar">
+    <div class="bottom-in">
+      <div class="bottom-txt">
+        <b>CRICKET MECHANZIE 2012</b>
+        <span>● Live Free Updates</span>
+      </div>
+      <a href="https://t.me/+JeA8hqt1kaBhY2I1" target="_blank" rel="noopener noreferrer" class="bottom-btn">
+        Open App 
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>
