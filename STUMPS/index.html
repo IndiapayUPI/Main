@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>STUMPS ™❤️ | Cricket Predictions</title>
+  <meta name="description" content="Real-time match predictions, pitch reports, toss updates, and session analysis. Join the official STUMPS Telegram channel for cricket insights." />
 
-  <!-- Meta Pixel Code -->
+  <!-- Meta Pixel Code (ID: 1900350784265861) -->
   <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -15,12 +16,12 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1249250362893784');
+    fbq('init', '1900350784265861');
     fbq('track', 'PageView');
   </script>
   <noscript>
     <img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=1249250362893784&ev=PageView&noscript=1"
+      src="https://www.facebook.com/tr?id=1900350784265861&ev=PageView&noscript=1"
     />
   </noscript>
   <!-- End Meta Pixel Code -->
@@ -62,327 +63,304 @@
     }
   </script>
 
-  <!-- Font Awesome & Modern Typography -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Inter Font for Classic Editorial Precision -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          },
+          colors: {
+            mono: {
+              950: '#050505',
+              900: '#0A0A0A',
+              850: '#0F0F0F',
+              800: '#141414',
+              750: '#1A1A1A',
+              700: '#222222',
+              600: '#2E2E2E',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Pure Crisp Monochrome CSS — Architectural Precision + Expanding Pulse -->
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
-
     body {
-      background-color: #000000;
-      color: #ffffff;
-      font-family: 'Montserrat', sans-serif;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
+      background-color: #050505;
+      color: #FAFAFA;
       overflow-x: hidden;
-      padding: 24px 16px;
+      -webkit-tap-highlight-color: transparent;
+      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     }
-
-    /* Dimmed Background Overlay */
-    .bg-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('https://i.pinimg.com/736x/95/56/c3/9556c3f07601b6a533d2e9c204a2d37e.jpg');
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      opacity: 0.16;
-      filter: grayscale(100%) contrast(120%);
-      z-index: 0;
-      pointer-events: none;
+    /* Subtle architectural grid lines */
+    .bg-grid-pattern {
+      background-size: 48px 48px;
+      background-image: 
+        linear-gradient(to right, #111111 1px, transparent 1px),
+        linear-gradient(to bottom, #111111 1px, transparent 1px);
     }
-
-    /* Main Container */
-    .container {
+    /* Vertical stripe texture for Bento cards */
+    .bento-stripes {
+      background-color: #090909;
+      background-image: repeating-linear-gradient(
+        90deg,
+        #090909 0px,
+        #090909 18px,
+        #0D0D0D 18px,
+        #0D0D0D 36px
+      );
+    }
+    /* Solid crisp card border with precision top hairline */
+    .crisp-card {
+      background-color: #0B0B0B;
+      border: 1px solid #1F1F1F;
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+    }
+    @media (hover: hover) {
+      .crisp-card:hover,
+      .bento-stripes:hover {
+        border-color: #404040;
+      }
+    }
+    /* Watermark Outline */
+    .watermark-text {
+      color: transparent;
+      -webkit-text-stroke: 1.2px #1F1F1F;
+    }
+    /* Avatar Auto Glow Ring */
+    .avatar-ring {
       position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 400px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
     }
-
-    /* Profile Avatar with Auto Glow Pulse */
-    .avatar-wrapper {
-      position: relative;
-      width: 108px;
-      height: 108px;
-      margin-bottom: 18px;
-    }
-
-    .avatar-wrapper::after {
+    .avatar-ring::after {
       content: '';
       position: absolute;
       inset: -5px;
-      border-radius: 50%;
-      border: 1.5px solid #ffffff;
-      animation: avatarPulse 2.8s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+      border-radius: 9999px;
+      border: 1.5px solid #FFFFFF;
+      pointer-events: none;
+      animation: avatarPulse 2.6s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
     }
-
-    .avatar-img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid #ffffff;
-      background-color: #111;
-      display: block;
-    }
-
-    /* Channel Identity */
-    .channel-name {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-    }
-
-    .channel-badge {
-      font-size: 0.72rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      padding: 3px 12px;
-      border-radius: 20px;
-      margin-bottom: 16px;
-    }
-
-    .about-text {
-      font-size: 0.88rem;
-      color: #b5b5b5;
-      line-height: 1.55;
-      margin-bottom: 28px;
-      padding: 0 8px;
-    }
-
-    /* CTA Section */
-    .btn-container {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      margin-bottom: 28px;
-    }
-
-    /* Expanding Pulse Wrapper */
+    /* CTA Expanding Pulse Wrapper */
     .btn-pulse-wrapper {
       position: relative;
       width: 100%;
-      border-radius: 10px;
+      border-radius: 9999px;
     }
-
-    /* Continuous Border Out-Fade Keyframe Layers */
     .btn-pulse-wrapper::before,
     .btn-pulse-wrapper::after {
       content: '';
       position: absolute;
       inset: 0;
-      border-radius: 10px;
-      border: 1.5px solid #ffffff;
+      border-radius: 9999px;
+      border: 1.5px solid #FFFFFF;
       pointer-events: none;
       z-index: 0;
       animation: expandingBorder 2.4s infinite cubic-bezier(0.2, 0.7, 0.1, 1);
     }
-
     .btn-pulse-wrapper::after {
       animation-delay: 1.2s;
     }
-
-    /* Button Structure (Touch-First, Zero Hover Dependency) */
-    .animated-border-btn {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      width: 100%;
-      padding: 16px 20px;
-      background-color: #000000;
-      color: #ffffff;
-      text-decoration: none;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      border-radius: 10px;
-      border: 1.5px solid #ffffff;
-      box-shadow: 0 0 16px rgba(255, 255, 255, 0.12);
-      transition: transform 0.15s ease;
-      cursor: pointer;
-    }
-
-    .animated-border-btn:active {
-      transform: scale(0.96);
-      background-color: #121212;
-    }
-
-    /* Secondary Button Variant */
-    .btn-pulse-wrapper.secondary::before,
-    .btn-pulse-wrapper.secondary::after {
-      border-color: rgba(255, 255, 255, 0.6);
-      animation-duration: 3s;
-    }
-
-    .animated-border-btn.secondary-btn {
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      font-size: 0.85rem;
-      padding: 13px 18px;
-      box-shadow: none;
-    }
-
-    /* Stats Row */
-    .stats-row {
-      display: flex;
-      justify-content: space-around;
-      width: 100%;
-      padding-top: 18px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .stat-box {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .stat-number {
-      font-weight: 700;
-      font-size: 1.05rem;
-      color: #fff;
-    }
-
-    .stat-label {
-      font-size: 0.65rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: rgba(255, 255, 255, 0.5);
-    }
-
-    /* Out-Fade Animation (100% visible to 0% transparent expanding wave) */
     @keyframes expandingBorder {
       0% {
         transform: scale(1);
-        opacity: 0.95;
-        border-color: #ffffff;
+        opacity: 0.85;
+        border-color: #FFFFFF;
       }
       50% {
-        border-color: rgba(255, 255, 255, 0.5);
+        border-color: rgba(255, 255, 255, 0.45);
       }
       100% {
-        transform: scaleX(1.08) scaleY(1.22);
+        transform: scaleX(1.05) scaleY(1.22);
         opacity: 0;
         border-color: rgba(255, 255, 255, 0);
       }
     }
-
     @keyframes avatarPulse {
       0% {
         transform: scale(1);
-        opacity: 0.8;
+        opacity: 0.75;
       }
       100% {
-        transform: scale(1.15);
+        transform: scale(1.16);
         opacity: 0;
       }
     }
   </style>
 </head>
-<body>
+<body class="antialiased selection:bg-white selection:text-black min-h-screen flex flex-col justify-between bg-grid-pattern relative">
 
-  <!-- Ambient Backdrop -->
-  <div class="bg-overlay"></div>
+  <!-- Subtle Dimmed Cricket Backdrop Layer -->
+  <div 
+    class="fixed inset-0 pointer-events-none z-0 opacity-[0.08] grayscale contrast-125 bg-center bg-cover bg-no-repeat"
+    style="background-image: url('https://i.pinimg.com/736x/95/56/c3/9556c3f07601b6a533d2e9c204a2d37e.jpg');"
+  ></div>
 
-  <main class="container">
-    
-    <!-- Profile / Channel Logo -->
-    <div class="avatar-wrapper">
-      <img 
-        class="avatar-img" 
-        src="https://nwscdn.com/media/wysiwyg/cricket/Ultra_Durable_Cricket_Stumps.jpg" 
-        alt="STUMPS Logo" 
-      />
+  <!-- FLOATING CLASSIC UPPER BAR -->
+  <header class="sticky top-3 z-50 px-3 sm:px-6 pt-1">
+    <div class="max-w-md mx-auto bg-mono-900 border border-mono-700 rounded-2xl px-3.5 py-2.5 flex items-center justify-between gap-2 shadow-2xl">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <span class="px-2 py-0.5 rounded-full bg-white text-black font-extrabold text-[10px] tracking-wider uppercase shrink-0">LIVE</span>
+        <span class="text-xs font-semibold text-neutral-300 truncate">Official Cricket Desk</span>
+      </div>
+      <a 
+        href="https://t.me/+e6Exv5IliEw2MDVl"
+        onclick="trackTelegramClick('Header Join Button', 'https://t.me/+e6Exv5IliEw2MDVl'); return false;"
+        class="shrink-0 inline-flex items-center gap-1.5 bg-white hover:bg-neutral-200 active:scale-95 text-black font-semibold px-3 py-1.5 rounded-full text-[11px] transition-all"
+      >
+        <span>Join Free</span>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H8M17 7V16"/>
+        </svg>
+      </a>
     </div>
+  </header>
 
-    <!-- Title & Badge -->
-    <h1 class="channel-name">STUMPS ™❤️</h1>
-    <span class="channel-badge">Cricket Analysis & Tips</span>
+  <!-- MAIN CONTENT CARD -->
+  <main class="relative z-10 flex-1 flex items-center justify-center px-4 py-6 sm:py-10">
+    <div class="w-full max-w-md">
 
-    <!-- Bio / About -->
-    <p class="about-text">
-      Real-time match predictions, pitch reports, toss updates, and session analysis. Join the official channel for cricket insights.
-    </p>
+      <!-- Primary Bento Container -->
+      <section class="bento-stripes border border-mono-700 rounded-3xl p-6 sm:p-8 text-center shadow-2xl relative overflow-hidden">
 
-    <!-- CTAs with Dynamic Border Ripple & Unified Tracking -->
-    <div class="btn-container">
-      
-      <!-- Primary Animated CTA Button -->
-      <div class="btn-pulse-wrapper">
-        <a 
-          href="https://t.me/+e6Exv5IliEw2MDVl" 
-          onclick="trackTelegramClick('Primary Join Button', 'https://t.me/+e6Exv5IliEw2MDVl'); return false;"
-          class="animated-border-btn"
-        >
-          <i class="fa-brands fa-telegram fa-lg"></i>
-          <span>Join Telegram Channel</span>
-        </a>
-      </div>
+        <!-- Top Status Pill -->
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mono-900 border border-mono-700 text-[11px] font-medium text-neutral-300 mb-6">
+          <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+          <span class="uppercase tracking-widest">Cricket Analysis &amp; Tips</span>
+        </div>
 
-      <!-- Secondary Quick Link Button -->
-      <div class="btn-pulse-wrapper secondary">
-        <a 
-          href="https://t.me/+e6Exv5IliEw2MDVl" 
-          onclick="trackTelegramClick('Secondary Match Tips Button', 'https://t.me/+e6Exv5IliEw2MDVl'); return false;"
-          class="animated-border-btn secondary-btn"
-        >
-          <i class="fa-solid fa-bolt"></i>
-          <span>Today's Match Tips</span>
-        </a>
+        <!-- Profile Avatar with Monochrome Pulse -->
+        <div class="flex justify-center mb-5">
+          <div class="avatar-ring w-24 h-24 sm:w-28 sm:h-28 rounded-full">
+            <img 
+              src="https://nwscdn.com/media/wysiwyg/cricket/Ultra_Durable_Cricket_Stumps.jpg" 
+              alt="STUMPS Logo" 
+              class="w-full h-full rounded-full object-cover border-2 border-white bg-mono-900 block"
+            />
+          </div>
+        </div>
+
+        <!-- Channel Identity -->
+        <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white uppercase mb-2">
+          STUMPS ™❤️
+        </h1>
+
+        <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed max-w-sm mx-auto mb-7">
+          Real-time match predictions, pitch reports, toss updates, and session analysis. Join the official channel for <strong class="text-white font-semibold">cricket insights</strong>.
+        </p>
+
+        <!-- CTAs with Dynamic Border Ripple & Unified Tracking -->
+        <div class="space-y-4 mb-7">
+
+          <!-- Primary Stark White Button -->
+          <div class="btn-pulse-wrapper">
+            <a 
+              href="https://t.me/+e6Exv5IliEw2MDVl"
+              onclick="trackTelegramClick('Primary Join Button', 'https://t.me/+e6Exv5IliEw2MDVl'); return false;"
+              class="relative z-10 w-full inline-flex items-center justify-center gap-2.5 bg-white hover:bg-neutral-200 active:scale-[0.98] text-black font-bold py-4 px-6 rounded-full text-xs sm:text-sm uppercase tracking-wider transition-all shadow-lg"
+            >
+              <!-- Telegram SVG -->
+              <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/>
+              </svg>
+              <span>Join Telegram Channel</span>
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H8M17 7V16"/>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Secondary Crisp Dark Button -->
+          <div>
+            <a 
+              href="https://t.me/+e6Exv5IliEw2MDVl"
+              onclick="trackTelegramClick('Secondary Match Tips Button', 'https://t.me/+e6Exv5IliEw2MDVl'); return false;"
+              class="w-full inline-flex items-center justify-center gap-2 bg-mono-900 hover:bg-mono-800 active:scale-[0.98] text-white border border-mono-600 hover:border-neutral-400 font-semibold py-3.5 px-5 rounded-full text-xs sm:text-sm uppercase tracking-wider transition-all"
+            >
+              <!-- Bolt SVG -->
+              <svg class="w-4 h-4 text-white shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+              <span>Today's Match Tips</span>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- 3-Column Crisp Metrics Grid -->
+        <div class="grid grid-cols-3 gap-2.5 pt-5 border-t border-mono-700">
+          <div class="crisp-card rounded-xl p-3 text-center">
+            <div class="text-xs sm:text-sm font-extrabold text-white tracking-tight">IPL &amp; T20</div>
+            <div class="text-[10px] uppercase tracking-wider text-neutral-400 mt-0.5">Coverage</div>
+          </div>
+          <div class="bg-white text-black rounded-xl p-3 text-center">
+            <div class="text-xs sm:text-sm font-extrabold tracking-tight">100%</div>
+            <div class="text-[10px] uppercase tracking-wider text-neutral-700 font-semibold mt-0.5">Free Access</div>
+          </div>
+          <div class="crisp-card rounded-xl p-3 text-center">
+            <div class="text-xs sm:text-sm font-extrabold text-white tracking-tight">Daily</div>
+            <div class="text-[10px] uppercase tracking-wider text-neutral-400 mt-0.5">Updates</div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Feature Highlights Strip -->
+      <div class="grid grid-cols-3 gap-2 mt-3">
+        <div class="bg-mono-900 border border-mono-700 rounded-xl py-2.5 px-3 flex items-center justify-center gap-1.5 text-[11px] font-medium text-neutral-300">
+          <svg class="w-3.5 h-3.5 text-white shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Pitch Report</span>
+        </div>
+        <div class="bg-mono-900 border border-mono-700 rounded-xl py-2.5 px-3 flex items-center justify-center gap-1.5 text-[11px] font-medium text-neutral-300">
+          <svg class="w-3.5 h-3.5 text-white shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Toss Winner</span>
+        </div>
+        <div class="bg-mono-900 border border-mono-700 rounded-xl py-2.5 px-3 flex items-center justify-center gap-1.5 text-[11px] font-medium text-neutral-300">
+          <svg class="w-3.5 h-3.5 text-white shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Session Tips</span>
+        </div>
       </div>
 
     </div>
-
-    <!-- Minimal Metrics -->
-    <div class="stats-row">
-      <div class="stat-box">
-        <span class="stat-number">IPL & T20</span>
-        <span class="stat-label">Coverage</span>
-      </div>
-      <div class="stat-box">
-        <span class="stat-number">100%</span>
-        <span class="stat-label">Free Access</span>
-      </div>
-      <div class="stat-box">
-        <span class="stat-number">Daily</span>
-        <span class="stat-label">Updates</span>
-      </div>
-    </div>
-
   </main>
+
+  <!-- FOOTER WITH MONOCHROME WATERMARK & ADVERTISER LINK -->
+  <footer class="relative z-10 border-t border-mono-700 bg-mono-950 py-5 px-4 text-center overflow-hidden">
+    <div class="max-w-md mx-auto">
+
+      <!-- View Advertiser Link pointing to "/" -->
+      <div class="mb-3">
+        <a 
+          href="/" 
+          class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-mono-900 border border-mono-700 hover:border-neutral-400 text-[11px] font-medium text-neutral-300 hover:text-white transition-colors"
+        >
+          <span class="text-neutral-400">View Advertiser :</span>
+          <span class="font-bold text-white underline underline-offset-2">Official Ad Partner</span>
+          <svg class="w-3 h-3 text-neutral-400" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H8M17 7V16"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Subtle Watermark Typography -->
+      <div class="select-none text-3xl sm:text-4xl font-black tracking-tighter leading-none my-1">
+        <span class="text-neutral-300">STUM</span><span class="watermark-text">PS™</span>
+      </div>
+
+      <p class="text-[10px] text-neutral-500 mt-1.5">
+        © 2026 STUMPS ™❤️ Cricket Analysis. All rights reserved.
+      </p>
+    </div>
+  </footer>
 
 </body>
 </html>
