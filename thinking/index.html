@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THINKING // SUPER INTELLIGENCE MODE</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Inter & JetBrains Mono Fonts for Classic Sleek Aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      user-select: none;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      background-color: #000000;
+      color: #ffffff;
+      overflow: hidden;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .font-mono-sleek {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Thinking Dots Pulse */
+    .dot-pulse span {
+      display: inline-block;
+      animation: dotBlink 1.4s infinite both;
+    }
+    .dot-pulse span:nth-child(2) { animation-delay: 0.2s; }
+    .dot-pulse span:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes dotBlink {
+      0%, 80%, 100% { opacity: 0.15; }
+      40% { opacity: 1; }
+    }
+
+    /* Custom Scrollbar for Stealth Notebook */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fullscreen Edge-to-Edge 3D Neural Animation Background -->
+  <canvas id="super-brain-canvas" class="fixed inset-0 w-screen h-screen z-10"></canvas>
+
+  <!-- Center Interface: Status Badge + Stealth Idea Notebook -->
+  <div id="ui-container" class="relative z-20 w-full h-full flex flex-col items-center justify-center p-4 sm:p-8">
+
+    <!-- Center Status Badge: THINKING... / EXECUTING... -->
+    <div id="status-box" class="px-7 py-3.5 bg-black/75 border border-white/25 backdrop-blur-md transition-all duration-300 shadow-[0_0_50px_rgba(0,0,0,0.95)] pointer-events-none">
+      <span id="status-word" class="font-mono-sleek text-lg sm:text-2xl md:text-3xl font-medium tracking-[0.45em] text-white uppercase pl-[0.45em]">
+        THINKING
+      </span><span class="dot-pulse font-mono-sleek text-lg sm:text-2xl md:text-3xl text-white"><span>.</span><span>.</span><span>.</span></span>
+    </div>
+
+    <!-- Stealth Notebook Container (Hides when you stop typing, reveals on typing or pressing ALT) -->
+    <div id="notebook-panel" class="w-full max-w-3xl mt-6 transition-all duration-500 opacity-0 translate-y-3 pointer-events-none">
+      <div class="bg-black/80 border border-white/20 backdrop-blur-xl p-5 sm:p-7 shadow-[0_0_70px_rgba(0,0,0,0.95)]">
+        <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-4 font-mono-sleek text-[11px] tracking-[0.25em] text-white/45 uppercase">
+          <span id="notebook-mode-label">NEURAL IDEA NOTEBOOK // LIVE INPUT</span>
+          <span id="char-counter">0 CHARS</span>
+        </div>
+
+        <textarea
+          id="idea-notebook"
+          rows="7"
+          spellcheck="false"
+          placeholder="START TYPING YOUR IDEAS..."
+          class="w-full bg-transparent text-white font-mono-sleek text-sm sm:text-base md:text-lg leading-relaxed tracking-wider focus:outline-none resize-none placeholder-white/20"
+        ></textarea>
+
+        <div class="flex items-center justify-between pt-3 mt-2 border-t border-white/10 font-mono-sleek text-[10px] tracking-[0.2em] text-white/35 uppercase">
+          <span>STOP TYPING: AUTO-HIDE TO THINKING</span>
+          <span>PRESS [ALT] TO REVEAL / PIN NOTEBOOK</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const canvas = document.getElementById('super-brain-canvas');
+    const ctx = canvas.getContext('2d');
+
+    const statusWord = document.getElementById('status-word');
+    const statusBox = document.getElementById('status-box');
+    const notebookPanel = document.getElementById('notebook-panel');
+    const ideaNotebook = document.getElementById('idea-notebook');
+    const charCounter = document.getElementById('char-counter');
+    const notebookModeLabel = document.getElementById('notebook-mode-label');
+
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+
+    // 3D Neural Cortex Nodes & Synaptic Pulses expanded to fill 100% of screen corners
+    const NODE_COUNT = 440;
+    let nodes = [];
+    let pulses = [];
+    let rotationY = 0;
+    let rotationX = 0.22;
+    let surgeBoost = 1;
+
+    function initBrainNodes() {
+      nodes = [];
+      // Diagonal span ensures full-cover background across all widescreen/mobile aspect ratios
+      const spanX = width * 0.78;
+      const spanY = height * 0.78;
+      const spanZ = Math.max(width, height) * 0.65;
+
+      for (let i = 0; i < NODE_COUNT; i++) {
+        // Fibonacci distribution sculpted across the entire viewport
+        const phi = Math.acos(1 - (2 * (i + 0.5)) / NODE_COUNT);
+        const theta = Math.PI * (1 + Math.sqrt(5)) * i;
+        // Layer depth so both center and outer corners are richly covered
+        const layer = 0.45 + 0.65 * ((i % 7) / 6);
+
+        let x = spanX * layer * Math.sin(phi) * Math.cos(theta);
+        let y = spanY * layer * Math.cos(phi);
+        let z = spanZ * layer * Math.sin(phi) * Math.sin(theta);
+
+        nodes.push({
+          baseX: x,
+          baseY: y,
+          baseZ: z,
+          x: 0,
+          y: 0,
+          z: 0,
+          px: 0,
+          py: 0,
+          scale: 1,
+          energy: Math.random()
+        });
+      }
+    }
+
+    function resizeCanvas() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+      initBrainNodes();
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    // Spawn high-speed synaptic light packets between nearby 3D nodes
+    function spawnSynapsePulse() {
+      if (nodes.length < 2) return;
+      const startIdx = Math.floor(Math.random() * nodes.length);
+      const n1 = nodes[startIdx];
+
+      let bestIdx = -1;
+      let bestDist = Infinity;
+      const maxPulseDist = Math.hypot(width, height) * 0.22;
+
+      for (let i = 0; i < nodes.length; i++) {
+        if (i === startIdx) continue;
+        const n2 = nodes[i];
+        const dx = n1.baseX - n2.baseX;
+        const dy = n1.baseY - n2.baseY;
+        const dz = n1.baseZ - n2.baseZ;
+        const d = Math.sqrt(dx * dx + dy * dy + dz * dz);
+        if (d > 25 && d < maxPulseDist && d < bestDist && Math.random() > 0.3) {
+          bestDist = d;
+          bestIdx = i;
+        }
+      }
+
+      if (bestIdx !== -1) {
+        nodes[startIdx].energy = 1.0;
+        pulses.push({
+          from: startIdx,
+          to: bestIdx,
+          t: 0,
+          speed: (0.03 + Math.random() * 0.04) * surgeBoost
+        });
+      }
+    }
+
+    // Main 60FPS Fullscreen Render Loop
+    let time = 0;
+    function animate() {
+      time += 0.02 * surgeBoost;
+      surgeBoost += (1 - surgeBoost) * 0.05;
+
+      ctx.fillStyle = '#000000';
+      ctx.fillRect(0, 0, width, height);
+
+      const cx = width / 2;
+      const cy = height / 2;
+      const maxDim = Math.max(1, width, height);
+      const fov = maxDim * 0.9;
+      const cameraZ = maxDim * 0.72;
+
+      // Rotate 3D Neural Field
+      rotationY += 0.0045 * surgeBoost;
+      rotationX = Math.sin(time * 0.35) * 0.16;
+
+      // Project 3D Nodes
+      const cosY = Math.cos(rotationY);
+      const sinY = Math.sin(rotationY);
+      const cosX = Math.cos(rotationX);
+      const sinX = Math.sin(rotationX);
+
+      for (let i = 0; i < nodes.length; i++) {
+        const n = nodes[i];
+
+        const pulseScale = 1 + Math.sin(time * 2 + i * 0.15) * 0.025;
+        const bx = n.baseX * pulseScale;
+        const by = n.baseY * pulseScale;
+        const bz = n.baseZ * pulseScale;
+
+        const x1 = bx * cosY - bz * sinY;
+        const z1 = bz * cosY + bx * sinY;
+        const y2 = by * cosX - z1 * sinX;
+        const z2 = z1 * cosX + by * sinX;
+
+        n.x = x1;
+        n.y = y2;
+        n.z = z2;
+
+        const depth = Math.max(50, fov + z2 + cameraZ);
+        const scale = Math.max(0.05, fov / depth);
+        n.px = cx + x1 * scale;
+        n.py = cy + y2 * scale;
+        n.scale = scale;
+        n.energy = Math.max(0.18, n.energy * 0.96);
+      }
+
+      // Draw Synaptic Connections Across Full Screen
+      const maxConnectDist = Math.hypot(width, height) * 0.17;
+      ctx.lineWidth = 0.65;
+
+      for (let i = 0; i < nodes.length; i++) {
+        const n1 = nodes[i];
+        for (let j = i + 1; j < nodes.length; j++) {
+          const n2 = nodes[j];
+          const dx = n1.x - n2.x;
+          const dy = n1.y - n2.y;
+          const dz = n1.z - n2.z;
+          const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+          if (dist < maxConnectDist) {
+            const depthAlpha = ((n1.scale + n2.scale) * 0.5 - 0.35) * 1.4;
+            const alpha = (1 - dist / maxConnectDist) * Math.max(0.05, depthAlpha) * 0.36;
+            ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
+            ctx.beginPath();
+            ctx.moveTo(n1.px, n1.py);
+            ctx.lineTo(n2.px, n2.py);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Spawn & Render Firing Synaptic Action Potentials
+      if (Math.random() < 0.85 * surgeBoost) {
+        spawnSynapsePulse();
+      }
+      if (Math.random() < 0.65 * surgeBoost) {
+        spawnSynapsePulse();
+      }
+
+      for (let i = pulses.length - 1; i >= 0; i--) {
+        const p = pulses[i];
+        p.t += p.speed;
+
+        if (p.t >= 1) {
+          nodes[p.to].energy = 1.0;
+          pulses.splice(i, 1);
+          continue;
+        }
+
+        const n1 = nodes[p.from];
+        const n2 = nodes[p.to];
+        const x = n1.px + (n2.px - n1.px) * p.t;
+        const y = n1.py + (n2.py - n1.py) * p.t;
+
+        ctx.strokeStyle = `rgba(255, 255, 255, ${1 - p.t * 0.5})`;
+        ctx.lineWidth = 1.3;
+        ctx.beginPath();
+        ctx.moveTo(n1.px, n1.py);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath();
+        ctx.arc(x, y, Math.max(0.5, 2.2 * n1.scale), 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Draw Neurons
+      for (let i = 0; i < nodes.length; i++) {
+        const n = nodes[i];
+        const r = Math.max(0.8, (1.4 + n.energy * 2.2) * n.scale);
+        const alpha = Math.min(1, 0.25 + n.energy * 0.75);
+
+        ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+        ctx.beginPath();
+        ctx.arc(n.px, n.py, r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    requestAnimationFrame(animate);
+
+    // =========================================================================
+    // STEALTH NOTEBOOK & TYPING / ALT KEY CONTROLLER
+    // =========================================================================
+    let typingTimer = null;
+    let altPinned = false;
+    const STORAGE_KEY = 'neural_stealth_notebook_v1';
+
+    // Load saved ideas if available
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        ideaNotebook.value = saved;
+        charCounter.textContent = `${saved.length} CHARS`;
+      }
+    } catch (e) {}
+
+    function showNotebook(modeText) {
+      notebookPanel.classList.remove('opacity-0', 'translate-y-3', 'pointer-events-none');
+      notebookPanel.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+      if (modeText) notebookModeLabel.textContent = modeText;
+    }
+
+    function hideNotebookToThinking() {
+      statusWord.textContent = 'THINKING';
+      statusBox.classList.remove('border-white/70');
+      statusBox.classList.add('border-white/25');
+      if (!altPinned) {
+        notebookPanel.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+        notebookPanel.classList.add('opacity-0', 'translate-y-3', 'pointer-events-none');
+      }
+    }
+
+    function triggerExecutingState() {
+      // Switch center word from THINKING... to EXECUTING...
+      statusWord.textContent = 'EXECUTING';
+      statusBox.classList.remove('border-white/25');
+      statusBox.classList.add('border-white/70');
+      showNotebook(altPinned ? 'NEURAL IDEA NOTEBOOK // ALT REVEAL LOCKED' : 'NEURAL IDEA NOTEBOOK // EXECUTING IDEA');
+
+      // Boost neural firing while typing
+      surgeBoost = 2.4;
+      for (let i = 0; i < 4; i++) {
+        spawnSynapsePulse();
+      }
+
+      clearTimeout(typingTimer);
+      typingTimer = setTimeout(() => {
+        hideNotebookToThinking();
+      }, 1500);
+    }
+
+    // Listen for typing inside the notebook
+    ideaNotebook.addEventListener('input', () => {
+      charCounter.textContent = `${ideaNotebook.value.length} CHARS`;
+      try {
+        localStorage.setItem(STORAGE_KEY, ideaNotebook.value);
+      } catch (e) {}
+      triggerExecutingState();
+    });
+
+    // Global keyboard listener:
+    // 1. Pressing ALT toggles/reveals the hidden notebook words
+    // 2. Typing anywhere on the black screen immediately focuses the notebook & switches to EXECUTING...
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Alt') {
+        e.preventDefault();
+        altPinned = !altPinned;
+        if (altPinned) {
+          showNotebook('NEURAL IDEA NOTEBOOK // ALT REVEAL LOCKED');
+          ideaNotebook.focus();
+          surgeBoost = 2.0;
+        } else {
+          hideNotebookToThinking();
+        }
+        return;
+      }
+
+      // If user starts typing any character anywhere on the screen, auto-focus notebook
+      const isPrintableKey = e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey;
+      const isEditingKey = e.key === 'Backspace' || e.key === 'Enter';
+
+      if (document.activeElement !== ideaNotebook && (isPrintableKey || isEditingKey)) {
+        ideaNotebook.focus();
+        triggerExecutingState();
+      } else if (document.activeElement === ideaNotebook && (isPrintableKey || isEditingKey)) {
+        triggerExecutingState();
+      }
+    });
+
+    // Click anywhere to surge synapses & focus notebook
+    document.addEventListener('click', (e) => {
+      surgeBoost = 2.6;
+      for (let i = 0; i < 20; i++) {
+        spawnSynapsePulse();
+      }
+      ideaNotebook.focus();
+    });
+  </script>
+</body>
+</html>
