@@ -1,1 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thinking</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body, html {
+      width: 100%;
+      height: 100%;
+      background-color: #000000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      user-select: none;
+    }
+
+    .thinking-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .thinking-text {
+      color: #888888;
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      animation: breathe 2.5s infinite ease-in-out;
+    }
+
+    .dots {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      padding-top: 2px;
+    }
+
+    .dot {
+      width: 5px;
+      height: 5px;
+      background-color: #888888;
+      border-radius: 50%;
+      animation: bounce 1.4s infinite ease-in-out both;
+    }
+
+    .dot:nth-child(1) {
+      animation-delay: -0.32s;
+    }
+
+    .dot:nth-child(2) {
+      animation-delay: -0.16s;
+    }
+
+    @keyframes bounce {
+      0%, 80%, 100% {
+        transform: scale(0.4);
+        opacity: 0.25;
+      }
+      40% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes breathe {
+      0%, 100% {
+        opacity: 0.4;
+      }
+      50% {
+        opacity: 0.9;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="thinking-wrapper">
+    <span class="thinking-text">Thinking</span>
+    <div class="dots">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+  </div>
+
+</body>
+</html>
