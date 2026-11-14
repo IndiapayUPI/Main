@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open in Telegram</title>
+
+    <!-- 1. IMMEDIATE HASH CHECK (Redirect to /not-found if empty) -->
+    <script>
+      let initialHash = window.location.hash.replace('#', '').split('?')[0].trim();
+      initialHash = initialHash.replace(/^https?:\/\/(www\.)?t\.me\//i, '').replace(/^\//, '');
+
+      if (!initialHash) {
+        window.location.replace('/not-found');
+      }
+    </script>
+
+    <!-- 2. DYNAMIC META PIXEL -->
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const pixelId = urlParams.get('pixel');
+
+      if (pixelId && initialHash) {
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+
+        fbq('init', pixelId);
+        fbq('track', 'PageView');
+      }
+    </script>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+
+      body {
+        background-color: #000000;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 36px;
+        overflow: hidden;
+      }
+
+      /* Sleek Telegram SVG */
+      .tg-logo {
+        width: 110px;
+        height: 110px;
+      }
+
+      /* Clean Button without outer blur/fade */
+      .button {
+        --ch-black: #141414;
+        --eer-black: #1b1b1b;
+        --night-rider: #2e2e2e;
+        --ch-white: #e1e1e1;
+        border-radius: 20px;
+        width: 220px;
+        height: 39px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 0px 15px;
+        border: none;
+        color: white;
+        position: relative;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 14px;
+        letter-spacing: 0.4px;
+        text-decoration: none;
+        transition-duration: 0.2s;
+        background-color: var(--ch-black);
+        z-index: 1;
+      }
+
+      .button:active {
+        transform: scale(0.97);
+      }
+
+      .button:before {
+        content: "";
+        position: absolute;
+        left: -1px;
+        top: -1px;
+        border-radius: 21px;
+        background: linear-gradient(
+          45deg,
+          var(--ch-black),
+          var(--eer-black),
+          var(--night-rider),
+          var(--ch-white),
+          var(--night-rider),
+          var(--eer-black),
+          var(--ch-black),
+          var(--ch-black)
+        );
+        background-size: 400%;
+        width: calc(100% + 2px);
+        height: calc(100% + 2px);
+        z-index: -1;
+        animation: steam 20s linear infinite;
+      }
+
+      @keyframes steam {
+        0% { background-position: 0 0; }
+        50% { background-position: 400% 0; }
+        100% { background-position: 0 0; }
+      }
+    </style>
+</head>
+<body>
+
+    <!-- Minimal Blue Paper Plane SVG -->
+    <svg class="tg-logo" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M214.5 34.8C211.2 32.1 206.4 31.4 201.3 33.4L26.4 101.4C20.2 103.8 16.5 108.5 16.9 113.8C17.3 119.1 21.7 123.3 28.2 125.1L72.6 137.8L176.4 72.4C181.3 69.3 185.8 71.0 182.1 74.3L97.8 150.4L94.7 196.6C99.2 196.6 101.2 194.5 103.7 192.1L125.3 171.2L170.2 204.3C178.5 208.9 184.4 206.5 186.5 196.7L216.1 57.1C218.9 44.3 217.8 37.5 214.5 34.8Z" fill="#229ED9"/>
+    </svg>
+
+    <!-- Open App Button -->
+    <a id="openAppBtn" href="#" class="button">Open APP</a>
+
+    <!-- 3. SCHEME + 100ms FALLBACK REDIRECT LOGIC -->
+    <script>
+      const btn = document.getElementById('openAppBtn');
+
+      if (initialHash) {
+        let schemeUrl = '';
+        let webUrl = `https://t.me/${initialHash}`;
+
+        if (initialHash.startsWith('+')) {
+          const inviteCode = initialHash.substring(1);
+          schemeUrl = `tg://join?invite=${inviteCode}`;
+        } else {
+          schemeUrl = `tg://resolve?domain=${initialHash}`;
+        }
+
+        btn.href = webUrl;
+
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+
+          if (typeof fbq === 'function') {
+            fbq('track', 'Subscribe');
+          }
+
+          window.location.href = schemeUrl;
+
+          setTimeout(function() {
+            window.location.href = webUrl;
+          }, 100);
+        });
+      }
+    </script>
+
+</body>
+</html>
