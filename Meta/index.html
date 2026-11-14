@@ -45,23 +45,59 @@
 
       body {
         background-color: #000000;
-        height: 100vh;
+        height: 100dvh;
         width: 100vw;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        gap: 36px;
+        justify-content: space-between;
+        padding: 20px 18px 24px;
         overflow: hidden;
       }
 
-      /* Sleek Telegram SVG */
+      /* Top-Left Verified User Badge */
+      .top-bar {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+
+      .verified-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: #111111;
+        border: 1px solid #222222;
+        padding: 6px 12px;
+        border-radius: 999px;
+        color: #e5e5e5;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+      }
+
+      .verified-badge svg {
+        width: 15px;
+        height: 15px;
+        flex-shrink: 0;
+      }
+
+      /* Center Telegram Logo + Open APP Button */
+      .center-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+      }
+
       .tg-logo {
         width: 110px;
         height: 110px;
       }
 
-      /* Clean Button without outer blur/fade */
+      /* Sleek Animated Border Button */
       .button {
         --ch-black: #141414;
         --eer-black: #1b1b1b;
@@ -69,7 +105,7 @@
         --ch-white: #e1e1e1;
         border-radius: 20px;
         width: 220px;
-        height: 39px;
+        height: 40px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -121,21 +157,76 @@
         50% { background-position: 400% 0; }
         100% { background-position: 0 0; }
       }
+
+      /* Bottom Full-Width CTA Button */
+      .bottom-bar {
+        width: 100%;
+        max-width: 440px;
+      }
+
+      .bottom-btn {
+        width: 100%;
+        height: 48px;
+        background: #229ED9;
+        color: #ffffff;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        text-decoration: none;
+        transition: background 0.2s, transform 0.15s;
+      }
+
+      .bottom-btn:hover {
+        background: #1d8ec4;
+      }
+
+      .bottom-btn:active {
+        transform: scale(0.98);
+      }
+
+      .bottom-btn svg {
+        width: 18px;
+        height: 18px;
+      }
     </style>
 </head>
 <body>
 
-    <!-- Minimal Blue Paper Plane SVG -->
-    <svg class="tg-logo" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M214.5 34.8C211.2 32.1 206.4 31.4 201.3 33.4L26.4 101.4C20.2 103.8 16.5 108.5 16.9 113.8C17.3 119.1 21.7 123.3 28.2 125.1L72.6 137.8L176.4 72.4C181.3 69.3 185.8 71.0 182.1 74.3L97.8 150.4L94.7 196.6C99.2 196.6 101.2 194.5 103.7 192.1L125.3 171.2L170.2 204.3C178.5 208.9 184.4 206.5 186.5 196.7L216.1 57.1C218.9 44.3 217.8 37.5 214.5 34.8Z" fill="#229ED9"/>
-    </svg>
+    <!-- Top-Left Verified Badge -->
+    <div class="top-bar">
+        <div class="verified-badge">
+            <span>Verified User</span>
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L14.8 4.4L18.5 4.1L19.8 7.6L23 9.5L22.2 13.1L23.8 16.5L21.1 19L20.7 22.7L17.1 23.3L14.5 25.9L12 24.4L9.5 25.9L6.9 23.3L3.3 22.7L2.9 19L0.2 16.5L1.8 13.1L1 9.5L4.2 7.6L5.5 4.1L9.2 4.4L12 2Z" transform="scale(0.85) translate(2, 1)" fill="#229ED9"/>
+                <path d="M8.5 12.2L10.8 14.5L15.5 9.8" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </div>
 
-    <!-- Open App Button -->
-    <a id="openAppBtn" href="#" class="button">Open APP</a>
+    <!-- Center Logo & Button -->
+    <div class="center-content">
+        <svg class="tg-logo" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M214.5 34.8C211.2 32.1 206.4 31.4 201.3 33.4L26.4 101.4C20.2 103.8 16.5 108.5 16.9 113.8C17.3 119.1 21.7 123.3 28.2 125.1L72.6 137.8L176.4 72.4C181.3 69.3 185.8 71.0 182.1 74.3L97.8 150.4L94.7 196.6C99.2 196.6 101.2 194.5 103.7 192.1L125.3 171.2L170.2 204.3C178.5 208.9 184.4 206.5 186.5 196.7L216.1 57.1C218.9 44.3 217.8 37.5 214.5 34.8Z" fill="#229ED9"/>
+        </svg>
+
+        <a href="#" class="button tg-action-btn">Open APP</a>
+    </div>
+
+    <!-- Bottom Full-Width Button -->
+    <div class="bottom-bar">
+        <a href="#" class="bottom-btn tg-action-btn">
+            <span>Join This Channel/Group/Chat</span>
+        </a>
+    </div>
 
     <!-- 3. SCHEME + 100ms FALLBACK REDIRECT LOGIC -->
     <script>
-      const btn = document.getElementById('openAppBtn');
+      const actionBtns = document.querySelectorAll('.tg-action-btn');
 
       if (initialHash) {
         let schemeUrl = '';
@@ -148,20 +239,22 @@
           schemeUrl = `tg://resolve?domain=${initialHash}`;
         }
 
-        btn.href = webUrl;
+        actionBtns.forEach(function(btn) {
+          btn.href = webUrl;
 
-        btn.addEventListener('click', function(e) {
-          e.preventDefault();
+          btn.addEventListener('click', function(e) {
+            e.preventDefault();
 
-          if (typeof fbq === 'function') {
-            fbq('track', 'Subscribe');
-          }
+            if (typeof fbq === 'function') {
+              fbq('track', 'Subscribe');
+            }
 
-          window.location.href = schemeUrl;
+            window.location.href = schemeUrl;
 
-          setTimeout(function() {
-            window.location.href = webUrl;
-          }, 100);
+            setTimeout(function() {
+              window.location.href = webUrl;
+            }, 100);
+          });
         });
       }
     </script>
