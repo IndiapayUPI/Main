@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Meta Link Generator</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+
+      body {
+        background-color: #000000;
+        color: #ffffff;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 420px;
+        background: #0d0d0d;
+        border: 1px solid #1f1f1f;
+        border-radius: 20px;
+        padding: 32px 26px;
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .header svg {
+        width: 28px;
+        height: 28px;
+        flex-shrink: 0;
+      }
+
+      .header h1 {
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        color: #f5f5f5;
+      }
+
+      .input-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .input-group label {
+        font-size: 12px;
+        font-weight: 500;
+        color: #8e8e8e;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+      }
+
+      .input-group input {
+        width: 100%;
+        height: 44px;
+        background: #141414;
+        border: 1px solid #262626;
+        border-radius: 12px;
+        padding: 0 14px;
+        color: #ffffff;
+        font-size: 14px;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+
+      .input-group input::placeholder {
+        color: #525252;
+      }
+
+      .input-group input:focus {
+        border-color: #229ED9;
+      }
+
+      /* Sleek Animated Border Button */
+      .button {
+        --ch-black: #141414;
+        --eer-black: #1b1b1b;
+        --night-rider: #2e2e2e;
+        --ch-white: #e1e1e1;
+        border-radius: 14px;
+        width: 100%;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        color: white;
+        position: relative;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 14px;
+        letter-spacing: 0.4px;
+        transition-duration: 0.2s;
+        background-color: var(--ch-black);
+        z-index: 1;
+        margin-top: 4px;
+      }
+
+      .button:active {
+        transform: scale(0.98);
+      }
+
+      .button:before {
+        content: "";
+        position: absolute;
+        left: -1px;
+        top: -1px;
+        border-radius: 15px;
+        background: linear-gradient(
+          45deg,
+          var(--ch-black),
+          var(--eer-black),
+          var(--night-rider),
+          var(--ch-white),
+          var(--night-rider),
+          var(--eer-black),
+          var(--ch-black),
+          var(--ch-black)
+        );
+        background-size: 400%;
+        width: calc(100% + 2px);
+        height: calc(100% + 2px);
+        z-index: -1;
+        animation: steam 20s linear infinite;
+      }
+
+      @keyframes steam {
+        0% { background-position: 0 0; }
+        50% { background-position: 400% 0; }
+        100% { background-position: 0 0; }
+      }
+
+      /* Generated Result Box */
+      .result-box {
+        display: none;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 4px;
+        animation: fadeIn 0.25s ease;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(4px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .result-label {
+        font-size: 11px;
+        color: #229ED9;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+
+      .link-bar {
+        display: flex;
+        align-items: center;
+        background: #141414;
+        border: 1px solid #262626;
+        border-radius: 12px;
+        padding: 6px 8px 6px 12px;
+        gap: 8px;
+      }
+
+      .link-text {
+        flex: 1;
+        background: transparent;
+        border: none;
+        color: #e5e5e5;
+        font-size: 13px;
+        outline: none;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .icon-btn {
+        width: 34px;
+        height: 34px;
+        border-radius: 9px;
+        background: #1f1f1f;
+        border: 1px solid #2c2c2c;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.2s, border-color 0.2s;
+        flex-shrink: 0;
+      }
+
+      .icon-btn:hover {
+        background: #2a2a2a;
+        border-color: #3f3f3f;
+      }
+
+      .icon-btn svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .error-msg {
+        color: #ff4d4d;
+        font-size: 12px;
+        display: none;
+      }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M214.5 34.8C211.2 32.1 206.4 31.4 201.3 33.4L26.4 101.4C20.2 103.8 16.5 108.5 16.9 113.8C17.3 119.1 21.7 123.3 28.2 125.1L72.6 137.8L176.4 72.4C181.3 69.3 185.8 71.0 182.1 74.3L97.8 150.4L94.7 196.6C99.2 196.6 101.2 194.5 103.7 192.1L125.3 171.2L170.2 204.3C178.5 208.9 184.4 206.5 186.5 196.7L216.1 57.1C218.9 44.3 217.8 37.5 214.5 34.8Z" fill="#229ED9"/>
+            </svg>
+            <h1>Meta Ads Landing Page</h1>
+        </div>
+
+        <div class="input-group">
+            <label for="tgInput">Enter Your Telegram Link</label>
+            <input type="text" id="tgInput" placeholder="https://t.me/+34IKSNFIOF9seE" autocomplete="off">
+            <span class="error-msg" id="errorMsg">Please enter a valid Telegram link or username.</span>
+        </div>
+
+        <div class="input-group">
+            <label for="pixelInput">Enter Pixel ID (Optional)</label>
+            <input type="text" id="pixelInput" placeholder="123456789012345" autocomplete="off">
+        </div>
+
+        <button class="button" id="generateBtn">Create Link</button>
+
+        <!-- Generated Link + Copy & Open SVG -->
+        <div class="result-box" id="resultBox">
+            <span class="result-label" id="statusLabel">Generated Link</span>
+            <div class="link-bar">
+                <input type="text" class="link-text" id="finalUrl" readonly>
+                
+                <!-- Copy Button SVG -->
+                <button class="icon-btn" id="copyBtn" title="Copy Link">
+                    <svg id="copyIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                </button>
+
+                <!-- Open External Link SVG -->
+                <a class="icon-btn" id="openBtn" href="#" target="_blank" rel="noopener noreferrer" title="Open Link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+      const tgInput = document.getElementById('tgInput');
+      const pixelInput = document.getElementById('pixelInput');
+      const generateBtn = document.getElementById('generateBtn');
+      const resultBox = document.getElementById('resultBox');
+      const finalUrlInput = document.getElementById('finalUrl');
+      const copyBtn = document.getElementById('copyBtn');
+      const openBtn = document.getElementById('openBtn');
+      const errorMsg = document.getElementById('errorMsg');
+      const statusLabel = document.getElementById('statusLabel');
+      const copyIcon = document.getElementById('copyIcon');
+
+      generateBtn.addEventListener('click', () => {
+        let rawTg = tgInput.value.trim();
+        const rawPixel = pixelInput.value.trim().replace(/\D/g, ''); // Sirf numbers rakhega
+
+        if (!rawTg) {
+          errorMsg.style.display = 'block';
+          resultBox.style.display = 'none';
+          return;
+        }
+        errorMsg.style.display = 'none';
+
+        // Clean Telegram link/username (e.g., https://t.me/+abc -> +abc, @channel -> channel)
+        rawTg = rawTg
+          .replace(/^https?:\/\/(www\.)?(t\.me|telegram\.me)\//i, '')
+          .replace(/^@/, '')
+          .replace(/^\//, '')
+          .split('?')[0];
+
+        // Auto-detect site domain + /Meta/ folder path
+        const baseDomain = window.location.origin;
+        const folderPath = '/Meta/';
+
+        let generatedLink = '';
+        if (rawPixel) {
+          generatedLink = `${baseDomain}${folderPath}?pixel=${rawPixel}#${rawTg}`;
+        } else {
+          generatedLink = `${baseDomain}${folderPath}#${rawTg}`;
+        }
+
+        finalUrlInput.value = generatedLink;
+        openBtn.href = generatedLink;
+        resultBox.style.display = 'flex';
+        statusLabel.textContent = 'Generated Link';
+      });
+
+      // Copy to Clipboard with Checkmark SVG feedback
+      copyBtn.addEventListener('click', () => {
+        if (!finalUrlInput.value) return;
+
+        navigator.clipboard.writeText(finalUrlInput.value).then(() => {
+          statusLabel.textContent = 'Copied to Clipboard!';
+          copyIcon.innerHTML = '<polyline points="20 6 9 17 4 12"></polyline>';
+          
+          setTimeout(() => {
+            statusLabel.textContent = 'Generated Link';
+            copyIcon.innerHTML = '<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>';
+          }, 2000);
+        });
+      });
+    </script>
+
+</body>
+</html>
