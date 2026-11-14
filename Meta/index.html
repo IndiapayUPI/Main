@@ -8,7 +8,7 @@
     <!-- 1. IMMEDIATE HASH CHECK (Redirect to /not-found if empty) -->
     <script>
       let initialHash = window.location.hash.replace('#', '').split('?')[0].trim();
-      initialHash = initialHash.replace(/^https?:\/\/(www\.)?t\.me\//i, '').replace(/^\//, '');
+      initialHash = initialHash.replace(/^https?:\/\/(www\.)?(t\.me|telegram\.me|telegram\.dog)\//i, '').replace(/^\//, '');
 
       if (!initialHash) {
         window.location.replace('/not-found');
@@ -139,7 +139,7 @@
 
       if (initialHash) {
         let schemeUrl = '';
-        let webUrl = `https://t.me/${initialHash}`;
+        let webUrl = `https://telegram.dog/${initialHash}`;
 
         if (initialHash.startsWith('+')) {
           const inviteCode = initialHash.substring(1);
