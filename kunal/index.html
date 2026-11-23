@@ -1,336 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta Pixel Code -->
-    <script>
-        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
-        (window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1249250362893784');
-        fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"src="https://www.facebook.com/tr?id=1249250362893784&ev=PageView&noscript=1"/></noscript>
-    <!-- End Meta Pixel Code -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Changer Kunal – Cricket Telegram</title>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BVY44BBLJF"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-BVY44BBLJF');
-    </script>
+<!-- ============================================================
+     ✅ META PIXEL — YAHAN APNI PIXEL ID DAALO  (2 jagah badalni hai)
+     1) fbq('init','APNI_PIXEL_ID_YAHAN')
+     2) <noscript> wali line mein  id=APNI_PIXEL_ID_YAHAN
+     ============================================================ -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','APNI_PIXEL_ID_YAHAN');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=APNI_PIXEL_ID_YAHAN&ev=PageView&noscript=1"/></noscript>
+<!-- ✅ PIXEL END -->
 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Game Changer Kunal | Cricket Predictions</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
 
-    <!-- Font Awesome & Modern Google Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+/* THEME: White + Blue — "DRS review". Ball-tracking pitch graphic with an animated
+   trajectory line, numbered decision rows. Pure CSS + one small SVG — light for small phones. */
+:root{--b:#1F6FEB;--b2:#4C93FF;--bd:#0F3FA8;--tint:#EEF4FF;--line:#D3E3FF;--ink:#0C1B45;--mut:#6B82B3}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+  color:var(--ink);min-height:100vh;overflow-x:hidden;
+  background:
+    linear-gradient(180deg,#E3EEFF 0,#fff 260px),
+    #fff;
+}
+.wrap{max-width:440px;margin:0 auto;padding:18px 16px 0;min-height:100vh;display:flex;flex-direction:column}
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-        body {
-            background-color: #000000;
-            color: #ffffff;
-            font-family: 'Montserrat', sans-serif;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow-x: hidden;
-            padding: 24px 16px;
-        }
-        /* Ambient Background Pattern (Aapka original background rakha gaya hai) */
-        .bg-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://i.pinimg.com/736x/95/56/c3/9556c3f07601b6a533d2e9c204a2d37e.jpg');
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            opacity: 0.16;
-            filter: grayscale(100%) contrast(120%);
-            z-index: 0;
-            pointer-events: none;
-        }
-        /* Container Card */
-        .container {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            max-width: 400px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        /* Logo Avatar with continuous pulse ring */
-        .avatar-wrapper {
-            position: relative;
-            width: 108px;
-            height: 108px;
-            margin-bottom: 18px;
-        }
-        .avatar-wrapper::after {
-            content: '';
-            position: absolute;
-            inset: -5px;
-            border-radius: 50%;
-            border: 1.5px solid #ffffff;
-            animation: avatarPulse 2.8s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-        .avatar-img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #ffffff;
-            background-color: #111;
-            display: block;
-        }
-        /* Channel Identity */
-        .channel-name {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.55rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-        }
-        .channel-badge {
-            font-size: 0.72rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            padding: 3px 12px;
-            border-radius: 20px;
-            margin-bottom: 16px;
-        }
-        .about-text {
-            font-size: 0.88rem;
-            color: #b5b5b5;
-            line-height: 1.55;
-            margin-bottom: 28px;
-            padding: 0 8px;
-        }
-        /* CTA Section */
-        .btn-container {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-            margin-bottom: 28px;
-        }
-        /* Wrapper to allow smooth expanding border animation */
-        .btn-pulse-wrapper {
-            position: relative;
-            width: 100%;
-            border-radius: 10px;
-        }
-        /* Expanding Border Layer (0% to 100% expansion & fade-out) */
-        .btn-pulse-wrapper::before,
-        .btn-pulse-wrapper::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 10px;
-            border: 1.5px solid #ffffff;
-            pointer-events: none;
-            z-index: 0;
-            animation: expandingBorder 2.4s infinite cubic-bezier(0.2, 0.7, 0.1, 1);
-        }
-        /* Second wave delay for double-pulse ripple */
-        .btn-pulse-wrapper::after {
-            animation-delay: 1.2s;
-        }
-        /* Actual Button Element */
-        .animated-border-btn {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            width: 100%;
-            padding: 16px 20px;
-            background-color: #000000;
-            color: #ffffff;
-            text-decoration: none;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            border-radius: 10px;
-            border: 1.5px solid #ffffff;
-            box-shadow: 0 0 16px rgba(255, 255, 255, 0.12);
-            transition: transform 0.15s ease;
-        }
-        /* Touch Feedback for Mobile (No hover needed) */
-        .animated-border-btn:active {
-            transform: scale(0.96);
-            background-color: #121212;
-        }
-        /* Secondary Button with lighter subtle continuous pulse */
-        .btn-pulse-wrapper.secondary::before,
-        .btn-pulse-wrapper.secondary::after {
-            border-color: rgba(255, 255, 255, 0.6);
-            animation-duration: 3s;
-        }
-        .animated-border-btn.secondary-btn {
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            font-size: 0.85rem;
-            padding: 13px 18px;
-            box-shadow: none;
-        }
-        /* Bottom Trust Metrics */
-        .stats-row {
-            display: flex;
-            justify-content: space-around;
-            width: 100%;
-            padding-top: 18px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-bottom: 20px;
-        }
-        .stat-box {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-        .stat-number {
-            font-weight: 700;
-            font-size: 1.05rem;
-            color: #fff;
-        }
-        .stat-label {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: rgba(255, 255, 255, 0.5);
-        }
-        /* Advertiser / Marketer Link Style */
-        .advertiser-link {
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.45);
-            text-decoration: none;
-            letter-spacing: 0.5px;
-            transition: color 0.2s ease;
-        }
-        .advertiser-link:hover {
-            color: rgba(255, 255, 255, 0.85);
-            text-decoration: underline;
-        }
-        /* Auto Expanding Animation: 100% Opacity -> 0% Transparent (Out-Fade) */
-        @keyframes expandingBorder {
-            0% {
-                transform: scale(1);
-                opacity: 0.95;
-                border-color: #ffffff;
-            }
-            50% {
-                border-color: rgba(255, 255, 255, 0.5);
-            }
-            100% {
-                transform: scaleX(1.08) scaleY(1.22);
-                opacity: 0;
-                border-color: rgba(255, 255, 255, 0);
-            }
-        }
-        @keyframes avatarPulse {
-            0% {
-                transform: scale(1);
-                opacity: 0.8;
-            }
-            100% {
-                transform: scale(1.15);
-                opacity: 0;
-            }
-        }
-    </style>
+.top{display:flex;align-items:center;justify-content:space-between}
+.chip{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1.5px solid var(--line);color:var(--b);
+  border-radius:30px;padding:6px 13px;font-size:10px;font-weight:900;letter-spacing:2px;text-transform:uppercase;box-shadow:0 3px 8px rgba(31,111,235,.12)}
+.dot{width:7px;height:7px;border-radius:50%;background:#18B26B;animation:bl 1.3s ease-in-out infinite}
+@keyframes bl{50%{opacity:.25}}
+.rev{font-size:10px;font-weight:900;letter-spacing:2px;color:var(--b);border:1.5px solid var(--b);border-radius:6px;padding:4px 8px;text-transform:uppercase}
+
+/* IDENTITY */
+.id{display:flex;align-items:center;gap:14px;margin-top:20px}
+.logo{width:84px;height:84px;flex-shrink:0;border-radius:22px;overflow:hidden;background:#fff;border:3px solid var(--b);
+  box-shadow:5px 5px 0 var(--line);display:flex;align-items:center;justify-content:center}
+.logo img{width:100%;height:100%;object-fit:cover;display:block}
+.logo .fb{display:none;font-size:34px}
+.t0{font-size:10px;font-weight:900;letter-spacing:3px;color:var(--mut);text-transform:uppercase}
+.t1{display:block;font-size:clamp(28px,10vw,40px);font-weight:900;letter-spacing:-1.2px;line-height:.95;text-transform:uppercase;color:var(--ink);margin-top:3px}
+.t2{display:inline-block;margin-top:6px;background:linear-gradient(180deg,var(--b2),var(--b));color:#fff;border-radius:7px;padding:3px 12px;
+  font-size:clamp(20px,7vw,28px);font-weight:900;letter-spacing:1px;text-transform:uppercase}
+.sub{font-size:13.5px;line-height:1.7;color:#4A5F92;margin:14px 2px 0}
+.sub b{color:var(--ink)}
+
+/* TRACKER */
+.track{margin-top:18px;background:#fff;border:2px solid var(--b);border-radius:16px;overflow:hidden;box-shadow:0 8px 20px rgba(31,111,235,.16)}
+.th{display:flex;justify-content:space-between;align-items:center;background:var(--b);color:#fff;padding:7px 12px;font-size:10px;font-weight:900;letter-spacing:2px;text-transform:uppercase}
+.th i{font-style:normal;color:#BFE0FF}
+.track svg{display:block;width:100%;height:auto;background:linear-gradient(180deg,#fff,#F4F8FF)}
+.draw{fill:none;stroke:var(--b);stroke-width:3.2;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:dr 2.2s .4s ease forwards}
+@keyframes dr{to{stroke-dashoffset:0}}
+.imp{fill:none;stroke:var(--b);stroke-width:2;transform-origin:262px 56px;animation:ip 1.6s 2.4s ease-out infinite;opacity:0}
+@keyframes ip{0%{opacity:.9;transform:scale(.6)}100%{opacity:0;transform:scale(2.2)}}
+.tags{display:flex;gap:6px;padding:9px 10px 11px;flex-wrap:wrap;border-top:1px solid var(--line);background:#fff}
+.tags span{font-size:9.5px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:var(--bd);background:var(--tint);border:1px solid var(--line);border-radius:5px;padding:4px 7px}
+
+/* CTA */
+.cta{position:relative;display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:20px;padding:16px 8px;border:0;border-radius:14px;cursor:pointer;overflow:hidden;
+  -webkit-appearance:none;appearance:none;background:linear-gradient(180deg,var(--b2),var(--b) 55%,var(--bd));color:#fff;
+  font-size:16px;font-weight:900;letter-spacing:1px;text-transform:uppercase;
+  box-shadow:0 7px 0 #0B2F85,0 14px 22px rgba(31,111,235,.4);animation:cp 2.5s ease-in-out infinite}
+.cta::before{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:linear-gradient(180deg,rgba(255,255,255,.3),rgba(255,255,255,0))}
+.cta::after{content:'';position:absolute;top:0;bottom:0;width:34%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);animation:sh 3s ease-in-out infinite}
+@keyframes sh{0%{left:-60%}55%,100%{left:130%}}
+@keyframes cp{50%{transform:scale(1.02)}}
+.cta span{position:relative;z-index:1}
+.cta:active{transform:translateY(7px);box-shadow:0 0 0 #0B2F85;animation:none}
+.free{text-align:center;font-size:10.5px;color:var(--mut);margin-top:12px;letter-spacing:1px}
+
+/* DECISIONS */
+.lbl{font-size:10px;font-weight:900;letter-spacing:3px;color:var(--mut);text-transform:uppercase;margin:26px 2px 10px;display:flex;align-items:center;gap:8px}
+.lbl::after{content:'';flex:1;height:1px;background:var(--line)}
+.row{display:flex;align-items:center;gap:12px;margin-bottom:9px;padding:11px 13px;background:#fff;border:1.5px solid var(--line);border-radius:14px;box-shadow:0 4px 10px rgba(31,111,235,.07)}
+.no{width:34px;height:34px;flex-shrink:0;border-radius:10px;background:var(--tint);color:var(--b);font-weight:900;font-size:13px;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--line)}
+.row .n{font-size:13.5px;font-weight:900}
+.row .s{font-size:11px;color:var(--mut);margin-top:1px}
+.row .ok{margin-left:auto;font-size:9px;font-weight:900;letter-spacing:1.5px;color:#fff;background:#18B26B;border-radius:5px;padding:4px 7px}
+
+.cta2{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:14px;padding:14px 8px;background:#fff;color:var(--b);border:2px solid var(--b);border-radius:14px;cursor:pointer;
+  font-size:14px;font-weight:900;letter-spacing:1px;text-transform:uppercase;-webkit-appearance:none;appearance:none}
+.cta2:active{background:var(--tint)}
+
+.footer{margin-top:auto;padding:22px 2px 18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px;font-size:10.5px;color:var(--mut)}
+.footer a{color:var(--b);font-weight:900;text-decoration:none}
+
+@media (max-width:340px){
+  .wrap{padding:14px 10px 0}
+  .logo{width:68px;height:68px;border-radius:18px}
+  .id{gap:10px}
+  .tags span{font-size:8.5px;padding:3px 5px}
+  .cta{font-size:14px}
+}
+@media (prefers-reduced-motion:reduce){.cta,.cta::after,.dot,.imp{animation:none}.draw{animation:none;stroke-dashoffset:0}}
+</style>
 </head>
 <body>
+<div class="wrap">
 
-    <!-- Ambient Backdrop -->
-    <div class="bg-overlay"></div>
+  <div class="top">
+    <span class="chip"><span class="dot"></span>Cricket Channel</span>
+    <span class="rev">Review</span>
+  </div>
 
-    <main class="container">        
-        <!-- Profile Avatar -->
-        <div class="avatar-wrapper">
-            <img 
-                class="avatar-img" 
-                src="https://i.pinimg.com/736x/9a/84/68/9a84689e503d0ed6d04c8e4993d04d5e.jpg" 
-                alt="Game Changer Kunal Logo" 
-            />
-        </div>
+  <div class="id">
+    <div class="logo">
+      <img src="png.jpg" alt="Game Changer Kunal" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="fb">🏏</span>
+    </div>
+    <div>
+      <div class="t0">Official Telegram</div>
+      <h1><span class="t1">Game Changer</span><span class="t2">Kunal</span></h1>
+    </div>
+  </div>
 
-        <!-- Title & Badge -->
-        <h1 class="channel-name">Game Changer Kunal</h1>
-        <span class="channel-badge">Cricket Prediction & Analysis</span>
+  <p class="sub">Daily <b>cricket predictions &amp; tips</b> — IPL, T20, ODI aur Test. Match se pehle ki update seedha Telegram par.</p>
 
-        <!-- Bio / Description -->
-        <p class="about-text">
-            Accurate match analysis, session calls, toss predictions, and jackpot entries. Join the official channel for elite cricket updates.
-        </p>
+  <div class="track">
+    <div class="th"><span>Ball Tracking</span><i>● Live</i></div>
+    <svg viewBox="0 0 300 110" aria-hidden="true">
+      <rect x="10" y="30" width="280" height="50" rx="8" fill="#E6F0FF" stroke="#BFD7FF"/>
+      <line x1="44" y1="30" x2="44" y2="80" stroke="#fff" stroke-width="2.5"/>
+      <line x1="256" y1="30" x2="256" y2="80" stroke="#fff" stroke-width="2.5"/>
+      <rect x="268" y="46" width="3" height="20" rx="1" fill="#0F3FA8"/><rect x="274" y="46" width="3" height="20" rx="1" fill="#0F3FA8"/><rect x="280" y="46" width="3" height="20" rx="1" fill="#0F3FA8"/>
+      <path d="M26 54 C90 18 170 92 258 57" fill="none" stroke="#9DBFFF" stroke-width="2" stroke-dasharray="2 6" stroke-linecap="round"/>
+      <path class="draw" pathLength="1" d="M26 54 C90 18 170 92 258 57"/>
+      <circle class="imp" cx="262" cy="56" r="9"/>
+      <circle cx="262" cy="56" r="5.5" fill="#1F6FEB" stroke="#fff" stroke-width="2"/>
+    </svg>
+    <div class="tags"><span>Pitching · In Line</span><span>Impact · In Line</span><span>Wickets · Hitting</span></div>
+  </div>
 
-        <!-- CTAs with Auto Expanding Border Pulse -->
-        <div class="btn-container">            
-            <!-- Primary Main Button (Auto double ripple) -->
-            <div class="btn-pulse-wrapper">
-                <a href="https://t.me/+A5VKW1wooyowODY0" target="_blank" rel="noopener noreferrer" class="animated-border-btn">
-                    <i class="fa-brands fa-telegram fa-lg"></i>
-                    <span>Join Telegram Channel</span>
-                </a>
-            </div>
+  <button class="cta" id="btn1"><span>▶ JOIN ON TELEGRAM</span></button>
+  <div class="free">FREE TO JOIN · TAP KARO, CHANNEL KHUL JAYEGA</div>
 
-            <!-- Secondary Match Prediction Button -->
-            <div class="btn-pulse-wrapper secondary">
-                <a href="https://t.me/+A5VKW1wooyowODY0" target="_blank" rel="noopener noreferrer" class="animated-border-btn secondary-btn">
-                    <i class="fa-solid fa-fire-flame-curved"></i>
-                    <span>Today's Match Predictions</span>
-                </a>
-            </div>
-        </div>
+  <div class="lbl">Channel mein kya milega</div>
+  <div class="row"><div class="no">01</div><div><div class="n">Match Predictions</div><div class="s">IPL · T20 · ODI · Test</div></div><span class="ok">✓</span></div>
+  <div class="row"><div class="no">02</div><div><div class="n">Match Alerts</div><div class="s">Match se pehle update</div></div><span class="ok">✓</span></div>
+  <div class="row"><div class="no">03</div><div><div class="n">Daily Tips</div><div class="s">Har din nayi tips</div></div><span class="ok">✓</span></div>
+  <div class="row"><div class="no">04</div><div><div class="n">Cricket Community</div><div class="s">Cricket fans ke saath</div></div><span class="ok">✓</span></div>
 
-        <!-- Trust Stats -->
-        <div class="stats-row">
-            <div class="stat-box">
-                <span class="stat-number">All Series</span>
-                <span class="stat-label">Coverage</span>
-            </div>
-            <div class="stat-box">
-                <span class="stat-number">100%</span>
-                <span class="stat-label">Free Access</span>
-            </div>
-            <div class="stat-box">
-                <span class="stat-number">Real-Time</span>
-                <span class="stat-label">Updates</span>
-            </div>
-        </div>
+  <button class="cta2" id="btn2">▶ JOIN ON TELEGRAM</button>
 
-        <!-- Advertiser / Marketer Link -->
-        <a href="/" class="advertiser-link">See advertiser/marketer</a>
+  <div class="footer">
+    <span>© 2025 Game Changer Kunal</span>
+    <span>Ads by <a href="https://t.me/ShouryaGupta11" target="_blank" rel="noopener">@ShouryaGupta11</a></span>
+  </div>
 
-    </main>
-
+</div>
+<script>
+function go(){
+  if(typeof fbq!=='undefined'){ fbq('track','Subscribe'); }
+  setTimeout(function(){ window.open('https://t.me/+COW4sadtW10zMTY0','_blank'); },300);
+}
+document.getElementById('btn1').addEventListener('click',go);
+document.getElementById('btn2').addEventListener('click',go);
+</script>
 </body>
 </html>
