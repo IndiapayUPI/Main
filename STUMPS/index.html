@@ -1,366 +1,413 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>STUMPS ™❤️ | Cricket Predictions</title>
-  <meta name="description" content="Real-time match predictions, pitch reports, toss updates, and session analysis. Join the official STUMPS Telegram channel for cricket insights." />
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1206740738366078');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1206740738366078&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 
-  <!-- Meta Pixel Code (ID: 1900350784265861) -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1249250362893784');
-    fbq('track', 'PageView');
-  </script>
-  <noscript>
-    <img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=1249250362893784&ev=PageView&noscript=1"
-    />
-  </noscript>
-  <!-- End Meta Pixel Code -->
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z6HFB6TVKS"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-Z6HFB6TVKS');
-
-    // Advanced Conversion Click Tracker Function
-    function trackTelegramClick(buttonName, targetUrl) {
-      // 1. Meta Pixel Conversion Tracking
-      if (typeof fbq === 'function') {
-        fbq('track', 'Lead', {
-          content_name: 'Telegram Channel Join',
-          content_category: buttonName
-        });
-        fbq('trackCustom', 'TelegramClick', { button: buttonName });
-      }
-
-      // 2. Google Analytics 4 Event Tracking
-      if (typeof gtag === 'function') {
-        gtag('event', 'join_telegram_click', {
-          event_category: 'Conversion',
-          event_label: buttonName,
-          value: 1
-        });
-      }
-
-      // Safe fallback redirect for instant mobile tap
-      if (targetUrl) {
-        setTimeout(function() {
-          window.open(targetUrl, '_blank');
-        }, 150);
-      }
-    }
-  </script>
-
-  <!-- Inter Font for Classic Editorial Precision -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>STUMPS ~ | Telegram</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-          },
-          colors: {
-            mono: {
-              950: '#050505',
-              900: '#0A0A0A',
-              850: '#0F0F0F',
-              800: '#141414',
-              750: '#1A1A1A',
-              700: '#222222',
-              600: '#2E2E2E',
-            }
-          }
-        }
-      }
-    }
-  </script>
-
-  <!-- Pure Crisp Monochrome CSS — Architectural Precision + Expanding Pulse -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
   <style>
-    body {
-      background-color: #050505;
-      color: #FAFAFA;
-      overflow-x: hidden;
+    :root {
+      --bg: #090c10;
+      --gold: #d4af37;
+      --gold-light: #f5e7b2;
+      --border-line: #1c2430;
+      --text-white: #f5f6f8;
+      --text-muted: #8b96a5;
+      --card-trans: rgba(255, 255, 255, 0.02);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
       -webkit-tap-highlight-color: transparent;
-      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+      user-select: none;
+      -webkit-user-select: none;
     }
-    /* Subtle architectural grid lines */
-    .bg-grid-pattern {
-      background-size: 48px 48px;
+
+    body {
+      background-color: var(--bg);
       background-image: 
-        linear-gradient(to right, #111111 1px, transparent 1px),
-        linear-gradient(to bottom, #111111 1px, transparent 1px);
+        radial-gradient(ellipse at 50% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 70%),
+        linear-gradient(180deg, #090c10 0%, #05070a 100%);
+      color: var(--text-white);
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 20px calc(90px + env(safe-area-inset-bottom, 0px)) 20px;
     }
-    /* Vertical stripe texture for Bento cards */
-    .bento-stripes {
-      background-color: #090909;
-      background-image: repeating-linear-gradient(
-        90deg,
-        #090909 0px,
-        #090909 18px,
-        #0D0D0D 18px,
-        #0D0D0D 36px
-      );
-    }
-    /* Solid crisp card border with precision top hairline */
-    .crisp-card {
-      background-color: #0B0B0B;
-      border: 1px solid #1F1F1F;
-      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
-    }
-    @media (hover: hover) {
-      .crisp-card:hover,
-      .bento-stripes:hover {
-        border-color: #404040;
-      }
-    }
-    /* Watermark Outline */
-    .watermark-text {
-      color: transparent;
-      -webkit-text-stroke: 1.2px #1F1F1F;
-    }
-    /* Avatar Auto Glow Ring */
-    .avatar-ring {
-      position: relative;
-    }
-    .avatar-ring::after {
-      content: '';
-      position: absolute;
-      inset: -5px;
-      border-radius: 9999px;
-      border: 1.5px solid #FFFFFF;
-      pointer-events: none;
-      animation: avatarPulse 2.6s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
-    }
-    /* CTA Expanding Pulse Wrapper */
-    .btn-pulse-wrapper {
-      position: relative;
+
+    .main-canvas {
       width: 100%;
-      border-radius: 9999px;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
-    .btn-pulse-wrapper::before,
-    .btn-pulse-wrapper::after {
+
+    /* Classic Monogram / Avatar */
+    .crest-container {
+      position: relative;
+      width: 104px;
+      height: 104px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .crest-ring {
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      border: 1px dashed rgba(212, 175, 55, 0.5);
+      animation: spinRing 20s linear infinite;
+    }
+
+    @keyframes spinRing {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .crest-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      border: 2px solid var(--gold);
+      box-shadow: 0 8px 24px rgba(212, 175, 55, 0.2);
+    }
+
+    /* Status Pill */
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(212, 175, 55, 0.08);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold-light);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .live-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+      70% { box-shadow: 0 0 0 6px rgba(212, 175, 55, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+    }
+
+    /* Typography */
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 21px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      color: #ffffff;
+      line-height: 1.3;
+      margin-bottom: 14px;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 16px;
+      width: 70%;
+    }
+
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.35), transparent);
+    }
+
+    .divider-symbol {
+      color: var(--gold);
+      font-size: 10px;
+    }
+
+    .narrative {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 22px;
+      padding: 0 10px;
+    }
+
+    /* Ledger Strip (Stats) */
+    .ledger-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      width: 100%;
+      border-top: 1px solid var(--border-line);
+      border-bottom: 1px solid var(--border-line);
+      padding: 14px 0;
+      margin-bottom: 20px;
+      background: var(--card-trans);
+      border-radius: 12px;
+    }
+
+    .ledger-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .ledger-item:not(:last-child)::after {
       content: '';
       position: absolute;
-      inset: 0;
-      border-radius: 9999px;
-      border: 1.5px solid #FFFFFF;
-      pointer-events: none;
-      z-index: 0;
-      animation: expandingBorder 2.4s infinite cubic-bezier(0.2, 0.7, 0.1, 1);
+      right: 0;
+      top: 15%;
+      height: 70%;
+      width: 1px;
+      background: var(--border-line);
     }
-    .btn-pulse-wrapper::after {
-      animation-delay: 1.2s;
+
+    .ledger-num {
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--gold-light);
     }
-    @keyframes expandingBorder {
-      0% {
-        transform: scale(1);
-        opacity: 0.85;
-        border-color: #FFFFFF;
-      }
-      50% {
-        border-color: rgba(255, 255, 255, 0.45);
-      }
-      100% {
-        transform: scaleX(1.05) scaleY(1.22);
-        opacity: 0;
-        border-color: rgba(255, 255, 255, 0);
-      }
+
+    .ledger-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-top: 4px;
     }
-    @keyframes avatarPulse {
-      0% {
-        transform: scale(1);
-        opacity: 0.75;
-      }
-      100% {
-        transform: scale(1.16);
-        opacity: 0;
-      }
+
+    /* In-page button wrapper */
+    .mid-cta-wrapper {
+      width: 100%;
+      margin-bottom: 22px;
+    }
+
+    /* Clean Creeds / Features */
+    .creeds {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .creed-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 14px;
+      background: var(--card-trans);
+      border: 1px solid var(--border-line);
+      border-radius: 12px;
+      font-size: 13px;
+      color: #dbe2ed;
+      font-weight: 500;
+    }
+
+    .creed-icon {
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .seal-footer {
+      font-size: 10.5px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #52606d;
+      margin-bottom: 10px;
+    }
+
+    /* Fixed Floating Bottom Bar */
+    .floating-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 12px 20px calc(14px + env(safe-area-inset-bottom, 0px)) 20px;
+      background: rgba(9, 12, 16, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-top: 1px solid var(--border-line);
+      display: flex;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .bar-inner {
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .cta-anchor {
+      text-decoration: none;
+      display: block;
+      width: 100%;
+    }
+
+    .classic-btn {
+      width: 100%;
+      height: 50px;
+      background: linear-gradient(135deg, #161e2b 0%, #0d121a 100%);
+      border: 1px solid var(--gold);
+      border-radius: 12px;
+      color: var(--gold-light);
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(212, 175, 55, 0.15);
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .classic-btn:active {
+      transform: scale(0.98);
+      background: #080b10;
+      border-color: #f3e5ab;
+    }
+
+    .classic-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--gold-light);
     }
   </style>
 </head>
-<body class="antialiased selection:bg-white selection:text-black min-h-screen flex flex-col justify-between bg-grid-pattern relative">
+<body>
 
-  <!-- Subtle Dimmed Cricket Backdrop Layer -->
-  <div 
-    class="fixed inset-0 pointer-events-none z-0 opacity-[0.08] grayscale contrast-125 bg-center bg-cover bg-no-repeat"
-    style="background-image: url('https://i.pinimg.com/736x/95/56/c3/9556c3f07601b6a533d2e9c204a2d37e.jpg');"
-  ></div>
+  <div class="main-canvas">        
+    <!-- Classic Crest -->
+    <div class="crest-container">
+      <div class="crest-ring"></div>
+      <img src="https://d1yei2z3i6k35z.cloudfront.net/13184094/6b03fcfe555184.79880462_photo_2026-10-31_10-37-28.jpg" alt="STUMPS ~ DP" class="crest-img">
+    </div>
 
-  <!-- FLOATING CLASSIC UPPER BAR -->
-  <header class="sticky top-3 z-50 px-3 sm:px-6 pt-1">
-    <div class="max-w-md mx-auto bg-mono-900 border border-mono-700 rounded-2xl px-3.5 py-2.5 flex items-center justify-between gap-2 shadow-2xl">
-      <div class="flex items-center gap-2.5 min-w-0">
-        <span class="px-2 py-0.5 rounded-full bg-white text-black font-extrabold text-[10px] tracking-wider uppercase shrink-0">LIVE</span>
-        <span class="text-xs font-semibold text-neutral-300 truncate">Official Cricket Desk</span>
+    <!-- Status & Titles -->
+    <div class="status-pill">
+      <span class="live-dot"></span>
+      VIP PREDICTIONS ACTIVE
+    </div>
+
+    <h1>STUMPS ~</h1>
+    
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-symbol">✦</div>
+      <div class="divider-line"></div>
+    </div>
+
+    <p class="narrative">
+      Premier destination for high-conviction match analysis, verified odds, and statistical insights.
+    </p>
+
+    <!-- Ledger Strip (Stats) -->
+    <div class="ledger-grid">
+      <div class="ledger-item">
+        <span class="ledger-num">89.4%</span>
+        <span class="ledger-label">Win Rate</span>
       </div>
-      <a 
-        href="https://t.me/+e6Exv5IliEw2MDVl"
-        onclick="trackTelegramClick('Header Join Button', 'https://t.me/+e6Exv5IliEw2MDVl'); return false;"
-        class="shrink-0 inline-flex items-center gap-1.5 bg-white hover:bg-neutral-200 active:scale-95 text-black font-semibold px-3 py-1.5 rounded-full text-[11px] transition-all"
-      >
-        <span>Join Free</span>
-        <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H8M17 7V16"/>
-        </svg>
+      <div class="ledger-item">
+        <span class="ledger-num">Daily</span>
+        <span class="ledger-label">Signals</span>
+      </div>
+      <div class="ledger-item">
+        <span class="ledger-num">Free</span>
+        <span class="ledger-label">Access</span>
+      </div>
+    </div>
+
+    <!-- Mid Join Telegram Button -->
+    <div class="mid-cta-wrapper">
+      <a href="https://t.me/+Nv6xuRNs9UM2NDg9" target="_blank" class="cta-anchor">
+        <button class="class-btn classic-btn" type="button">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.536-.196 1.006.128.83.942z"/>
+          </svg>
+          JOIN TELEGRAM CHANNEL
+        </button>
       </a>
     </div>
-  </header>
 
-  <!-- MAIN CONTENT CARD -->
-  <main class="relative z-10 flex-1 flex items-center justify-center px-4 py-6 sm:py-10">
-    <div class="w-full max-w-md">
-
-      <!-- Primary Bento Container -->
-      <section class="bento-stripes border border-mono-700 rounded-3xl p-6 sm:p-8 text-center shadow-2xl relative overflow-hidden">
-
-        <!-- Top Status Pill -->
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mono-900 border border-mono-700 text-[11px] font-medium text-neutral-300 mb-6">
-          <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
-          <span class="uppercase tracking-widest">Cricket Analysis &amp; Tips</span>
-        </div>
-
-        <!-- Profile Avatar with Monochrome Pulse -->
-        <div class="flex justify-center mb-5">
-          <div class="avatar-ring w-24 h-24 sm:w-28 sm:h-28 rounded-full">
-            <img 
-              src="https://nwscdn.com/media/wysiwyg/cricket/Ultra_Durable_Cricket_Stumps.jpg" 
-              alt="STUMPS Logo" 
-              class="w-full h-full rounded-full object-cover border-2 border-white bg-mono-900 block"
-            />
-          </div>
-        </div>
-
-        <!-- Channel Identity -->
-        <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white uppercase mb-2">
-          STUMPS ™❤️
-        </h1>
-
-        <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed max-w-sm mx-auto mb-7">
-          Real-time match predictions, pitch reports, toss updates, and session analysis. Join the official channel for <strong class="text-white font-semibold">cricket insights</strong>.
-        </p>
-
-        <!-- CTAs with Dynamic Border Ripple & Unified Tracking -->
-        <div class="space-y-4 mb-7">
-
-          <!-- Primary Stark White Button -->
-          <div class="btn-pulse-wrapper">
-            <a 
-              href="https://t.me/+e6Exv5IliEw2MDVl"
-              onclick="trackTelegramClick('Primary Join Button', 'https://t.me/+e6Exv5IliEw2MDVl'); return false;"
-              class="relative z-10 w-full inline-flex items-center justify-center gap-2.5 bg-white hover:bg-neutral-200 active:scale-[0.98] text-black font-bold py-4 px-6 rounded-full text-xs sm:text-sm uppercase tracking-wider transition-all shadow-lg"
-            >
-              <!-- Telegram SVG -->
-              <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/>
-              </svg>
-              <span>Join Telegram Channel</span>
-              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H8M17 7V16"/>
-              </svg>
-            </a>
-          </div>
-
-          <!-- Secondary Crisp Dark Button -->
-          <div>
-            <a 
-              href="https://t.me/+e6Exv5IliEw2MDVl"
-              onclick="trackTelegramClick('Secondary Match Tips Button', 'https://t.me/+e6Exv5IliEw2MDVl'); return false;"
-              class="w-full inline-flex items-center justify-center gap-2 bg-mono-900 hover:bg-mono-800 active:scale-[0.98] text-white border border-mono-600 hover:border-neutral-400 font-semibold py-3.5 px-5 rounded-full text-xs sm:text-sm uppercase tracking-wider transition-all"
-            >
-              <!-- Bolt SVG -->
-              <svg class="w-4 h-4 text-white shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-              </svg>
-              <span>Today's Match Tips</span>
-            </a>
-          </div>
-
-        </div>
-
-        <!-- 3-Column Crisp Metrics Grid -->
-        <div class="grid grid-cols-3 gap-2.5 pt-5 border-t border-mono-700">
-          <div class="crisp-card rounded-xl p-3 text-center">
-            <div class="text-xs sm:text-sm font-extrabold text-white tracking-tight">IPL &amp; T20</div>
-            <div class="text-[10px] uppercase tracking-wider text-neutral-400 mt-0.5">Coverage</div>
-          </div>
-          <div class="bg-white text-black rounded-xl p-3 text-center">
-            <div class="text-xs sm:text-sm font-extrabold tracking-tight">100%</div>
-            <div class="text-[10px] uppercase tracking-wider text-neutral-700 font-semibold mt-0.5">Free Access</div>
-          </div>
-          <div class="crisp-card rounded-xl p-3 text-center">
-            <div class="text-xs sm:text-sm font-extrabold text-white tracking-tight">Daily</div>
-            <div class="text-[10px] uppercase tracking-wider text-neutral-400 mt-0.5">Updates</div>
-          </div>
-        </div>
-
-      </section>
-
-      <!-- Feature Highlights Strip -->
-      <div class="grid grid-cols-3 gap-2 mt-3">
-        <div class="bg-mono-900 border border-mono-700 rounded-xl py-2.5 px-3 flex items-center justify-center gap-1.5 text-[11px] font-medium text-neutral-300">
-          <svg class="w-3.5 h-3.5 text-white shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>Pitch Report</span>
-        </div>
-        <div class="bg-mono-900 border border-mono-700 rounded-xl py-2.5 px-3 flex items-center justify-center gap-1.5 text-[11px] font-medium text-neutral-300">
-          <svg class="w-3.5 h-3.5 text-white shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>Toss Winner</span>
-        </div>
-        <div class="bg-mono-900 border border-mono-700 rounded-xl py-2.5 px-3 flex items-center justify-center gap-1.5 text-[11px] font-medium text-neutral-300">
-          <svg class="w-3.5 h-3.5 text-white shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>Session Tips</span>
-        </div>
+    <!-- Direct Feature Rows -->
+    <div class="creeds">
+      <div class="creed-row">
+        <span class="creed-icon">🎯</span>
+        <span>In-depth Match Breakdowns & Previews</span>
       </div>
-
+      <div class="creed-row">
+        <span class="creed-icon">📊</span>
+        <span>High-Accuracy Statistical Projections</span>
+      </div>
+      <div class="creed-row">
+        <span class="creed-icon">⚡</span>
+        <span>Instant Telegram Live Alerts & In-Play</span>
+      </div>
     </div>
-  </main>
 
-  <!-- FOOTER WITH MONOCHROME WATERMARK & ADVERTISER LINK -->
-  <footer class="relative z-10 border-t border-mono-700 bg-mono-950 py-5 px-4 text-center overflow-hidden">
-    <div class="max-w-md mx-auto">
+    <div class="seal-footer">Join 100% free • No spam • Instant access</div>
+  </div>
 
-      <!-- View Advertiser Link pointing to "/" -->
-      <div class="mb-3">
-        <a 
-          href="/" 
-          class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-mono-900 border border-mono-700 hover:border-neutral-400 text-[11px] font-medium text-neutral-300 hover:text-white transition-colors"
-        >
-          <span class="text-neutral-400">View Advertiser :</span>
-          <span class="font-bold text-white underline underline-offset-2">Official Ad Partner</span>
-          <svg class="w-3 h-3 text-neutral-400" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H8M17 7V16"/>
+  <!-- Fixed Floating Bottom Bar -->
+  <div class="floating-bar">
+    <div class="bar-inner">
+      <a href="https://t.me/+Nv6xuRNs9UM2NDg9" target="_blank" class="cta-anchor">
+        <button class="classic-btn" type="button">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.536-.196 1.006.128.83.942z"/>
           </svg>
-        </a>
-      </div>
-
-      <!-- Subtle Watermark Typography -->
-      <div class="select-none text-3xl sm:text-4xl font-black tracking-tighter leading-none my-1">
-        <span class="text-neutral-300">STUM</span><span class="watermark-text">PS™</span>
-      </div>
-
-      <p class="text-[10px] text-neutral-500 mt-1.5">
-        © 2026 STUMPS ™❤️ Cricket Analysis. All rights reserved.
-      </p>
+          ENTER VIP CHANNEL
+        </button>
+      </a>
     </div>
-  </footer>
+  </div>
 
 </body>
 </html>
