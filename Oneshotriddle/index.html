@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oneshotriddle — Editor Script Hub</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwind Configuration for Custom Font & Dark Theme Palette
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        surface: {
+                            900: '#09090b',
+                            800: '#121216',
+                            700: '#1c1c22',
+                            600: '#27272f',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface-900 text-zinc-100 font-sans antialiased min-h-screen selection:bg-indigo-500/30 selection:text-indigo-200">
+
+    <!-- Top Navigation / Header -->
+    <header class="sticky top-0 z-30 bg-surface-900/80 backdrop-blur-md border-b border-zinc-800/80">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <!-- Brand Identity -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-amber-500 flex items-center justify-center shadow-lg shadow-indigo-500/20 shrink-0">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-lg sm:text-xl font-extrabold tracking-tight text-white flex items-center gap-2">
+                        Oneshotriddle
+                        <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-indigo-500/15 text-indigo-300 border border-indigo-500/30">
+                            Editor Hub
+                        </span>
+                    </h1>
+                    <p class="text-xs text-zinc-400">Scripts by Adixeverything • Ready to Record & Edit</p>
+                </div>
+            </div>
+
+            <!-- Progress Counter & Reset -->
+            <div class="flex items-center gap-3 self-start sm:self-auto">
+                <div class="flex items-center gap-2 bg-surface-800 border border-zinc-800 rounded-xl px-3.5 py-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span class="text-xs font-medium text-zinc-300">Completed:</span>
+                    <span id="completed-count" class="text-xs font-bold text-white">0 / 12</span>
+                </div>
+                <button 
+                    id="copy-all-btn"
+                    class="text-xs font-semibold px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 active:scale-95 text-white transition-all shadow-md shadow-indigo-600/20 flex items-center gap-1.5"
+                    title="Copy all scripts at once"
+                >
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                    <span>Copy All</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+
+        <!-- Search & Category Filter Bar -->
+        <section class="mb-6 sm:mb-8 space-y-4">
+            <div class="flex flex-col md:flex-row gap-3 md:items-center md:justify-between">
+                <!-- Search Input -->
+                <div class="relative w-full md:w-80">
+                    <svg class="w-4 h-4 text-zinc-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <input 
+                        type="text" 
+                        id="search-input" 
+                        placeholder="Search script (e.g., CERN, Binary, Om)..." 
+                        class="w-full bg-surface-800 border border-zinc-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 rounded-xl pl-10 pr-4 py-2.5 text-sm text-zinc-100 placeholder-zinc-500 outline-none transition-all"
+                    >
+                </div>
+
+                <!-- Category Filter Pills -->
+                <div id="category-filters" class="flex flex-wrap gap-2">
+                    <!-- Pills rendered dynamically via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Scripts Grid -->
+        <section id="scripts-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+            <!-- Script cards rendered dynamically via JS -->
+        </section>
+
+        <!-- Empty Search State -->
+        <div id="empty-state" class="hidden text-center py-16 bg-surface-800/50 border border-zinc-800 rounded-2xl">
+            <p class="text-zinc-400 text-sm">Koi script nahi mili. Search term ya filter change karke dekho.</p>
+        </div>
+
+        <!-- Bonus Outro / CTA Lines Section -->
+        <section class="mt-12 bg-surface-800 border border-zinc-800/90 rounded-2xl p-5 sm:p-6">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h2 class="text-base sm:text-lg font-bold text-white">Bonus Outro / CTA Lines</h2>
+                    <p class="text-xs text-zinc-400">Kisi bhi script ke end mein mix & match karne ke liye click karke copy karo.</p>
+                </div>
+            </div>
+            <div id="cta-list" class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <!-- CTA items rendered dynamically via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="max-w-6xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-zinc-500 border-t border-zinc-800/60 mt-10">
+        Oneshotriddle Script Portal • Built for fast Reels & Shorts production. Status saves automatically in your browser.
+    </footer>
+
+    <!-- Focus / Teleprompter Read Modal -->
+    <div id="read-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+        <div class="bg-surface-800 border border-zinc-700/80 rounded-2xl w-full max-w-2xl max-h-[88vh] flex flex-col shadow-2xl overflow-hidden">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between px-5 py-4 border-b border-zinc-800">
+                <div>
+                    <span id="modal-badge" class="text-[11px] font-semibold uppercase tracking-wider text-indigo-400"></span>
+                    <h3 id="modal-title" class="text-base sm:text-lg font-bold text-white mt-0.5"></h3>
+                </div>
+                <div class="flex items-center gap-2">
+                    <!-- Font Size Controls -->
+                    <button id="font-dec" class="w-8 h-8 rounded-lg bg-surface-700 hover:bg-surface-600 text-zinc-200 text-xs font-bold transition-colors" title="Decrease font size">A-</button>
+                    <button id="font-inc" class="w-8 h-8 rounded-lg bg-surface-700 hover:bg-surface-600 text-zinc-200 text-xs font-bold transition-colors" title="Increase font size">A+</button>
+                    <button id="close-modal" class="w-8 h-8 rounded-lg bg-surface-700 hover:bg-red-500/20 hover:text-red-400 text-zinc-400 flex items-center justify-center transition-colors" title="Close">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- Modal Body (Pure Script) -->
+            <div class="p-6 sm:p-8 overflow-y-auto flex-1">
+                <p id="modal-script-text" class="text-zinc-100 leading-relaxed whitespace-pre-line font-medium text-lg sm:text-xl"></p>
+            </div>
+            <!-- Modal Footer -->
+            <div class="px-5 py-3.5 border-t border-zinc-800 bg-surface-900/50 flex items-center justify-between">
+                <span id="modal-meta" class="text-xs text-zinc-400"></span>
+                <button id="modal-copy-btn" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold transition-all flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                    <span>Copy Script</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Toast Notification (No alert() used) -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300">
+        <div class="bg-zinc-900 border border-indigo-500/40 text-white px-4 py-3 rounded-xl shadow-xl flex items-center gap-2.5 text-sm font-medium">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span id="toast-message">Copied to clipboard!</span>
+        </div>
+    </div>
+
+    <!-- Application Data & Logic -->
+    <script>
+        /**
+         * Clean, Voiceover-Ready Scripts Data
+         * No camera angles, no visual cues, no timestamps—pure spoken script.
+         */
+        const SCRIPTS = [
+            {
+                id: 1,
+                title: "8.4 Million Species (Science vs. Ancient Texts)",
+                category: "Science & Health",
+                duration: "~40s",
+                content: `Aaj ki itni advanced science bhi exact nahi bata paayi ki Earth par total kitni species hain... par hazaron saal pehle ek book mein exact number likha tha. Wait, what?!
+
+2011 mein modern scientists ne massive research ke baad estimate lagaya ki Earth par lagbhag 8.7 million, yaani 87 lakh species hain—jisme se 80% abhi tak discover bhi nahi hui hain!
+
+Ab plot twist suno: Ancient Indian texts like Padma Purana mein saalon pehle likha gaya tha ki duniya mein 84 lakh yonis, yaani 8.4 million life forms hain—paani mein, zameen par, hawa mein, plants, insects aur humans sab milakar.
+
+Bina kisi submarine, microscope ya satellite ke... itna close approximation aakhir aaya kahan se? Coincidence ya next-level observation? Comment mein batao!
+
+Aur aise hi logical aur mind-blowing facts ke liye Oneshotriddle ko abhi follow kar lo!`
+            },
+            {
+                id: 2,
+                title: "Quantum Energy & Aham Brahmasmi",
+                category: "Cosmos & Quantum",
+                duration: "~40s",
+                content: `Kya aap jaante ho? Aap jis phone par yeh reel dekh rahe ho, aur aap khud... dono actually 99.99% empty space aur pure energy ho?
+
+Modern Physics ka sabse bada rule hai—Law of Conservation of Energy: Energy na kabhi banti hai, na khatam hoti hai, bas apna form badalti hai.
+
+Ab isko ancient philosophy Advaita Vedanta se connect karo. Wahan kaha gaya hai—"Ekam Sat, Vipra Bahudha Vadanti", yaani truth ek hi hai, bas forms alag-alag hain. Jaise paani kabhi ice banta hai, kabhi liquid, kabhi steam—par hai sab H2O hi.
+
+Isliye ancient sages ne bola "Aham Brahmasmi"—yaani wo supreme energy sirf bahar nahi, tumhare andar bhi hai. Death koi "The End" nahi, balki physics aur philosophy dono ke hisaab se sirf energy ka ek naya form hai.
+
+Blind belief nahi, pure logic chahiye? Toh Oneshotriddle ko follow karna mat bhoolna!`
+            },
+            {
+                id: 3,
+                title: "CERN Mein Shiva Ki Murti Kyun Hai?",
+                category: "Cosmos & Quantum",
+                duration: "~45s",
+                content: `Duniya ki sabse badi physics lab—CERN—jahan God Particle discover hua tha... uske gate par ek Hindu God ki statue kyun lagi hai?
+
+CERN ke bahar Nataraja yani Shiva ki murti hai, aur iska reason koi religion nahi, balki Quantum Physics hai!
+
+Physicist Fritjof Capra ne bataya ki subatomic particles har second create hote hain, dance karte hain aur destroy ho jaate hain. Nataraja ka cosmic dance, yani Tandava, isi Creation, Transformation aur Destruction ke endless cycle ka ultimate symbol hai.
+
+Par ek reality check bhi sun lo! Internet par ek viral myth ghoomta hai ki Chidambaram ka Nataraja temple Earth ka magnetic center hai. Bro, fake hai! Magnetic equator ek line hoti hai, koi single point nahi. Real logic already itna cool hai, fake facts ki zaroorat nahi!
+
+Fake WhatsApp forwards se bacho aur real science aur logic ke liye Oneshotriddle ko follow karo!`
+            },
+            {
+                id: 4,
+                title: "Binary Code & Fibonacci — Ancient India",
+                category: "Math & History",
+                duration: "~38s",
+                content: `Jis Binary Code, yani 0 aur 1 par aaj aapka smartphone, AI aur pura internet chal raha hai... uska pattern computers aane se 2,000 saal pehle India mein use ho raha tha!
+
+Third century BCE mein ek Indian scholar the—Acharya Pingala. Unhone poetry ke rhythms ko decode karne ke liye ek system banaya: short syllable yani Laghu, aur long syllable yani Guru. Aaj isi two-state system ko hum Binary—0 aur 1—kehte hain!
+
+Sirf itna hi nahi, unki book Chandahshastra mein ek number pattern tha jise Matrameru kaha gaya—jo exact wahi hai jise hum aaj Fibonacci Sequence ke naam se jaante hain! Aur upar se Aryabhata aur Brahmagupta ka Zero... iske bina aaj coding exist hi nahi karti.
+
+History ki books mein yeh sab nahi sikhaya na? Koi baat nahi, Oneshotriddle ko follow kar lo, main sab bataunga!`
+            },
+            {
+                id: 5,
+                title: "Fasting = Nobel Prize Winning Science",
+                category: "Science & Health",
+                duration: "~35s",
+                content: `Dadi-nani bolti thi ki mahine mein do baar vrat yani fasting rakha karo... humne socha purana riwaaz hai. Par 2016 mein isi cheez par Nobel Prize mil gaya!
+
+2016 mein Japanese scientist Yoshinori Ohsumi ne Autophagy ke liye Medicine ka Nobel Prize jeeta.
+
+Autophagy ka matlab hota hai "Self-Eating". Jab aap 16 se 24 ghante tak kuch nahi khaate, toh aapki body ke cells repair mode mein chale jaate hain—wo puraane, damaged aur toxic cells ko khud hi clean karke recycle kar dete hain!
+
+Ancient India mein isi bio-hack ko Upvaas ya Ekadashi ke naam se lifestyle ka hissa bana diya gaya tha, taaki har insaan bina biology padhe healthy reh sake.
+
+Ancient hacks, modern science! Aise hi real facts ke liye Oneshotriddle ko abhi follow karo!`
+            },
+            {
+                id: 6,
+                title: "Kumbh Mela Har 12 Saal Mein Hi Kyun?",
+                category: "Cosmos & Quantum",
+                duration: "~35s",
+                content: `Kya aapko pata hai ki duniya ki sabse badi human gathering—Kumbh Mela—ka schedule koi random date nahi, balki space ke sabse bade planet se set hota hai?
+
+Solar system ka sabse bada planet hai Jupiter, yani Brihaspati. NASA aur modern astronomy ke according, Jupiter ko Sun ka ek poora chakkar lagane mein lagbhag 11.86 years—yaani roughly 12 saal lagte hain.
+
+Aur guess what? Kumbh Mela bhi exact har 12 saal mein isi cosmic alignment ke hisaab se hota hai! Bina kisi modern telescope ke, hamare ancestors planetary orbits ko itni precision se track kar rahe the ki unhone pura calendar aur festivals space ki clock par sync kar diye.
+
+Space aur ancient logic ka yeh combo pasand aaya? Toh Oneshotriddle ko turant follow kar lo!`
+            },
+            {
+                id: 7,
+                title: "Om Chanting Ka Neuroscience Hack",
+                category: "Science & Health",
+                duration: "~35s",
+                content: `Overthinking aur anxiety se dimaag phat raha hai? Ek 3-second ka sound vibration aapke brain ka "Chill Mode" on kar sakta hai!
+
+Jab aap dheere se "OM" chant karte ho, toh aapki throat aur chest mein ek specific acoustic vibration create hoti hai.
+
+Modern neuroscience kehta hai ki yeh vibration seedha aapki Vagus Nerve ko stimulate karti hai. Jaise hi Vagus Nerve activate hoti hai, aapka Parasympathetic Nervous System on ho jata hai—heart rate slow hota hai, stress hormone cortisol girta hai aur brain alpha waves mein chala jata hai.
+
+Isliye yeh sirf koi religious chant nahi, balki ek ancient nervous system reset button hai!
+
+Try karke dekhna aur feel ho toh comment mein YES likhna! Aur daily logic dose ke liye Oneshotriddle ko follow karo!`
+            },
+            {
+                id: 8,
+                title: "Copper Bottle — Trend Ya Real Science?",
+                category: "Science & Health",
+                duration: "~35s",
+                content: `Aajkal log 1,500 rupaye ki fancy Copper Bottle kharid rahe hain, par kya iske peeche koi real science hai ya bas hype? Let's check!
+
+Science mein ek concept hota hai—Oligodynamic Effect. Jab aap copper yani taambe ke bartan mein raat bhar paani store karte ho, toh copper ke microscopic ions paani mein release hote hain. Yeh ions harmful bacteria, jaise E. coli ki cell walls ko damage karke unhe khatam kar dete hain!
+
+Yahi reason tha ki purane zamane mein jab water purifiers nahi the, toh log copper vessels use karte the aur nadiyon mein copper coins daalte the—taaki drinking water naturally clean rahe! Aaj steel ke sikke daalne ka koi logic nahi hai bhai!
+
+Tradition ke peeche ka asli logic jaanna hai? Oneshotriddle ko abhi follow kar lo!`
+            },
+            {
+                id: 9,
+                title: "Brahma Ka Ek Din vs. Age of Universe",
+                category: "Cosmos & Quantum",
+                duration: "~35s",
+                content: `Jab puri duniya sochti thi ki Earth sirf kuch hazaar saal purani hai, tab ancient Indian texts Billions of Years ki baat kar rahe the!
+
+Modern cosmology kehti hai ki hamara Universe lagbhag 13.8 Billion years purana hai aur Earth ki age 4.5 Billion years hai.
+
+Ab ancient Indian cosmology dekho: Usme Brahma ka ek din, yani ek Kalpa, 4.32 Billion years ka bataya gaya hai—aur din aur raat milakar 8.64 Billion years!
+
+Famous astrophysicist Carl Sagan ne khud apne show Cosmos mein kaha tha ki Hindu cosmology akeli aisi ancient philosophy hai jiske time scales modern scientific cosmology ke itne kareeb hain—from billions of years to infinite multiverses!
+
+Cosmic level ka dimaag hila? Toh Oneshotriddle ko follow karo, aise aur riddles aa rahe hain!`
+            },
+            {
+                id: 10,
+                title: "Surya Ke 7 Ghode = Newton Ka Prism?",
+                category: "Math & History",
+                duration: "~35s",
+                content: `School mein humne padha ki Isaac Newton ne prism se prove kiya ki Sunlight 7 colors yani VIBGYOR se bani hai... par kya aapko pata hai ancient art mein yeh code hazaron saal pehle chhupa tha?
+
+Ancient Indian texts aur temples mein Surya yani Sun ke rath ko hamesha 7 ghode—Sapta-Ashva—kheench rahe hote hain, aur unka saarthi Aruna subah ki pehli roshni ko represent karta hai.
+
+Yeh koi literal ghode nahi the, balki symbolism tha! 7 horses represent karte hain white light ke 7 visible spectrum colors yani VIBGYOR ko, jo milkar ek hi Sun ki energy ko Earth tak laate hain. Ancient stories aksar science aur nature ke rules ko yaad rakhne ka ek creative storytelling format hoti thi!
+
+Storytelling plus Science equals Peak Logic! Roz aise gems ke liye Oneshotriddle ko follow kar lo!`
+            },
+            {
+                id: 11,
+                title: "Khud Verify Karo (Buddhism & Stoicism)",
+                category: "Logic & Myths",
+                duration: "~35s",
+                content: `Ek aisi ancient philosophy jo kehti hai—"Meri baat bhi mat maano, pehle khud test karo!" Sunne mein aaj ka scientific method lagta hai na?
+
+Aaj se 2,500 saal pehle Gautam Buddha ne Kalama Sutta mein clearly kaha tha: Kisi bhi cheez par sirf isliye bharosa mat karo kyunki wo kisi book mein likhi hai, ya kisi bade guru ne kahi hai. Pehle khud observe karo, logic lagao, verify karo—agar sahi lage tabhi maano!
+
+Aur yahi same vibe Stoicism mein milti hai—jo cheez tumhare control mein nahi uski tension mat lo, aur Karma ko magic nahi balki Newton ke 3rd law jaisa Cause and Effect samjho.
+
+Gen-Z ke liye isse zyada logical mindset kya hoga? Share karo apne dost ke saath aur Oneshotriddle ko follow karo!`
+            },
+            {
+                id: 12,
+                title: "Myth Buster Special! (Fake vs. Real)",
+                category: "Logic & Myths",
+                duration: "~45s",
+                content: `Stop! Agar aap bhi WhatsApp par yeh 3 "Ancient Science" claims share kar rahe ho, toh aaj reality check le lo!
+
+Claim number 1: NASA ne 1964 mein Vedic Mercury Vortex Engine test kiya tha.
+FAKE! Iska koi official NASA record ya solid scientific proof nahi hai.
+
+Claim number 2: Purano ke Naag aur Makara actually Dinosaurs the.
+SPECULATION! Yeh bas modern discovery ko purani stories mein zabardasti fit karna hai.
+
+Claim number 3: Zero, Decimal System, Binary patterns aur Fasting yani Autophagy ka connection real hai.
+100% REAL!
+
+Hamara ancient knowledge already itna brilliant hai ki use defend karne ke liye fake claims ki zaroorat nahi hai. Real logic hamesha jeet-ta hai!
+
+Agar aapko sirf 100% verified, logical aur no-BS facts pasand hain, toh Oneshotriddle ko abhi follow kar lo!`
+            }
+        ];
+
+        const BONUS_CTAS = [
+            "Aise hi mind-bending aur logical facts ke liye Oneshotriddle ko abhi follow kar lo—warna algorithm bhool jayega!",
+            "Blind belief nahi, sirf pure logic! Join the Oneshotriddle community right now.",
+            "Part 2 chahiye toh comment mein fire emoji drop karo aur Oneshotriddle ko follow karna mat bhoolna!",
+            "Aaj kuch naya seekha? Toh is reel ko save kar lo aur daily brain-upgrade ke liye Oneshotriddle ko follow karo!",
+            "Science plus Ancient Wisdom equals Oneshotriddle. Follow karo aur apne smart dost ko share karo!"
+        ];
+
+        // Status Cycle Configuration
+        const STATUS_ORDER = ['Pending', 'Editing', 'Done'];
+        const STATUS_STYLES = {
+            'Pending': 'bg-zinc-800 text-zinc-300 border-zinc-700 hover:bg-zinc-700',
+            'Editing': 'bg-amber-500/15 text-amber-300 border-amber-500/30 hover:bg-amber-500/25',
+            'Done': 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30 hover:bg-emerald-500/25'
+        };
+
+        // App State
+        let activeCategory = 'All';
+        let searchQuery = '';
+        let scriptStatuses = {};
+        let currentModalScript = null;
+        let modalFontSize = 20; // px
+
+        // Load saved statuses safely from localStorage
+        function loadStatuses() {
+            try {
+                const saved = localStorage.getItem('oneshotriddle_editor_statuses');
+                if (saved) {
+                    scriptStatuses = JSON.parse(saved);
+                }
+            } catch (err) {
+                console.warn('LocalStorage unavailable, using session memory.', err);
+            }
+        }
+
+        // Save statuses safely to localStorage
+        function saveStatuses() {
+            try {
+                localStorage.setItem('oneshotriddle_editor_statuses', JSON.stringify(scriptStatuses));
+            } catch (err) {
+                console.warn('Could not persist statuses.', err);
+            }
+        }
+
+        // Reliable Clipboard Copy (Uses execCommand for iframe/browser compatibility)
+        function copyToClipboard(text, message = 'Script copied!') {
+            try {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                textarea.setAttribute('readonly', '');
+                textarea.style.position = 'fixed';
+                textarea.style.top = '-9999px';
+                textarea.style.left = '-9999px';
+                document.body.appendChild(textarea);
+                textarea.select();
+                textarea.setSelectionRange(0, 99999);
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showToast(message);
+            } catch (err) {
+                showToast('Copy failed. Please select text manually.');
+            }
+        }
+
+        // Toast Notification Controller
+        let toastTimeout;
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.textContent = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 2200);
+        }
+
+        // Update Completed Counter in Header
+        function updateCompletedCount() {
+            const doneCount = SCRIPTS.filter(s => scriptStatuses[s.id] === 'Done').length;
+            document.getElementById('completed-count').textContent = `${doneCount} / ${SCRIPTS.length}`;
+        }
+
+        // Render Category Filter Pills
+        function renderCategories() {
+            const categories = ['All', ...new Set(SCRIPTS.map(s => s.category))];
+            const container = document.getElementById('category-filters');
+            container.innerHTML = '';
+
+            categories.forEach(cat => {
+                const btn = document.createElement('button');
+                const isActive = activeCategory === cat;
+                btn.textContent = cat;
+                btn.className = `px-3.5 py-2 rounded-xl text-xs font-semibold transition-all border ${
+                    isActive
+                        ? 'bg-indigo-600 text-white border-indigo-500 shadow-sm shadow-indigo-600/30'
+                        : 'bg-surface-800 text-zinc-400 border-zinc-800 hover:text-zinc-200 hover:border-zinc-700'
+                }`;
+                btn.addEventListener('click', () => {
+                    activeCategory = cat;
+                    renderCategories();
+                    renderScripts();
+                });
+                container.appendChild(btn);
+            });
+        }
+
+        // Cycle Script Status (Pending -> Editing -> Done -> Pending)
+        function cycleStatus(id) {
+            const current = scriptStatuses[id] || 'Pending';
+            const nextIndex = (STATUS_ORDER.indexOf(current) + 1) % STATUS_ORDER.length;
+            scriptStatuses[id] = STATUS_ORDER[nextIndex];
+            saveStatuses();
+            updateCompletedCount();
+            renderScripts();
+            showToast(`Script #${id} marked as ${scriptStatuses[id]}`);
+        }
+
+        // Render Filtered Script Cards
+        function renderScripts() {
+            const grid = document.getElementById('scripts-grid');
+            const emptyState = document.getElementById('empty-state');
+            grid.innerHTML = '';
+
+            const filtered = SCRIPTS.filter(script => {
+                const matchesCat = activeCategory === 'All' || script.category === activeCategory;
+                const q = searchQuery.toLowerCase().trim();
+                const matchesSearch = !q ||
+                    script.title.toLowerCase().includes(q) ||
+                    script.content.toLowerCase().includes(q) ||
+                    script.category.toLowerCase().includes(q);
+                return matchesCat && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                emptyState.classList.remove('hidden');
+                return;
+            }
+            emptyState.classList.add('hidden');
+
+            filtered.forEach(script => {
+                const status = scriptStatuses[script.id] || 'Pending';
+                const statusClass = STATUS_STYLES[status];
+                const wordCount = script.content.split(/\s+/).filter(Boolean).length;
+
+                const card = document.createElement('article');
+                card.className = `bg-surface-800 border ${status === 'Done' ? 'border-emerald-500/30' : 'border-zinc-800/90'} rounded-2xl p-5 flex flex-col justify-between transition-all hover:border-zinc-700 shadow-sm`;
+
+                card.innerHTML = `
+                    <div>
+                        <!-- Card Top Meta -->
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <span class="text-xs font-bold px-2.5 py-1 rounded-lg bg-indigo-500/15 text-indigo-300 border border-indigo-500/20">
+                                    #${String(script.id).padStart(2, '0')}
+                                </span>
+                                <span class="text-[11px] font-medium px-2.5 py-1 rounded-lg bg-surface-700 text-zinc-300">
+                                    ${script.category}
+                                </span>
+                            </div>
+                            <span class="text-[11px] font-medium text-zinc-400 shrink-0">
+                                ${script.duration} • ${wordCount} words
+                            </span>
+                        </div>
+
+                        <!-- Card Title -->
+                        <h2 class="text-base sm:text-lg font-bold text-white mb-3 leading-snug">
+                            ${script.title}
+                        </h2>
+
+                        <!-- Pure Ready-to-Read Script Box -->
+                        <div class="bg-surface-900/70 border border-zinc-800/80 rounded-xl p-4 mb-4">
+                            <p class="text-sm text-zinc-200 leading-relaxed whitespace-pre-line font-normal">${script.content}</p>
+                        </div>
+                    </div>
+
+                    <!-- Card Actions Footer -->
+                    <div class="flex items-center justify-between gap-2 pt-3 border-t border-zinc-800/70">
+                        <!-- Status Toggle -->
+                        <button 
+                            class="status-btn text-xs font-semibold px-3 py-2 rounded-xl border transition-all active:scale-95 ${statusClass}"
+                            data-id="${script.id}"
+                            title="Click to change status"
+                        >
+                            ● ${status}
+                        </button>
+
+                        <!-- Read & Copy Controls -->
+                        <div class="flex items-center gap-2">
+                            <button 
+                                class="read-btn text-xs font-semibold px-3 py-2 rounded-xl bg-surface-700 hover:bg-surface-600 text-zinc-200 transition-all active:scale-95 flex items-center gap-1.5"
+                                data-id="${script.id}"
+                            >
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                                <span>Read</span>
+                            </button>
+                            <button 
+                                class="copy-btn text-xs font-semibold px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white transition-all active:scale-95 flex items-center gap-1.5 shadow-sm shadow-indigo-600/20"
+                                data-id="${script.id}"
+                            >
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                </svg>
+                                <span>Copy</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+            });
+
+            // Attach Card Button Listeners
+            grid.querySelectorAll('.status-btn').forEach(btn => {
+                btn.addEventListener('click', () => cycleStatus(Number(btn.dataset.id)));
+            });
+
+            grid.querySelectorAll('.copy-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const s = SCRIPTS.find(item => item.id === Number(btn.dataset.id));
+                    if (s) copyToClipboard(s.content, `Script #${s.id} copied!`);
+                });
+            });
+
+            grid.querySelectorAll('.read-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const s = SCRIPTS.find(item => item.id === Number(btn.dataset.id));
+                    if (s) openReadModal(s);
+                });
+            });
+        }
+
+        // Render Bonus Outro / CTA Cards
+        function renderCTAs() {
+            const container = document.getElementById('cta-list');
+            container.innerHTML = '';
+
+            BONUS_CTAS.forEach((cta, idx) => {
+                const item = document.createElement('button');
+                item.className = 'text-left bg-surface-900/70 hover:bg-surface-700/70 border border-zinc-800 hover:border-indigo-500/40 rounded-xl p-3.5 transition-all group flex items-start justify-between gap-3';
+                item.innerHTML = `
+                    <span class="text-xs sm:text-sm text-zinc-200 leading-relaxed">${cta}</span>
+                    <span class="text-[11px] font-semibold text-indigo-400 group-hover:text-indigo-300 shrink-0 mt-0.5">Copy</span>
+                `;
+                item.addEventListener('click', () => {
+                    copyToClipboard(cta, `Outro line #${idx + 1} copied!`);
+                });
+                container.appendChild(item);
+            });
+        }
+
+        // Teleprompter / Focus Modal Functions
+        function openReadModal(script) {
+            currentModalScript = script;
+            document.getElementById('modal-badge').textContent = `SCRIPT #${String(script.id).padStart(2, '0')} • ${script.category}`;
+            document.getElementById('modal-title').textContent = script.title;
+            const textEl = document.getElementById('modal-script-text');
+            textEl.textContent = script.content;
+            textEl.style.fontSize = `${modalFontSize}px`;
+            document.getElementById('modal-meta').textContent = `Est. duration: ${script.duration}`;
+
+            const modal = document.getElementById('read-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeReadModal() {
+            const modal = document.getElementById('read-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+            currentModalScript = null;
+        }
+
+        // Initialize App on DOM Ready
+        document.addEventListener('DOMContentLoaded', () => {
+            loadStatuses();
+            updateCompletedCount();
+            renderCategories();
+            renderScripts();
+            renderCTAs();
+
+            // Search Listener
+            document.getElementById('search-input').addEventListener('input', (e) => {
+                searchQuery = e.target.value;
+                renderScripts();
+            });
+
+            // Copy All Scripts Button
+            document.getElementById('copy-all-btn').addEventListener('click', () => {
+                const allText = SCRIPTS.map(s => `--- SCRIPT #${s.id}: ${s.title} ---\n\n${s.content}`).join('\n\n\n');
+                copyToClipboard(allText, 'All 12 scripts copied!');
+            });
+
+            // Modal Event Listeners
+            document.getElementById('close-modal').addEventListener('click', closeReadModal);
+            document.getElementById('read-modal').addEventListener('click', (e) => {
+                if (e.target.id === 'read-modal') closeReadModal();
+            });
+            document.getElementById('modal-copy-btn').addEventListener('click', () => {
+                if (currentModalScript) {
+                    copyToClipboard(currentModalScript.content, `Script #${currentModalScript.id} copied!`);
+                }
+            });
+            document.getElementById('font-inc').addEventListener('click', () => {
+                modalFontSize = Math.min(34, modalFontSize + 2);
+                document.getElementById('modal-script-text').style.fontSize = `${modalFontSize}px`;
+            });
+            document.getElementById('font-dec').addEventListener('click', () => {
+                modalFontSize = Math.max(14, modalFontSize - 2);
+                document.getElementById('modal-script-text').style.fontSize = `${modalFontSize}px`;
+            });
+
+            // Close modal on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && currentModalScript) {
+                    closeReadModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
